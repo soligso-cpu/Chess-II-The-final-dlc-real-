@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0uoq2jygivh4"]
+
+[ext_resource type="Texture2D" uid="uid://cogempqjhkbew" path="res://Sprites/chess_board_placeholder.png" id="1_hwq6x"]
+[ext_resource type="PackedScene" uid="uid://b8whcanplgla5" path="res://Scenes/pawn_test.tscn" id="2_i6bmi"]
+
+[node name="BoardTest" type="Node2D" unique_id=1103957163]
+
+[node name="BoardSprite" type="Sprite2D" parent="." unique_id=465404687]
+position = Vector2(580, 324)
+scale = Vector2(1.4306488, 1.4306488)
+texture = ExtResource("1_hwq6x")
+
+[node name="PawnTest" parent="." unique_id=1469756193 instance=ExtResource("2_i6bmi")]
+position = Vector2(-70, -85)
+
+[node name="PawnTest2" parent="." unique_id=189928821 instance=ExtResource("2_i6bmi")]
+position = Vector2(-70, -165)

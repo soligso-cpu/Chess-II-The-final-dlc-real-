@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b8whcanplgla5"]
+
+[ext_resource type="Script" uid="uid://bs1sidw8cgdh" path="res://Scripts/pawn_test.gd" id="1_0pmyk"]
+[ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/chess-g803315359_1920-e1657751026783-199x300.png" id="1_sauo6"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_t0bxp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0pmyk"]
+size = Vector2(173.98032, 176.46562)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytja7"]
+size = Vector2(178.95117, 176.46564)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r160k"]
+size = Vector2(178.95117, 176.46588)
+
+[node name="PawnTest" type="CharacterBody2D" unique_id=1469756193]
+script = ExtResource("1_0pmyk")
+
+[node name="SelectPawn" type="Button" parent="." unique_id=649855940]
+offset_left = 491.0
+offset_top = 570.0
+offset_right = 569.0
+offset_bottom = 648.0
+
+[node name="PawnSprite" type="Sprite2D" parent="." unique_id=111657236]
+position = Vector2(530.75006, 608.7438)
+scale = Vector2(0.2336682, 0.2617084)
+texture = ExtResource("1_sauo6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1826662286]
+position = Vector2(403, 508.00006)
+scale = Vector2(0.2117968, 0.21179684)
+polygon = PackedVector2Array(585.4668, 302.17627, 566.5808, 316.34082, 552.41626, 339.9485, 557.1377, 372.99902, 575, 385, 576.0237, 401.32788, 547.6948, 410.771, 571.30225, 434.37842, 584, 467, 584, 495, 576.0237, 528.8086, 552.41626, 552.41626, 538.2517, 571.30225, 519.3657, 585.4668, 509.9226, 609.0742, 519.3657, 623.2388, 505.20117, 642.12476, 594.9099, 651.5679, 689.33984, 642.12476, 684.6184, 613.79565, 684.6184, 590.18823, 665.7324, 576.0237, 639, 554, 621, 527, 611, 474, 621, 442, 638, 428, 646.84644, 410.771, 620, 398, 631, 386, 646.84644, 349.39136, 627.96045, 311.6194, 609.07446, 302.17627)
+
+[node name="MovementMarkers" type="Node2D" parent="." unique_id=1607992314]
+visible = false
+
+[node name="Left" type="Sprite2D" parent="MovementMarkers" unique_id=689284565]
+position = Vector2(449.75006, 527.2501)
+scale = Vector2(0.40234447, 0.40234447)
+texture = ExtResource("2_t0bxp")
+
+[node name="LeftMarkerArea" type="Area2D" parent="MovementMarkers/Left" unique_id=1756240444]
+
+[node name="LeftMarkerShape" type="CollisionShape2D" parent="MovementMarkers/Left/LeftMarkerArea" unique_id=37422370]
+position = Vector2(-1.8642578, 0.6208496)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_0pmyk")
+
+[node name="Left" type="Button" parent="MovementMarkers/Left" unique_id=948330590]
+offset_left = -93.825195
+offset_top = -92.58276
+offset_right = 90.0968
+offset_bottom = 93.82471
+
+[node name="Forward" type="Sprite2D" parent="MovementMarkers" unique_id=1664843042]
+position = Vector2(529, 527.5)
+scale = Vector2(0.40234447, 0.40234447)
+texture = ExtResource("2_t0bxp")
+
+[node name="ForwardMarkerArea" type="Area2D" parent="MovementMarkers/Forward" unique_id=1893076134]
+
+[node name="ForwardMarkerShape" type="CollisionShape2D" parent="MovementMarkers/Forward/ForwardMarkerArea" unique_id=2145999867]
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_ytja7")
+
+[node name="Foward" type="Button" parent="MovementMarkers/Forward" unique_id=2103515735]
+offset_left = -94.44641
+offset_top = -93.203735
+offset_right = 94.44649
+offset_bottom = 93.203735
+
+[node name="Right" type="Sprite2D" parent="MovementMarkers" unique_id=1118221552]
+position = Vector2(608.25, 527.50006)
+scale = Vector2(0.40234447, 0.40234447)
+texture = ExtResource("2_t0bxp")
+
+[node name="RightMarkerArea" type="Area2D" parent="MovementMarkers/Right" unique_id=714519704]
+
+[node name="RightMarkerShape" type="CollisionShape2D" parent="MovementMarkers/Right/RightMarkerArea" unique_id=1817186947]
+position = Vector2(1.8640137, -0.00036621094)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_r160k")
+
+[node name="Right" type="Button" parent="MovementMarkers/Right" unique_id=307828334]
+offset_left = -92.5824
+offset_top = -93.20398
+offset_right = 96.31064
+offset_bottom = 93.20361
+
+[connection signal="button_up" from="SelectPawn" to="." method="_on_select_pawn_button_up"]
+[connection signal="body_entered" from="MovementMarkers/Left/LeftMarkerArea" to="." method="_on_left_marker_area_body_entered"]
+[connection signal="body_entered" from="MovementMarkers/Forward/ForwardMarkerArea" to="." method="_on_forward_marker_area_body_entered"]
+[connection signal="body_entered" from="MovementMarkers/Right/RightMarkerArea" to="." method="_on_right_marker_area_body_entered"]
