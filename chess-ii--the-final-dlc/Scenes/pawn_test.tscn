@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bs1sidw8cgdh" path="res://Scripts/pawn_test.gd" id="1_0pmyk"]
 [ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/chess-g803315359_1920-e1657751026783-199x300.png" id="1_sauo6"]
-[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_t0bxp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pmyk"]
 size = Vector2(173.98032, 176.46562)
@@ -26,7 +25,6 @@ position = Vector2(81, -80)
 
 [node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left" unique_id=689284565]
 scale = Vector2(0.40234447, 0.40234447)
-texture = ExtResource("2_t0bxp")
 
 [node name="LeftMarkerArea" type="Area2D" parent="MovementMarkers/Left/LeftSprite" unique_id=1756240444]
 
@@ -49,7 +47,6 @@ scale = Vector2(0.99999994, 0.99999994)
 [node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward" unique_id=1664843042]
 position = Vector2(7.6293945e-06, 1.0000021)
 scale = Vector2(0.40234447, 0.40234447)
-texture = ExtResource("2_t0bxp")
 
 [node name="ForwardMarkerArea" type="Area2D" parent="MovementMarkers/Forward/ForwardSprite" unique_id=1893076134]
 
@@ -70,7 +67,6 @@ position = Vector2(-83, -79)
 [node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right" unique_id=1118221552]
 position = Vector2(1, 0)
 scale = Vector2(0.40234447, 0.40234447)
-texture = ExtResource("2_t0bxp")
 
 [node name="RightMarkerArea" type="Area2D" parent="MovementMarkers/Right/RightSprite" unique_id=714519704]
 

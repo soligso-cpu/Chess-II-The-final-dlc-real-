@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d0uoq2jygivh4"]
 
 [ext_resource type="Texture2D" uid="uid://cogempqjhkbew" path="res://Sprites/chess_board_placeholder.png" id="1_hwq6x"]
-[ext_resource type="PackedScene" uid="uid://b8whcanplgla5" path="res://Scenes/pawn_test.tscn" id="2_i6bmi"]
 [ext_resource type="PackedScene" uid="uid://t60j8yd411u3" path="res://Scenes/queen_test.tscn" id="3_pyxlr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
@@ -16,30 +15,6 @@ size = Vector2(2137, 1430)
 position = Vector2(580, 324)
 scale = Vector2(1.4306488, 1.4306488)
 texture = ExtResource("1_hwq6x")
-
-[node name="PawnTest" parent="." unique_id=1469756193 groups=["Black", "White"] instance=ExtResource("2_i6bmi")]
-position = Vector2(459, 523)
-
-[node name="PawnTest7" parent="." unique_id=1302884718 instance=ExtResource("2_i6bmi")]
-position = Vector2(780, 523)
-
-[node name="PawnTest8" parent="." unique_id=771855608 instance=ExtResource("2_i6bmi")]
-position = Vector2(860, 523)
-
-[node name="PawnTest2" parent="." unique_id=970469972 instance=ExtResource("2_i6bmi")]
-position = Vector2(699, 523)
-
-[node name="PawnTest3" parent="." unique_id=1521212938 instance=ExtResource("2_i6bmi")]
-position = Vector2(619, 524)
-
-[node name="PawnTest4" parent="." unique_id=678494060 instance=ExtResource("2_i6bmi")]
-position = Vector2(538, 524)
-
-[node name="PawnTest5" parent="." unique_id=566779664 instance=ExtResource("2_i6bmi")]
-position = Vector2(379, 523)
-
-[node name="PawnTest6" parent="." unique_id=954603369 instance=ExtResource("2_i6bmi")]
-position = Vector2(300, 524)
 
 [node name="PromotionGroup" type="Node2D" parent="." unique_id=392524399]
 
@@ -81,9 +56,5 @@ shape = SubResource("RectangleShape2D_pyxlr")
 position = Vector2(796, 1366)
 shape = SubResource("RectangleShape2D_pyxlr")
 
-[node name="WhitePieces" type="Node2D" parent="." unique_id=1291671634]
-
-[node name="BlackPieces" type="Node2D" parent="." unique_id=1221793537]
-
 [node name="QueenTest" parent="." unique_id=716542793 instance=ExtResource("3_pyxlr")]
-position = Vector2(621, 604)
+position = Vector2(300, 44)
