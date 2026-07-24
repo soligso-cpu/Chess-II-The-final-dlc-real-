@@ -2,6 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://cogempqjhkbew" path="res://Sprites/chess_board_placeholder.png" id="1_hwq6x"]
 [ext_resource type="PackedScene" uid="uid://b8whcanplgla5" path="res://Scenes/pawn_test.tscn" id="2_i6bmi"]
+[ext_resource type="PackedScene" uid="uid://t60j8yd411u3" path="res://Scenes/queen_test.tscn" id="3_pyxlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
+size = Vector2(639, 83)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxlr"]
+size = Vector2(2137, 1430)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 
@@ -10,8 +17,73 @@ position = Vector2(580, 324)
 scale = Vector2(1.4306488, 1.4306488)
 texture = ExtResource("1_hwq6x")
 
-[node name="PawnTest" parent="." unique_id=1469756193 instance=ExtResource("2_i6bmi")]
-position = Vector2(-70, -85)
+[node name="PawnTest" parent="." unique_id=1469756193 groups=["Black", "White"] instance=ExtResource("2_i6bmi")]
+position = Vector2(459, 523)
 
-[node name="PawnTest2" parent="." unique_id=189928821 instance=ExtResource("2_i6bmi")]
-position = Vector2(-70, -165)
+[node name="PawnTest7" parent="." unique_id=1302884718 instance=ExtResource("2_i6bmi")]
+position = Vector2(780, 523)
+
+[node name="PawnTest8" parent="." unique_id=771855608 instance=ExtResource("2_i6bmi")]
+position = Vector2(860, 523)
+
+[node name="PawnTest2" parent="." unique_id=970469972 instance=ExtResource("2_i6bmi")]
+position = Vector2(699, 523)
+
+[node name="PawnTest3" parent="." unique_id=1521212938 instance=ExtResource("2_i6bmi")]
+position = Vector2(619, 524)
+
+[node name="PawnTest4" parent="." unique_id=678494060 instance=ExtResource("2_i6bmi")]
+position = Vector2(538, 524)
+
+[node name="PawnTest5" parent="." unique_id=566779664 instance=ExtResource("2_i6bmi")]
+position = Vector2(379, 523)
+
+[node name="PawnTest6" parent="." unique_id=954603369 instance=ExtResource("2_i6bmi")]
+position = Vector2(300, 524)
+
+[node name="PromotionGroup" type="Node2D" parent="." unique_id=392524399]
+
+[node name="WhitePromotionArea" type="Area2D" parent="PromotionGroup" unique_id=163879211]
+
+[node name="PromotionShape" type="CollisionShape2D" parent="PromotionGroup/WhitePromotionArea" unique_id=509886913]
+position = Vector2(579.5, 43.5)
+shape = SubResource("RectangleShape2D_i6bmi")
+
+[node name="BlackPromotionArea" type="Area2D" parent="PromotionGroup" unique_id=359981561]
+
+[node name="PromotionShape" type="CollisionShape2D" parent="PromotionGroup/BlackPromotionArea" unique_id=648902351]
+position = Vector2(577, 602)
+shape = SubResource("RectangleShape2D_i6bmi")
+
+[node name="Edges" type="Node2D" parent="." unique_id=2093225668 groups=["Edge"]]
+
+[node name="RightEdgeArea" type="Area2D" parent="Edges" unique_id=559399803 groups=["Edge"]]
+
+[node name="RightEdgeShape" type="CollisionShape2D" parent="Edges/RightEdgeArea" unique_id=1051341368 groups=["Edge"]]
+position = Vector2(-817, 237)
+shape = SubResource("RectangleShape2D_pyxlr")
+
+[node name="LeftEdgeArea" type="Area2D" parent="Edges" unique_id=93641661 groups=["Edge"]]
+
+[node name="LeftEdgeShape" type="CollisionShape2D" parent="Edges/LeftEdgeArea" unique_id=483390064 groups=["Edge"]]
+position = Vector2(1971.5, 307)
+shape = SubResource("RectangleShape2D_pyxlr")
+
+[node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1569335704 groups=["Edge"]]
+
+[node name="UpEdgeShape" type="CollisionShape2D" parent="Edges/UpEdgeArea" unique_id=1698726802 groups=["Edge"]]
+position = Vector2(665, -716)
+shape = SubResource("RectangleShape2D_pyxlr")
+
+[node name="DownEdgeArea" type="Area2D" parent="Edges" unique_id=19569840 groups=["Edge"]]
+
+[node name="DownEdgeShape" type="CollisionShape2D" parent="Edges/DownEdgeArea" unique_id=273008735 groups=["Edge"]]
+position = Vector2(796, 1366)
+shape = SubResource("RectangleShape2D_pyxlr")
+
+[node name="WhitePieces" type="Node2D" parent="." unique_id=1291671634]
+
+[node name="BlackPieces" type="Node2D" parent="." unique_id=1221793537]
+
+[node name="QueenTest" parent="." unique_id=716542793 instance=ExtResource("3_pyxlr")]
+position = Vector2(621, 604)

@@ -15,9 +15,18 @@ run/main_scene="uid://d0uoq2jygivh4"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*uid://bmuqpr1i3qpu8"
+
 [dotnet]
 
 project/assembly_name="Chess II- The Final DLC"
+
+[global_group]
+
+White=""
+Black=""
 
 [physics]
 
