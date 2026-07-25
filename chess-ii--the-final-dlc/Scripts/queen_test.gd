@@ -33,7 +33,7 @@ var enemy_back6
 var enemy_back7
 
 func _ready() -> void:
-	pass
+	print("Right spacing: ", $MovementMarkers/Right/Right2.position - $MovementMarkers/Right/Right1.position)
 
 
 func _process(delta: float) -> void:
@@ -225,101 +225,115 @@ func _on_select_queen_button_up() -> void:
 
 func _on_right_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right1.global_position
+	global_position = $MovementMarkers/Right/Right1.global_position.round()
 	taking = true
 
 
 func _on_right_button_2_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right2.global_position
+	global_position = $MovementMarkers/Right/Right2.global_position.round()
 	taking = true
 
 func _on_right_button_3_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right3.global_position
+	global_position = $MovementMarkers/Right/Right3.global_position.round()
 	taking = true
 
 
 func _on_right_button_4_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right4.global_position
+	global_position = $MovementMarkers/Right/Right4.global_position.round()
 	taking = true
 
 
 func _on_right_button_5_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right5.global_position
+	global_position = $MovementMarkers/Right/Right5.global_position.round()
 	taking = true
 
 
 func _on_right_button_6_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right6.global_position
+	global_position = $MovementMarkers/Right/Right6.global_position.round()
 	taking = true
 
 
 func _on_right_button_7_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Right/Right7.global_position
+	global_position = $MovementMarkers/Right/Right7.global_position.round()
 	taking = true
 
 #endregion
 #region All the collision signals.
 
 func _on_right_area_1_body_entered(body: Node2D) -> void:
-	enemy_right1 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right1 = true
 	
 
 func _on_right_area_1_body_exited(body: Node2D) -> void:
-	enemy_right1 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right1 = false
 
 
 func _on_right_area_2_body_entered(body: Node2D) -> void:
-	enemy_right2 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right2 = true
 
 
 func _on_right_area_2_body_exited(body: Node2D) -> void:
-	enemy_right2 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right2 = false
 
 
 func _on_right_area_3_body_entered(body: Node2D) -> void:
-	enemy_right3 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right3 = true
 
 
 func _on_right_area_3_body_exited(body: Node2D) -> void:
-	enemy_right3 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right3 = false
 
 
 func _on_right_area_4_body_entered(body: Node2D) -> void:
-	enemy_right4 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right4 = true
 
 
 func _on_right_area_4_body_exited(body: Node2D) -> void:
-	enemy_right4 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right4 = false
 
 
 func _on_right_area_5_body_entered(body: Node2D) -> void:
-	enemy_right5 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right5 = true
 
 
 func _on_right_area_5_body_exited(body: Node2D) -> void:
-	enemy_right5 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right5 = false
 
 
 func _on_right_area_6_body_entered(body: Node2D) -> void:
-	enemy_right6 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right6 = true
 
 
 func _on_right_area_6_body_exited(body: Node2D) -> void:
-	enemy_right6 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right6 = false
 
 
 func _on_right_area_7_body_entered(body: Node2D) -> void:
-	enemy_right7 = true
+	if(body.is_in_group("Pieces")):
+		enemy_right7 = true
 
 
 func _on_right_area_7_body_exited(body: Node2D) -> void:
-	enemy_right7 = false
+	if(body.is_in_group("Pieces")):
+		enemy_right7 = false
 
 #endregion
 #region All the edge collision signals.
@@ -416,44 +430,57 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 
 func _on_forward_button_1_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward1.global_position
+	global_position = $MovementMarkers/Foward/Forward1.global_position.round()
 	taking = true
-
+	scale = Vector2.ONE
+	rotation = 0.0
 
 func _on_forward_button_2_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward2.global_position
+	global_position = $MovementMarkers/Foward/Forward2.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 
 func _on_forward_button_3_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward3.global_position
+	global_position = $MovementMarkers/Foward/Forward3.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 
 func _on_forward_button_4_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward4.global_position
+	global_position = $MovementMarkers/Foward/Forward4.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 
 func _on_forward_button_5_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward5.global_position
+	global_position = $MovementMarkers/Foward/Forward5.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 
 func _on_forward_button_6_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward6.global_position
+	global_position = $MovementMarkers/Foward/Forward6.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 
 func _on_forward_button_7_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Foward/Forward7.global_position
+	global_position = $MovementMarkers/Foward/Forward7.global_position.round()
 	taking = true
+	scale = Vector2.ONE
+	rotation = 0.0
 
 #endregion
 #region ALl the collision signals
@@ -613,43 +640,43 @@ func _on_forward_7_area_area_exited(area: Area2D) -> void:
 
 func _on_back_1_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back1.global_position
+	global_position = $MovementMarkers/Back/Back1/BackSprite/Back1Area/Back1Shape.global_position.round()
 	taking = true
 
 
 func _on_back_2_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back2.global_position
+	global_position = $MovementMarkers/Back/Back2/BackSprite/Back2Area/Back2Shape.global_position.round()
 	taking = true
 
 
 func _on_back_3_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back3.global_position
+	global_position = $MovementMarkers/Back/Back3/BackSprite/Back3Area/Back3Shape.global_position.round()
 	taking = true
 
 
 func _on_back_4_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back4.global_position
+	global_position = $MovementMarkers/Back/Back4/BackSprite/Back4Area/Back4Shape.global_position.round()
 	taking = true
 
 
 func _on_back_5_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back5.global_position
+	global_position = $MovementMarkers/Back/Back5/BackSprite/Back5Area/Back5Shape.global_position.round()
 	taking = true
 
 
 func _on_back_6_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back6.global_position
+	global_position = $MovementMarkers/Back/Back6/BackSprite/Back6Area/Back6Shape.global_position.round()
 	taking = true
 
 
 func _on_back_7_button_button_up() -> void:
 	Globals.turn_tracking += 1
-	global_position = $MovementMarkers/Back/Back7.global_position
+	global_position = $MovementMarkers/Back/Back7/BackSprite/Back7Area/Back7Shape.global_position.round()
 	taking = true
 
 #endregion
@@ -723,8 +750,8 @@ func _on_back_1_area_area_entered(area: Area2D) -> void:
 
 func _on_back_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back1 = true
+		back_touching_border = false
+		enemy_back1 = false
 
 
 func _on_back_2_area_area_entered(area: Area2D) -> void:
@@ -735,8 +762,8 @@ func _on_back_2_area_area_entered(area: Area2D) -> void:
 
 func _on_back_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back2 = true
+		back_touching_border = false
+		enemy_back2 = false
 
 
 func _on_back_3_area_area_entered(area: Area2D) -> void:
@@ -747,8 +774,8 @@ func _on_back_3_area_area_entered(area: Area2D) -> void:
 
 func _on_back_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back3 = true
+		back_touching_border = false
+		enemy_back3 = false
 
 
 func _on_back_4_area_area_entered(area: Area2D) -> void:
@@ -759,8 +786,8 @@ func _on_back_4_area_area_entered(area: Area2D) -> void:
 
 func _on_back_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back4 = true
+		back_touching_border = false
+		enemy_back4 = false
 
 
 func _on_back_5_area_area_entered(area: Area2D) -> void:
@@ -771,8 +798,8 @@ func _on_back_5_area_area_entered(area: Area2D) -> void:
 
 func _on_back_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back5 = true
+		back_touching_border = false
+		enemy_back5 = false
 
 
 func _on_back_6_area_area_entered(area: Area2D) -> void:
@@ -783,8 +810,8 @@ func _on_back_6_area_area_entered(area: Area2D) -> void:
 
 func _on_back_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back6 = true
+		back_touching_border = false
+		enemy_back6 = false
 
 
 func _on_back_7_area_area_entered(area: Area2D) -> void:
@@ -795,8 +822,8 @@ func _on_back_7_area_area_entered(area: Area2D) -> void:
 
 func _on_back_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
-		enemy_back7 = true
+		back_touching_border = false
+		enemy_back7 = false
 
 #endregion
 

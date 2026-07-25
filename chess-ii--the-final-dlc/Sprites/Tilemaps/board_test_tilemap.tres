@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://bjf27kau8apr3"]
+
+[ext_resource type="Texture2D" uid="uid://cogempqjhkbew" path="res://Sprites/chess_board_placeholder.png" id="1_bmdvw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4wurj"]
+texture = ExtResource("1_bmdvw")
+texture_region_size = Vector2i(56, 56)
+1:0/0 = 0
+0:0/0 = 0
+
+[resource]
+sources/2 = SubResource("TileSetAtlasSource_4wurj")

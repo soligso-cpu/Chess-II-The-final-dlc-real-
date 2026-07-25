@@ -13,7 +13,7 @@ func _ready() -> void:
 	
 	
 func _process(delta: float) -> void:
-	if(Globals.turn_tracking == 1):
+#	if(Globals.turn_tracking == 1):
 		if(focused):
 			z_index = 5
 			move_to_front()

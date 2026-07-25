@@ -27,6 +27,7 @@ project/assembly_name="Chess II- The Final DLC"
 
 White=""
 Black=""
+Pieces=""
 
 [physics]
 

@@ -51,14 +51,14 @@ scale = Vector2(0.40234447, 0.40234447)
 [node name="ForwardMarkerArea" type="Area2D" parent="MovementMarkers/Forward/ForwardSprite" unique_id=1893076134]
 
 [node name="ForwardMarkerShape" type="CollisionShape2D" parent="MovementMarkers/Forward/ForwardSprite/ForwardMarkerArea" unique_id=2145999867]
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(0.9999998, 0.9999998)
 shape = SubResource("RectangleShape2D_ytja7")
 
 [node name="Foward" type="Button" parent="MovementMarkers/Forward/ForwardSprite" unique_id=2103515735]
 offset_left = -94.44641
-offset_top = -93.203735
+offset_top = -93.203766
 offset_right = 94.44649
-offset_bottom = 93.203735
+offset_bottom = 93.203705
 metadata/_edit_use_anchors_ = true
 
 [node name="Right" type="Marker2D" parent="MovementMarkers" unique_id=1743670364]
