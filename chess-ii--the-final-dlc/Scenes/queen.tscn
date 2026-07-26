@@ -18,7 +18,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64cfu"]
 size = Vector2(71.42857, 71.64356)
 
-[node name="QueenTest" type="CharacterBody2D" unique_id=890245409]
+[node name="Queen" type="CharacterBody2D" unique_id=890245409]
 script = ExtResource("1_6tlfm")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1139422108]
