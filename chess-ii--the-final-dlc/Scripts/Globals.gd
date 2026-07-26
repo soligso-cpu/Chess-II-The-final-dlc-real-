@@ -21,7 +21,7 @@ var board_tiles = {
 		"F1": {"state": false}, "F2": {"state": false}, "F3": {"state": false}, "F4": {"state": false}, "F5": {"state": false}, "F6": {"state": false}, "F7": {"state": false}, "F8": {"state": false},
 		},
 	"G": {
-		"G1": {"state": false}, "G2": {"state": false}, "G3": {"state": false}, "G4": {"state": false}, "G5": {"state": false}, "G6": {"state": false}, "G7": {"state": false}, "G8": {"state": false},
+		"G1": {"state": false}, "G2": {"state": true}, "G3": {"state": false}, "G4": {"state": false}, "G5": {"state": false}, "G6": {"state": false}, "G7": {"state": false}, "G8": {"state": false},
 		},
 	"H": {
 		"H1": {"state": false}, "H2": {"state": false}, "H3": {"state": false}, "H4": {"state": false}, "H5": {"state": false}, "H6": {"state": false}, "H7": {"state": false}, "H8": {"state": false},

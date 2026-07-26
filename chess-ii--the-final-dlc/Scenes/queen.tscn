@@ -16,7 +16,7 @@ size = Vector2(72, 72)
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64cfu"]
-size = Vector2(71.42857, 71.64356)
+size = Vector2(71.42857, 71.42857)
 
 [node name="Queen" type="CharacterBody2D" unique_id=890245409]
 script = ExtResource("1_6tlfm")
@@ -24,6 +24,8 @@ script = ExtResource("1_6tlfm")
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1139422108]
 
 [node name="Right" type="Marker2D" parent="MovementMarkers" unique_id=837143429]
+process_priority = 1
+z_index = 1
 
 [node name="Right1" type="Node2D" parent="MovementMarkers/Right" unique_id=1922217013]
 position = Vector2(80, -1)
@@ -145,6 +147,8 @@ offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Foward" type="Marker2D" parent="MovementMarkers" unique_id=286334846]
+process_priority = 1
+z_index = 1
 
 [node name="Forward1" type="Node2D" parent="MovementMarkers/Foward" unique_id=1406361585]
 position = Vector2(0, -81)
@@ -289,6 +293,8 @@ grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="Marker2D" parent="MovementMarkers" unique_id=687909245]
+process_priority = 1
+z_index = 1
 
 [node name="Back1" type="Node2D" parent="MovementMarkers/Back" unique_id=464609852]
 position = Vector2(0, 79)
@@ -445,6 +451,8 @@ offset_bottom = -23.421001
 metadata/_edit_use_anchors_ = true
 
 [node name="Left" type="Marker2D" parent="MovementMarkers" unique_id=2131471033]
+process_priority = 1
+z_index = 1
 
 [node name="Left1" type="Node2D" parent="MovementMarkers/Left" unique_id=1466245436]
 position = Vector2(-80, -1)
@@ -461,6 +469,7 @@ offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Left2" type="Node2D" parent="MovementMarkers/Left" unique_id=1990035472]
 position = Vector2(-160, -1)
@@ -573,14 +582,14 @@ visible = false
 [node name="SelectQueen" type="Button" parent="." unique_id=105382026]
 offset_left = -39.0
 offset_top = -39.0
-offset_right = 38.01333
-offset_bottom = 37.0
+offset_right = 39.01333
+offset_bottom = 39.0
 
 [node name="CollisionArea" type="Area2D" parent="." unique_id=1531691377]
-position = Vector2(0, 0.9999924)
+position = Vector2(0, -7.6293945e-06)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="CollisionArea" unique_id=1435008477]
-position = Vector2(3.6656857e-06, -1.9999924)
+position = Vector2(3.6656857e-06, -0.9999925)
 scale = Vector2(1.008, 1.008)
 shape = SubResource("RectangleShape2D_64cfu")
 

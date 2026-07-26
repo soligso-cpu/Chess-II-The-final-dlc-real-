@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://dwo1vufl662eo" path="res://Scripts/board_test.gd" id="1_shhme"]
 [ext_resource type="TileSet" uid="uid://bjf27kau8apr3" path="res://Sprites/Tilemaps/board_test_tilemap.tres" id="2_s4i1f"]
 [ext_resource type="PackedScene" uid="uid://t60j8yd411u3" path="res://Scenes/queen.tscn" id="3_bh37u"]
-[ext_resource type="PackedScene" uid="uid://b8whcanplgla5" path="res://Scenes/pawn_test.tscn" id="4_twe5h"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="3_s4i1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
 size = Vector2(639, 83)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pyxlr"]
-size = Vector2(2137, 1430)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
+size = Vector2(1240, 1128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fj8h"]
 size = Vector2(68, 68)
@@ -33,37 +33,57 @@ shape = SubResource("RectangleShape2D_i6bmi")
 [node name="BlackPromotionArea" type="Area2D" parent="PromotionGroup" unique_id=359981561]
 
 [node name="PromotionShape" type="CollisionShape2D" parent="PromotionGroup/BlackPromotionArea" unique_id=648902351]
-position = Vector2(616, 604)
+position = Vector2(616, 607)
 shape = SubResource("RectangleShape2D_i6bmi")
 
-[node name="Edges" type="Node2D" parent="." unique_id=2093225668 groups=["Edge"]]
+[node name="Edges" type="Node2D" parent="." unique_id=2093225668]
 
-[node name="RightEdgeArea" type="Area2D" parent="Edges" unique_id=559399803 groups=["Edge"]]
+[node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1903873758 groups=["Edge"]]
+position = Vector2(-3530, -398)
 
-[node name="RightEdgeShape" type="CollisionShape2D" parent="Edges/RightEdgeArea" unique_id=1051341368 groups=["Edge"]]
-position = Vector2(-776, 226)
-shape = SubResource("RectangleShape2D_pyxlr")
+[node name="UpEdgeShape" type="CollisionShape2D" parent="Edges/UpEdgeArea" unique_id=863392604 groups=["Edge"]]
+shape = SubResource("RectangleShape2D_shhme")
 
-[node name="LeftEdgeArea" type="Area2D" parent="Edges" unique_id=93641661 groups=["Edge"]]
+[node name="UpEdgeSprite" type="Sprite2D" parent="Edges/UpEdgeArea" unique_id=920518686 groups=["Edge"]]
+position = Vector2(-3.7499695, 1.5258789e-05)
+scale = Vector2(9.628907, 6.2343755)
+texture = ExtResource("3_s4i1f")
 
-[node name="LeftEdgeShape" type="CollisionShape2D" parent="Edges/LeftEdgeArea" unique_id=483390064 groups=["Edge"]]
-position = Vector2(2018, 307)
-shape = SubResource("RectangleShape2D_pyxlr")
+[node name="RightEdgeArea" type="Area2D" parent="Edges" unique_id=244937040 groups=["Edge"]]
+position = Vector2(1578, 302)
 
-[node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1569335704 groups=["Edge"]]
+[node name="RightEdgeShape" type="CollisionShape2D" parent="Edges/RightEdgeArea" unique_id=116950547 groups=["Edge"]]
+position = Vector2(0, 81)
+shape = SubResource("RectangleShape2D_shhme")
 
-[node name="UpEdgeShape" type="CollisionShape2D" parent="Edges/UpEdgeArea" unique_id=1698726802 groups=["Edge"]]
-position = Vector2(665, -716)
-shape = SubResource("RectangleShape2D_pyxlr")
+[node name="UpEdgeSprite" type="Sprite2D" parent="Edges/RightEdgeArea" unique_id=1525039427 groups=["Edge"]]
+position = Vector2(-3.7499695, 85.50003)
+scale = Vector2(9.628907, 8.8515625)
+texture = ExtResource("3_s4i1f")
 
-[node name="DownEdgeArea" type="Area2D" parent="Edges" unique_id=19569840 groups=["Edge"]]
+[node name="LeftEdgeArea" type="Area2D" parent="Edges" unique_id=456620726 groups=["Edge"]]
+position = Vector2(-4522, 387)
 
-[node name="DownEdgeShape" type="CollisionShape2D" parent="Edges/DownEdgeArea" unique_id=273008735 groups=["Edge"]]
-position = Vector2(796, 1366)
-shape = SubResource("RectangleShape2D_pyxlr")
+[node name="LeftEdgeShape" type="CollisionShape2D" parent="Edges/LeftEdgeArea" unique_id=861634478 groups=["Edge"]]
+shape = SubResource("RectangleShape2D_shhme")
+
+[node name="UpEdgeSprite" type="Sprite2D" parent="Edges/LeftEdgeArea" unique_id=46072431 groups=["Edge"]]
+position = Vector2(-3.7499695, 1.5258789e-05)
+scale = Vector2(9.628907, 6.2343755)
+texture = ExtResource("3_s4i1f")
+
+[node name="DownEdgeArea" type="Area2D" parent="Edges" unique_id=1717251772 groups=["Edge"]]
+position = Vector2(-3534, 1148)
+
+[node name="DownEdgeShape" type="CollisionShape2D" parent="Edges/DownEdgeArea" unique_id=355820773 groups=["Edge"]]
+shape = SubResource("RectangleShape2D_shhme")
+
+[node name="UpEdgeSprite" type="Sprite2D" parent="Edges/DownEdgeArea" unique_id=1027153328 groups=["Edge"]]
+position = Vector2(-3.7499695, 1.5258789e-05)
+scale = Vector2(9.628907, 6.2343755)
+texture = ExtResource("3_s4i1f")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
-visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -466,7 +486,4 @@ position = Vector2(896, 603)
 shape = SubResource("RectangleShape2D_5fj8h")
 
 [node name="QueenTest" parent="." unique_id=716542793 groups=["Pieces"] instance=ExtResource("3_bh37u")]
-position = Vector2(416, 364)
-
-[node name="PawnTest8" parent="." unique_id=2039357338 groups=["Pieces"] instance=ExtResource("4_twe5h")]
-position = Vector2(417, 522)
+position = Vector2(896, 604)

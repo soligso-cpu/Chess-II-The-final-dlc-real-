@@ -102,179 +102,180 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	#if(Globals.turn_tracking == 1):
-		if(focused):
-			z_index = 5
-			move_to_front()
-			taking = true
-			#region Right Movement Marker Visibility Control
-			
-			$MovementMarkers.visible = true
-			$MovementMarkers/Right.visible = true
-			$MovementMarkers/Right/Right1.visible = true
-			$MovementMarkers/Right/Right2.visible = 	true
-			$MovementMarkers/Right/Right3.visible = true
-			$MovementMarkers/Right/Right4.visible = true
-			$MovementMarkers/Right/Right5.visible = true
-			$MovementMarkers/Right/Right6.visible = true
-			$MovementMarkers/Right/Right7.visible = true
+	$MovementMarkers.global_position = global_position
+	if(focused):
+		z_index = 5
+		move_to_front()
+		taking = true
+		#region Right Movement Marker Visibility Control
 		
-			if(enemy_right1):
-				if(touching_border):
-					$MovementMarkers/Right/Right1.visible = false
+		$MovementMarkers.visible = true
+		$MovementMarkers/Right.visible = true
+		$MovementMarkers/Right/Right1.visible = true
+		$MovementMarkers/Right/Right2.visible = true
+		$MovementMarkers/Right/Right3.visible = true
+		$MovementMarkers/Right/Right4.visible = true
+		$MovementMarkers/Right/Right5.visible = true
+		$MovementMarkers/Right/Right6.visible = true
+		$MovementMarkers/Right/Right7.visible = true
+	
+		if(enemy_right1):
+			if(touching_border):
+				$MovementMarkers/Right/Right1.visible = false
+			$MovementMarkers/Right/Right2.visible = false
+			$MovementMarkers/Right/Right3.visible = false
+			$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right2):
+			if(touching_border):
 				$MovementMarkers/Right/Right2.visible = false
+			$MovementMarkers/Right/Right3.visible = false
+			$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right3):
+			if(touching_border):
 				$MovementMarkers/Right/Right3.visible = false
+			$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right4):
+			if(touching_border):
 				$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right5):
+			if(touching_border):
 				$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right6):
+			if(touching_border):
 				$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		if(enemy_right7):
+			if(touching_border):
 				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right2):
-				if(touching_border):
-					$MovementMarkers/Right/Right2.visible = false
-				$MovementMarkers/Right/Right3.visible = false
-				$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right3):
-				if(touching_border):
-					$MovementMarkers/Right/Right3.visible = false
-				$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right4):
-				if(touching_border):
-					$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right5):
-				if(touching_border):
-					$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right6):
-				if(touching_border):
-					$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right7):
-				if(touching_border):
-					$MovementMarkers/Right/Right7.visible = false
-				pass
-			#endregion
-			#region Forward Movement Marker Visibility Control
-			
-			$MovementMarkers.visible = true
-			$MovementMarkers/Foward.visible = true
-			$MovementMarkers/Foward/Forward1.visible = true
-			$MovementMarkers/Foward/Forward2.visible = true
-			$MovementMarkers/Foward/Forward3.visible = true
-			$MovementMarkers/Foward/Forward4.visible = true
-			$MovementMarkers/Foward/Forward5.visible = true
-			$MovementMarkers/Foward/Forward6.visible = true
-			$MovementMarkers/Foward/Forward7.visible = true
-			
-			if(enemy_forward1):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward1.visible = false
+			pass
+		#endregion
+		#region Forward Movement Marker Visibility Control
+		
+		$MovementMarkers.visible = true
+		$MovementMarkers/Foward.visible = true
+		$MovementMarkers/Foward/Forward1.visible = true
+		$MovementMarkers/Foward/Forward2.visible = true
+		$MovementMarkers/Foward/Forward3.visible = true
+		$MovementMarkers/Foward/Forward4.visible = true
+		$MovementMarkers/Foward/Forward5.visible = true
+		$MovementMarkers/Foward/Forward6.visible = true
+		$MovementMarkers/Foward/Forward7.visible = true
+		
+		if(enemy_forward1):
+			if(forward_touching_border):
+				$MovementMarkers/Foward/Forward1.visible = false
+			$MovementMarkers/Foward/Forward2.visible = false
+			$MovementMarkers/Foward/Forward3.visible = false
+			$MovementMarkers/Foward/Forward4.visible = false
+			$MovementMarkers/Foward/Forward5.visible = false
+			$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward2):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward2.visible = false
+			$MovementMarkers/Foward/Forward3.visible = false
+			$MovementMarkers/Foward/Forward4.visible = false
+			$MovementMarkers/Foward/Forward5.visible = false
+			$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward3):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward3.visible = false
+			$MovementMarkers/Foward/Forward4.visible = false
+			$MovementMarkers/Foward/Forward5.visible = false
+			$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward4):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward4.visible = false
+			$MovementMarkers/Foward/Forward5.visible = false
+			$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward5):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward5.visible = false
+			$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward6):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward6.visible = false
+			$MovementMarkers/Foward/Forward7.visible = false
+		if(enemy_forward7):
+			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward2):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward2.visible = false
-				$MovementMarkers/Foward/Forward3.visible = false
-				$MovementMarkers/Foward/Forward4.visible = false
-				$MovementMarkers/Foward/Forward5.visible = false
-				$MovementMarkers/Foward/Forward6.visible = false
-				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward3):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward3.visible = false
-				$MovementMarkers/Foward/Forward4.visible = false
-				$MovementMarkers/Foward/Forward5.visible = false
-				$MovementMarkers/Foward/Forward6.visible = false
-				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward4):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward4.visible = false
-				$MovementMarkers/Foward/Forward5.visible = false
-				$MovementMarkers/Foward/Forward6.visible = false
-				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward5):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward5.visible = false
-				$MovementMarkers/Foward/Forward6.visible = false
-				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward6):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward6.visible = false
-				$MovementMarkers/Foward/Forward7.visible = false
-			if(enemy_forward7):
-				if(forward_touching_border):
-					$MovementMarkers/Foward/Forward7.visible = false
-			#endregion
-			#region Back Movement Narker Visibility Control
-			
-			$MovementMarkers.visible = true
-			$MovementMarkers/Back.visible = true
-			$MovementMarkers/Back/Back1.visible = true
-			$MovementMarkers/Back/Back2.visible = true
-			$MovementMarkers/Back/Back3.visible = true
-			$MovementMarkers/Back/Back4.visible = true
-			$MovementMarkers/Back/Back5.visible = true
-			$MovementMarkers/Back/Back6.visible = true
-			$MovementMarkers/Back/Back7.visible = true
-			
-			if(enemy_back1):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back1.visible = false
+		#endregion
+		#region Back Movement Narker Visibility Control
+		
+		$MovementMarkers.visible = true
+		$MovementMarkers/Back.visible = true
+		$MovementMarkers/Back/Back1.visible = true
+		$MovementMarkers/Back/Back2.visible = true
+		$MovementMarkers/Back/Back3.visible = true
+		$MovementMarkers/Back/Back4.visible = true
+		$MovementMarkers/Back/Back5.visible = true
+		$MovementMarkers/Back/Back6.visible = true
+		$MovementMarkers/Back/Back7.visible = true
+		
+		if(enemy_back1):
+			if(back_touching_border):
+				$MovementMarkers/Back/Back1.visible = false
+			$MovementMarkers/Back/Back2.visible = false
+			$MovementMarkers/Back/Back3.visible = false
+			$MovementMarkers/Back/Back4.visible = false
+			$MovementMarkers/Back/Back5.visible = false
+			$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back2):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back2.visible = false
+			$MovementMarkers/Back/Back3.visible = false
+			$MovementMarkers/Back/Back4.visible = false
+			$MovementMarkers/Back/Back5.visible = false
+			$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back3):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back3.visible = false
+			$MovementMarkers/Back/Back4.visible = false
+			$MovementMarkers/Back/Back5.visible = false
+			$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back4):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back4.visible = false
+			$MovementMarkers/Back/Back5.visible = false
+			$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back5):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back5.visible = false
+			$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back6):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back6.visible = false
+			$MovementMarkers/Back/Back7.visible = false
+		if(enemy_back1):
+			if(back_touching_border):
 				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back2):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back2.visible = false
-				$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back3):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back4):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back5):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back6):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back1):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back7.visible = false
-				
-			#endregion
-		elif(!focused):
-			$MovementMarkers.visible = false
+			
+		#endregion
+	elif(!focused):
+		$MovementMarkers.visible = false
 			
 func _on_select_queen_button_up() -> void:
 	if(focused):
@@ -289,6 +290,7 @@ func _on_select_queen_button_up() -> void:
 
 func _on_right_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
@@ -301,6 +303,7 @@ func _on_right_button_button_up() -> void:
 
 func _on_right_button_2_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right2_tile # tells the global script that youre accessing tile X
@@ -313,6 +316,7 @@ func _on_right_button_2_button_up() -> void:
 
 func _on_right_button_3_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right3_tile # tells the global script that youre accessing tile X
@@ -326,6 +330,7 @@ func _on_right_button_3_button_up() -> void:
 
 func _on_right_button_4_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right4_tile # tells the global script that youre accessing tile X
@@ -339,6 +344,7 @@ func _on_right_button_4_button_up() -> void:
 
 func _on_right_button_5_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right5_tile # tells the global script that youre accessing tile X
@@ -352,6 +358,7 @@ func _on_right_button_5_button_up() -> void:
 
 func _on_right_button_6_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right6_tile # tells the global script that youre accessing tile X
@@ -365,6 +372,7 @@ func _on_right_button_6_button_up() -> void:
 
 func _on_right_button_7_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
@@ -581,10 +589,10 @@ func _on_forward_button_1_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	reset_markers()
 	
 
 func _on_forward_button_2_button_up() -> void:
@@ -592,22 +600,20 @@ func _on_forward_button_2_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-
+	reset_markers()
 
 func _on_forward_button_3_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward3_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	reset_markers()
 
 
 func _on_forward_button_4_button_up() -> void:
@@ -615,11 +621,10 @@ func _on_forward_button_4_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward4_tile
-	reset_markers()
 	await get_tree().process_frame
 	await get_tree().process_frame
 	global_position = Globals.position_target
-
+	reset_markers()
 
 
 func _on_forward_button_5_button_up() -> void:
@@ -627,10 +632,10 @@ func _on_forward_button_5_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward5_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	reset_markers()
 	
 
 
@@ -640,10 +645,10 @@ func _on_forward_button_6_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward6_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	reset_markers()
 	
 
 
@@ -653,10 +658,10 @@ func _on_forward_button_7_button_up() -> void:
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward7_tile # tells the global script that youre accessing tile X
-	reset_markers()
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	reset_markers()
 	
 
 
@@ -779,8 +784,10 @@ func _on_forward_7_area_area_exited(area: Area2D) -> void:
 func _on_forward_1_area_body_entered(body: Node2D) -> void:
 	forward1_tile = body.tile
 	forward1_tile_group = body.tile_group
-	if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
-		enemy_forward1 = true
+	print(str(forward1_tile_group) + " " + str(forward1_tile))
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_forward1 = true
 
 
 func _on_forward_1_area_body_exited(body: Node2D) -> void:
@@ -790,8 +797,9 @@ func _on_forward_1_area_body_exited(body: Node2D) -> void:
 func _on_forward_2_area_body_entered(body: Node2D) -> void:
 	forward2_tile = body.tile
 	forward2_tile_group = body.tile_group
-	if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
-		enemy_forward2 = true
+	if(body != self):
+		if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
+			enemy_forward2 = true
 
 
 func _on_forward_2_area_body_exited(body: Node2D) -> void:
@@ -801,8 +809,9 @@ func _on_forward_2_area_body_exited(body: Node2D) -> void:
 func _on_forward_3_area_body_entered(body: Node2D) -> void:
 	forward3_tile = body.tile
 	forward3_tile_group = body.tile_group
-	if(Globals.board_tiles[forward3_tile_group][forward3_tile].state == true):
-		enemy_forward3 = true
+	if(body != self):
+		if(Globals.board_tiles[forward3_tile_group][forward3_tile].state == true):
+			enemy_forward3 = true
 
 
 func _on_forward_3_area_body_exited(body: Node2D) -> void:
@@ -810,10 +819,13 @@ func _on_forward_3_area_body_exited(body: Node2D) -> void:
 
 
 func _on_forward_4_area_body_entered(body: Node2D) -> void:
+	print("forward 4: "+ str(forward4_tile))
+	print("forward 4 body: "+ str(body))
 	forward4_tile = body.tile
 	forward4_tile_group = body.tile_group
-	if(Globals.board_tiles[forward4_tile_group][forward4_tile].state == true):
-		enemy_forward4 = true
+	if(body != self):
+		if(Globals.board_tiles[forward4_tile_group][forward4_tile].state == true):
+			enemy_forward4 = true
 
 
 func _on_forward_4_area_body_exited(body: Node2D) -> void:
@@ -823,8 +835,9 @@ func _on_forward_4_area_body_exited(body: Node2D) -> void:
 func _on_forward_5_area_body_entered(body: Node2D) -> void:
 	forward5_tile = body.tile
 	forward5_tile_group = body.tile_group
-	if(Globals.board_tiles[forward5_tile_group][forward5_tile].state == true):
-		enemy_forward5 = true
+	if(body != self):
+		if(Globals.board_tiles[forward5_tile_group][forward5_tile].state == true):
+			enemy_forward5 = true
 
 
 func _on_forward_5_area_body_exited(body: Node2D) -> void:
@@ -834,8 +847,9 @@ func _on_forward_5_area_body_exited(body: Node2D) -> void:
 func _on_forward_6_area_body_entered(body: Node2D) -> void:
 	forward6_tile = body.tile
 	forward6_tile_group = body.tile_group
-	if(Globals.board_tiles[forward6_tile_group][forward6_tile].state == true):
-		enemy_forward6 = true
+	if(body != self):
+		if(Globals.board_tiles[forward6_tile_group][forward6_tile].state == true):
+			enemy_forward6 = true
 	
 
 func _on_forward_6_area_body_exited(body: Node2D) -> void:
@@ -845,8 +859,9 @@ func _on_forward_6_area_body_exited(body: Node2D) -> void:
 func _on_forward_7_area_body_entered(body: Node2D) -> void:
 	forward7_tile = body.tile
 	forward7_tile_group = body.tile_group
-	if(Globals.board_tiles[forward7_tile_group][forward7_tile].state == true):
-		enemy_forward7 = true
+	if(body != self):
+		if(Globals.board_tiles[forward7_tile_group][forward7_tile].state == true):
+			enemy_forward7 = true
 
 
 func _on_forward_7_area_body_exited(body: Node2D) -> void:
@@ -863,6 +878,7 @@ func _on_forward_7_area_body_exited(body: Node2D) -> void:
 
 func _on_back_1_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back1_tile # tells the global script that youre accessing tile X
@@ -874,6 +890,7 @@ func _on_back_1_button_button_up() -> void:
 
 func _on_back_2_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back2_tile # tells the global script that youre accessing tile X
@@ -885,6 +902,7 @@ func _on_back_2_button_button_up() -> void:
 
 func _on_back_3_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back3_tile # tells the global script that youre accessing tile X
@@ -896,6 +914,7 @@ func _on_back_3_button_button_up() -> void:
 
 func _on_back_4_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back4_tile # tells the global script that youre accessing tile X
@@ -907,6 +926,7 @@ func _on_back_4_button_button_up() -> void:
 
 func _on_back_5_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back5_tile # tells the global script that youre accessing tile X
@@ -918,6 +938,7 @@ func _on_back_5_button_button_up() -> void:
 
 func _on_back_6_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back6_tile # tells the global script that youre accessing tile X
@@ -929,6 +950,7 @@ func _on_back_6_button_button_up() -> void:
 
 func _on_back_7_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back7_tile # tells the global script that youre accessing tile X
