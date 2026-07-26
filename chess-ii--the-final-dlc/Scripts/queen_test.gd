@@ -119,7 +119,41 @@ func _process(delta: float) -> void:
 		$MovementMarkers/Right/Right6.visible = true
 		$MovementMarkers/Right/Right7.visible = true
 	
-		if(enemy_right1):
+		if(enemy_right7):
+			if(touching_border):
+				$MovementMarkers/Right/Right7.visible = false
+			else:
+				pass
+		elif(enemy_right6):
+			if(touching_border):
+				$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		elif(enemy_right5):
+			if(touching_border):
+				$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		elif(enemy_right4):
+			if(touching_border):
+				$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		elif(enemy_right3):
+			if(touching_border):
+				$MovementMarkers/Right/Right3.visible = false
+			$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		elif(enemy_right2):
+			if(touching_border):
+				$MovementMarkers/Right/Right3.visible = false
+			$MovementMarkers/Right/Right4.visible = false
+			$MovementMarkers/Right/Right5.visible = false
+			$MovementMarkers/Right/Right6.visible = false
+			$MovementMarkers/Right/Right7.visible = false
+		elif(enemy_right1):
 			if(touching_border):
 				$MovementMarkers/Right/Right1.visible = false
 			$MovementMarkers/Right/Right2.visible = false
@@ -128,53 +162,9 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Right/Right5.visible = false
 			$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right2):
-			if(touching_border):
-				$MovementMarkers/Right/Right2.visible = false
-			$MovementMarkers/Right/Right3.visible = false
-			$MovementMarkers/Right/Right4.visible = false
-			$MovementMarkers/Right/Right5.visible = false
-			$MovementMarkers/Right/Right6.visible = false
-			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right3):
-			if(touching_border):
-				$MovementMarkers/Right/Right3.visible = false
-			$MovementMarkers/Right/Right4.visible = false
-			$MovementMarkers/Right/Right5.visible = false
-			$MovementMarkers/Right/Right6.visible = false
-			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right4):
-			if(touching_border):
-				$MovementMarkers/Right/Right4.visible = false
-			$MovementMarkers/Right/Right5.visible = false
-			$MovementMarkers/Right/Right6.visible = false
-			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right5):
-			if(touching_border):
-				$MovementMarkers/Right/Right5.visible = false
-			$MovementMarkers/Right/Right6.visible = false
-			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right6):
-			if(touching_border):
-				$MovementMarkers/Right/Right6.visible = false
-			$MovementMarkers/Right/Right7.visible = false
-		if(enemy_right7):
-			if(touching_border):
-				$MovementMarkers/Right/Right7.visible = false
-			pass
 		#endregion
 		#region Forward Movement Marker Visibility Control
-		
-		$MovementMarkers.visible = true
-		$MovementMarkers/Foward.visible = true
-		$MovementMarkers/Foward/Forward1.visible = true
-		$MovementMarkers/Foward/Forward2.visible = true
-		$MovementMarkers/Foward/Forward3.visible = true
-		$MovementMarkers/Foward/Forward4.visible = true
-		$MovementMarkers/Foward/Forward5.visible = true
-		$MovementMarkers/Foward/Forward6.visible = true
-		$MovementMarkers/Foward/Forward7.visible = true
-		
+
 		if(enemy_forward1):
 			if(forward_touching_border):
 				$MovementMarkers/Foward/Forward1.visible = false
@@ -219,17 +209,7 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Foward/Forward7.visible = false
 		#endregion
 		#region Back Movement Narker Visibility Control
-		
-		$MovementMarkers.visible = true
-		$MovementMarkers/Back.visible = true
-		$MovementMarkers/Back/Back1.visible = true
-		$MovementMarkers/Back/Back2.visible = true
-		$MovementMarkers/Back/Back3.visible = true
-		$MovementMarkers/Back/Back4.visible = true
-		$MovementMarkers/Back/Back5.visible = true
-		$MovementMarkers/Back/Back6.visible = true
-		$MovementMarkers/Back/Back7.visible = true
-		
+
 		if(enemy_back1):
 			if(back_touching_border):
 				$MovementMarkers/Back/Back1.visible = false
@@ -474,6 +454,8 @@ func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right1 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 1: "+ str(enemy_right1))
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
@@ -489,6 +471,8 @@ func _on_right_area_2_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right2 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 2: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right2_tile = area.name
 		right2_tile_group = str(area.name)[0]
@@ -498,12 +482,15 @@ func _on_right_area_2_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = false
 		enemy_right2 = false
-
+	if(area.is_in_group("Tiles")):
+		Globals.board_tiles[tile_group][tile].state = false
 
 func _on_right_area_3_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right3 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 3: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right3_tile = area.name
 		right3_tile_group = str(area.name)[0]
@@ -519,6 +506,8 @@ func _on_right_area_4_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):	
 		touching_border = true
 		enemy_right4 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 4: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right4_tile = area.name
 		right4_tile_group = str(area.name)[0]
@@ -534,6 +523,8 @@ func _on_right_area_5_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):	
 		touching_border = true
 		enemy_right5 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 5: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right5_tile = area.name
 		right5_tile_group = str(area.name)[0]
@@ -550,6 +541,8 @@ func _on_right_area_6_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right6 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 6: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right6_tile = area.name
 		right6_tile_group = str(area.name)[0]
@@ -565,6 +558,8 @@ func _on_right_area_7_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right7 = true
+		print("edge collided, edge: "+ str(area.name))
+		print("enemy 7: "+ str(enemy_right7))
 	if(area.is_in_group("Tiles")):
 		right7_tile = area.name
 		right7_tile_group = str(area.name)[0]
