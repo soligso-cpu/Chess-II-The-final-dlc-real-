@@ -12,6 +12,9 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_123h4"]
 size = Vector2(72, 72)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rc485"]
+size = Vector2(72, 72)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64cfu"]
 size = Vector2(71.42857, 71.64356)
 
@@ -442,7 +445,118 @@ offset_bottom = -23.421001
 metadata/_edit_use_anchors_ = true
 
 [node name="Left" type="Marker2D" parent="MovementMarkers" unique_id=2131471033]
-visible = false
+
+[node name="Left1" type="Node2D" parent="MovementMarkers/Left" unique_id=1466245436]
+position = Vector2(-80, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left1" unique_id=1676107909]
+
+[node name="Left1Area" type="Area2D" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=914694778]
+
+[node name="Left1Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left1/LeftSprite/Left1Area" unique_id=160476038]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left1Button" type="Button" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=1418635999]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left2" type="Node2D" parent="MovementMarkers/Left" unique_id=1990035472]
+position = Vector2(-160, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left2" unique_id=273512111]
+
+[node name="Left2Area" type="Area2D" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=766264921]
+
+[node name="Left2Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left2/LeftSprite/Left2Area" unique_id=2131127101]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left2Button" type="Button" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=2123516197]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left3" type="Node2D" parent="MovementMarkers/Left" unique_id=719277618]
+position = Vector2(-240, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left3" unique_id=1093054255]
+
+[node name="Left3Area" type="Area2D" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=1327251586]
+
+[node name="Left3Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left3/LeftSprite/Left3Area" unique_id=1142878435]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left3Button" type="Button" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=938658966]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left4" type="Node2D" parent="MovementMarkers/Left" unique_id=1686132684]
+position = Vector2(-320, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left4" unique_id=820657367]
+
+[node name="Left4Area" type="Area2D" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=1644810206]
+
+[node name="Left4Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left4/LeftSprite/Left4Area" unique_id=1636649344]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left4Button" type="Button" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=1152023320]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left5" type="Node2D" parent="MovementMarkers/Left" unique_id=1387905722]
+position = Vector2(-400, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left5" unique_id=1582418240]
+
+[node name="Left5Area" type="Area2D" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=1402940320]
+
+[node name="Left5Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left5/LeftSprite/Left5Area" unique_id=1891554522]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left5Button" type="Button" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=720315729]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left6" type="Node2D" parent="MovementMarkers/Left" unique_id=1683464082]
+position = Vector2(-480, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left6" unique_id=926581634]
+
+[node name="Left6Area" type="Area2D" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=189988304]
+
+[node name="Left6Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left6/LeftSprite/Left6Area" unique_id=154498538]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left6Button" type="Button" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=941630452]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+
+[node name="Left7" type="Node2D" parent="MovementMarkers/Left" unique_id=1099877701]
+position = Vector2(-560, -1)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left7" unique_id=1082277116]
+
+[node name="Left7Area" type="Area2D" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=2049003241]
+
+[node name="Left7Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left7/LeftSprite/Left7Area" unique_id=2119261151]
+shape = SubResource("RectangleShape2D_rc485")
+
+[node name="Left7Button" type="Button" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=495434369]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
 
 [node name="DiagonalRightForward" type="Marker2D" parent="MovementMarkers" unique_id=565172454]
 visible = false
@@ -586,3 +700,4 @@ polygon = PackedVector2Array(0, -37, -2, -32, -6, -28, -9, -27, -6, -24, -4, -14
 [connection signal="body_exited" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Back/Back7/BackSprite/Back7Button" to="." method="_on_back_7_button_button_up"]
 [connection signal="button_up" from="SelectQueen" to="." method="_on_select_queen_button_up"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_collision_area_area_entered"]

@@ -6,10 +6,17 @@ var enemy_left
 var enemy_right
 var taking
 
+var tile
+var tile_group
+
+
 func _ready() -> void:
 	$MovementMarkers.visible = false
 	focused = false
 	taking = false
+	tile = "G2"
+	tile_group = "G"
+	
 	
 	
 func _process(delta: float) -> void:
@@ -100,3 +107,6 @@ func _on_collision_area_area_entered(area: Area2D) -> void:
 		return
 	else:
 		pass
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]

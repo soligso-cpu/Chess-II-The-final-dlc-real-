@@ -28,6 +28,7 @@ project/assembly_name="Chess II- The Final DLC"
 White=""
 Black=""
 Pieces=""
+Tiles="All the tiles forthe boaerd"
 
 [physics]
 
