@@ -24,6 +24,9 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1hw32"]
 size = Vector2(72, 72)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yh6ev"]
+size = Vector2(72, 72)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64cfu"]
 size = Vector2(71.42857, 71.42857)
 
@@ -926,7 +929,125 @@ offset_right = 38.0
 offset_bottom = 37.0
 
 [node name="DiagonalLeftBack" type="Marker2D" parent="MovementMarkers" unique_id=933729822]
-visible = false
+
+[node name="BL1" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=982556990]
+position = Vector2(-80, 80)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL1" unique_id=1308421199]
+
+[node name="BL1Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL1/BLSprite" unique_id=1734299300]
+
+[node name="BL1Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Area" unique_id=206972361]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL1Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL1/BLSprite" unique_id=1417871032]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL2" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=1518828487]
+position = Vector2(-160, 160)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL2" unique_id=1925156936]
+
+[node name="BL2Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL2/BLSprite" unique_id=1683532387]
+
+[node name="BL2Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Area" unique_id=549394685]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL2Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL2/BLSprite" unique_id=948466124]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL3" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=520404324]
+position = Vector2(-240, 240)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL3" unique_id=106801413]
+
+[node name="BL3Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL3/BLSprite" unique_id=1913064961]
+
+[node name="BL3Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Area" unique_id=231281164]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL3Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL3/BLSprite" unique_id=451259983]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL4" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=569741216]
+position = Vector2(-320, 320)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL4" unique_id=115751877]
+
+[node name="BL4Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL4/BLSprite" unique_id=985507617]
+
+[node name="BL4Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Area" unique_id=2054983438]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL4Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL4/BLSprite" unique_id=392526698]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL5" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=959402489]
+position = Vector2(-400, 400)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL5" unique_id=1425900756]
+
+[node name="BL5Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL5/BLSprite" unique_id=1007742602]
+
+[node name="BL5Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Area" unique_id=425304376]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL5Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL5/BLSprite" unique_id=980947510]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL6" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=1619263533]
+position = Vector2(-480, 480)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL6" unique_id=1587979911]
+
+[node name="BL6Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL6/BLSprite" unique_id=1970854488]
+
+[node name="BL6Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Area" unique_id=25364745]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL6Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL6/BLSprite" unique_id=2097764972]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
+
+[node name="BL7" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=2039214644]
+position = Vector2(-560, 560)
+
+[node name="BLSprite" type="Sprite2D" parent="MovementMarkers/DiagonalLeftBack/BL7" unique_id=1285884680]
+
+[node name="BL7Area" type="Area2D" parent="MovementMarkers/DiagonalLeftBack/BL7/BLSprite" unique_id=2082735308]
+
+[node name="BL7Shape" type="CollisionShape2D" parent="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Area" unique_id=1778875810]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_yh6ev")
+
+[node name="BL7Button" type="Button" parent="MovementMarkers/DiagonalLeftBack/BL7/BLSprite" unique_id=397576904]
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 38.0
+offset_bottom = 37.0
 
 [node name="SelectQueen" type="Button" parent="." unique_id=105382026]
 offset_left = -39.0
@@ -1197,5 +1318,40 @@ polygon = PackedVector2Array(0, -37, -2, -32, -6, -28, -9, -27, -6, -24, -4, -14
 [connection signal="body_entered" from="MovementMarkers/DiagonalRightBack/BR7/BRSprite/BR7Area" to="." method="_on_br_7_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/DiagonalRightBack/BR7/BRSprite/BR7Area" to="." method="_on_br_7_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/DiagonalRightBack/BR7/BRSprite/BR7Button" to="." method="_on_br_7_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Area" to="." method="_on_bl_1_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Area" to="." method="_on_bl_1_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Area" to="." method="_on_bl_1_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Area" to="." method="_on_bl_1_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL1/BLSprite/BL1Button" to="." method="_on_bl_1_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Area" to="." method="_on_bl_2_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Area" to="." method="_on_bl_2_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Area" to="." method="_on_bl_2_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Area" to="." method="_on_bl_2_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL2/BLSprite/BL2Button" to="." method="_on_bl_2_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Area" to="." method="_on_bl_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Area" to="." method="_on_bl_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Area" to="." method="_on_bl_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Area" to="." method="_on_bl_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL3/BLSprite/BL3Button" to="." method="_on_bl_3_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Area" to="." method="_on_bl_4_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Area" to="." method="_on_bl_4_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Area" to="." method="_on_bl_4_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Area" to="." method="_on_bl_4_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL4/BLSprite/BL4Button" to="." method="_on_bl_4_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Area" to="." method="_on_bl_5_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Area" to="." method="_on_bl_5_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Area" to="." method="_on_bl_5_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Area" to="." method="_on_bl_5_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL5/BLSprite/BL5Button" to="." method="_on_bl_5_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Area" to="." method="_on_bl_6_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Area" to="." method="_on_bl_6_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Area" to="." method="_on_bl_6_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Area" to="." method="_on_bl_6_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL6/BLSprite/BL6Button" to="." method="_on_bl_6_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Area" to="." method="_on_bl_7_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Area" to="." method="_on_bl_7_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Area" to="." method="_on_bl_7_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Area" to="." method="_on_bl_7_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/DiagonalLeftBack/BL7/BLSprite/BL7Button" to="." method="_on_bl_7_button_button_up"]
 [connection signal="button_up" from="SelectQueen" to="." method="_on_select_queen_button_up"]
 [connection signal="area_entered" from="CollisionArea" to="." method="_on_collision_area_area_entered"]
