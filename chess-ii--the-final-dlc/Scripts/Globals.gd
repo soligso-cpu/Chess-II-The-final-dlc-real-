@@ -139,6 +139,7 @@ var turn_tracking
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
 
 

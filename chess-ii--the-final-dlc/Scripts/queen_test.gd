@@ -5,6 +5,7 @@ var taking
 var touching_border
 var forward_touching_border
 var back_touching_border
+var left_touching_border
 
 var tile
 var tile_group
@@ -13,6 +14,8 @@ var target #this is for moving to a tile
 
 # all the right variables
 #region all the "enemy in way" variables.
+
+	#region Basics (Forward, Back, Left, Right)
 var enemy_right1
 var enemy_right2
 var enemy_right3
@@ -36,7 +39,51 @@ var enemy_back4
 var enemy_back5
 var enemy_back6
 var enemy_back7
+
+var enemy_left1
+var enemy_left2
+var enemy_left3
+var enemy_left4
+var enemy_left5
+var enemy_left6
+var enemy_left7
+
 #endregion
+
+	#region Diagonals (FR, FL, DR, DL)
+	
+	
+
+var enemyfr_1
+var enemyfr_2
+var enemyfr_3
+var enemyfr_4
+var enemyfr_5
+var enemyfr_6
+var enemyfr_7
+
+var enemyfl_1
+var enemyfl_2
+var enemyfl_3
+var enemyfl_4
+var enemyfl_5
+var enemyfl_6
+var enemyfl_7
+
+var enemydl_1
+var enemydl_2
+var enemydl_3
+var enemydl_4
+var enemydl_5
+var enemydl_6
+var enemydl_7
+
+
+
+#endregion
+
+#endregion
+
 #region all the "x_tile" variables for saving.
 
 #region Forward
@@ -92,8 +139,44 @@ var right6_tile_group
 var right7_tile_group
 
 #endregion
+#region Left
 
+var left1_tile
+var left2_tile
+var left3_tile
+var left4_tile
+var left5_tile
+var left6_tile
+var left7_tile
 
+var left1_tile_group
+var left2_tile_group
+var left3_tile_group
+var left4_tile_group
+var left5_tile_group
+var left6_tile_group
+var left7_tile_group
+
+#endregion
+#region Forward-Right Diagonal
+
+var fr1_tile
+var fr2_tile
+var fr3_tile
+var fr4_tile
+var fr5_tile
+var fr6_tile
+var fr7_tile
+
+var fr1_tile_group
+var fr2_tile_group
+var fr3_tile_group
+var fr4_tile_group
+var fr5_tile_group
+var fr6_tile_group
+var fr7_tile_group
+
+#endregion
 
 func _ready() -> void:
 	print("Right spacing: ", $MovementMarkers/Right/Right2.position - $MovementMarkers/Right/Right1.position)
@@ -104,6 +187,8 @@ func _process(delta: float) -> void:
 	#if(Globals.turn_tracking == 1):
 	$MovementMarkers.global_position = global_position
 	if(focused):
+		for child in $MovementMarkers.get_children():
+			child.process_mode = Node.PROCESS_MODE_INHERIT
 		z_index = 5
 		move_to_front()
 		taking = true
@@ -118,42 +203,44 @@ func _process(delta: float) -> void:
 		$MovementMarkers/Right/Right5.visible = true
 		$MovementMarkers/Right/Right6.visible = true
 		$MovementMarkers/Right/Right7.visible = true
+		
 	
 		if(enemy_right7):
 			if(touching_border):
 				$MovementMarkers/Right/Right7.visible = false
 			else:
 				pass
-		elif(enemy_right6):
+		if(enemy_right6):
 			if(touching_border):
 				$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		elif(enemy_right5):
+		if(enemy_right5):
 			if(touching_border):
 				$MovementMarkers/Right/Right5.visible = false
 			$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		elif(enemy_right4):
+		if(enemy_right4):
 			if(touching_border):
 				$MovementMarkers/Right/Right4.visible = false
 			$MovementMarkers/Right/Right5.visible = false
 			$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		elif(enemy_right3):
+		if(enemy_right3):
 			if(touching_border):
 				$MovementMarkers/Right/Right3.visible = false
 			$MovementMarkers/Right/Right4.visible = false
 			$MovementMarkers/Right/Right5.visible = false
 			$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		elif(enemy_right2):
+		if(enemy_right2):
 			if(touching_border):
-				$MovementMarkers/Right/Right3.visible = false
+				$MovementMarkers/Right/Right2.visible = false
+			$MovementMarkers/Right/Right3.visible = false
 			$MovementMarkers/Right/Right4.visible = false
 			$MovementMarkers/Right/Right5.visible = false
 			$MovementMarkers/Right/Right6.visible = false
 			$MovementMarkers/Right/Right7.visible = false
-		elif(enemy_right1):
+		if(enemy_right1):
 			if(touching_border):
 				$MovementMarkers/Right/Right1.visible = false
 			$MovementMarkers/Right/Right2.visible = false
@@ -164,52 +251,71 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Right/Right7.visible = false
 		#endregion
 		#region Forward Movement Marker Visibility Control
-
+		
+		$MovementMarkers/Forward.visible = true
+		$MovementMarkers/Forward/Forward1.visible = true
+		$MovementMarkers/Forward/Forward2.visible = true
+		$MovementMarkers/Forward/Forward3.visible = true
+		$MovementMarkers/Forward/Forward4.visible = true
+		$MovementMarkers/Forward/Forward5.visible = true
+		$MovementMarkers/Forward/Forward6.visible = true
+		$MovementMarkers/Forward/Forward7.visible = true
+		
+	
 		if(enemy_forward1):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward1.visible = false
-			$MovementMarkers/Foward/Forward2.visible = false
-			$MovementMarkers/Foward/Forward3.visible = false
-			$MovementMarkers/Foward/Forward4.visible = false
-			$MovementMarkers/Foward/Forward5.visible = false
-			$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward1.visible = false
+			$MovementMarkers/Forward/Forward2.visible = false
+			$MovementMarkers/Forward/Forward3.visible = false
+			$MovementMarkers/Forward/Forward4.visible = false
+			$MovementMarkers/Forward/Forward5.visible = false
+			$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward2):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward2.visible = false
-			$MovementMarkers/Foward/Forward3.visible = false
-			$MovementMarkers/Foward/Forward4.visible = false
-			$MovementMarkers/Foward/Forward5.visible = false
-			$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward2.visible = false
+			$MovementMarkers/Forward/Forward3.visible = false
+			$MovementMarkers/Forward/Forward4.visible = false
+			$MovementMarkers/Forward/Forward5.visible = false
+			$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward3):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward3.visible = false
-			$MovementMarkers/Foward/Forward4.visible = false
-			$MovementMarkers/Foward/Forward5.visible = false
-			$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward3.visible = false
+			$MovementMarkers/Forward/Forward4.visible = false
+			$MovementMarkers/Forward/Forward5.visible = false
+			$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward4):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward4.visible = false
-			$MovementMarkers/Foward/Forward5.visible = false
-			$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward4.visible = false
+			$MovementMarkers/Forward/Forward5.visible = false
+			$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward5):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward5.visible = false
-			$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+			$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward6):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward6.visible = false
-			$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+			$MovementMarkers/Forward/Forward7.visible = false
 		if(enemy_forward7):
 			if(forward_touching_border):
-				$MovementMarkers/Foward/Forward7.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 		#endregion
-		#region Back Movement Narker Visibility Control
-
+		#region Back Movement Marker Visibility Control
+		
+		$MovementMarkers/Back.visible = true
+		$MovementMarkers/Back/Back1.visible = true
+		$MovementMarkers/Back/Back2.visible = true
+		$MovementMarkers/Back/Back3.visible = true
+		$MovementMarkers/Back/Back4.visible = true
+		$MovementMarkers/Back/Back5.visible = true
+		$MovementMarkers/Back/Back6.visible = true
+		$MovementMarkers/Back/Back7.visible = true
+		
 		if(enemy_back1):
 			if(back_touching_border):
 				$MovementMarkers/Back/Back1.visible = false
@@ -249,12 +355,70 @@ func _process(delta: float) -> void:
 			if(back_touching_border):
 				$MovementMarkers/Back/Back6.visible = false
 			$MovementMarkers/Back/Back7.visible = false
-		if(enemy_back1):
+		if(enemy_back7):
 			if(back_touching_border):
 				$MovementMarkers/Back/Back7.visible = false
 			
 		#endregion
+		#region Left Movement Marker Visibility Control
+		
+		$MovementMarkers/Left.visible = true
+		$MovementMarkers/Left/Left1.visible = true
+		$MovementMarkers/Left/Left2.visible = true
+		$MovementMarkers/Left/Left3.visible = true
+		$MovementMarkers/Left/Left4.visible = true
+		$MovementMarkers/Left/Left5.visible = true
+		$MovementMarkers/Left/Left6.visible = true
+		$MovementMarkers/Left/Left7.visible = true
+		
+		if(enemy_left7):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left7.visible = false
+			else:
+				pass
+		if(enemy_left6):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		if(enemy_left5):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left5.visible = false
+			$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		if(enemy_left4):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left4.visible = false
+			$MovementMarkers/Left/Left5.visible = false
+			$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		if(enemy_left3):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left3.visible = false
+			$MovementMarkers/Left/Left4.visible = false
+			$MovementMarkers/Left/Left5.visible = false
+			$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		if(enemy_left2):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left2.visible = false
+			$MovementMarkers/Left/Left3.visible = false
+			$MovementMarkers/Left/Left4.visible = false
+			$MovementMarkers/Left/Left5.visible = false
+			$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		if(enemy_left1):
+			if(left_touching_border):
+				$MovementMarkers/Left/Left1.visible = false
+			$MovementMarkers/Left/Left2.visible = false
+			$MovementMarkers/Left/Left3.visible = false
+			$MovementMarkers/Left/Left4.visible = false
+			$MovementMarkers/Left/Left5.visible = false
+			$MovementMarkers/Left/Left6.visible = false
+			$MovementMarkers/Left/Left7.visible = false
+		#endregion
 	elif(!focused):
+		for child in $MovementMarkers.get_children():
+			child.process_mode = Node.PROCESS_MODE_DISABLED
 		$MovementMarkers.visible = false
 			
 func _on_select_queen_button_up() -> void:
@@ -262,11 +426,51 @@ func _on_select_queen_button_up() -> void:
 		focused = false
 	else:
 		focused = true
-		
+
+func _on_collision_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]
+
+func reset_markers():
+	enemy_right1 = false
+	enemy_right2 = false
+	enemy_right3 = false
+	enemy_right4 = false
+	enemy_right5 = false
+	enemy_right6 = false
+	enemy_right7 = false
+
+	enemy_forward1 = false
+	enemy_forward2 = false
+	enemy_forward3 = false
+	enemy_forward4 = false
+	enemy_forward5 = false
+	enemy_forward6 = false
+	enemy_forward7 = false
+
+	enemy_back1 = false
+	enemy_back2 = false
+	enemy_back3 = false
+	enemy_back4 = false
+	enemy_back5 = false
+	enemy_back6 = false
+	enemy_back7 = false
+	
+	enemy_left1 = false
+	enemy_left2 = false
+	enemy_left3 = false
+	enemy_left4 = false
+	enemy_left5 = false
+	enemy_left6 = false
+	enemy_left7 = false
+
+
+#region Up, Down, Left, and Right
+
 #region All the inputs for the Right markers.
 
-
-#region All the button signals.
+	#region All the button signals.
 
 func _on_right_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
@@ -364,7 +568,7 @@ func _on_right_button_7_button_up() -> void:
 
 
 #endregion
-#region All the collision signals.
+	#region All the collision signals.
 
 func _on_right_area_1_body_entered(body: Node2D) -> void:
 	right1_tile = body.tile
@@ -448,7 +652,7 @@ func _on_right_area_7_body_exited(body: Node2D) -> void:
 		enemy_right7 = false
 
 #endregion
-#region All the edge collision signals.
+	#region All the edge collision signals.
 
 func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -472,7 +676,7 @@ func _on_right_area_2_area_entered(area: Area2D) -> void:
 		touching_border = true
 		enemy_right2 = true
 		print("edge collided, edge: "+ str(area.name))
-		print("enemy 2: "+ str(enemy_right7))
+		print("enemy 2: "+ str(enemy_right2))
 	if(area.is_in_group("Tiles")):
 		right2_tile = area.name
 		right2_tile_group = str(area.name)[0]
@@ -482,15 +686,13 @@ func _on_right_area_2_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = false
 		enemy_right2 = false
-	if(area.is_in_group("Tiles")):
-		Globals.board_tiles[tile_group][tile].state = false
 
 func _on_right_area_3_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right3 = true
 		print("edge collided, edge: "+ str(area.name))
-		print("enemy 3: "+ str(enemy_right7))
+		print("enemy 3: "+ str(enemy_right3))
 	if(area.is_in_group("Tiles")):
 		right3_tile = area.name
 		right3_tile_group = str(area.name)[0]
@@ -507,7 +709,7 @@ func _on_right_area_4_area_entered(area: Area2D) -> void:
 		touching_border = true
 		enemy_right4 = true
 		print("edge collided, edge: "+ str(area.name))
-		print("enemy 4: "+ str(enemy_right7))
+		print("enemy 4: "+ str(enemy_right4))
 	if(area.is_in_group("Tiles")):
 		right4_tile = area.name
 		right4_tile_group = str(area.name)[0]
@@ -524,7 +726,7 @@ func _on_right_area_5_area_entered(area: Area2D) -> void:
 		touching_border = true
 		enemy_right5 = true
 		print("edge collided, edge: "+ str(area.name))
-		print("enemy 5: "+ str(enemy_right7))
+		print("enemy 5: "+ str(enemy_right5))
 	if(area.is_in_group("Tiles")):
 		right5_tile = area.name
 		right5_tile_group = str(area.name)[0]
@@ -542,7 +744,7 @@ func _on_right_area_6_area_entered(area: Area2D) -> void:
 		touching_border = true
 		enemy_right6 = true
 		print("edge collided, edge: "+ str(area.name))
-		print("enemy 6: "+ str(enemy_right7))
+		print("enemy 6: "+ str(enemy_right6))
 	if(area.is_in_group("Tiles")):
 		right6_tile = area.name
 		right6_tile_group = str(area.name)[0]
@@ -573,14 +775,14 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 #endregion
 
 #endregion
-
 #region All the inputs for the Forward markers.
 
-#region All the button signals.
+	#region All the button signals.
 
 
 func _on_forward_button_1_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
@@ -592,6 +794,7 @@ func _on_forward_button_1_button_up() -> void:
 
 func _on_forward_button_2_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
@@ -602,6 +805,7 @@ func _on_forward_button_2_button_up() -> void:
 
 func _on_forward_button_3_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward3_tile # tells the global script that youre accessing tile X
@@ -613,6 +817,7 @@ func _on_forward_button_3_button_up() -> void:
 
 func _on_forward_button_4_button_up() -> void:
 	Globals.turn_tracking += 1
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward4_tile
@@ -624,6 +829,7 @@ func _on_forward_button_4_button_up() -> void:
 
 func _on_forward_button_5_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward5_tile # tells the global script that youre accessing tile X
@@ -637,6 +843,7 @@ func _on_forward_button_5_button_up() -> void:
 
 func _on_forward_button_6_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward6_tile # tells the global script that youre accessing tile X
@@ -650,6 +857,7 @@ func _on_forward_button_6_button_up() -> void:
 
 func _on_forward_button_7_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward7_tile # tells the global script that youre accessing tile X
@@ -661,7 +869,7 @@ func _on_forward_button_7_button_up() -> void:
 
 
 #endregion
-#region All the edge collision signals.
+	#region All the edge collision signals.
 
 func _on_forward_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -670,7 +878,6 @@ func _on_forward_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		forward1_tile = area.name
 		forward1_tile_group = str(area.name)[0]
-		print("forward 1 done")
 
 
 func _on_forward_1_area_area_exited(area: Area2D) -> void:
@@ -691,7 +898,7 @@ func _on_forward_2_area_area_entered(area: Area2D) -> void:
 func _on_forward_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		forward_touching_border = false
-		enemy_forward2 = true
+		enemy_forward2 = false
 
 
 func _on_forward_3_area_area_entered(area: Area2D) -> void:
@@ -773,7 +980,7 @@ func _on_forward_7_area_area_exited(area: Area2D) -> void:
 		enemy_forward7 = false
 
 #endregion
-#region ALl the collision signals
+	#region ALl the collision signals
 
 
 func _on_forward_1_area_body_entered(body: Node2D) -> void:
@@ -865,14 +1072,14 @@ func _on_forward_7_area_body_exited(body: Node2D) -> void:
 #endregion
 
 #endregion
-
 #region All the inputs for the Back markers.
 
-#region ALl the button signals
+	#region ALl the button signals
 
 
 func _on_back_1_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -885,6 +1092,7 @@ func _on_back_1_button_button_up() -> void:
 
 func _on_back_2_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
+	focused = false
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -955,7 +1163,7 @@ func _on_back_7_button_button_up() -> void:
 	global_position = Globals.position_target # change the position to the target.
 
 #endregion
-#region All the collision signals
+	#region All the collision signals
 
 
 func _on_back_1_area_body_entered(body: Node2D) -> void:
@@ -1020,7 +1228,7 @@ func _on_back_5_area_body_exited(body: Node2D) -> void:
 func _on_back_6_area_body_entered(body: Node2D) -> void:
 	back6_tile = body.tile
 	back6_tile_group = body.tile_group
-	if(Globals.board_tiles[back5_tile_group][back5_tile].state == true):
+	if(Globals.board_tiles[back6_tile_group][back6_tile].state == true):
 		enemy_back5 = true
 
 
@@ -1041,7 +1249,7 @@ func _on_back_7_area_body_exited(body: Node2D) -> void:
 	enemy_back7 = false
 
 #endregion
-#region All the edge collision signals
+	#region All the edge collision signals
 
 
 func _on_back_1_area_area_entered(area: Area2D) -> void:
@@ -1151,35 +1359,447 @@ func _on_back_7_area_area_exited(area: Area2D) -> void:
 #endregion
 
 #endregion
-# keeping this line here
+#region All the inputs for the Left markers.
+
+	#region All the Button signals
 
 
-func _on_collision_area_area_entered(area: Area2D) -> void:
+func _on_left_1_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_left_2_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left2_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_left_3_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left3_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+
+func _on_left_4_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left4_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+
+func _on_left_5_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left5_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+
+func _on_left_6_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left6_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_left_7_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left7_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+#endregion
+	#region All the Edge Collision signals
+
+func _on_left_1_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left1 = true
 	if(area.is_in_group("Tiles")):
-		tile = area.name
-		tile_group = str(area.name)[0]
+		left1_tile = area.name
+		left1_tile_group = str(area.name)[0]
 
-func reset_markers():
-	enemy_right1 = false
-	enemy_right2 = false
-	enemy_right3 = false
-	enemy_right4 = false
-	enemy_right5 = false
-	enemy_right6 = false
-	enemy_right7 = false
 
-	enemy_forward1 = false
-	enemy_forward2 = false
-	enemy_forward3 = false
-	enemy_forward4 = false
-	enemy_forward5 = false
-	enemy_forward6 = false
-	enemy_forward7 = false
+func _on_left_2_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left2 = true
+	if(area.is_in_group("Tiles")):
+		left2_tile = area.name
+		left2_tile_group = str(area.name)[0]
 
-	enemy_back1 = false
-	enemy_back2 = false
-	enemy_back3 = false
-	enemy_back4 = false
-	enemy_back5 = false
-	enemy_back6 = false
-	enemy_back7 = false
+
+func _on_left_3_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left3 = true
+	if(area.is_in_group("Tiles")):
+		left3_tile = area.name
+		left3_tile_group = str(area.name)[0]
+
+
+func _on_left_4_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left4 = true
+	if(area.is_in_group("Tiles")):
+		left4_tile = area.name
+		left4_tile_group = str(area.name)[0]
+
+
+func _on_left_5_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left5 = true
+	if(area.is_in_group("Tiles")):
+		left5_tile = area.name
+		left5_tile_group = str(area.name)[0]
+
+
+func _on_left_6_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left6 = true
+	if(area.is_in_group("Tiles")):
+		left6_tile = area.name
+		left6_tile_group = str(area.name)[0]
+
+
+func _on_left_7_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left7 = true
+	if(area.is_in_group("Tiles")):
+		left7_tile = area.name
+		left7_tile_group = str(area.name)[0]
+
+
+func _on_left_7_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left7 = false
+
+
+func _on_left_6_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left6 = false
+
+
+func _on_left_5_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left5 = false
+
+
+func _on_left_4_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left4 = false
+
+
+func _on_left_3_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left3 = false
+
+
+func _on_left_2_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left2 = false
+
+
+func _on_left_1_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left1 = false
+
+#endregion
+	#region ALl collision signals
+
+
+func _on_left_1_area_body_entered(body: Node2D) -> void:
+	left1_tile = body.tile
+	left1_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left1 = true
+
+
+func _on_left_1_area_body_exited(body: Node2D) -> void:
+	enemy_left1 = false
+
+
+func _on_left_2_area_body_entered(body: Node2D) -> void:
+	left2_tile = body.tile
+	left2_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left2 = true
+
+
+func _on_left_2_area_body_exited(body: Node2D) -> void:
+	enemy_left2 = false
+
+
+func _on_left_3_area_body_entered(body: Node2D) -> void:
+	left3_tile = body.tile
+	left3_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left3 = true
+
+
+func _on_left_3_area_body_exited(body: Node2D) -> void:
+	enemy_left3 = false
+
+
+func _on_left_4_area_body_entered(body: Node2D) -> void:
+	left4_tile = body.tile
+	left4_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left4 = true
+
+
+func _on_left_4_area_body_exited(body: Node2D) -> void:
+	enemy_left4 = false
+
+
+func _on_left_5_area_body_entered(body: Node2D) -> void:
+	left5_tile = body.tile
+	left5_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left5 = true
+
+
+func _on_left_5_area_body_exited(body: Node2D) -> void:
+	enemy_left5 = false
+
+
+func _on_left_6_area_body_entered(body: Node2D) -> void:
+	left6_tile = body.tile
+	left6_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left6 = true
+
+
+func _on_left_6_area_body_exited(body: Node2D) -> void:
+	enemy_left6 = false
+
+
+func _on_left_7_area_body_entered(body: Node2D) -> void:
+	left7_tile = body.tile
+	left7_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+			enemy_left7 = true
+
+
+func _on_left_7_area_body_exited(body: Node2D) -> void:
+	enemy_left7 = false
+
+#endregion
+
+#endregion
+
+#endregion
+
+#region Diagonal (FR, FL, BR, BL)
+
+#region Diagonal Forward-Right
+
+	#region All the Button Signals
+
+
+func _on_fr_1_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr1_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_2_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr2_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_3_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr3_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_4_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr4_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_5_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr5_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_6_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = fr6_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+
+func _on_fr_7_button_button_up() -> void:
+	Globals.turn_tracking += 1 # change turn
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
+	reset_markers()
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	global_position = Globals.position_target # change the position to the target.
+
+#endregion
+	#region All the Edge Collisional Signals
+	
+
+func _on_fr_1_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		touching_border = true
+		enemyfr_1 = true
+	if(area.is_in_group("Tiles")):
+		fr1_tile = area.name
+		fr1_tile_group = str(area.name)[0]
+
+
+func _on_fr_1_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_2_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_2_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_3_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_3_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_4_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_4_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_5_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_5_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_6_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_6_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_7_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_fr_7_area_area_exited(area: Area2D) -> void:
+	pass # Replace with function body.
