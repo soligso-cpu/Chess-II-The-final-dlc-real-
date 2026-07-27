@@ -2213,8 +2213,8 @@ func _on_fl_3_area_area_entered(area: Area2D) -> void:
 		fl_touching_border = true
 		enemyfl_3 = true
 	if(area.is_in_group("Tiles")):
-		fr3_tile = area.name
-		fr3_tile_group = str(area.name)[0]
+		fl3_tile = area.name
+		fl3_tile_group = str(area.name)[0]
 
 
 func _on_fl_3_area_area_exited(area: Area2D) -> void:
