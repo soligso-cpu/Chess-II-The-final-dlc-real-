@@ -688,6 +688,7 @@ offset_right = 38.0
 offset_bottom = 38.0
 
 [node name="DiagonalLeftFoward" type="Marker2D" parent="MovementMarkers" unique_id=114077919]
+
 [node name="FL1" type="Node2D" parent="MovementMarkers/DiagonalLeftFoward" unique_id=377246499]
 position = Vector2(-80, -80)
 
