@@ -30,6 +30,7 @@ var board_tiles = {
 }
 
 var accessing
+var accessing_group
 var position_target
 var state
 
@@ -297,7 +298,7 @@ func _process(delta: float) -> void:
 		position_target = Vector2(736, 443)
 		board_tiles["F"]["F6"].state = true
 	elif(accessing == "F7"):
-		position_target == Vector2(816, 443)
+		position_target = Vector2(816, 443)
 		board_tiles["F"]["F7"].state = true
 	elif(accessing == "F8"):
 		position_target = Vector2(896, 443)
@@ -355,4 +356,7 @@ func _process(delta: float) -> void:
 		position_target = Vector2(896, 603)
 		board_tiles["H"]["H8"].state = true
 	#endregion
+	if(turn_tracking > 1):
+		turn_tracking = 0
+
 # leaving this line here to seperate regions, and to stop you having to make a new line by opening the region.

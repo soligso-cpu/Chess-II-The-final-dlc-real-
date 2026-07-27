@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtjwpkjmhrs4o"
-path="res://.godot/imported/a699e0c05f9ba804331a1d71d845ec2f-queen-simple-chess-piece-cut-out.webp-05e9539203dfd71afebe1adbfd79bede.ctex"
+uid="uid://dqj11hlpgl51x"
+path="res://.godot/imported/pawn_placeholder.png-2364e90ea74c34b643d82f6870057a54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/a699e0c05f9ba804331a1d71d845ec2f-queen-simple-chess-piece-cut-out.webp"
-dest_files=["res://.godot/imported/a699e0c05f9ba804331a1d71d845ec2f-queen-simple-chess-piece-cut-out.webp-05e9539203dfd71afebe1adbfd79bede.ctex"]
+source_file="res://Sprites/pawn_placeholder.png"
+dest_files=["res://.godot/imported/pawn_placeholder.png-2364e90ea74c34b643d82f6870057a54.ctex"]
 
 [params]
 

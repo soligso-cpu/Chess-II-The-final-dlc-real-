@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b8whcanplgla5"]
 
 [ext_resource type="Script" uid="uid://bs1sidw8cgdh" path="res://Scripts/pawn_test.gd" id="1_0pmyk"]
-[ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/chess-g803315359_1920-e1657751026783-199x300.png" id="1_sauo6"]
+[ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/pawn_placeholder.png" id="1_sauo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0pmyk"]
 size = Vector2(173.98032, 176.46562)

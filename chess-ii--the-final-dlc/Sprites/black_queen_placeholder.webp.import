@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqj11hlpgl51x"
-path="res://.godot/imported/chess-g803315359_1920-e1657751026783-199x300.png-2a701896fd7d2d168035335f658123d0.ctex"
+uid="uid://dtjwpkjmhrs4o"
+path="res://.godot/imported/black_queen_placeholder.webp-d9ae5b142bfca195520d7182004d583f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/chess-g803315359_1920-e1657751026783-199x300.png"
-dest_files=["res://.godot/imported/chess-g803315359_1920-e1657751026783-199x300.png-2a701896fd7d2d168035335f658123d0.ctex"]
+source_file="res://Sprites/black_queen_placeholder.webp"
+dest_files=["res://.godot/imported/black_queen_placeholder.webp-d9ae5b142bfca195520d7182004d583f.ctex"]
 
 [params]
 

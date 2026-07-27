@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://o6ckagxauuay"]
 
 [ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen_test.gd" id="1_6tlfm"]
-[ext_resource type="Texture2D" uid="uid://dtjwpkjmhrs4o" path="res://Sprites/a699e0c05f9ba804331a1d71d845ec2f-queen-simple-chess-piece-cut-out.webp" id="1_64cfu"]
+[ext_resource type="Texture2D" uid="uid://dtjwpkjmhrs4o" path="res://Sprites/black_queen_placeholder.webp" id="1_64cfu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tlfm"]
 size = Vector2(72, 72.25)

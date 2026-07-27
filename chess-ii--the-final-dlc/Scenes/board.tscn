@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dwo1vufl662eo" path="res://Scripts/board_test.gd" id="1_shhme"]
 [ext_resource type="TileSet" uid="uid://bjf27kau8apr3" path="res://Sprites/Tilemaps/board_test_tilemap.tres" id="2_s4i1f"]
-[ext_resource type="PackedScene" uid="uid://t60j8yd411u3" path="res://Scenes/queen.tscn" id="3_bh37u"]
+[ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
+[ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
 size = Vector2(639, 83)
@@ -215,6 +216,7 @@ position = Vector2(896, 203)
 shape = SubResource("RectangleShape2D_5fj8h")
 
 [node name="D" type="Node2D" parent="TileAreas" unique_id=2024438736]
+visible = false
 
 [node name="D1" type="Area2D" parent="TileAreas/D" unique_id=1265892907 groups=["Tiles"]]
 position = Vector2(336, 283)
@@ -464,5 +466,8 @@ position = Vector2(896, 603)
 [node name="H8Shape" type="CollisionShape2D" parent="TileAreas/H/H8" unique_id=1177381497 groups=["Tiles"]]
 shape = SubResource("RectangleShape2D_5fj8h")
 
-[node name="Queen" parent="." unique_id=890245409 groups=["Pieces"] instance=ExtResource("3_bh37u")]
-position = Vector2(336, 604)
+[node name="QueenWhite" parent="." unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
+position = Vector2(576, 604)
+
+[node name="QueenBlack" parent="." unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
+position = Vector2(656, 44)
