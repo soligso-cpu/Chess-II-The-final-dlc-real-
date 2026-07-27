@@ -539,7 +539,7 @@ func _process(delta: float) -> void:
 			$MovementMarkers/DiagonalRightForward/FR6.visible = false
 			$MovementMarkers/DiagonalRightForward/FR7.visible = false
 		#endregion
-		#region Forward-Left Movment Marker Visibility Control
+		#region Forward-Left Movement Marker Visibility Control
 		
 		$MovementMarkers/DiagonalLeftFoward.visible = true
 		$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
@@ -596,7 +596,62 @@ func _process(delta: float) -> void:
 			$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
 		
 		#endregion
-	
+		#region Back-Right Movement Marker Visibility Control
+		
+		$MovementMarkers/DiagonalRightBack.visible = true
+		$MovementMarkers/DiagonalRightBack/BR1.visible = true
+		$MovementMarkers/DiagonalRightBack/BR2.visible = true
+		$MovementMarkers/DiagonalRightBack/BR3.visible = true
+		$MovementMarkers/DiagonalRightBack/BR4.visible = true
+		$MovementMarkers/DiagonalRightBack/BR5.visible = true
+		$MovementMarkers/DiagonalRightBack/BR6.visible = true
+		$MovementMarkers/DiagonalRightBack/BR7.visible = true
+		
+		if(enemybr_7):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR7.visible = false
+			else:
+				pass
+		if(enemybr_6):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+		if(enemybr_5):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR5.visible = false
+			$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+		if(enemybr_4):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR4.visible = false
+			$MovementMarkers/DiagonalRightBack/BR5.visible = false
+			$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+		if(enemybr_3):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR3.visible = false
+			$MovementMarkers/DiagonalRightBack/BR4.visible = false
+			$MovementMarkers/DiagonalRightBack/BR5.visible = false
+			$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+		if(enemybr_2):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR2.visible = false
+			$MovementMarkers/DiagonalRightBack/BR3.visible = false
+			$MovementMarkers/DiagonalRightBack/BR4.visible = false
+			$MovementMarkers/DiagonalRightBack/BR5.visible = false
+			$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+		if(enemybr_1):
+			if(br_touching_border):
+				$MovementMarkers/DiagonalRightBack/BR1.visible = false
+			$MovementMarkers/DiagonalRightBack/BR2.visible = false
+			$MovementMarkers/DiagonalRightBack/BR3.visible = false
+			$MovementMarkers/DiagonalRightBack/BR4.visible = false
+			$MovementMarkers/DiagonalRightBack/BR5.visible = false
+			$MovementMarkers/DiagonalRightBack/BR6.visible = false
+			$MovementMarkers/DiagonalRightBack/BR7.visible = false
+			#endregion
 	elif(!focused):
 		for child in $MovementMarkers.get_children():
 			child.process_mode = Node.PROCESS_MODE_DISABLED
@@ -2619,3 +2674,98 @@ func _on_br_7_area_area_exited(area: Area2D) -> void:
 
 #endregion
 #region All the Collision Signals
+
+
+func _on_br_1_area_body_entered(body: Node2D) -> void:
+	br1_tile = body.tile
+	br1_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br1_tile_group][br1_tile].state == true):
+			enemybr_1 = true
+
+
+func _on_br_1_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_1 = false
+
+
+func _on_br_2_area_body_entered(body: Node2D) -> void:
+	br1_tile = body.tile
+	br2_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br2_tile_group][br2_tile].state == true):
+			enemybr_2 = true
+
+
+func _on_br_2_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_2 = false
+
+
+func _on_br_3_area_body_entered(body: Node2D) -> void:
+	br3_tile = body.tile
+	br3_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br3_tile_group][br3_tile].state == true):
+			enemybr_3 = true
+
+
+func _on_br_3_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_3 = false
+
+
+func _on_br_4_area_body_entered(body: Node2D) -> void:
+	br4_tile = body.tile
+	br4_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br4_tile_group][br4_tile].state == true):
+			enemybr_4 = true
+
+
+func _on_br_4_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_4 = false
+
+
+func _on_br_5_area_body_entered(body: Node2D) -> void:
+	br5_tile = body.tile
+	br5_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br5_tile_group][br5_tile].state == true):
+			enemybr_5 = true
+
+
+func _on_br_5_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_5 = false
+
+
+func _on_br_6_area_body_entered(body: Node2D) -> void:
+	br6_tile = body.tile
+	br6_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br6_tile_group][br6_tile].state == true):
+			enemybr_6 = true
+
+
+func _on_br_6_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_6 = false
+
+
+func _on_br_7_area_body_entered(body: Node2D) -> void:
+	br7_tile = body.tile
+	br7_tile_group = body.tile_group
+	if(body != self):
+		if(Globals.board_tiles[br7_tile_group][br7_tile].state == true):
+			enemybr_7 = true
+
+
+func _on_br_7_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemybr_7 = false
+
+#endregion
+
+#endregion
