@@ -138,6 +138,8 @@ var h8_state = ""
 
 var turn_tracking
 
+var piece_focused = ""
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().process_frame

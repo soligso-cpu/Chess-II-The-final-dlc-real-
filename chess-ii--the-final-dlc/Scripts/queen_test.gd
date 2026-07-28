@@ -251,11 +251,13 @@ func _ready() -> void:
 	print("Right spacing: ", $MovementMarkers/Right/Right2.position - $MovementMarkers/Right/Right1.position)
 	focused = false
 
-
 func _process(delta: float) -> void:
+	if(Globals.piece_focused == "QueenWhite" && self.name == "QueenWhite" || Globals.piece_focused == "QueenBlack" && self.name == "QueenBlack"):
+		focused = true
+	else:
+		focused = false
 	$MovementMarkers.global_position = global_position
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
-		taking = true
 		if(focused):
 			for child in $MovementMarkers.get_children():
 				child.process_mode = Node.PROCESS_MODE_INHERIT
@@ -718,29 +720,32 @@ func _process(delta: float) -> void:
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		taking = false
 		for child in $MovementMarkers.get_children():
 				child.process_mode = Node.PROCESS_MODE_DISABLED
 
 func _on_select_queen_button_up() -> void:
-	if(focused):
-		focused = false
-	else:
+	if(Globals.piece_focused != "QueenWhite" && self.name == "QueenWhite"):
+		Globals.piece_focused = "QueenWhite"
 		focused = true
+	elif(Globals.piece_focused != "QueenBlack" && self.name == "QueenBlack"):
+		Globals.piece_focused = "QueenBlack"
+		focused = true
+	else:
+		Globals.piece_focused = ""
+		focused = false
 
 func _on_collision_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		tile = area.name
 		tile_group = str(area.name)[0]
 
-
 func _on_collision_area_body_entered(body: Node2D) -> void:
-	if(body != self):
+	if(self.name == "QueenWhite" && body.name != "QueenWhite" || self.name == "QueenBlack" && body.name != "QueenBlack"):
 		if(taking):
 			body.queue_free()
+			taking = false
 		else:
 			queue_free()
-
 
 func reset_markers():
 	enemy_right1 = false
@@ -774,7 +779,9 @@ func reset_markers():
 	enemy_left5 = false
 	enemy_left6 = false
 	enemy_left7 = false
-
+	
+	focused = false
+	Globals.piece_focused = ""
 
 #region Up, Down, Left, and Right
 
@@ -783,7 +790,6 @@ func reset_markers():
 #region All the button signals.
 
 func _on_right_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -792,11 +798,11 @@ func _on_right_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_right_button_2_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -805,11 +811,12 @@ func _on_right_button_2_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 
 
 func _on_right_button_3_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -818,12 +825,13 @@ func _on_right_button_3_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 
 
 
 func _on_right_button_4_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -832,12 +840,13 @@ func _on_right_button_4_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 
 
 
 func _on_right_button_5_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -846,12 +855,14 @@ func _on_right_button_5_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 	
 
 
 
 func _on_right_button_6_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -860,12 +871,12 @@ func _on_right_button_6_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 
 func _on_right_button_7_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -874,7 +885,9 @@ func _on_right_button_7_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-	
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 
 
 #endregion
@@ -883,6 +896,18 @@ func _on_right_button_7_button_up() -> void:
 func _on_right_area_1_body_entered(body: Node2D) -> void:
 	right1_tile = body.tile
 	right1_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right1 = true
+			touching_border = true
+		else:
+			enemy_right1 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right1 = true
+			touching_border = true
+		else:
+			enemy_right1 = true
 	if(Globals.board_tiles[right1_tile_group][right1_tile].state == true):
 		enemy_right1 = true
 	
@@ -895,6 +920,18 @@ func _on_right_area_1_body_exited(body: Node2D) -> void:
 func _on_right_area_2_body_entered(body: Node2D) -> void:
 	right2_tile = body.tile
 	right2_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right2 = true
+			touching_border = true
+		else:
+			enemy_right2 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right2 = true
+			touching_border = true
+		else:
+			enemy_right2 = true
 	if(Globals.board_tiles[right2_tile_group][right2_tile].state == true):
 		enemy_right2 = true
 
@@ -907,6 +944,18 @@ func _on_right_area_2_body_exited(body: Node2D) -> void:
 func _on_right_area_3_body_entered(body: Node2D) -> void:
 	right3_tile = body.tile
 	right3_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right3 = true
+			touching_border = true
+		else:
+			enemy_right3 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right3 = true
+			touching_border = true
+		else:
+			enemy_right3 = true
 	if(Globals.board_tiles[right3_tile_group][right3_tile].state == true):
 		enemy_right3 = true
 
@@ -918,6 +967,18 @@ func _on_right_area_3_body_exited(body: Node2D) -> void:
 func _on_right_area_4_body_entered(body: Node2D) -> void:
 	right4_tile = body.tile
 	right4_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right4 = true
+			touching_border = true
+		else:
+			enemy_right4 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right4 = true
+			touching_border = true
+		else:
+			enemy_right4 = true
 	if(Globals.board_tiles[right4_tile_group][right4_tile].state == true):
 		enemy_right4 = true
 
@@ -930,6 +991,18 @@ func _on_right_area_4_body_exited(body: Node2D) -> void:
 func _on_right_area_5_body_entered(body: Node2D) -> void:
 	right5_tile = body.tile
 	right5_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right5 = true
+			touching_border = true
+		else:
+			enemy_right5 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right5 = true
+			touching_border = true
+		else:
+			enemy_right5 = true
 	if(Globals.board_tiles[right5_tile_group][right5_tile].state == true):
 		enemy_right5 = true
 
@@ -942,6 +1015,18 @@ func _on_right_area_5_body_exited(body: Node2D) -> void:
 func _on_right_area_6_body_entered(body: Node2D) -> void:
 	right6_tile = body.tile
 	right6_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right6 = true
+			touching_border = true
+		else:
+			enemy_right6 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right6 = true
+			touching_border = true
+		else:
+			enemy_right6 = true
 	if(Globals.board_tiles[right6_tile_group][right6_tile].state == true):
 		enemy_right6 = true
 
@@ -954,6 +1039,18 @@ func _on_right_area_6_body_exited(body: Node2D) -> void:
 func _on_right_area_7_body_entered(body: Node2D) -> void:
 	right7_tile = body.tile
 	right7_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right7 = true
+			touching_border = true
+		else:
+			enemy_right7 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right7 = true
+			touching_border = true
+		else:
+			enemy_right7 = true
 	if(Globals.board_tiles[right7_tile_group][right7_tile].state == true):
 		enemy_right7 = true
 
@@ -1077,7 +1174,6 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 
 
 func _on_forward_button_1_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1086,10 +1182,11 @@ func _on_forward_button_1_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 	
 
 func _on_forward_button_2_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1098,9 +1195,10 @@ func _on_forward_button_2_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 func _on_forward_button_3_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1109,10 +1207,11 @@ func _on_forward_button_3_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_forward_button_4_button_up() -> void:
-	Globals.turn_tracking += 1
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1121,10 +1220,11 @@ func _on_forward_button_4_button_up() -> void:
 	await get_tree().process_frame
 	global_position = Globals.position_target
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_forward_button_5_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1133,12 +1233,13 @@ func _on_forward_button_5_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 	
 
 
 
 func _on_forward_button_6_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1147,8 +1248,8 @@ func _on_forward_button_6_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
-	
-
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_forward_button_7_button_up() -> void:
@@ -1161,6 +1262,8 @@ func _on_forward_button_7_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
 	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 	
 
 
@@ -1282,7 +1385,18 @@ func _on_forward_7_area_area_exited(area: Area2D) -> void:
 func _on_forward_1_area_body_entered(body: Node2D) -> void:
 	forward1_tile = body.tile
 	forward1_tile_group = body.tile_group
-	print(str(forward1_tile_group) + " " + str(forward1_tile))
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward1 = true
+			forward_touching_border = true
+		else:
+			enemy_forward1 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward1 = true
+			forward_touching_border = true
+		else:
+			enemy_forward1 = true
 	if(body != self):
 		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
 			enemy_forward1 = true
@@ -1295,6 +1409,18 @@ func _on_forward_1_area_body_exited(body: Node2D) -> void:
 func _on_forward_2_area_body_entered(body: Node2D) -> void:
 	forward2_tile = body.tile
 	forward2_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward2 = true
+			forward_touching_border = true
+		else:
+			enemy_forward2 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward2 = true
+			forward_touching_border = true
+		else:
+			enemy_forward2 = true
 	if(body != self):
 		if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
 			enemy_forward2 = true
@@ -1307,6 +1433,18 @@ func _on_forward_2_area_body_exited(body: Node2D) -> void:
 func _on_forward_3_area_body_entered(body: Node2D) -> void:
 	forward3_tile = body.tile
 	forward3_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward3 = true
+			forward_touching_border = true
+		else:
+			enemy_forward3 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward3 = true
+			forward_touching_border = true
+		else:
+			enemy_forward3 = true
 	if(body != self):
 		if(Globals.board_tiles[forward3_tile_group][forward3_tile].state == true):
 			enemy_forward3 = true
@@ -1317,10 +1455,20 @@ func _on_forward_3_area_body_exited(body: Node2D) -> void:
 
 
 func _on_forward_4_area_body_entered(body: Node2D) -> void:
-	print("forward 4: "+ str(forward4_tile))
-	print("forward 4 body: "+ str(body))
 	forward4_tile = body.tile
 	forward4_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward4 = true
+			forward_touching_border = true
+		else:
+			enemy_forward4 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward4 = true
+			forward_touching_border = true
+		else:
+			enemy_forward4 = true
 	if(body != self):
 		if(Globals.board_tiles[forward4_tile_group][forward4_tile].state == true):
 			enemy_forward4 = true
@@ -1333,6 +1481,18 @@ func _on_forward_4_area_body_exited(body: Node2D) -> void:
 func _on_forward_5_area_body_entered(body: Node2D) -> void:
 	forward5_tile = body.tile
 	forward5_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward5 = true
+			forward_touching_border = true
+		else:
+			enemy_forward5 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward5 = true
+			forward_touching_border = true
+		else:
+			enemy_forward5 = true
 	if(body != self):
 		if(Globals.board_tiles[forward5_tile_group][forward5_tile].state == true):
 			enemy_forward5 = true
@@ -1345,6 +1505,18 @@ func _on_forward_5_area_body_exited(body: Node2D) -> void:
 func _on_forward_6_area_body_entered(body: Node2D) -> void:
 	forward6_tile = body.tile
 	forward6_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward6 = true
+			forward_touching_border = true
+		else:
+			enemy_forward6 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward6 = true
+			forward_touching_border = true
+		else:
+			enemy_forward6 = true
 	if(body != self):
 		if(Globals.board_tiles[forward6_tile_group][forward6_tile].state == true):
 			enemy_forward6 = true
@@ -1357,6 +1529,18 @@ func _on_forward_6_area_body_exited(body: Node2D) -> void:
 func _on_forward_7_area_body_entered(body: Node2D) -> void:
 	forward7_tile = body.tile
 	forward7_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_forward7 = true
+			forward_touching_border = true
+		else:
+			enemy_forward7 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_forward7 = true
+			forward_touching_border = true
+		else:
+			enemy_forward7 = true
 	if(body != self):
 		if(Globals.board_tiles[forward7_tile_group][forward7_tile].state == true):
 			enemy_forward7 = true
@@ -1374,7 +1558,6 @@ func _on_forward_7_area_body_exited(body: Node2D) -> void:
 
 
 func _on_back_1_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
@@ -1384,10 +1567,11 @@ func _on_back_1_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_2_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
@@ -1397,10 +1581,11 @@ func _on_back_2_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_3_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1409,10 +1594,11 @@ func _on_back_3_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_4_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1421,10 +1607,11 @@ func _on_back_4_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_5_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1433,10 +1620,11 @@ func _on_back_5_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_6_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1445,10 +1633,11 @@ func _on_back_6_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_back_7_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1457,6 +1646,8 @@ func _on_back_7_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 #endregion
 	#region All the collision signals
@@ -1465,6 +1656,18 @@ func _on_back_7_button_button_up() -> void:
 func _on_back_1_area_body_entered(body: Node2D) -> void:
 	back1_tile = body.tile
 	back1_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back1 = true
+			back_touching_border = true
+		else:
+			enemy_back1 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back1 = true
+			back_touching_border = true
+		else:
+			enemy_back1 = true
 	if(Globals.board_tiles[back1_tile_group][back1_tile].state == true):
 		enemy_back1 = true
 
@@ -1476,6 +1679,18 @@ func _on_back_1_area_body_exited(body: Node2D) -> void:
 func _on_back_2_area_body_entered(body: Node2D) -> void:
 	back2_tile = body.tile
 	back2_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back2 = true
+			back_touching_border = true
+		else:
+			enemy_back2 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back2 = true
+			back_touching_border = true
+		else:
+			enemy_back2 = true
 	if(Globals.board_tiles[back2_tile_group][back2_tile].state == true):
 		enemy_back2 = true
 
@@ -1488,6 +1703,18 @@ func _on_back_2_area_body_exited(body: Node2D) -> void:
 func _on_back_3_area_body_entered(body: Node2D) -> void:
 	back3_tile = body.tile
 	back3_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back3 = true
+			back_touching_border = true
+		else:
+			enemy_back3 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back3 = true
+			back_touching_border = true
+		else:
+			enemy_back3 = true
 	if(Globals.board_tiles[back3_tile_group][back3_tile].state == true):
 		enemy_back3 = true
 
@@ -1500,6 +1727,18 @@ func _on_back_3_area_body_exited(body: Node2D) -> void:
 func _on_back_4_area_body_entered(body: Node2D) -> void:
 	back4_tile = body.tile
 	back4_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back4 = true
+			back_touching_border = true
+		else:
+			enemy_back4 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back4 = true
+			back_touching_border = true
+		else:
+			enemy_back4 = true
 	if(Globals.board_tiles[back4_tile_group][back4_tile].state == true):
 		enemy_back4 = true
 
@@ -1512,6 +1751,18 @@ func _on_back_4_area_body_exited(body: Node2D) -> void:
 func _on_back_5_area_body_entered(body: Node2D) -> void:
 	back5_tile = body.tile
 	back5_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back5 = true
+			back_touching_border = true
+		else:
+			enemy_back5 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back5 = true
+			back_touching_border = true
+		else:
+			enemy_back5 = true
 	if(Globals.board_tiles[back5_tile_group][back5_tile].state == true):
 		enemy_back5 = true
 
@@ -1524,6 +1775,18 @@ func _on_back_5_area_body_exited(body: Node2D) -> void:
 func _on_back_6_area_body_entered(body: Node2D) -> void:
 	back6_tile = body.tile
 	back6_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back6 = true
+			back_touching_border = true
+		else:
+			enemy_back6 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back6 = true
+			back_touching_border = true
+		else:
+			enemy_back6 = true
 	if(Globals.board_tiles[back6_tile_group][back6_tile].state == true):
 		enemy_back5 = true
 
@@ -1536,6 +1799,18 @@ func _on_back_6_area_body_exited(body: Node2D) -> void:
 func _on_back_7_area_body_entered(body: Node2D) -> void:
 	back7_tile = body.tile
 	back7_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back7 = true
+			back_touching_border = true
+		else:
+			enemy_back7 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back7 = true
+			back_touching_border = true
+		else:
+			enemy_back7 = true
 	if(Globals.board_tiles[back7_tile_group][back7_tile].state == true):
 		enemy_back7 = true
 
@@ -1661,7 +1936,6 @@ func _on_back_7_area_area_exited(area: Area2D) -> void:
 
 
 func _on_left_1_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1670,10 +1944,11 @@ func _on_left_1_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_left_2_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1682,10 +1957,11 @@ func _on_left_2_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_left_3_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1694,11 +1970,12 @@ func _on_left_3_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 
 func _on_left_4_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1707,11 +1984,12 @@ func _on_left_4_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 
 func _on_left_5_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1720,11 +1998,11 @@ func _on_left_5_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
-
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_left_6_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1733,10 +2011,11 @@ func _on_left_6_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 
 func _on_left_7_button_button_up() -> void:
-	Globals.turn_tracking += 1 # change turn
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -1746,6 +2025,8 @@ func _on_left_7_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
 
 #endregion
 	#region All the Edge Collision signals
@@ -1757,6 +2038,8 @@ func _on_left_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		left1_tile = area.name
 		left1_tile_group = str(area.name)[0]
+	if(not area.is_in_group("Edge")):
+		left_touching_border = false
 
 
 func _on_left_2_area_area_entered(area: Area2D) -> void:
@@ -1861,9 +2144,20 @@ func _on_left_1_area_area_exited(area: Area2D) -> void:
 func _on_left_1_area_body_entered(body: Node2D) -> void:
 	left1_tile = body.tile
 	left1_tile_group = body.tile_group
-	if(body != self):
-		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
 			enemy_left1 = true
+			left_touching_border = true
+		else:
+			enemy_left1 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left1 = true
+			left_touching_border = true
+		else:
+			enemy_left1 = true
+	if(Globals.board_tiles[left1_tile_group][left1_tile].state == true):
+		enemy_left1 = true
 
 
 func _on_left_1_area_body_exited(body: Node2D) -> void:
@@ -1873,9 +2167,20 @@ func _on_left_1_area_body_exited(body: Node2D) -> void:
 func _on_left_2_area_body_entered(body: Node2D) -> void:
 	left2_tile = body.tile
 	left2_tile_group = body.tile_group
-	if(body != self):
-		if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
 			enemy_left2 = true
+			left_touching_border = true
+		else:
+			enemy_left2 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left2 = true
+			left_touching_border = true
+		else:
+			enemy_left2 = true
+	if(Globals.board_tiles[left2_tile_group][left2_tile].state == true):
+		enemy_left2 = true
 
 
 func _on_left_2_area_body_exited(body: Node2D) -> void:
@@ -1885,8 +2190,20 @@ func _on_left_2_area_body_exited(body: Node2D) -> void:
 func _on_left_3_area_body_entered(body: Node2D) -> void:
 	left3_tile = body.tile
 	left3_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left3 = true
+			left_touching_border = true
+		else:
+			enemy_left3 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left3 = true
+			left_touching_border = true
+		else:
+			enemy_left3 = true
 	if(body != self):
-		if(Globals.board_tiles[forward3_tile_group][forward3_tile].state == true):
+		if(Globals.board_tiles[left3_tile_group][left3_tile].state == true):
 			enemy_left3 = true
 
 
@@ -1897,8 +2214,20 @@ func _on_left_3_area_body_exited(body: Node2D) -> void:
 func _on_left_4_area_body_entered(body: Node2D) -> void:
 	left4_tile = body.tile
 	left4_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left4 = true
+			left_touching_border = true
+		else:
+			enemy_left4 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left4 = true
+			left_touching_border = true
+		else:
+			enemy_left4 = true
 	if(body != self):
-		if(Globals.board_tiles[forward4_tile_group][forward4_tile].state == true):
+		if(Globals.board_tiles[left4_tile_group][left4_tile].state == true):
 			enemy_left4 = true
 
 
@@ -1909,8 +2238,20 @@ func _on_left_4_area_body_exited(body: Node2D) -> void:
 func _on_left_5_area_body_entered(body: Node2D) -> void:
 	left5_tile = body.tile
 	left5_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left5 = true
+			left_touching_border = true
+		else:
+			enemy_left5 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left5 = true
+			left_touching_border = true
+		else:
+			enemy_left5 = true
 	if(body != self):
-		if(Globals.board_tiles[forward5_tile_group][forward5_tile].state == true):
+		if(Globals.board_tiles[left5_tile_group][left5_tile].state == true):
 			enemy_left5 = true
 
 
@@ -1921,8 +2262,20 @@ func _on_left_5_area_body_exited(body: Node2D) -> void:
 func _on_left_6_area_body_entered(body: Node2D) -> void:
 	left6_tile = body.tile
 	left6_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left6 = true
+			left_touching_border = true
+		else:
+			enemy_left6 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left6 = true
+			left_touching_border = true
+		else:
+			enemy_left6 = true
 	if(body != self):
-		if(Globals.board_tiles[forward6_tile_group][forward6_tile].state == true):
+		if(Globals.board_tiles[left6_tile_group][left6_tile].state == true):
 			enemy_left6 = true
 
 
@@ -1933,8 +2286,20 @@ func _on_left_6_area_body_exited(body: Node2D) -> void:
 func _on_left_7_area_body_entered(body: Node2D) -> void:
 	left7_tile = body.tile
 	left7_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left7 = true
+			left_touching_border = true
+		else:
+			enemy_left7 = true
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left7 = true
+			left_touching_border = true
+		else:
+			enemy_left7 = true
 	if(body != self):
-		if(Globals.board_tiles[forward7_tile_group][forward7_tile].state == true):
+		if(Globals.board_tiles[left7_tile_group][left7_tile].state == true):
 			enemy_left7 = true
 
 

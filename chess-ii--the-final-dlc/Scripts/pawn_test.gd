@@ -44,10 +44,12 @@ func _process(delta: float) -> void:
 			taking = false
 
 func _on_select_pawn_button_up() -> void:
-	if(focused):
-		focused = false
-	else:
+	if(self.name == "Pawn1" && Globals.piece_focused != "Pawn1"):
+		Globals.piece_focused = "Pawn1"
 		focused = true
+	elif(self.name == "Pawn1" && Globals.piece_focused == "Pawn1"):
+		Globals.piece_focused = ""
+		focused = false
 
 
 func _on_left_marker_area_body_entered(body: CharacterBody2D) -> void:

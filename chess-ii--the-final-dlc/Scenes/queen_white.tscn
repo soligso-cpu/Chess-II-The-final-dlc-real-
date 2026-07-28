@@ -34,6 +34,8 @@ size = Vector2(71.42857, 71.42857)
 script = ExtResource("1_k28i3")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1361949753]
+process_priority = 1
+z_index = 5
 
 [node name="Right" type="Marker2D" parent="MovementMarkers" unique_id=1997263782]
 process_priority = 1
