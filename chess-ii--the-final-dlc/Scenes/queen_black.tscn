@@ -31,6 +31,8 @@ size = Vector2(72, 72)
 size = Vector2(71.42857, 71.42857)
 
 [node name="QueenBlack" type="CharacterBody2D" unique_id=581118255 groups=["Pieces"]]
+process_priority = 1
+z_index = 10
 script = ExtResource("1_kuars")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1228666206]
