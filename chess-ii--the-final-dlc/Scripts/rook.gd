@@ -121,13 +121,9 @@ var left_touching_border
 var back_touching_border
 
 func _ready() -> void:
-	focused = false
 	moved = false
 	taking = false
-	Globals.piece_focused = ""
-
-
-func reset_markers():
+	#region markers
 	enemy_right1 = false
 	enemy_right2 = false
 	enemy_right3 = false
@@ -161,7 +157,8 @@ func reset_markers():
 	enemy_left7 = false
 	
 	focused = false
-	Globals.piece_attached = ""
+	Globals.piece_focused = " "
+	#endregion
 
 
 func _process(delta: float) -> void:
@@ -401,16 +398,80 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left7.visible = false
 			#endregion
 		elif(!focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_DISABLED
+	#		for child in $MovementMarkers.get_children():
+	#			child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		for child in $MovementMarkers.get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
+	#	for child in $MovementMarkers.get_children():
+	#		child.process_mode = Node.PROCESS_MODE_DISABLED
 		$SelectRook.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+
+func reset_markers():
+	enemy_right1 = false
+	enemy_right2 = false
+	enemy_right3 = false
+	enemy_right4 = false
+	enemy_right5 = false
+	enemy_right6 = false
+	enemy_right7 = false
+
+	enemy_forward1 = false
+	enemy_forward2 = false
+	enemy_forward3 = false
+	enemy_forward4 = false
+	enemy_forward5 = false
+	enemy_forward6 = false
+	enemy_forward7 = false
+
+	enemy_back1 = false
+	enemy_back2 = false
+	enemy_back3 = false
+	enemy_back4 = false
+	enemy_back5 = false
+	enemy_back6 = false
+	enemy_back7 = false
+	
+	enemy_left1 = false
+	enemy_left2 = false
+	enemy_left3 = false
+	enemy_left4 = false
+	enemy_left5 = false
+	enemy_left6 = false
+	enemy_left7 = false
+	
+	focused = false
+	Globals.piece_focused = " "
+
+
+func _on_tile_collision_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]
+
+
+func _on_tile_collision_area_body_entered(body: Node2D) -> void:
+	if(self.name != body.name):
+		if(taking):
+			body.queue_free()
+			taking = false
+		else:
+			queue_free()
+
+
+func _on_select_rook_button_up() -> void:
+	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
+		if(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		else:
+			Globals.piece_focused = ""
+			focused = false
+
 
 #region movement
 #region All the inputs for the Right markers.
@@ -727,6 +788,7 @@ func _on_right_area_2_area_exited(area: Area2D) -> void:
 		touching_border = false
 		enemy_right2 = false
 
+
 func _on_right_area_3_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
@@ -955,6 +1017,7 @@ func _on_forward_3_area_area_entered(area: Area2D) -> void:
 		forward3_tile_group = group
 
 func _on_forward_3_area_area_exited(area: Area2D) -> void:
+	
 	if(area.is_in_group("Edge")):
 		forward_touching_border = false
 		enemy_forward3 = false
@@ -1953,28 +2016,3 @@ func _on_left_7_area_body_exited(body: Node2D) -> void:
 
 #endregion
 #endregion
-
-
-func _on_tile_collision_area_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Tiles")):
-		tile = area.name
-		tile_group = str(area.name)[0]
-
-
-func _on_tile_collision_area_body_entered(body: Node2D) -> void:
-	if(self.name != body.name):
-		if(taking):
-			body.queue_free()
-			taking = false
-		else:
-			queue_free()
-
-
-func _on_select_rook_button_up() -> void:
-	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
-		else:
-			Globals.piece_focused = ""
-			focused = false

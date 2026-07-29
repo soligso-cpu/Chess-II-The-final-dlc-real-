@@ -399,7 +399,7 @@ offset_bottom = -22.420998
 metadata/_edit_use_anchors_ = true
 
 [node name="Back5" type="Node2D" parent="MovementMarkers/Back" unique_id=980444970]
-position = Vector2(0, 400)
+position = Vector2(0, 399)
 
 [node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back5" unique_id=1108780359]
 
@@ -421,7 +421,7 @@ offset_bottom = -22.420998
 metadata/_edit_use_anchors_ = true
 
 [node name="Back6" type="Node2D" parent="MovementMarkers/Back" unique_id=652433734]
-position = Vector2(0, 479)
+position = Vector2(0, 478)
 
 [node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back6" unique_id=1603766799]
 
@@ -443,7 +443,7 @@ offset_bottom = -23.421001
 metadata/_edit_use_anchors_ = true
 
 [node name="Back7" type="Node2D" parent="MovementMarkers/Back" unique_id=1393179305]
-position = Vector2(0, 559)
+position = Vector2(0, 558)
 
 [node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back7" unique_id=815283621]
 

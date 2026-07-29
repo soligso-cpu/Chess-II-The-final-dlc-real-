@@ -222,6 +222,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Forward" type="Marker2D" parent="MovementMarkers" unique_id=1812460378]
 process_priority = 1
 z_index = 1
+position = Vector2(1, 2)
 
 [node name="Forward1" type="Node2D" parent="MovementMarkers/Forward" unique_id=1456069727]
 position = Vector2(0, -81)
@@ -368,6 +369,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Back" type="Marker2D" parent="MovementMarkers" unique_id=199673761]
 process_priority = 1
 z_index = 1
+position = Vector2(1, 2)
 
 [node name="Back1" type="Node2D" parent="MovementMarkers/Back" unique_id=1467177008]
 position = Vector2(0, 79)
@@ -526,6 +528,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Left" type="Marker2D" parent="MovementMarkers" unique_id=1185668008]
 process_priority = 1
 z_index = 1
+position = Vector2(1, 2)
 
 [node name="Left1" type="Node2D" parent="MovementMarkers/Left" unique_id=1506532056]
 position = Vector2(-80, -1)
@@ -640,8 +643,11 @@ offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2085593331]
-polygon = PackedVector2Array(-3, -26, -1, -24, 2, -25, 2, -29, 10, -29, 10, -20, 10, -17, 8, -15, 6, -13, 6, 0, 11, 11, 10, 15, 15, 20, 15, 24, 15, 26, 11, 28, -8, 29, -16, 28, -17, 25, -16, 23, -16, 20, -13, 19, -11, 16, -11, 12, -11, 12, -9, 9, -7, 2, -5, -10, -7, -15, -10, -19, -10, -28, -6, -29, -2, -29)
+[node name="SelectRook" type="Button" parent="." unique_id=123193056]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=1482387301]
 
@@ -649,11 +655,10 @@ polygon = PackedVector2Array(-3, -26, -1, -24, 2, -25, 2, -29, 10, -29, 10, -20,
 position = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_f608j")
 
-[node name="SelectRook" type="Button" parent="." unique_id=123193056]
-offset_left = -38.0
-offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2085593331]
+position = Vector2(0, -1.1368684e-13)
+scale = Vector2(1, 1.0000001)
+polygon = PackedVector2Array(-3, -26, -1, -24, 2, -25, 2, -29, 10, -29, 10, -20, 10, -17, 8, -15, 6, -13, 6, 0, 11, 11, 10, 15, 15, 20, 15, 24, 15, 26, 11, 28, -8, 29, -16, 28, -17, 25, -16, 23, -16, 20, -13, 19, -11, 16, -11, 12, -11, 12, -9, 9, -7, 2, -5, -10, -7, -15, -10, -19, -10, -28, -6, -29, -2, -29)
 
 [node name="RookSprite" type="Sprite2D" parent="." unique_id=923636450]
 position = Vector2(0, 9.536743e-07)
@@ -695,6 +700,111 @@ texture = ExtResource("1_f608j")
 [connection signal="body_entered" from="MovementMarkers/Right/Right7/RightSprite/RightArea7" to="." method="_on_right_area_7_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Right/Right7/RightSprite/RightArea7" to="." method="_on_right_area_7_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Right/Right7/RightButton7" to="." method="_on_right_button_7_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward1/ForwardSprite/ForwardButton1" to="." method="_on_forward_button_1_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward2/ForwardSprite/ForwardButton2" to="." method="_on_forward_button_2_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward3/ForwardSprite/ForwardButton3" to="." method="_on_forward_button_3_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward4/ForwardSprite/ForwardButton4" to="." method="_on_forward_button_4_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward5/ForwardSprite/ForwardButton5" to="." method="_on_forward_button_5_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward6/ForwardSprite/ForwardButton6" to="." method="_on_forward_button_6_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Forward/Forward7/ForwardSprite/ForwardButton7" to="." method="_on_forward_button_7_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back1/BackSprite/Back1Button" to="." method="_on_back_1_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back2/BackSprite/Back2Button" to="." method="_on_back_2_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back3/BackSprite/Back3Button" to="." method="_on_back_3_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back4/BackSprite/Back4Button" to="." method="_on_back_4_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back5/BackSprite/Back5Button" to="." method="_on_back_5_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back6/BackSprite/Back6Button" to="." method="_on_back_6_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/Back7/BackSprite/Back7Button" to="." method="_on_back_7_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left1/LeftSprite/Left1Button" to="." method="_on_left_1_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left2/LeftSprite/Left2Button" to="." method="_on_left_2_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left3/LeftSprite/Left3Button" to="." method="_on_left_3_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left4/LeftSprite/Left4Button" to="." method="_on_left_4_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left5/LeftSprite/Left5Button" to="." method="_on_left_5_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left6/LeftSprite/Left6Button" to="." method="_on_left_6_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left/Left7/LeftSprite/Left7Button" to="." method="_on_left_7_button_button_up"]
+[connection signal="button_up" from="SelectRook" to="." method="_on_select_rook_button_up"]
 [connection signal="area_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_area_entered"]
 [connection signal="body_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_body_entered"]
-[connection signal="button_up" from="SelectRook" to="." method="_on_select_rook_button_up"]

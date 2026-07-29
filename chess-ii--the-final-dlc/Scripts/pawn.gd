@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+
 var forward1_tile
 var forward1_tile_group
 var forward2_tile
@@ -35,6 +36,27 @@ var moved
 func _ready() -> void:
 	moved = false
 	focused = false
+	if(self.is_in_group("Black")):
+		tile_group = "B"
+	else:
+		tile_group = "G"
+	if(self.global_position == Vector2(338, 523)):
+		tile = "G1"
+	if(self.global_position == Vector2(418, 523)):
+		tile = "G2"
+	if(self.global_position == Vector2(498, 523)):
+		tile = "G3"
+	if(self.global_position == Vector2(578, 523)):
+		tile = "G4"
+	if(self.global_position == Vector2(685, 523)):
+		tile = "G5"
+	if(self.global_position == Vector2(738, 523)):
+		tile = "G6"
+	if(self.global_position == Vector2(818, 523)):
+		tile = "G7"
+	if(self.global_position == Vector2(898, 523)):
+		tile = "G8"
+	
 
 
 func _process(delta: float) -> void:
