@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://6kkmjkwll57f"]
+
+[ext_resource type="Script" uid="uid://t4xpep5w213x" path="res://Scripts/roulette.gd" id="1_u7vc4"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_sxnde"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l12oi"]
+size = Vector2(129, 132)
+
+[node name="Roulette" type="CanvasLayer" unique_id=967836847]
+script = ExtResource("1_u7vc4")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2111809431]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1203648578]
+position = Vector2(312.5, 69)
+shape = SubResource("RectangleShape2D_l12oi")
+
+[node name="Black" type="Sprite2D" parent="." unique_id=1429336466]
+position = Vector2(91, 84)
+texture = ExtResource("2_sxnde")
+
+[node name="Red" type="Sprite2D" parent="." unique_id=112456723]
+position = Vector2(573.99994, 90)
+scale = Vector2(0.3671875, 0.3515625)
+texture = ExtResource("2_sxnde")
+
+[node name="Button" type="Sprite2D" parent="." unique_id=415802366]
+position = Vector2(313, 69)
+texture = ExtResource("2_sxnde")
+
+[node name="SpinTimer" type="Timer" parent="." unique_id=510742156]
+wait_time = 2.005
+
+[node name="SwitchTimer" type="Timer" parent="." unique_id=676724926]
+wait_time = 0.388
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
+[connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
+[connection signal="timeout" from="SwitchTimer" to="." method="_on_switch_timer_timeout"]
