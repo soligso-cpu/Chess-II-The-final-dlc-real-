@@ -67,7 +67,6 @@ position = Vector2(548, 1236)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
-visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -476,5 +475,5 @@ position = Vector2(576, 604)
 [node name="QueenBlack" parent="." unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
 
-[node name="Pawn" parent="." unique_id=1056477142 instance=ExtResource("5_s4i1f")]
-position = Vector2(738, 603)
+[node name="Pawn" parent="." unique_id=1056477142 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(738, 523)

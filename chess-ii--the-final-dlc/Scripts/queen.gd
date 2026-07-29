@@ -715,6 +715,7 @@ func _process(delta: float) -> void:
 		elif(!focused):
 			for child in $MovementMarkers.get_children():
 				child.process_mode = Node.PROCESS_MODE_DISABLED
+			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
@@ -2615,6 +2616,7 @@ func _on_fr_1_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_1 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_1 = true
@@ -2641,6 +2643,7 @@ func _on_fr_2_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_2 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_2 = true
@@ -2667,6 +2670,7 @@ func _on_fr_3_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_3 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_3 = true
@@ -2693,6 +2697,7 @@ func _on_fr_4_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_4 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_4 = true
@@ -2719,6 +2724,7 @@ func _on_fr_5_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_5 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_5 = true
@@ -2745,6 +2751,7 @@ func _on_fr_6_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_6 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_6 = true
@@ -2771,6 +2778,7 @@ func _on_fr_7_area_body_entered(body: Node2D) -> void:
 			fr_touching_border = true
 		else:
 			enemyfr_7 = true
+			fr_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_7 = true

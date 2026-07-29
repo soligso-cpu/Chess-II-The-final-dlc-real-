@@ -145,7 +145,7 @@ var piece_focused = ""
 func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
-	turn_count += 1
+	turn_count = 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -362,5 +362,6 @@ func _process(delta: float) -> void:
 	#endregion
 	if(turn_tracking > 1):
 		turn_tracking = 0
+		turn_count += 1
 
 # leaving this line here to seperate regions, and to stop you having to make a new line by opening the region.
