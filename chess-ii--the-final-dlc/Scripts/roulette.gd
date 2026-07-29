@@ -2,13 +2,16 @@ extends CanvasLayer
 
 var hover_indicator = Vector2(0.5,0.5)
 enum winning_colour {
-	BLACK,
-	RED
+	BLACK = 1, 
+	RED = 2
 }
-var winner
+var winner 
 var hover = false
 var currently_gambling = false 
-var red_showing = false
+var colour_showing = 2
+var timer_length = 1
+var timer_slow = 0.9
+var chosen_colour
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -17,13 +20,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Click") and currently_gambling == false:
+	if Input.is_action_just_pressed("Click") and currently_gambling == false and chosen_colour:
 		print("START GAMBLIN")
 		currently_gambling = true
 		$SpinTimer.start()
-	if currently_gambling == true:
-		$SwitchTimer.start()
-
+		timer_length = 1
+		$SwitchTimer.start(timer_length)
+		
 func _on_area_2d_mouse_entered() -> void:
 	$Button.scale += hover_indicator
 	hover = true 
@@ -34,16 +37,54 @@ func _on_area_2d_mouse_exited() -> void:
 
 func _on_spin_timer_timeout() -> void:
 	currently_gambling = false
-
+	print("no more gamba", currently_gambling)
+	winner = randi_range(winning_colour.BLACK, winning_colour.RED)
+	print(winner)
+	if winner == winning_colour.BLACK:
+		$Black.visible = true
+		$Red.visible = false
+	elif winner == winning_colour.RED:
+		$Black.visible = false
+		$Red.visible = true
+	if winner == chosen_colour:
+		print("WIN")
+		$Control/Label.text = str("Congratualtions! You win an extra 
+		turn!")
+	elif winner != chosen_colour:
+		print("aw dangit")
+		$Control/Label.text = str("Oh well, you lost your turn.")
 
 func _on_switch_timer_timeout() -> void:
-	if red_showing == true:
+	if colour_showing == 1:
 		print("black")
 		$Black.visible = true
 		$Red.visible = false
-		red_showing = false
-	if red_showing == false:
+		colour_showing = 2
+	elif colour_showing == 2:
 		print("red")
 		$Black.visible = false
 		$Red.visible = true
-		red_showing = true
+		colour_showing = 1
+	if currently_gambling == true:
+		timer_length = timer_length * timer_slow
+		$SwitchTimer.start(timer_length)
+		print(currently_gambling)
+
+
+func _on_red_button_button_up() -> void:
+	if currently_gambling == false:
+		chosen_colour = winning_colour.RED
+		print("all in on red")
+		$Control/Label.text = str("Bet 1 turn on red")
+func _on_black_button_button_up() -> void:
+	if currently_gambling == false:
+		chosen_colour = winning_colour.BLACK
+		print("all in on black")
+		$Control/Label.text = str("Bet 1 turn on black")
+
+
+func _on_quit_button_button_up() -> void:
+	if currently_gambling == false:
+		chosen_colour = 0
+		print("lame")
+		$Control/Label.text = str("You have opted not to gamble.")

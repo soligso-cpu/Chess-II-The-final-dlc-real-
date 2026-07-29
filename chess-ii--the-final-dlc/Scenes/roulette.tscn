@@ -12,7 +12,7 @@ script = ExtResource("1_u7vc4")
 [node name="Area2D" type="Area2D" parent="." unique_id=2111809431]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1203648578]
-position = Vector2(312.5, 69)
+position = Vector2(334, 68)
 shape = SubResource("RectangleShape2D_l12oi")
 
 [node name="Black" type="Sprite2D" parent="." unique_id=1429336466]
@@ -20,22 +20,77 @@ position = Vector2(91, 84)
 texture = ExtResource("2_sxnde")
 
 [node name="Red" type="Sprite2D" parent="." unique_id=112456723]
-position = Vector2(573.99994, 90)
-scale = Vector2(0.3671875, 0.3515625)
+position = Vector2(556, 81.00001)
+scale = Vector2(0.94140524, 0.94140625)
 texture = ExtResource("2_sxnde")
 
 [node name="Button" type="Sprite2D" parent="." unique_id=415802366]
-position = Vector2(313, 69)
+position = Vector2(334, 69)
 texture = ExtResource("2_sxnde")
 
 [node name="SpinTimer" type="Timer" parent="." unique_id=510742156]
-wait_time = 2.005
+wait_time = 9.958
+one_shot = true
 
 [node name="SwitchTimer" type="Timer" parent="." unique_id=676724926]
 wait_time = 0.388
+one_shot = true
+
+[node name="Control" type="Control" parent="." unique_id=376478417]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="RedButton" type="Button" parent="Control" unique_id=203641953]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 12.8
+anchor_top = 4.25
+anchor_right = 15.025001
+anchor_bottom = 5.025
+text = "Bet on red"
+
+[node name="BlackButton" type="Button" parent="Control" unique_id=2116149572]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.35
+anchor_top = 4.3250003
+anchor_right = 3.9500003
+anchor_bottom = 5.1000004
+offset_top = -1.5258789e-05
+offset_right = -1.5258789e-05
+offset_bottom = -1.5258789e-05
+text = "Bet on black"
+
+[node name="Label" type="Label" parent="Control" unique_id=1258296984]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 163.0
+offset_right = 479.0
+offset_bottom = 212.0
+text = "Pick a button to start gambling!
+or don't, but that's lame. "
+
+[node name="QuitButton" type="Button" parent="Control" unique_id=1480283557]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 5.2500005
+anchor_top = 5.7250004
+anchor_right = 12.1
+anchor_bottom = 6.5000005
+offset_left = -5.0000153
+offset_top = -1.5258789e-05
+offset_bottom = -3.0517578e-05
+text = "I'm lame and don't wanna gamble. "
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
 [connection signal="timeout" from="SwitchTimer" to="." method="_on_switch_timer_timeout"]
+[connection signal="button_up" from="Control/RedButton" to="." method="_on_red_button_button_up"]
+[connection signal="button_up" from="Control/BlackButton" to="." method="_on_black_button_button_up"]
+[connection signal="button_up" from="Control/QuitButton" to="." method="_on_quit_button_button_up"]
