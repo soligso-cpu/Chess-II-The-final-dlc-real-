@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://cydbmsjlcq5u8"]
+[gd_scene format=3 uid="uid://cftk3c535i0r0"]
 
-[ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_eu7ni"]
-[ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/pawn_placeholder.png" id="2_3865y"]
+[ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_687s0"]
+[ext_resource type="Texture2D" uid="uid://b4q5foox1sk31" path="res://Sprites/pngtree-black-pawn-chess-piece-clipart-isolated-png-image_20439369.png" id="2_687s0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3865y"]
 size = Vector2(72, 72)
@@ -9,13 +9,13 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
 size = Vector2(72, 72)
 
-[node name="Pawn" type="CharacterBody2D" unique_id=1056477142 groups=["Pieces", "White"]]
-script = ExtResource("1_eu7ni")
+[node name="Pawn" type="CharacterBody2D" unique_id=1056477142 groups=["Black", "Pieces"]]
+script = ExtResource("1_687s0")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1593394419]
 
 [node name="Forward" type="Node2D" parent="MovementMarkers" unique_id=381455297]
-position = Vector2(-2, -80)
+position = Vector2(-2, 80)
 
 [node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward" unique_id=491034678]
 
@@ -32,7 +32,7 @@ offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Forward2" type="Node2D" parent="MovementMarkers" unique_id=1796473523]
-position = Vector2(-2, -160)
+position = Vector2(-2, 160)
 
 [node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward2" unique_id=337964198]
 
@@ -49,7 +49,7 @@ offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Left" type="Node2D" parent="MovementMarkers" unique_id=1261897759]
-position = Vector2(-82, -80)
+position = Vector2(-82, 80)
 
 [node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left" unique_id=323061921]
 
@@ -66,7 +66,7 @@ offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Right" type="Node2D" parent="MovementMarkers" unique_id=709488454]
-position = Vector2(78, -80)
+position = Vector2(78, 80)
 
 [node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right" unique_id=2999511]
 
@@ -86,9 +86,9 @@ metadata/_edit_use_anchors_ = true
 polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525306621]
-position = Vector2(-1.000001, 0)
-scale = Vector2(0.2181611, 0.23686066)
-texture = ExtResource("2_3865y")
+position = Vector2(-1.7126753, 1.3737583)
+scale = Vector2(0.02777014, 0.030150441)
+texture = ExtResource("2_687s0")
 
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=959678191]
 
