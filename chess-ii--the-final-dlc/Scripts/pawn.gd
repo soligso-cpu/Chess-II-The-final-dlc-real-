@@ -143,7 +143,7 @@ func _on_tile_collision_area_body_entered(body: Node2D) -> void:
 func _on_forward_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		forward_touching_border = true
-		forward_enemy1 = false
+		forward_enemy1 = true
 	if(area.is_in_group("Tiles")):
 		forward1_tile = area.name
 		forward1_tile_group = str(area.name)[0]
@@ -171,9 +171,6 @@ func _on_forward_area_body_entered(body: Node2D) -> void:
 		else:
 			forward1_enemy = true
 			forward_touching_border = false
-	if(body != self):
-		if(Globals.board_tiles[forward1_tile_group][forward1_tile].state == true):
-			forward1_enemy = true
 
 func _on_forward_area_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Pieces")):
@@ -201,7 +198,7 @@ func _on_forward_button_button_up() -> void:
 func _on_forward_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		forward_touching_border = true
-		forward_enemy2 = false
+		forward_enemy2 = true
 	if(area.is_in_group("Tiles")):
 		forward2_tile = area.name
 		forward2_tile_group = str(area.name)[0]
@@ -230,9 +227,6 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 		else:
 			forward2_enemy = true
 			forward_touching_border = false
-	if(body != self):
-		if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
-			forward2_enemy = true
 
 
 func _on_forward_2_area_body_exited(body: Node2D) -> void:
@@ -265,7 +259,7 @@ func _on_forward_2_button_button_up() -> void:
 func _on_left_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		left_touching_border = true
-		left_enemy = false
+		left_enemy = true
 	if(area.is_in_group("Tiles")):
 		left1_tile = area.name
 		left1_tile_group = str(area.name)[0]
@@ -326,7 +320,7 @@ func _on_left_button_button_up() -> void:
 func _on_right_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		right_touching_border = true
-		right_enemy = false
+		right_enemy = true
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]

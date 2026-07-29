@@ -5,8 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 [ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
-[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/blackpawn.tscn" id="6_bh37u"]
+[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawnblack.tscn" id="6_bh37u"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
+[ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
 size = Vector2(639, 83)
@@ -26,7 +27,6 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="PromotionGroup" type="Node2D" parent="." unique_id=392524399]
-visible = false
 
 [node name="WhitePromotionArea" type="Area2D" parent="PromotionGroup" unique_id=163879211]
 
@@ -41,7 +41,6 @@ position = Vector2(616, 607)
 shape = SubResource("RectangleShape2D_i6bmi")
 
 [node name="Edges" type="Node2D" parent="." unique_id=2093225668]
-visible = false
 
 [node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1903873758 groups=["Edge"]]
 position = Vector2(537, -596)
@@ -69,7 +68,6 @@ position = Vector2(548, 1236)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
-visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -472,67 +470,76 @@ position = Vector2(896, 603)
 [node name="H8Shape" type="CollisionShape2D" parent="TileAreas/H/H8" unique_id=1177381497 groups=["Tiles"]]
 shape = SubResource("RectangleShape2D_5fj8h")
 
-[node name="QueenWhite" parent="." unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
-visible = false
+[node name="White" type="Node2D" parent="." unique_id=1780591263]
+
+[node name="KnightWhite" parent="White" unique_id=1141139028 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
+position = Vector2(415, 603)
+
+[node name="KnightWhite2" parent="White" unique_id=760195180 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
+position = Vector2(815, 602)
+
+[node name="QueenWhite" parent="White" unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
 position = Vector2(576, 604)
 
-[node name="QueenBlack" parent="." unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
-visible = false
-position = Vector2(656, 44)
+[node name="WhitePawns" type="Node2D" parent="White" unique_id=199717627]
 
-[node name="WhitePawns" type="Node2D" parent="." unique_id=199717627]
-visible = false
-
-[node name="Pawn" parent="WhitePawns" unique_id=1056477142 instance=ExtResource("5_s4i1f")]
+[node name="Pawn" parent="White/WhitePawns" unique_id=1056477142 instance=ExtResource("5_s4i1f")]
 position = Vector2(338, 523)
 
-[node name="Pawn2" parent="WhitePawns" unique_id=1460173131 instance=ExtResource("5_s4i1f")]
+[node name="Pawn2" parent="White/WhitePawns" unique_id=1460173131 instance=ExtResource("5_s4i1f")]
 position = Vector2(418, 523)
 
-[node name="Pawn3" parent="WhitePawns" unique_id=1416568424 instance=ExtResource("5_s4i1f")]
+[node name="Pawn3" parent="White/WhitePawns" unique_id=1416568424 instance=ExtResource("5_s4i1f")]
 position = Vector2(498, 523)
 
-[node name="Pawn4" parent="WhitePawns" unique_id=469674729 instance=ExtResource("5_s4i1f")]
+[node name="Pawn4" parent="White/WhitePawns" unique_id=469674729 instance=ExtResource("5_s4i1f")]
 position = Vector2(578, 523)
 
-[node name="Pawn5" parent="WhitePawns" unique_id=494989873 instance=ExtResource("5_s4i1f")]
+[node name="Pawn5" parent="White/WhitePawns" unique_id=494989873 instance=ExtResource("5_s4i1f")]
 position = Vector2(658, 523)
 
-[node name="Pawn6" parent="WhitePawns" unique_id=1465572222 instance=ExtResource("5_s4i1f")]
+[node name="Pawn6" parent="White/WhitePawns" unique_id=1465572222 instance=ExtResource("5_s4i1f")]
 position = Vector2(738, 523)
 
-[node name="Pawn7" parent="WhitePawns" unique_id=1404115211 instance=ExtResource("5_s4i1f")]
+[node name="Pawn7" parent="White/WhitePawns" unique_id=1404115211 instance=ExtResource("5_s4i1f")]
 position = Vector2(818, 523)
 
-[node name="Pawn8" parent="WhitePawns" unique_id=944211184 instance=ExtResource("5_s4i1f")]
+[node name="Pawn8" parent="White/WhitePawns" unique_id=944211184 instance=ExtResource("5_s4i1f")]
 position = Vector2(898, 523)
 
-[node name="BlackPawns" type="Node2D" parent="." unique_id=572562130]
-visible = false
+[node name="Black" type="Node2D" parent="." unique_id=361448236]
 
-[node name="Pawn9" parent="BlackPawns" unique_id=1873266235 instance=ExtResource("6_bh37u")]
+[node name="KnightBlack" parent="Black" unique_id=878598053 instance=ExtResource("8_d8vyx")]
+position = Vector2(815, 43)
+
+[node name="KnightBlack2" parent="Black" unique_id=56098321 instance=ExtResource("8_d8vyx")]
+position = Vector2(415, 43)
+
+[node name="QueenBlack" parent="Black" unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
+position = Vector2(656, 44)
+
+[node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
+
+[node name="Pawn9" parent="Black/BlackPawns" unique_id=1873266235 instance=ExtResource("6_bh37u")]
 position = Vector2(338, 123)
 
-[node name="Pawn10" parent="BlackPawns" unique_id=1614310368 instance=ExtResource("6_bh37u")]
+[node name="Pawn10" parent="Black/BlackPawns" unique_id=1614310368 instance=ExtResource("6_bh37u")]
 position = Vector2(418, 123)
 
-[node name="Pawn11" parent="BlackPawns" unique_id=1036945592 instance=ExtResource("6_bh37u")]
+[node name="Pawn11" parent="Black/BlackPawns" unique_id=1036945592 instance=ExtResource("6_bh37u")]
 position = Vector2(498, 123)
 
-[node name="Pawn12" parent="BlackPawns" unique_id=1474532087 instance=ExtResource("6_bh37u")]
+[node name="Pawn12" parent="Black/BlackPawns" unique_id=1474532087 instance=ExtResource("6_bh37u")]
 position = Vector2(578, 123)
 
-[node name="Pawn13" parent="BlackPawns" unique_id=1190208367 instance=ExtResource("6_bh37u")]
+[node name="Pawn13" parent="Black/BlackPawns" unique_id=1190208367 instance=ExtResource("6_bh37u")]
 position = Vector2(658, 123)
 
-[node name="Pawn14" parent="BlackPawns" unique_id=748202758 instance=ExtResource("6_bh37u")]
+[node name="Pawn14" parent="Black/BlackPawns" unique_id=748202758 instance=ExtResource("6_bh37u")]
 position = Vector2(738, 123)
 
-[node name="Pawn15" parent="BlackPawns" unique_id=162669236 instance=ExtResource("6_bh37u")]
+[node name="Pawn15" parent="Black/BlackPawns" unique_id=162669236 instance=ExtResource("6_bh37u")]
 position = Vector2(818, 123)
 
-[node name="Pawn16" parent="BlackPawns" unique_id=451976920 instance=ExtResource("6_bh37u")]
+[node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920 instance=ExtResource("6_bh37u")]
 position = Vector2(898, 123)
-
-[node name="Knight" parent="." unique_id=1141139028 instance=ExtResource("7_twe5h")]
-position = Vector2(575, 363)
