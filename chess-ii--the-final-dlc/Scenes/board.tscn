@@ -476,4 +476,25 @@ position = Vector2(576, 604)
 position = Vector2(656, 44)
 
 [node name="Pawn" parent="." unique_id=1056477142 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(338, 523)
+
+[node name="Pawn2" parent="." unique_id=1460173131 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(418, 523)
+
+[node name="Pawn3" parent="." unique_id=1416568424 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(498, 523)
+
+[node name="Pawn4" parent="." unique_id=469674729 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(578, 523)
+
+[node name="Pawn5" parent="." unique_id=494989873 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(658, 523)
+
+[node name="Pawn6" parent="." unique_id=1465572222 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
 position = Vector2(738, 523)
+
+[node name="Pawn7" parent="." unique_id=1404115211 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(818, 523)
+
+[node name="Pawn8" parent="." unique_id=944211184 groups=["Pieces", "White"] instance=ExtResource("5_s4i1f")]
+position = Vector2(898, 523)

@@ -29,9 +29,11 @@ var tile_group
 var focused
 var taking
 
+var moved
+
 
 func _ready() -> void:
-	pass
+	moved = false
 
 
 func _process(delta: float) -> void:
@@ -52,16 +54,37 @@ func _process(delta: float) -> void:
 			
 			$MovementMarkers.visible = true
 			$MovementMarkers/Forward.visible = true
-			$MovementMarkers/Forward2.visible = true
+			if(!moved):
+				$MovementMarkers/Forward2.visible = true
+			else:
+				$MovementMarkers/Forward2.visible = false
 			
 			if(forward2_enemy):
 				if(forward_touching_border):
 					$MovementMarkers/Forward2.visible = false
 
 			if(forward1_enemy):
-				if(forward_touching_border):
-					$MovementMarkers/Forward.visible = false
+				$MovementMarkers/Forward.visible = false
 				$MovementMarkers/Forward2.visible = false
+			
+			#endregion
+			#region Left
+			
+			$MovementMarkers/Left.visible = false
+			
+			if(left_enemy):
+				if(left_touching_border):
+					$MovementMarkers/Left.visible = false
+				$MovementMarkers/Left.visible = true
+			
+			#endregion
+			#region Right
+			$MovementMarkers/Right.visible = false
+			
+			if(right_enemy):
+				if(right_touching_border):
+					$MovementMarkers/Right.visible = false
+				$MovementMarkers/Right.visible = true
 			
 			#endregion
 		elif(!focused):
@@ -84,6 +107,34 @@ func reset_markers():
 	
 	focused = false
 	Globals.piece_focused = ""
+
+
+func _on_select_pawn_button_up() -> void:
+	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
+		if(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		elif(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		else:
+			Globals.piece_focused = ""
+			focused = false
+
+
+func _on_tile_collision_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]
+
+
+func _on_tile_collision_area_body_entered(body: Node2D) -> void:
+	if(self.name != body.name):
+		if(taking):
+			body.queue_free()
+			taking = false
+		else:
+			queue_free()
 
 
 #region Forward
@@ -125,10 +176,12 @@ func _on_forward_area_body_entered(body: Node2D) -> void:
 			forward1_enemy = true
 
 func _on_forward_area_body_exited(body: Node2D) -> void:
-	pass # Replace with function body.
+	if(body.is_in_group("Pieces")):
+		forward1_enemy = false
 
 
 func _on_forward_button_button_up() -> void:
+	moved = true
 	focused = false
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
@@ -145,24 +198,183 @@ func _on_forward_button_button_up() -> void:
 #endregion
 #region Forward 2
 
-#endregion
-#endregion
-
-
-func _on_select_pawn_button_up() -> void:
-	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
-		elif(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
-		else:
-			Globals.piece_focused = ""
-			focused = false
-
-
-func _on_tile_collision_area_area_entered(area: Area2D) -> void:
+func _on_forward_2_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		forward_touching_border = true
+		forward_enemy2 = false
 	if(area.is_in_group("Tiles")):
-		tile = area.name
-		tile_group = str(area.name)[0]
+		forward2_tile = area.name
+		forward2_tile_group = str(area.name)[0]
+
+
+func _on_forward_2_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		forward_touching_border = false
+		forward1_enemy = false
+
+
+func _on_forward_2_area_body_entered(body: Node2D) -> void:
+	forward2_tile = body.tile
+	forward2_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			forward2_enemy = true
+			forward_touching_border = true
+		else:
+			forward2_enemy = true
+			forward_touching_border = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			forward2_enemy = true
+			forward_touching_border = true
+		else:
+			forward2_enemy = true
+			forward_touching_border = false
+	if(body != self):
+		if(Globals.board_tiles[forward2_tile_group][forward2_tile].state == true):
+			forward2_enemy = true
+
+
+func _on_forward_2_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		forward2_enemy = false
+
+
+func _on_forward_2_button_button_up() -> void:
+	moved = true
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	var target_with_offset = Globals.position_target + Vector2(2, 0)
+	global_position = target_with_offset # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
+#endregion
+
+#endregion
+
+#region Left
+
+
+func _on_left_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		left_enemy = false
+	if(area.is_in_group("Tiles")):
+		left1_tile = area.name
+		left1_tile_group = str(area.name)[0]
+
+
+func _on_left_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		left_enemy = false
+
+
+
+func _on_left_area_body_entered(body: Node2D) -> void:
+	left1_tile = body.tile
+	left1_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			left_enemy = true
+			left1_tile_group = true
+		else:
+			left_enemy = true
+			left1_tile_group = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			left_enemy = true
+			left1_tile_group = true
+		else:
+			left_enemy = true
+			left1_tile_group = false
+
+
+func _on_left_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		left_enemy = false
+
+
+func _on_left_button_button_up() -> void:
+	moved = true
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	var target_with_offset = Globals.position_target + Vector2(2, 0)
+	global_position = target_with_offset # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
+#endregion
+
+#region Back
+
+
+
+func _on_right_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		right_touching_border = true
+		right_enemy = false
+	if(area.is_in_group("Tiles")):
+		right1_tile = area.name
+		right1_tile_group = str(area.name)[0]
+
+
+func _on_right_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		right_touching_border = false
+		right_enemy = false
+
+
+func _on_right_area_body_entered(body: Node2D) -> void:
+	right1_tile = body.tile
+	right1_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			right_enemy = true
+			right1_tile_group = true
+		else:
+			right_enemy = true
+			right1_tile_group = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			right_enemy = true
+			right1_tile_group = true
+		else:
+			right_enemy = true
+			right1_tile_group = false
+
+
+func _on_right_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		right_enemy = false
+
+
+func _on_right_button_button_up() -> void:
+	moved = true
+	focused = false
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	var target_with_offset = Globals.position_target + Vector2(2, 0)
+	global_position = target_with_offset # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
+#endregion
