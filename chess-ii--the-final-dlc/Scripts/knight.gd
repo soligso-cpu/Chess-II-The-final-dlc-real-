@@ -52,7 +52,7 @@ var tile
 var tile_group
 
 func _ready() -> void:
-	pass
+	focused = false
 
 func _process(delta: float) -> void:
 	if(Globals.piece_focused == self.name):

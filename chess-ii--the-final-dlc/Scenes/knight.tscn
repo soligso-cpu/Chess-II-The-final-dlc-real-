@@ -7,7 +7,7 @@
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b66j6"]
-size = Vector2(72, 72)
+size = Vector2(45, 67)
 
 [node name="Knight" type="CharacterBody2D" unique_id=1141139028]
 script = ExtResource("1_b66j6")
@@ -153,22 +153,22 @@ offset_bottom = 38.0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1729335150]
 polygon = PackedVector2Array(-1, -33, -1, -30, -6, -31, -6, -27, -9, -24, -9, -20, -16, -13, -15, -8, -12, -7, -3, -15, 0, -13, -2, -9, -11, 6, -9, 7, -9, 10, -11, 11, -11, 12, -10, 15, -16, 22, -16, 29, 15, 30, 16, 22, 11, 17, 10, 13, 12, 12, 9, 10, 8, 6, 12, 6, 13, -3, 14, -13, 13, -20, 13, -23, 6, -29, 3, -29)
 
+[node name="TileCollisionArea" type="Area2D" parent="." unique_id=1594411825]
+
+[node name="TileCollisionShape" type="CollisionShape2D" parent="TileCollisionArea" unique_id=297560410]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_b66j6")
+
+[node name="SelectKnight" type="Button" parent="." unique_id=273479897]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="KnightSprite" type="Sprite2D" parent="." unique_id=1173373730]
 position = Vector2(0.093750775, -0.09375071)
 scale = Vector2(0.07531888, 0.07531888)
 texture = ExtResource("1_rrk28")
-
-[node name="SelectKnight" type="Button" parent="." unique_id=273479897]
-offset_left = -37.0
-offset_top = -38.0
-offset_right = 39.0
-offset_bottom = 39.0
-
-[node name="TileCollisionArea" type="Area2D" parent="." unique_id=1594411825]
-
-[node name="TileCollisionShape" type="CollisionShape2D" parent="TileCollisionArea" unique_id=297560410]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_b66j6")
 
 [connection signal="area_entered" from="MovementMarkers/ForwardLeft/FLSprite/FLArea" to="." method="_on_fl_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/ForwardLeft/FLSprite/FLArea" to="." method="_on_fl_area_area_exited"]
@@ -210,6 +210,6 @@ shape = SubResource("RectangleShape2D_b66j6")
 [connection signal="body_entered" from="MovementMarkers/LeftUp/LUSprite/LUArea" to="." method="_on_lu_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/LeftUp/LUSprite/LUArea" to="." method="_on_lu_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/LeftUp/LUSprite/LUButton" to="." method="_on_lu_button_button_up"]
-[connection signal="button_up" from="SelectKnight" to="." method="_on_select_knight_button_up"]
 [connection signal="area_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_area_entered"]
 [connection signal="body_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_body_entered"]
+[connection signal="button_up" from="SelectKnight" to="." method="_on_select_knight_button_up"]

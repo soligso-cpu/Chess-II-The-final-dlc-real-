@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 [ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawnblack.tscn" id="6_bh37u"]
+[ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="6_vjsom"]
+[ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 
@@ -473,7 +475,7 @@ shape = SubResource("RectangleShape2D_5fj8h")
 [node name="White" type="Node2D" parent="." unique_id=1780591263]
 
 [node name="KnightWhite" parent="White" unique_id=1141139028 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
-position = Vector2(415, 603)
+position = Vector2(415, 602)
 
 [node name="KnightWhite2" parent="White" unique_id=760195180 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
 position = Vector2(815, 602)
@@ -481,30 +483,36 @@ position = Vector2(815, 602)
 [node name="QueenWhite" parent="White" unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
 position = Vector2(576, 604)
 
+[node name="Rook" parent="White" unique_id=1039881567 groups=["Pieces", "White"] instance=ExtResource("6_vw4oq")]
+position = Vector2(335, 602)
+
+[node name="Rook2" parent="White" unique_id=1666171450 groups=["Pieces", "White"] instance=ExtResource("6_vw4oq")]
+position = Vector2(895, 602)
+
 [node name="WhitePawns" type="Node2D" parent="White" unique_id=199717627]
 
 [node name="Pawn" parent="White/WhitePawns" unique_id=1056477142 instance=ExtResource("5_s4i1f")]
 position = Vector2(338, 523)
 
-[node name="Pawn2" parent="White/WhitePawns" unique_id=1460173131 instance=ExtResource("5_s4i1f")]
+[node name="Pawn2" parent="White/WhitePawns" unique_id=1083019392 instance=ExtResource("5_s4i1f")]
 position = Vector2(418, 523)
 
-[node name="Pawn3" parent="White/WhitePawns" unique_id=1416568424 instance=ExtResource("5_s4i1f")]
+[node name="Pawn3" parent="White/WhitePawns" unique_id=1522973449 instance=ExtResource("5_s4i1f")]
 position = Vector2(498, 523)
 
-[node name="Pawn4" parent="White/WhitePawns" unique_id=469674729 instance=ExtResource("5_s4i1f")]
+[node name="Pawn4" parent="White/WhitePawns" unique_id=1944777352 instance=ExtResource("5_s4i1f")]
 position = Vector2(578, 523)
 
-[node name="Pawn5" parent="White/WhitePawns" unique_id=494989873 instance=ExtResource("5_s4i1f")]
+[node name="Pawn5" parent="White/WhitePawns" unique_id=1499554615 instance=ExtResource("5_s4i1f")]
 position = Vector2(658, 523)
 
-[node name="Pawn6" parent="White/WhitePawns" unique_id=1465572222 instance=ExtResource("5_s4i1f")]
+[node name="Pawn6" parent="White/WhitePawns" unique_id=691046711 instance=ExtResource("5_s4i1f")]
 position = Vector2(738, 523)
 
-[node name="Pawn7" parent="White/WhitePawns" unique_id=1404115211 instance=ExtResource("5_s4i1f")]
+[node name="Pawn7" parent="White/WhitePawns" unique_id=1364732129 instance=ExtResource("5_s4i1f")]
 position = Vector2(818, 523)
 
-[node name="Pawn8" parent="White/WhitePawns" unique_id=944211184 instance=ExtResource("5_s4i1f")]
+[node name="Pawn8" parent="White/WhitePawns" unique_id=394551820 instance=ExtResource("5_s4i1f")]
 position = Vector2(898, 523)
 
 [node name="Black" type="Node2D" parent="." unique_id=361448236]
@@ -517,6 +525,12 @@ position = Vector2(415, 43)
 
 [node name="QueenBlack" parent="Black" unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
+
+[node name="RookBlack" parent="Black" unique_id=1611499366 instance=ExtResource("6_vjsom")]
+position = Vector2(895, 42)
+
+[node name="RookBlack2" parent="Black" unique_id=2004950408 instance=ExtResource("6_vjsom")]
+position = Vector2(335, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
 

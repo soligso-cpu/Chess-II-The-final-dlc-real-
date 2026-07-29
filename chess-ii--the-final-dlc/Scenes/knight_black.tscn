@@ -7,7 +7,7 @@
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b66j6"]
-size = Vector2(72, 72)
+size = Vector2(42, 72)
 
 [node name="KnightBlack" type="CharacterBody2D" unique_id=878598053 groups=["Black", "Tiles"]]
 script = ExtResource("1_iy2k0")
@@ -167,7 +167,7 @@ offset_bottom = 39.0
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=1827609162]
 
 [node name="TileCollisionShape" type="CollisionShape2D" parent="TileCollisionArea" unique_id=571289017]
-position = Vector2(1, 0)
+position = Vector2(2, 0)
 shape = SubResource("RectangleShape2D_b66j6")
 
 [connection signal="area_entered" from="MovementMarkers/ForwardLeft/FLSprite/FLArea" to="." method="_on_fl_area_area_entered"]

@@ -1051,9 +1051,9 @@ offset_bottom = 37.0
 
 [node name="SelectQueen" type="Button" parent="." unique_id=105382026]
 offset_left = -39.0
-offset_top = -39.0
+offset_top = -40.0
 offset_right = 39.01333
-offset_bottom = 39.0
+offset_bottom = 38.0
 
 [node name="CollisionArea" type="Area2D" parent="." unique_id=1531691377]
 position = Vector2(0, -7.6293945e-06)

@@ -582,6 +582,7 @@ offset_right = 37.0
 offset_bottom = 38.0
 
 [node name="DiagonalRightForward" type="Marker2D" parent="MovementMarkers" unique_id=1374485184]
+position = Vector2(0, -1)
 
 [node name="FR1" type="Node2D" parent="MovementMarkers/DiagonalRightForward" unique_id=494450498]
 position = Vector2(80, -81)
@@ -696,6 +697,7 @@ offset_right = 38.0
 offset_bottom = 38.0
 
 [node name="DiagonalLeftFoward" type="Marker2D" parent="MovementMarkers" unique_id=389075557]
+position = Vector2(0, -1)
 
 [node name="FL1" type="Node2D" parent="MovementMarkers/DiagonalLeftFoward" unique_id=44601737]
 position = Vector2(-80, -80)
@@ -810,6 +812,7 @@ offset_right = 38.0
 offset_bottom = 38.0
 
 [node name="DiagonalRightBack" type="Marker2D" parent="MovementMarkers" unique_id=932747285]
+position = Vector2(0, -1)
 
 [node name="BR1" type="Node2D" parent="MovementMarkers/DiagonalRightBack" unique_id=993040049]
 position = Vector2(80, 80)
@@ -931,6 +934,7 @@ offset_right = 38.0
 offset_bottom = 37.0
 
 [node name="DiagonalLeftBack" type="Marker2D" parent="MovementMarkers" unique_id=1136099012]
+position = Vector2(0, -1)
 
 [node name="BL1" type="Node2D" parent="MovementMarkers/DiagonalLeftBack" unique_id=531519701]
 position = Vector2(-80, 80)
@@ -1053,9 +1057,9 @@ offset_bottom = 37.0
 
 [node name="SelectQueen" type="Button" parent="." unique_id=1816594303]
 offset_left = -39.0
-offset_top = -39.0
+offset_top = -40.0
 offset_right = 39.01333
-offset_bottom = 39.0
+offset_bottom = 38.0
 
 [node name="CollisionArea" type="Area2D" parent="." unique_id=1221389572]
 position = Vector2(0, -7.6293945e-06)
@@ -1065,15 +1069,15 @@ position = Vector2(-1.1444092e-05, -0.9999924)
 scale = Vector2(1.008, 1.008)
 shape = SubResource("RectangleShape2D_64cfu")
 
-[node name="QueenSprite" type="Sprite2D" parent="." unique_id=917682721]
-position = Vector2(0.49609375, -0.5160713)
-scale = Vector2(0.13478088, 0.1402083)
-texture = ExtResource("2_ek64s")
-
 [node name="QueenShape" type="CollisionPolygon2D" parent="." unique_id=1514007568]
 position = Vector2(0.45624924, -0.2057991)
 scale = Vector2(0.87248874, 0.8724889)
 polygon = PackedVector2Array(0, -37, -2, -32, -6, -28, -9, -27, -6, -24, -4, -14, -3, -3, -6, 13, -11, 23, -11, 31, -14, 34, -13, 37, -2, 37, 12, 36, 14, 35, 12, 29, 12, 24, 8, 16, 5, 4, 2, -4, 2, -17, 6, -24, 8, -26, 5, -28, 4, -32, 1, -34, 0, -36)
+
+[node name="QueenSprite" type="Sprite2D" parent="." unique_id=917682721]
+position = Vector2(0.49609375, -0.5160713)
+scale = Vector2(0.13478088, 0.1402083)
+texture = ExtResource("2_ek64s")
 
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]

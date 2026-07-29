@@ -248,7 +248,6 @@ var bl7_tile_group
 #endregion
 
 func _ready() -> void:
-	print("Right spacing: ", $MovementMarkers/Right/Right2.position - $MovementMarkers/Right/Right1.position)
 	focused = false
 
 func _process(delta: float) -> void:
@@ -782,6 +781,38 @@ func reset_markers():
 	enemy_left6 = false
 	enemy_left7 = false
 	
+	enemyfr_1 = false
+	enemyfr_2 = false
+	enemyfr_3 = false
+	enemyfr_4 = false
+	enemyfr_5 = false
+	enemyfr_6 = false
+	enemyfr_7 = false
+
+	enemyfl_1 = false
+	enemyfl_2 = false
+	enemyfl_3 = false
+	enemyfl_4 = false
+	enemyfl_5 = false
+	enemyfl_6 = false
+	enemyfl_7 = false
+
+	enemybl_1 = false
+	enemybl_2 = false
+	enemybl_3 = false
+	enemybl_4 = false
+	enemybl_5 = false
+	enemybl_6 = false
+	enemybl_7 = false
+
+	enemybr_1 = false
+	enemybr_2 = false
+	enemybr_3 = false
+	enemybr_4 = false
+	enemybr_5 = false
+	enemybr_6 = false
+	enemybr_7 = false
+
 	focused = false
 	Globals.piece_focused = ""
 

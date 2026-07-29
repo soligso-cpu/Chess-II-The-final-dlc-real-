@@ -3,10 +3,10 @@ extends Node
 var board_tiles = { 
 	
 	"A": {
-		"A1": {"state": true}, "A2": {"state": false}, "A3": {"state": false}, "A4": {"state": false}, "A5": {"state": false}, "A6": {"state": false}, "A7": {"state": false},"A8": {"state": false},
+		"A1": {"state": true}, "A2": {"state": true}, "A3": {"state": true}, "A4": {"state": true}, "A5": {"state": true}, "A6": {"state": true}, "A7": {"state": true},"A8": {"state": true},
 		},
 	"B": {
-		"B1": {"state": false}, "B2": {"state": false}, "B3": {"state": false}, "B4": {"state": false}, "B5": {"state": false}, "B6": {"state": false}, "B7": {"state": false}, "B8": {"state": false},
+		"B1": {"state": true}, "B2": {"state": true}, "B3": {"state": true}, "B4": {"state": true}, "B5": {"state": true}, "B6": {"state": true}, "B7": {"state": true}, "B8": {"state": true},
 		},
 	"C": {
 		"C1": {"state": false}, "C2": {"state": false}, "C3": {"state": false}, "C4": {"state": false}, "C5": {"state": false}, "C6": {"state": false}, "C7": {"state": false}, "C8": {"state": false},
@@ -21,10 +21,10 @@ var board_tiles = {
 		"F1": {"state": false}, "F2": {"state": false}, "F3": {"state": false}, "F4": {"state": false}, "F5": {"state": false}, "F6": {"state": false}, "F7": {"state": false}, "F8": {"state": false},
 		},
 	"G": {
-		"G1": {"state": false}, "G2": {"state": true}, "G3": {"state": false}, "G4": {"state": false}, "G5": {"state": false}, "G6": {"state": false}, "G7": {"state": false}, "G8": {"state": false},
+		"G1": {"state": true}, "G2": {"state": true}, "G3": {"state": true}, "G4": {"state": true}, "G5": {"state": true}, "G6": {"state": true}, "G7": {"state": true}, "G8": {"state": true},
 		},
 	"H": {
-		"H1": {"state": false}, "H2": {"state": false}, "H3": {"state": false}, "H4": {"state": false}, "H5": {"state": false}, "H6": {"state": false}, "H7": {"state": false}, "H8": {"state": false},
+		"H1": {"state": true}, "H2": {"state": true}, "H3": {"state": false}, "H4": {"state": true}, "H5": {"state": true}, "H6": {"state": true}, "H7": {"state": true}, "H8": {"state": true},
 		}
 	
 }
@@ -146,6 +146,7 @@ func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
 	turn_count = 1
+	piece_focused = ""
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

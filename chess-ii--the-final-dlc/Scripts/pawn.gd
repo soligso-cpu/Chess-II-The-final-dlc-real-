@@ -34,6 +34,7 @@ var moved
 
 func _ready() -> void:
 	moved = false
+	focused = false
 
 
 func _process(delta: float) -> void:
@@ -75,7 +76,8 @@ func _process(delta: float) -> void:
 			if(left_enemy):
 				if(left_touching_border):
 					$MovementMarkers/Left.visible = false
-				$MovementMarkers/Left.visible = true
+				else:
+					$MovementMarkers/Left.visible = true
 			
 			#endregion
 			#region Right
@@ -84,7 +86,8 @@ func _process(delta: float) -> void:
 			if(right_enemy):
 				if(right_touching_border):
 					$MovementMarkers/Right.visible = false
-				$MovementMarkers/Right.visible = true
+				else:
+					$MovementMarkers/Right.visible = true
 			
 			#endregion
 		elif(!focused):

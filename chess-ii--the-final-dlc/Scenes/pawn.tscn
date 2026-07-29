@@ -85,11 +85,6 @@ metadata/_edit_use_anchors_ = true
 [node name="PawnCollision" type="CollisionPolygon2D" parent="." unique_id=1163941849]
 polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525306621]
-position = Vector2(-1.000001, 0)
-scale = Vector2(0.2181611, 0.23686066)
-texture = ExtResource("2_3865y")
-
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=959678191]
 
 [node name="TileCollisionShape" type="CollisionShape2D" parent="TileCollisionArea" unique_id=804584389]
@@ -97,10 +92,15 @@ position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_culnp")
 
 [node name="SelectPawn" type="Button" parent="." unique_id=148148288]
-offset_left = -38.0
-offset_top = -36.0
-offset_right = 34.0
-offset_bottom = 36.0
+offset_left = -41.0
+offset_top = -39.0
+offset_right = 37.0
+offset_bottom = 39.0
+
+[node name="PawnSprite" type="Sprite2D" parent="." unique_id=525306621]
+position = Vector2(-1.000001, 0)
+scale = Vector2(0.2181611, 0.23686066)
+texture = ExtResource("2_3865y")
 
 [connection signal="area_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_exited"]
