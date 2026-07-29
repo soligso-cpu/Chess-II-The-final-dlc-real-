@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c71blssr34xe8"]
 
-[ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen_test.gd" id="1_k28i3"]
+[ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen.gd" id="1_k28i3"]
 [ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="2_ek64s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tlfm"]

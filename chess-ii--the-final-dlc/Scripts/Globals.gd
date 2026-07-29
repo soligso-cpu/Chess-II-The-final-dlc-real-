@@ -33,6 +33,7 @@ var accessing
 var accessing_group
 var position_target
 var state
+var turn_count
 
 #region Tile Variables
 
@@ -144,6 +145,7 @@ var piece_focused = ""
 func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
+	turn_count += 1
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://cydbmsjlcq5u8"]
+
+[ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_eu7ni"]
+[ext_resource type="Texture2D" uid="uid://dqj11hlpgl51x" path="res://Sprites/pawn_placeholder.png" id="2_3865y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3865y"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
+size = Vector2(72, 72)
+
+[node name="Pawn" type="CharacterBody2D" unique_id=1056477142]
+script = ExtResource("1_eu7ni")
+
+[node name="MovementMarkers" type="Node2D" parent="." unique_id=1593394419]
+
+[node name="Forward" type="Node2D" parent="MovementMarkers" unique_id=381455297]
+position = Vector2(-2, -80)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward" unique_id=491034678]
+
+[node name="ForwardArea" type="Area2D" parent="MovementMarkers/Forward/ForwardSprite" unique_id=991207380]
+
+[node name="ForwardShape" type="CollisionShape2D" parent="MovementMarkers/Forward/ForwardSprite/ForwardArea" unique_id=152810614]
+shape = SubResource("RectangleShape2D_3865y")
+
+[node name="ForwardButton" type="Button" parent="MovementMarkers/Forward/ForwardSprite" unique_id=1973333509]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Forward2" type="Node2D" parent="MovementMarkers" unique_id=1796473523]
+position = Vector2(-2, -160)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward2" unique_id=337964198]
+
+[node name="Forward2Area" type="Area2D" parent="MovementMarkers/Forward2/ForwardSprite" unique_id=986153513]
+
+[node name="Forward2Shape" type="CollisionShape2D" parent="MovementMarkers/Forward2/ForwardSprite/Forward2Area" unique_id=1519539759]
+shape = SubResource("RectangleShape2D_3865y")
+
+[node name="Forward2Button" type="Button" parent="MovementMarkers/Forward2/ForwardSprite" unique_id=670632897]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="Node2D" parent="MovementMarkers" unique_id=1261897759]
+position = Vector2(-82, -80)
+
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left" unique_id=323061921]
+
+[node name="LeftArea" type="Area2D" parent="MovementMarkers/Left/LeftSprite" unique_id=1840700014]
+
+[node name="LeftShape" type="CollisionShape2D" parent="MovementMarkers/Left/LeftSprite/LeftArea" unique_id=815145986]
+shape = SubResource("RectangleShape2D_3865y")
+
+[node name="LeftButton" type="Button" parent="MovementMarkers/Left/LeftSprite" unique_id=2034260634]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Right" type="Node2D" parent="MovementMarkers" unique_id=709488454]
+position = Vector2(78, -80)
+
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right" unique_id=2999511]
+
+[node name="RightArea" type="Area2D" parent="MovementMarkers/Right/RightSprite" unique_id=2120855719]
+
+[node name="RightShape" type="CollisionShape2D" parent="MovementMarkers/Right/RightSprite/RightArea" unique_id=1463709036]
+shape = SubResource("RectangleShape2D_3865y")
+
+[node name="RightButton" type="Button" parent="MovementMarkers/Right/RightSprite" unique_id=626128648]
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PawnCollision" type="CollisionPolygon2D" parent="." unique_id=1163941849]
+polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525306621]
+position = Vector2(-1.000001, 0)
+scale = Vector2(0.2181611, 0.23686066)
+texture = ExtResource("2_3865y")
+
+[node name="TileCollisionArea" type="Area2D" parent="." unique_id=959678191]
+
+[node name="TileCollisionShape" type="CollisionShape2D" parent="TileCollisionArea" unique_id=804584389]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_culnp")
+
+[node name="SelectPawn" type="Button" parent="." unique_id=148148288]
+offset_left = -38.0
+offset_top = -36.0
+offset_right = 34.0
+offset_bottom = 36.0

@@ -1,9 +1,10 @@
 [gd_scene format=4 uid="uid://d0uoq2jygivh4"]
 
-[ext_resource type="Script" uid="uid://dwo1vufl662eo" path="res://Scripts/board_test.gd" id="1_shhme"]
+[ext_resource type="Script" uid="uid://dwo1vufl662eo" path="res://Scripts/board.gd" id="1_shhme"]
 [ext_resource type="TileSet" uid="uid://bjf27kau8apr3" path="res://Sprites/Tilemaps/board_test_tilemap.tres" id="2_s4i1f"]
 [ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
+[ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i6bmi"]
 size = Vector2(639, 83)
@@ -23,6 +24,7 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="PromotionGroup" type="Node2D" parent="." unique_id=392524399]
+visible = false
 
 [node name="WhitePromotionArea" type="Area2D" parent="PromotionGroup" unique_id=163879211]
 
@@ -37,6 +39,7 @@ position = Vector2(616, 607)
 shape = SubResource("RectangleShape2D_i6bmi")
 
 [node name="Edges" type="Node2D" parent="." unique_id=2093225668]
+visible = false
 
 [node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1903873758 groups=["Edge"]]
 position = Vector2(537, -596)
@@ -64,6 +67,7 @@ position = Vector2(548, 1236)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
+visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -471,3 +475,6 @@ position = Vector2(576, 604)
 
 [node name="QueenBlack" parent="." unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
+
+[node name="Pawn" parent="." unique_id=1056477142 instance=ExtResource("5_s4i1f")]
+position = Vector2(738, 603)

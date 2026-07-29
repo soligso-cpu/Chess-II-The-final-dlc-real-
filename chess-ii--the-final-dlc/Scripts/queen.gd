@@ -447,8 +447,6 @@ func _process(delta: float) -> void:
 			if(enemy_left7):
 				if(left_touching_border):
 					$MovementMarkers/Left/Left7.visible = false
-				else:
-					pass
 			if(enemy_left6):
 				if(left_touching_border):
 					$MovementMarkers/Left/Left6.visible = false
@@ -2111,8 +2109,6 @@ func _on_left_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		left1_tile = area.name
 		left1_tile_group = str(area.name)[0]
-	if(not area.is_in_group("Edge")):
-		left_touching_border = false
 
 
 func _on_left_2_area_area_entered(area: Area2D) -> void:
