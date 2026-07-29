@@ -725,11 +725,8 @@ func _process(delta: float) -> void:
 
 func _on_select_queen_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != "QueenWhite" && self.name == "QueenWhite"):
-			Globals.piece_focused = "QueenWhite"
-			focused = true
-		elif(Globals.piece_focused != "QueenBlack" && self.name == "QueenBlack"):
-			Globals.piece_focused = "QueenBlack"
+		if(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
 			focused = true
 		else:
 			Globals.piece_focused = ""

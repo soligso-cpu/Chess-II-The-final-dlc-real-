@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-#region Forward Variables
+#region Forward
 
 var forward1_tile
 var forward2_tile
@@ -27,7 +27,7 @@ var enemy_forward6
 var enemy_forward7
 
 #endregion
-#region Back Variables
+#region Back
 
 var back1_tile
 var back2_tile
@@ -53,9 +53,8 @@ var enemy_back5
 var enemy_back6
 var enemy_back7
 
-
 #endregion
-#region Left Variables
+#region Left
 
 var left1_tile
 var left2_tile
@@ -82,7 +81,7 @@ var enemy_left6
 var enemy_left7
 
 #endregion
-#region Right Variables
+#region Right
 
 var right1_tile
 var right2_tile
@@ -107,23 +106,62 @@ var enemy_right4
 var enemy_right5
 var enemy_right6
 var enemy_right7
-#endregion
 
-var forward_touching_border
-var back_touching_border
-var left_touching_border
-var touching_border
+#endregion
 
 var focused
 var moved
 var taking
-
 var tile
 var tile_group
+
+var touching_border
+var forward_touching_border
+var left_touching_border
+var back_touching_border
 
 func _ready() -> void:
 	focused = false
 	moved = false
+	taking = false
+	Globals.piece_focused = ""
+
+
+func reset_markers():
+	enemy_right1 = false
+	enemy_right2 = false
+	enemy_right3 = false
+	enemy_right4 = false
+	enemy_right5 = false
+	enemy_right6 = false
+	enemy_right7 = false
+
+	enemy_forward1 = false
+	enemy_forward2 = false
+	enemy_forward3 = false
+	enemy_forward4 = false
+	enemy_forward5 = false
+	enemy_forward6 = false
+	enemy_forward7 = false
+
+	enemy_back1 = false
+	enemy_back2 = false
+	enemy_back3 = false
+	enemy_back4 = false
+	enemy_back5 = false
+	enemy_back6 = false
+	enemy_back7 = false
+	
+	enemy_left1 = false
+	enemy_left2 = false
+	enemy_left3 = false
+	enemy_left4 = false
+	enemy_left5 = false
+	enemy_left6 = false
+	enemy_left7 = false
+	
+	focused = false
+	Globals.piece_attached = ""
 
 
 func _process(delta: float) -> void:
@@ -197,9 +235,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right/Right5.visible = false
 				$MovementMarkers/Right/Right6.visible = false
 				$MovementMarkers/Right/Right7.visible = false
-			#endregion
+					#endregion
 			#region Forward Movement Marker Visibility Control
-			
+					
 			$MovementMarkers/Forward.visible = true
 			$MovementMarkers/Forward/Forward1.visible = true
 			$MovementMarkers/Forward/Forward2.visible = true
@@ -252,62 +290,62 @@ func _process(delta: float) -> void:
 			if(enemy_forward7):
 				if(forward_touching_border):
 					$MovementMarkers/Forward/Forward7.visible = false
-			#endregion
+					#endregion
 			#region Back Movement Marker Visibility Control
-			
-			$MovementMarkers/Back.visible = true
-			$MovementMarkers/Back/Back1.visible = true
-			$MovementMarkers/Back/Back2.visible = true
-			$MovementMarkers/Back/Back3.visible = true
-			$MovementMarkers/Back/Back4.visible = true
-			$MovementMarkers/Back/Back5.visible = true
-			$MovementMarkers/Back/Back6.visible = true
-			$MovementMarkers/Back/Back7.visible = true
-			
-			if(enemy_back1):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back1.visible = false
-				$MovementMarkers/Back/Back2.visible = false
-				$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back2):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back2.visible = false
-				$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back3):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back4):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back5):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back6):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back7):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back7.visible = false
-				
-			#endregion
+					
+					$MovementMarkers/Back.visible = true
+					$MovementMarkers/Back/Back1.visible = true
+					$MovementMarkers/Back/Back2.visible = true
+					$MovementMarkers/Back/Back3.visible = true
+					$MovementMarkers/Back/Back4.visible = true
+					$MovementMarkers/Back/Back5.visible = true
+					$MovementMarkers/Back/Back6.visible = true
+					$MovementMarkers/Back/Back7.visible = true
+					
+					if(enemy_back1):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back1.visible = false
+						$MovementMarkers/Back/Back2.visible = false
+						$MovementMarkers/Back/Back3.visible = false
+						$MovementMarkers/Back/Back4.visible = false
+						$MovementMarkers/Back/Back5.visible = false
+						$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back2):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back2.visible = false
+						$MovementMarkers/Back/Back3.visible = false
+						$MovementMarkers/Back/Back4.visible = false
+						$MovementMarkers/Back/Back5.visible = false
+						$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back3):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back3.visible = false
+						$MovementMarkers/Back/Back4.visible = false
+						$MovementMarkers/Back/Back5.visible = false
+						$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back4):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back4.visible = false
+						$MovementMarkers/Back/Back5.visible = false
+						$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back5):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back5.visible = false
+						$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back6):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back6.visible = false
+						$MovementMarkers/Back/Back7.visible = false
+					if(enemy_back7):
+						if(back_touching_border):
+							$MovementMarkers/Back/Back7.visible = false
+						
+					#endregion
 			#region Left Movement Marker Visibility Control
 			
 			$MovementMarkers/Left.visible = true
@@ -362,7 +400,6 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left6.visible = false
 				$MovementMarkers/Left/Left7.visible = false
 			#endregion
-
 		elif(!focused):
 			for child in $MovementMarkers.get_children():
 				child.process_mode = Node.PROCESS_MODE_DISABLED
@@ -375,68 +412,7 @@ func _process(delta: float) -> void:
 			child.process_mode = Node.PROCESS_MODE_DISABLED
 		$SelectRook.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-func reset_markers():
-	enemy_right1 = false
-	enemy_right2 = false
-	enemy_right3 = false
-	enemy_right4 = false
-	enemy_right5 = false
-	enemy_right6 = false
-	enemy_right7 = false
-
-	enemy_forward1 = false
-	enemy_forward2 = false
-	enemy_forward3 = false
-	enemy_forward4 = false
-	enemy_forward5 = false
-	enemy_forward6 = false
-	enemy_forward7 = false
-
-	enemy_back1 = false
-	enemy_back2 = false
-	enemy_back3 = false
-	enemy_back4 = false
-	enemy_back5 = false
-	enemy_back6 = false
-	enemy_back7 = false
-	
-	enemy_left1 = false
-	enemy_left2 = false
-	enemy_left3 = false
-	enemy_left4 = false
-	enemy_left5 = false
-	enemy_left6 = false
-	enemy_left7 = false
-	
-	focused = false
-	Globals.piece_focused = ""
-
-
-func _on_select_rook_button_up() -> void:
-	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
-		else:
-			Globals.piece_focused = ""
-			focused = false
-
-
-func _on_tile_collision_area_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Tiles")):
-		tile = area.name
-		tile_group = str(area.name)[0]
-
-
-func _on_tile_collision_area_body_entered(body: Node2D) -> void:
-	if(self.name != body.name):
-		if(taking):
-			body.queue_free()
-			taking = false
-		else:
-			queue_free()
-
-
+#region movement
 #region All the inputs for the Right markers.
 
 #region All the button signals.
@@ -569,6 +545,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 		else:
 			enemy_right1 = true
 			touching_border = false
+	
 
 func _on_right_area_1_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Pieces")):
@@ -728,8 +705,6 @@ func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[right1_tile_group][right1_tile].state == false):
-			touching_border = false
 
 
 func _on_right_area_1_area_exited(area: Area2D) -> void:
@@ -745,8 +720,6 @@ func _on_right_area_2_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right2_tile = area.name
 		right2_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[right2_tile_group][right2_tile].state == false):
-			touching_border = false
 
 
 func _on_right_area_2_area_exited(area: Area2D) -> void:
@@ -761,8 +734,6 @@ func _on_right_area_3_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right3_tile = area.name
 		right3_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[right3_tile_group][right3_tile].state == false):
-			touching_border = false
 
 
 func _on_right_area_3_area_exited(area: Area2D) -> void:
@@ -778,8 +749,6 @@ func _on_right_area_4_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right4_tile = area.name
 		right4_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[str(area.name)[0]][area.name].state == false):
-			touching_border = false
 
 
 func _on_right_area_4_area_exited(area: Area2D) -> void:
@@ -795,8 +764,6 @@ func _on_right_area_5_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right5_tile = area.name
 		right5_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[str(area.name)[0]][area.name].state == false):
-			touching_border = false
 
 
 func _on_right_area_5_area_exited(area: Area2D) -> void:
@@ -813,8 +780,6 @@ func _on_right_area_6_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right6_tile = area.name
 		right6_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[str(area.name)[0]][area.name].state == false):
-			touching_border = false
 
 
 func _on_right_area_6_area_exited(area: Area2D) -> void:
@@ -830,8 +795,6 @@ func _on_right_area_7_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right7_tile = area.name
 		right7_tile_group = str(area.name)[0]
-		if(Globals.board_tiles[str(area.name)[0]][area.name].state == false):
-			touching_border = false
 
 
 func _on_right_area_7_area_exited(area: Area2D) -> void:
@@ -1500,6 +1463,8 @@ func _on_back_7_area_body_exited(body: Node2D) -> void:
 	enemy_back7 = false
 
 #endregion
+	#region All the edge collision signals
+
 
 func _on_back_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -1987,3 +1952,29 @@ func _on_left_7_area_body_exited(body: Node2D) -> void:
 #endregion
 
 #endregion
+#endregion
+
+
+func _on_tile_collision_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]
+
+
+func _on_tile_collision_area_body_entered(body: Node2D) -> void:
+	if(self.name != body.name):
+		if(taking):
+			body.queue_free()
+			taking = false
+		else:
+			queue_free()
+
+
+func _on_select_rook_button_up() -> void:
+	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
+		if(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		else:
+			Globals.piece_focused = ""
+			focused = false

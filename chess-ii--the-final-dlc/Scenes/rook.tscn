@@ -4,505 +4,641 @@
 [ext_resource type="Script" uid="uid://85bhrl8qxrvf" path="res://Scripts/rook.gd" id="1_wwc4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwc4d"]
-size = Vector2(72, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1kqh"]
-size = Vector2(72, 72)
+size = Vector2(72, 72.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5ob0w"]
 size = Vector2(72, 72.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rdgg5"]
+size = Vector2(72, 72.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjr7j"]
+size = Vector2(72, 72.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgw01"]
+size = Vector2(72, 72.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yoxvb"]
+size = Vector2(72, 72.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1kqh"]
+size = Vector2(72, 72.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_losgq"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce33x"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rxdnj"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkk6j"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wtkm"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yu3ov"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5t4yi"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_enm2m"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q5ypr"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_go8mt"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uuxgo"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixx30"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1druw"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_18jqx"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u2nij"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uwjj"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyxby"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pvst"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_08cx8"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g1y3s"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j64pt"]
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f608j"]
 size = Vector2(72, 72)
 
-[node name="Rook" type="CharacterBody2D" unique_id=1039881567]
+[node name="Rook" type="CharacterBody2D" unique_id=1039881567 groups=["Pieces", "White"]]
 script = ExtResource("1_wwc4d")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=199327806]
 
-[node name="Forward" type="Node2D" parent="MovementMarkers" unique_id=500103145]
+[node name="Right" type="Marker2D" parent="MovementMarkers" unique_id=842532310]
+process_priority = 1
+z_index = 1
+position = Vector2(1, 2)
 
-[node name="Forward1" type="Node2D" parent="MovementMarkers/Forward" unique_id=387824204]
-position = Vector2(1, -79)
+[node name="Right1" type="Node2D" parent="MovementMarkers/Right" unique_id=1736740923]
+position = Vector2(80, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward1" unique_id=944230889]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right1" unique_id=663942445]
 
-[node name="Forward1Area" type="Area2D" parent="MovementMarkers/Forward/Forward1/ForwardSprite" unique_id=369824195]
+[node name="RightArea1" type="Area2D" parent="MovementMarkers/Right/Right1/RightSprite" unique_id=387128019]
 
-[node name="Forward1Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" unique_id=333809132]
+[node name="RightArea1Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right1/RightSprite/RightArea1" unique_id=2048008273]
 shape = SubResource("RectangleShape2D_wwc4d")
 
-[node name="ForwardButton1" type="Button" parent="MovementMarkers/Forward/Forward1/ForwardSprite" unique_id=1969755367]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton" type="Button" parent="MovementMarkers/Right/Right1" unique_id=47753277]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward2" type="Node2D" parent="MovementMarkers/Forward" unique_id=1868249393]
-position = Vector2(1, -159)
+[node name="Right2" type="Node2D" parent="MovementMarkers/Right" unique_id=812886584]
+position = Vector2(160, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward2" unique_id=1463583908]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right2" unique_id=822338042]
 
-[node name="Forward2Area" type="Area2D" parent="MovementMarkers/Forward/Forward2/ForwardSprite" unique_id=1975170410]
+[node name="RightArea2" type="Area2D" parent="MovementMarkers/Right/Right2/RightSprite" unique_id=141335288]
 
-[node name="Forward2Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" unique_id=426169801]
-shape = SubResource("RectangleShape2D_wwc4d")
+[node name="RightArea2Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right2/RightSprite/RightArea2" unique_id=1510084369]
+shape = SubResource("RectangleShape2D_5ob0w")
 
-[node name="ForwardButton2" type="Button" parent="MovementMarkers/Forward/Forward2/ForwardSprite" unique_id=2068141396]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton2" type="Button" parent="MovementMarkers/Right/Right2" unique_id=1360770119]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward3" type="Node2D" parent="MovementMarkers/Forward" unique_id=147529248]
-position = Vector2(1, -239)
+[node name="Right3" type="Node2D" parent="MovementMarkers/Right" unique_id=374435683]
+position = Vector2(240, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward3" unique_id=703409579]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right3" unique_id=434857953]
 
-[node name="Forward3Area" type="Area2D" parent="MovementMarkers/Forward/Forward3/ForwardSprite" unique_id=1211477964]
+[node name="RightArea3" type="Area2D" parent="MovementMarkers/Right/Right3/RightSprite" unique_id=1455933902]
 
-[node name="Forward3Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" unique_id=548859099]
-shape = SubResource("RectangleShape2D_wwc4d")
+[node name="RightArea3Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right3/RightSprite/RightArea3" unique_id=1263637047]
+shape = SubResource("RectangleShape2D_rdgg5")
 
-[node name="ForwardButton3" type="Button" parent="MovementMarkers/Forward/Forward3/ForwardSprite" unique_id=467825662]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton3" type="Button" parent="MovementMarkers/Right/Right3" unique_id=1578660578]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward4" type="Node2D" parent="MovementMarkers/Forward" unique_id=770743256]
-position = Vector2(1, -319)
+[node name="Right4" type="Node2D" parent="MovementMarkers/Right" unique_id=1903100642]
+position = Vector2(320, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward4" unique_id=1505751173]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right4" unique_id=229265422]
 
-[node name="Forward4Area" type="Area2D" parent="MovementMarkers/Forward/Forward4/ForwardSprite" unique_id=539871861]
+[node name="RightArea4" type="Area2D" parent="MovementMarkers/Right/Right4/RightSprite" unique_id=1729333601]
 
-[node name="Forward4Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" unique_id=1852301864]
-shape = SubResource("RectangleShape2D_wwc4d")
+[node name="RightArea4Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right4/RightSprite/RightArea4" unique_id=871442462]
+shape = SubResource("RectangleShape2D_qjr7j")
 
-[node name="ForwardButton4" type="Button" parent="MovementMarkers/Forward/Forward4/ForwardSprite" unique_id=217437819]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton4" type="Button" parent="MovementMarkers/Right/Right4" unique_id=604359802]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward5" type="Node2D" parent="MovementMarkers/Forward" unique_id=1161208056]
-position = Vector2(1, -399)
+[node name="Right5" type="Node2D" parent="MovementMarkers/Right" unique_id=554019886]
+position = Vector2(400, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward5" unique_id=1172306661]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right5" unique_id=1439292379]
 
-[node name="Forward5Area" type="Area2D" parent="MovementMarkers/Forward/Forward5/ForwardSprite" unique_id=1505502071]
+[node name="RightArea5" type="Area2D" parent="MovementMarkers/Right/Right5/RightSprite" unique_id=593110]
 
-[node name="Forward5Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" unique_id=570048517]
-shape = SubResource("RectangleShape2D_wwc4d")
+[node name="RightArea5Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right5/RightSprite/RightArea5" unique_id=1001691999]
+shape = SubResource("RectangleShape2D_qgw01")
 
-[node name="ForwardButton5" type="Button" parent="MovementMarkers/Forward/Forward5/ForwardSprite" unique_id=1329194856]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton5" type="Button" parent="MovementMarkers/Right/Right5" unique_id=1987112587]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward6" type="Node2D" parent="MovementMarkers/Forward" unique_id=1945049196]
-position = Vector2(1, -479)
+[node name="Right6" type="Node2D" parent="MovementMarkers/Right" unique_id=1494314367]
+position = Vector2(480, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward6" unique_id=1790372507]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right6" unique_id=242597661]
 
-[node name="Forward6Area" type="Area2D" parent="MovementMarkers/Forward/Forward6/ForwardSprite" unique_id=1227339154]
+[node name="RightArea6" type="Area2D" parent="MovementMarkers/Right/Right6/RightSprite" unique_id=1326114008]
 
-[node name="Forward6Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" unique_id=326997666]
-shape = SubResource("RectangleShape2D_wwc4d")
+[node name="RightArea6Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right6/RightSprite/RightArea6" unique_id=1579368895]
+shape = SubResource("RectangleShape2D_yoxvb")
 
-[node name="ForwardButton6" type="Button" parent="MovementMarkers/Forward/Forward6/ForwardSprite" unique_id=1467656272]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
+[node name="RightButton6" type="Button" parent="MovementMarkers/Right/Right6" unique_id=366053714]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Forward7" type="Node2D" parent="MovementMarkers/Forward" unique_id=809548617]
-position = Vector2(1, -559)
+[node name="Right7" type="Node2D" parent="MovementMarkers/Right" unique_id=2031659190]
+position = Vector2(560, -1)
 
-[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward7" unique_id=774084034]
+[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right7" unique_id=1805606722]
 
-[node name="Forward7Area" type="Area2D" parent="MovementMarkers/Forward/Forward7/ForwardSprite" unique_id=1030777027]
+[node name="RightArea7" type="Area2D" parent="MovementMarkers/Right/Right7/RightSprite" unique_id=1554897333]
 
-[node name="Forward7Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" unique_id=1313571026]
-shape = SubResource("RectangleShape2D_wwc4d")
-
-[node name="ForwardButton7" type="Button" parent="MovementMarkers/Forward/Forward7/ForwardSprite" unique_id=2103821971]
-offset_left = -39.0
-offset_top = -39.0
-offset_right = 39.0
-offset_bottom = 39.0
-
-[node name="Back" type="Node2D" parent="MovementMarkers" unique_id=615992236]
-
-[node name="Back1" type="Node2D" parent="MovementMarkers/Back" unique_id=1807025862]
-position = Vector2(0, 80)
-
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back1" unique_id=322770908]
-
-[node name="Back1Area" type="Area2D" parent="MovementMarkers/Back/Back1/BackSprite" unique_id=1307865382]
-
-[node name="Back1Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back1/BackSprite/Back1Area" unique_id=337274046]
-position = Vector2(1, 1)
+[node name="RightArea7Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right7/RightSprite/RightArea7" unique_id=1210049176]
 shape = SubResource("RectangleShape2D_j1kqh")
 
-[node name="Back1Button" type="Button" parent="MovementMarkers/Back/Back1/BackSprite" unique_id=1602502855]
+[node name="RightButton7" type="Button" parent="MovementMarkers/Right/Right7" unique_id=346882992]
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Forward" type="Marker2D" parent="MovementMarkers" unique_id=1812460378]
+process_priority = 1
+z_index = 1
+
+[node name="Forward1" type="Node2D" parent="MovementMarkers/Forward" unique_id=1456069727]
+position = Vector2(0, -81)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward1" unique_id=1314253255]
+
+[node name="Forward1Area" type="Area2D" parent="MovementMarkers/Forward/Forward1/ForwardSprite" unique_id=883051621]
+
+[node name="Forward1Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" unique_id=1052321060]
+shape = SubResource("RectangleShape2D_losgq")
+
+[node name="ForwardButton1" type="Button" parent="MovementMarkers/Forward/Forward1/ForwardSprite" unique_id=828437005]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -39.0
+offset_right = 37.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Forward2" type="Node2D" parent="MovementMarkers/Forward" unique_id=2025182833]
+position = Vector2(0, -161)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward2" unique_id=1734923509]
+
+[node name="Forward2Area" type="Area2D" parent="MovementMarkers/Forward/Forward2/ForwardSprite" unique_id=357997739]
+
+[node name="Forward2Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" unique_id=1100828960]
+shape = SubResource("RectangleShape2D_ce33x")
+
+[node name="ForwardButton2" type="Button" parent="MovementMarkers/Forward/Forward2/ForwardSprite" unique_id=310720479]
+anchors_preset = 10
+anchor_right = 1.0
 offset_left = -38.0
 offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 37.0
+offset_bottom = 38.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Back2" type="Node2D" parent="MovementMarkers/Back" unique_id=1760615007]
-position = Vector2(0, 160)
+[node name="Forward3" type="Node2D" parent="MovementMarkers/Forward" unique_id=258326641]
+position = Vector2(0, -241)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back2" unique_id=782419697]
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward3" unique_id=1758940278]
 
-[node name="Back2Area" type="Area2D" parent="MovementMarkers/Back/Back2/BackSprite" unique_id=743487845]
+[node name="Forward3Area" type="Area2D" parent="MovementMarkers/Forward/Forward3/ForwardSprite" unique_id=1023248029]
 
-[node name="Back2Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back2/BackSprite/Back2Area" unique_id=2126279838]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Forward3Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" unique_id=1071430915]
+shape = SubResource("RectangleShape2D_rxdnj")
 
-[node name="Back2Button" type="Button" parent="MovementMarkers/Back/Back2/BackSprite" unique_id=464212296]
-offset_left = -38.0
+[node name="ForwardButton3" type="Button" parent="MovementMarkers/Forward/Forward3/ForwardSprite" unique_id=146277396]
+anchors_preset = -1
+anchor_left = -1.0
+offset_left = -37.0
 offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Back3" type="Node2D" parent="MovementMarkers/Back" unique_id=479756792]
-position = Vector2(0, 240)
+[node name="Forward4" type="Node2D" parent="MovementMarkers/Forward" unique_id=826076849]
+position = Vector2(0, -321)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back3" unique_id=135076722]
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward4" unique_id=105544970]
 
-[node name="Back3Area" type="Area2D" parent="MovementMarkers/Back/Back3/BackSprite" unique_id=1804772717]
+[node name="Forward4Area" type="Area2D" parent="MovementMarkers/Forward/Forward4/ForwardSprite" unique_id=1210251719]
 
-[node name="Back3Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back3/BackSprite/Back3Area" unique_id=1930868636]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Forward4Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" unique_id=750150185]
+shape = SubResource("RectangleShape2D_jkk6j")
 
-[node name="Back3Button" type="Button" parent="MovementMarkers/Back/Back3/BackSprite" unique_id=1997318861]
-offset_left = -38.0
+[node name="ForwardButton4" type="Button" parent="MovementMarkers/Forward/Forward4/ForwardSprite" unique_id=400599547]
+anchors_preset = -1
+anchor_left = -1.0
+offset_left = -37.0
 offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Back4" type="Node2D" parent="MovementMarkers/Back" unique_id=1605050293]
-position = Vector2(0, 320)
+[node name="Forward5" type="Node2D" parent="MovementMarkers/Forward" unique_id=19238526]
+position = Vector2(0, -401)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back4" unique_id=149450327]
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward5" unique_id=217902103]
 
-[node name="Back4Area" type="Area2D" parent="MovementMarkers/Back/Back4/BackSprite" unique_id=1290621604]
+[node name="Forward5Area" type="Area2D" parent="MovementMarkers/Forward/Forward5/ForwardSprite" unique_id=968503714]
 
-[node name="Back1Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back4/BackSprite/Back4Area" unique_id=1059017271]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Forward5Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" unique_id=808477426]
+shape = SubResource("RectangleShape2D_2wtkm")
 
-[node name="Back4Button" type="Button" parent="MovementMarkers/Back/Back4/BackSprite" unique_id=248655641]
-offset_left = -38.0
+[node name="ForwardButton5" type="Button" parent="MovementMarkers/Forward/Forward5/ForwardSprite" unique_id=737725829]
+anchors_preset = -1
+anchor_left = -1.0
+anchor_top = -1.0
+offset_left = -37.0
+offset_top = -37.0
+offset_right = 38.0
+offset_bottom = 39.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Forward6" type="Node2D" parent="MovementMarkers/Forward" unique_id=1249622565]
+position = Vector2(0, -481)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward6" unique_id=1014184659]
+
+[node name="Forward6Area" type="Area2D" parent="MovementMarkers/Forward/Forward6/ForwardSprite" unique_id=414386585]
+
+[node name="Forward6Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" unique_id=1162689680]
+shape = SubResource("RectangleShape2D_yu3ov")
+
+[node name="ForwardButton6" type="Button" parent="MovementMarkers/Forward/Forward6/ForwardSprite" unique_id=2077077695]
+anchors_preset = -1
+anchor_left = -1.0
+offset_left = -37.0
 offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 38.0
+offset_bottom = 38.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Back5" type="Node2D" parent="MovementMarkers/Back" unique_id=1062881594]
+[node name="Forward7" type="Node2D" parent="MovementMarkers/Forward" unique_id=1557895490]
+position = Vector2(0, -561)
+
+[node name="ForwardSprite" type="Sprite2D" parent="MovementMarkers/Forward/Forward7" unique_id=877448102]
+
+[node name="Forward7Area" type="Area2D" parent="MovementMarkers/Forward/Forward7/ForwardSprite" unique_id=1566575721]
+
+[node name="Forward7Shape" type="CollisionShape2D" parent="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" unique_id=2028047112]
+shape = SubResource("RectangleShape2D_5t4yi")
+
+[node name="ForwardButton7" type="Button" parent="MovementMarkers/Forward/Forward7/ForwardSprite" unique_id=366751940]
+anchors_preset = -1
+anchor_top = -1.0
+anchor_right = 1.0
+anchor_bottom = -1.0
+offset_left = -38.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 39.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Back" type="Marker2D" parent="MovementMarkers" unique_id=199673761]
+process_priority = 1
+z_index = 1
+
+[node name="Back1" type="Node2D" parent="MovementMarkers/Back" unique_id=1467177008]
+position = Vector2(0, 79)
+
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back1" unique_id=158763343]
+
+[node name="Back1Area" type="Area2D" parent="MovementMarkers/Back/Back1/BackSprite" unique_id=1221783192]
+
+[node name="Back1Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back1/BackSprite/Back1Area" unique_id=1567963314]
+shape = SubResource("RectangleShape2D_enm2m")
+
+[node name="Back1Button" type="Button" parent="MovementMarkers/Back/Back1/BackSprite" unique_id=2006121072]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 56.421005
+anchor_right = -27.210999
+anchor_bottom = 60.421
+offset_left = -6.7889996
+offset_top = -94.421005
+offset_right = 65.211
+offset_bottom = -22.421001
+metadata/_edit_use_anchors_ = true
+
+[node name="Back2" type="Node2D" parent="MovementMarkers/Back" unique_id=322347047]
+position = Vector2(0, 159)
+
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back2" unique_id=1147393933]
+
+[node name="Back2Area" type="Area2D" parent="MovementMarkers/Back/Back2/BackSprite" unique_id=601811075]
+
+[node name="Back2Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back2/BackSprite/Back2Area" unique_id=1426196401]
+shape = SubResource("RectangleShape2D_q5ypr")
+
+[node name="Back2Button" type="Button" parent="MovementMarkers/Back/Back2/BackSprite" unique_id=1109104492]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 56.421
+anchor_right = -27.210999
+anchor_bottom = 60.420998
+offset_left = -6.7889996
+offset_top = -94.421005
+offset_right = 65.211
+offset_bottom = -22.420998
+metadata/_edit_use_anchors_ = true
+
+[node name="Back3" type="Node2D" parent="MovementMarkers/Back" unique_id=882442097]
+position = Vector2(0, 239)
+
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back3" unique_id=1840295536]
+
+[node name="Back3Area" type="Area2D" parent="MovementMarkers/Back/Back3/BackSprite" unique_id=1810867847]
+
+[node name="Back3Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back3/BackSprite/Back3Area" unique_id=992370376]
+shape = SubResource("RectangleShape2D_go8mt")
+
+[node name="Back3Button" type="Button" parent="MovementMarkers/Back/Back3/BackSprite" unique_id=223052589]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 56.421
+anchor_right = -27.210999
+anchor_bottom = 60.420998
+offset_left = -6.7889996
+offset_top = -94.421005
+offset_right = 65.211
+offset_bottom = -22.420998
+metadata/_edit_use_anchors_ = true
+
+[node name="Back4" type="Node2D" parent="MovementMarkers/Back" unique_id=109215187]
+position = Vector2(0, 319)
+
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back4" unique_id=1720935581]
+
+[node name="Back4Area" type="Area2D" parent="MovementMarkers/Back/Back4/BackSprite" unique_id=71391447]
+
+[node name="Back4Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back4/BackSprite/Back4Area" unique_id=1897756773]
+shape = SubResource("RectangleShape2D_uuxgo")
+
+[node name="Back4Button" type="Button" parent="MovementMarkers/Back/Back4/BackSprite" unique_id=1179617659]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 56.421
+anchor_right = -27.210999
+anchor_bottom = 60.420998
+offset_left = -6.7889996
+offset_top = -94.421005
+offset_right = 65.211
+offset_bottom = -22.420998
+metadata/_edit_use_anchors_ = true
+
+[node name="Back5" type="Node2D" parent="MovementMarkers/Back" unique_id=555680403]
 position = Vector2(0, 400)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back5" unique_id=1019047910]
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back5" unique_id=1207688667]
 
-[node name="Back5Area" type="Area2D" parent="MovementMarkers/Back/Back5/BackSprite" unique_id=2051860844]
+[node name="Back5Area" type="Area2D" parent="MovementMarkers/Back/Back5/BackSprite" unique_id=319903428]
 
-[node name="Back5Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back5/BackSprite/Back5Area" unique_id=134672598]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Back5Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back5/BackSprite/Back5Area" unique_id=290969893]
+shape = SubResource("RectangleShape2D_ixx30")
 
-[node name="Back5Button" type="Button" parent="MovementMarkers/Back/Back5/BackSprite" unique_id=1446340814]
-offset_left = -38.0
-offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Back5Button" type="Button" parent="MovementMarkers/Back/Back5/BackSprite" unique_id=1544980933]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 56.421
+anchor_right = -27.210999
+anchor_bottom = 60.420994
+offset_left = -6.7889996
+offset_top = -94.421005
+offset_right = 65.211
+offset_bottom = -22.420998
+metadata/_edit_use_anchors_ = true
 
-[node name="Back6" type="Node2D" parent="MovementMarkers/Back" unique_id=1435525921]
-position = Vector2(0, 480)
+[node name="Back6" type="Node2D" parent="MovementMarkers/Back" unique_id=877331785]
+position = Vector2(0, 479)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back6" unique_id=1198287821]
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back6" unique_id=1274903508]
 
-[node name="Back6Area" type="Area2D" parent="MovementMarkers/Back/Back6/BackSprite" unique_id=1395497670]
+[node name="Back6Area" type="Area2D" parent="MovementMarkers/Back/Back6/BackSprite" unique_id=598390648]
 
-[node name="Back1Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back6/BackSprite/Back6Area" unique_id=301417352]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Back6Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back6/BackSprite/Back6Area" unique_id=2078061654]
+shape = SubResource("RectangleShape2D_1druw")
 
-[node name="Back6Button" type="Button" parent="MovementMarkers/Back/Back6/BackSprite" unique_id=2085241208]
-offset_left = -38.0
-offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Back6Button" type="Button" parent="MovementMarkers/Back/Back6/BackSprite" unique_id=2115736346]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 57.421
+anchor_right = -27.210999
+anchor_bottom = 61.420998
+offset_left = -6.7889996
+offset_top = -95.421005
+offset_right = 65.211
+offset_bottom = -23.421001
+metadata/_edit_use_anchors_ = true
 
-[node name="Back7" type="Node2D" parent="MovementMarkers/Back" unique_id=673134372]
-position = Vector2(0, 560)
+[node name="Back7" type="Node2D" parent="MovementMarkers/Back" unique_id=425468397]
+position = Vector2(0, 559)
 
-[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back7" unique_id=969400659]
+[node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back/Back7" unique_id=1585508164]
 
-[node name="Back7Area" type="Area2D" parent="MovementMarkers/Back/Back7/BackSprite" unique_id=1134862026]
+[node name="Back7Area" type="Area2D" parent="MovementMarkers/Back/Back7/BackSprite" unique_id=1010678655]
 
-[node name="Back7Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back7/BackSprite/Back7Area" unique_id=1315221616]
-position = Vector2(1, 1)
-shape = SubResource("RectangleShape2D_j1kqh")
+[node name="Back7Shape" type="CollisionShape2D" parent="MovementMarkers/Back/Back7/BackSprite/Back7Area" unique_id=605012959]
+shape = SubResource("RectangleShape2D_18jqx")
 
-[node name="Back7Button" type="Button" parent="MovementMarkers/Back/Back7/BackSprite" unique_id=662820290]
-offset_left = -38.0
-offset_top = -38.0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Back7Button" type="Button" parent="MovementMarkers/Back/Back7/BackSprite" unique_id=83678805]
+anchors_preset = -1
+anchor_left = -31.211
+anchor_top = 57.421
+anchor_right = -27.210999
+anchor_bottom = 61.420998
+offset_left = -6.7889996
+offset_top = -95.421005
+offset_right = 65.211
+offset_bottom = -23.421001
+metadata/_edit_use_anchors_ = true
 
-[node name="Right" type="Node2D" parent="MovementMarkers" unique_id=1670731233]
+[node name="Left" type="Marker2D" parent="MovementMarkers" unique_id=1185668008]
 process_priority = 1
 z_index = 1
 
-[node name="Right1" type="Node2D" parent="MovementMarkers/Right" unique_id=1919305464]
-position = Vector2(81, 1)
+[node name="Left1" type="Node2D" parent="MovementMarkers/Left" unique_id=1506532056]
+position = Vector2(-80, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right1" unique_id=2087805038]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left1" unique_id=2069823552]
 
-[node name="RightArea1" type="Area2D" parent="MovementMarkers/Right/Right1/RightSprite" unique_id=1018116861]
+[node name="Left1Area" type="Area2D" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=1155392522]
 
-[node name="RightArea1Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right1/RightSprite/RightArea1" unique_id=1465872794]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left1Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left1/LeftSprite/Left1Area" unique_id=1961592216]
+shape = SubResource("RectangleShape2D_u2nij")
 
-[node name="RightButton" type="Button" parent="MovementMarkers/Right/Right1" unique_id=423942501]
+[node name="Left1Button" type="Button" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=1381818139]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Right2" type="Node2D" parent="MovementMarkers/Right" unique_id=620355404]
-position = Vector2(161, 1)
+[node name="Left2" type="Node2D" parent="MovementMarkers/Left" unique_id=1221421996]
+position = Vector2(-160, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right2" unique_id=2145683524]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left2" unique_id=117817869]
 
-[node name="RightArea2" type="Area2D" parent="MovementMarkers/Right/Right2/RightSprite" unique_id=1553724391]
+[node name="Left2Area" type="Area2D" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=124837859]
 
-[node name="RightArea2Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right2/RightSprite/RightArea2" unique_id=398847925]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left2Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left2/LeftSprite/Left2Area" unique_id=1068525920]
+shape = SubResource("RectangleShape2D_5uwjj")
 
-[node name="RightButton2" type="Button" parent="MovementMarkers/Right/Right2" unique_id=986676958]
+[node name="Left2Button" type="Button" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=727063444]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
-[node name="Right3" type="Node2D" parent="MovementMarkers/Right" unique_id=1016049210]
-position = Vector2(241, 1)
+[node name="Left3" type="Node2D" parent="MovementMarkers/Left" unique_id=1413120215]
+position = Vector2(-240, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right3" unique_id=1943114315]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left3" unique_id=1626368362]
 
-[node name="RightArea3" type="Area2D" parent="MovementMarkers/Right/Right3/RightSprite" unique_id=1734678069]
+[node name="Left3Area" type="Area2D" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=189131393]
 
-[node name="RightArea3Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right3/RightSprite/RightArea3" unique_id=215140107]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left3Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left3/LeftSprite/Left3Area" unique_id=1474527566]
+shape = SubResource("RectangleShape2D_uyxby")
 
-[node name="RightButton3" type="Button" parent="MovementMarkers/Right/Right3" unique_id=467988927]
+[node name="Left3Button" type="Button" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=1091588979]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
-[node name="Right4" type="Node2D" parent="MovementMarkers/Right" unique_id=892745867]
-position = Vector2(321, 1)
+[node name="Left4" type="Node2D" parent="MovementMarkers/Left" unique_id=813388976]
+position = Vector2(-320, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right4" unique_id=1350509955]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left4" unique_id=1430600831]
 
-[node name="RightArea4" type="Area2D" parent="MovementMarkers/Right/Right4/RightSprite" unique_id=118640982]
+[node name="Left4Area" type="Area2D" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=1674122253]
 
-[node name="RightArea4Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right4/RightSprite/RightArea4" unique_id=1050525121]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left4Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left4/LeftSprite/Left4Area" unique_id=1327520147]
+shape = SubResource("RectangleShape2D_7pvst")
 
-[node name="RightButton4" type="Button" parent="MovementMarkers/Right/Right4" unique_id=2073455699]
+[node name="Left4Button" type="Button" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=1176529551]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
-[node name="Right5" type="Node2D" parent="MovementMarkers/Right" unique_id=517498688]
-position = Vector2(401, 1)
+[node name="Left5" type="Node2D" parent="MovementMarkers/Left" unique_id=1751420202]
+position = Vector2(-400, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right5" unique_id=996926562]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left5" unique_id=1873776408]
 
-[node name="RightArea5" type="Area2D" parent="MovementMarkers/Right/Right5/RightSprite" unique_id=107057536]
+[node name="Left5Area" type="Area2D" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=2146103077]
 
-[node name="RightArea5Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right5/RightSprite/RightArea5" unique_id=464432181]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left5Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left5/LeftSprite/Left5Area" unique_id=1527917215]
+shape = SubResource("RectangleShape2D_08cx8")
 
-[node name="RightButton5" type="Button" parent="MovementMarkers/Right/Right5" unique_id=122061829]
+[node name="Left5Button" type="Button" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=633931725]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
-[node name="Right6" type="Node2D" parent="MovementMarkers/Right" unique_id=1708896710]
-position = Vector2(481, 1)
+[node name="Left6" type="Node2D" parent="MovementMarkers/Left" unique_id=1861799554]
+position = Vector2(-480, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right6" unique_id=1627349193]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left6" unique_id=975040352]
 
-[node name="RightArea6" type="Area2D" parent="MovementMarkers/Right/Right6/RightSprite" unique_id=1741740971]
+[node name="Left6Area" type="Area2D" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=452876591]
 
-[node name="RightArea6Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right6/RightSprite/RightArea6" unique_id=318034566]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left6Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left6/LeftSprite/Left6Area" unique_id=1841893303]
+shape = SubResource("RectangleShape2D_g1y3s")
 
-[node name="RightButton6" type="Button" parent="MovementMarkers/Right/Right6" unique_id=1530315137]
+[node name="Left6Button" type="Button" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=1353785709]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
-[node name="Right7" type="Node2D" parent="MovementMarkers/Right" unique_id=2121676556]
-position = Vector2(561, 1)
+[node name="Left7" type="Node2D" parent="MovementMarkers/Left" unique_id=965736336]
+position = Vector2(-560, -1)
 
-[node name="RightSprite" type="Sprite2D" parent="MovementMarkers/Right/Right7" unique_id=460926329]
+[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left7" unique_id=382288924]
 
-[node name="RightArea7" type="Area2D" parent="MovementMarkers/Right/Right7/RightSprite" unique_id=634007553]
+[node name="Left7Area" type="Area2D" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=404087942]
 
-[node name="RightArea7Shape" type="CollisionShape2D" parent="MovementMarkers/Right/Right7/RightSprite/RightArea7" unique_id=517379252]
-shape = SubResource("RectangleShape2D_5ob0w")
+[node name="Left7Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left7/LeftSprite/Left7Area" unique_id=319233322]
+shape = SubResource("RectangleShape2D_j64pt")
 
-[node name="RightButton7" type="Button" parent="MovementMarkers/Right/Right7" unique_id=266792142]
+[node name="Left7Button" type="Button" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=809080629]
 offset_left = -37.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left" type="Node2D" parent="MovementMarkers" unique_id=1434040050]
-process_priority = 1
-z_index = 1
-
-[node name="Left1" type="Node2D" parent="MovementMarkers/Left" unique_id=1462455531]
-position = Vector2(-79, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left1" unique_id=398554531]
-
-[node name="Left1Area" type="Area2D" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=295092656]
-
-[node name="Left1Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left1/LeftSprite/Left1Area" unique_id=1284913087]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left1Button" type="Button" parent="MovementMarkers/Left/Left1/LeftSprite" unique_id=527982266]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left2" type="Node2D" parent="MovementMarkers/Left" unique_id=1812803430]
-position = Vector2(-159, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left2" unique_id=1539307572]
-
-[node name="Left2Area" type="Area2D" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=793141911]
-
-[node name="Left2Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left2/LeftSprite/Left2Area" unique_id=1173396723]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left2Button" type="Button" parent="MovementMarkers/Left/Left2/LeftSprite" unique_id=98405550]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left3" type="Node2D" parent="MovementMarkers/Left" unique_id=1406974479]
-position = Vector2(-239, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left3" unique_id=164931067]
-
-[node name="Left3Area" type="Area2D" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=3278423]
-
-[node name="Left3Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left3/LeftSprite/Left3Area" unique_id=1770128908]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left3Button" type="Button" parent="MovementMarkers/Left/Left3/LeftSprite" unique_id=1680670579]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left4" type="Node2D" parent="MovementMarkers/Left" unique_id=1509277641]
-position = Vector2(-319, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left4" unique_id=1925704669]
-
-[node name="Left4Area" type="Area2D" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=1326015916]
-
-[node name="Left4Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left4/LeftSprite/Left4Area" unique_id=987620214]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left4Button" type="Button" parent="MovementMarkers/Left/Left4/LeftSprite" unique_id=64407745]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left5" type="Node2D" parent="MovementMarkers/Left" unique_id=1161894548]
-position = Vector2(-399, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left5" unique_id=370117705]
-
-[node name="Left5Area" type="Area2D" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=231873877]
-
-[node name="Left5Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left5/LeftSprite/Left5Area" unique_id=1477083770]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left5Button" type="Button" parent="MovementMarkers/Left/Left5/LeftSprite" unique_id=1788208781]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left6" type="Node2D" parent="MovementMarkers/Left" unique_id=166361338]
-position = Vector2(-479, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left6" unique_id=1398952934]
-
-[node name="Left6Area" type="Area2D" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=1216898285]
-
-[node name="Left6Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left6/LeftSprite/Left6Area" unique_id=1683381328]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left6Button" type="Button" parent="MovementMarkers/Left/Left6/LeftSprite" unique_id=1738529648]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
-
-[node name="Left7" type="Node2D" parent="MovementMarkers/Left" unique_id=480639828]
-position = Vector2(-559, 1)
-
-[node name="LeftSprite" type="Sprite2D" parent="MovementMarkers/Left/Left7" unique_id=1899099021]
-
-[node name="Left7Area" type="Area2D" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=900554385]
-
-[node name="Left7Shape" type="CollisionShape2D" parent="MovementMarkers/Left/Left7/LeftSprite/Left7Area" unique_id=180709901]
-shape = SubResource("RectangleShape2D_rdgg5")
-
-[node name="Left7Button" type="Button" parent="MovementMarkers/Left/Left7/LeftSprite" unique_id=951192798]
-offset_left = -37.0
-offset_top = -37.0
-offset_right = 37.0
-offset_bottom = 38.0
-metadata/_edit_use_anchors_ = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=2085593331]
 polygon = PackedVector2Array(-3, -26, -1, -24, 2, -25, 2, -29, 10, -29, 10, -20, 10, -17, 8, -15, 6, -13, 6, 0, 11, 11, 10, 15, 15, 20, 15, 24, 15, 26, 11, 28, -8, 29, -16, 28, -17, 25, -16, 23, -16, 20, -13, 19, -11, 16, -11, 12, -11, 12, -9, 9, -7, 2, -5, -10, -7, -15, -10, -19, -10, -28, -6, -29, -2, -29)
@@ -524,75 +660,6 @@ position = Vector2(0, 9.536743e-07)
 scale = Vector2(0.18298611, 0.2019157)
 texture = ExtResource("1_f608j")
 
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward1/ForwardSprite/Forward1Area" to="." method="_on_forward_1_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward1/ForwardSprite/ForwardButton1" to="." method="_on_forward_button_1_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward2/ForwardSprite/Forward2Area" to="." method="_on_forward_2_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward2/ForwardSprite/ForwardButton2" to="." method="_on_forward_button_2_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area" to="." method="_on_forward_3_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward3/ForwardSprite/ForwardButton3" to="." method="_on_forward_button_3_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area" to="." method="_on_forward_4_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward4/ForwardSprite/ForwardButton4" to="." method="_on_forward_button_4_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area" to="." method="_on_forward_5_area_body_exited"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area" to="." method="_on_forward_6_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward6/ForwardSprite/ForwardButton6" to="." method="_on_forward_button_6_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area" to="." method="_on_forward_7_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Forward/Forward7/ForwardSprite/ForwardButton7" to="." method="_on_forward_button_7_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back1/BackSprite/Back1Area" to="." method="_on_back_1_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back1/BackSprite/Back1Button" to="." method="_on_back_1_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back2/BackSprite/Back2Area" to="." method="_on_back_2_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back2/BackSprite/Back2Button" to="." method="_on_back_2_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back3/BackSprite/Back3Area" to="." method="_on_back_3_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back3/BackSprite/Back3Button" to="." method="_on_back_3_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back4/BackSprite/Back4Area" to="." method="_on_back_4_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back4/BackSprite/Back4Button" to="." method="_on_back_4_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back5/BackSprite/Back5Area" to="." method="_on_back_5_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back5/BackSprite/Back5Button" to="." method="_on_back_5_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back6/BackSprite/Back6Area" to="." method="_on_back_6_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back6/BackSprite/Back6Button" to="." method="_on_back_6_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Back/Back7/BackSprite/Back7Area" to="." method="_on_back_7_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Back/Back7/BackSprite/Back7Button" to="." method="_on_back_7_button_button_up"]
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]
 [connection signal="body_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_body_entered"]
@@ -628,41 +695,6 @@ texture = ExtResource("1_f608j")
 [connection signal="body_entered" from="MovementMarkers/Right/Right7/RightSprite/RightArea7" to="." method="_on_right_area_7_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Right/Right7/RightSprite/RightArea7" to="." method="_on_right_area_7_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Right/Right7/RightButton7" to="." method="_on_right_button_7_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left1/LeftSprite/Left1Area" to="." method="_on_left_1_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left1/LeftSprite/Left1Button" to="." method="_on_left_1_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left2/LeftSprite/Left2Area" to="." method="_on_left_2_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left2/LeftSprite/Left2Button" to="." method="_on_left_2_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left3/LeftSprite/Left3Area" to="." method="_on_left_3_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left3/LeftSprite/Left3Button" to="." method="_on_left_3_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left4/LeftSprite/Left4Area" to="." method="_on_left_4_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left4/LeftSprite/Left4Button" to="." method="_on_left_4_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left5/LeftSprite/Left5Area" to="." method="_on_left_5_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left5/LeftSprite/Left5Button" to="." method="_on_left_5_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left6/LeftSprite/Left6Area" to="." method="_on_left_6_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left6/LeftSprite/Left6Button" to="." method="_on_left_6_button_button_up"]
-[connection signal="area_entered" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_area_entered"]
-[connection signal="area_exited" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_area_exited"]
-[connection signal="body_entered" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_body_entered"]
-[connection signal="body_exited" from="MovementMarkers/Left/Left7/LeftSprite/Left7Area" to="." method="_on_left_7_area_body_exited"]
-[connection signal="button_up" from="MovementMarkers/Left/Left7/LeftSprite/Left7Button" to="." method="_on_left_7_button_button_up"]
 [connection signal="area_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_area_entered"]
 [connection signal="body_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_body_entered"]
 [connection signal="button_up" from="SelectRook" to="." method="_on_select_rook_button_up"]
