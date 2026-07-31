@@ -138,6 +138,10 @@ var h8_state = ""
 #endregion
 
 var turn_tracking
+var turn_amount = 2
+var moved = false
+var white_turns = 1
+var black_turns = 1
 
 var piece_focused = ""
 
@@ -145,6 +149,7 @@ var piece_focused = ""
 func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
+
 	turn_count = 1
 	piece_focused = ""
 
@@ -362,7 +367,26 @@ func _process(delta: float) -> void:
 		board_tiles["H"]["H8"].state = true
 	#endregion
 	if(turn_tracking > 1):
-		turn_tracking = 0
-		turn_count += 1
-
+		if white_turns > 0:
+			turn_tracking = 1
+			if(moved):
+				turn_count += 1
+				white_turns -= 1
+				moved = false
+				if white_turns == 0:
+					turn_tracking = 0
+		else:
+			turn_tracking = 0
+			turn_count += 1
+	if(turn_tracking == 0):			
+		if black_turns > 0:
+			turn_tracking = 1
+			if(moved):
+				turn_count += 1
+				black_turns -= 1
+				moved = false
+				if black_turns == 0:
+					turn_tracking = 1
+				
+	
 # leaving this line here to seperate regions, and to stop you having to make a new line by opening the region.

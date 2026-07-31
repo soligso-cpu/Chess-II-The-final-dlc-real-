@@ -9,8 +9,8 @@ var winner
 var hover = false
 var currently_gambling = false 
 var colour_showing = 2
-var timer_length = 1
-var timer_slow = 0.9
+var timer_length = 0.1
+var timer_slow = 1.1
 var chosen_colour
 
 # Called when the node enters the scene tree for the first time.
@@ -20,11 +20,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Click") and currently_gambling == false and chosen_colour:
+	if Input.is_action_just_pressed("Click") and currently_gambling == false and chosen_colour and hover == true:
 		print("START GAMBLIN")
 		currently_gambling = true
 		$SpinTimer.start()
-		timer_length = 1
+		timer_length = 0.1
 		$SwitchTimer.start(timer_length)
 		
 func _on_area_2d_mouse_entered() -> void:
@@ -87,4 +87,5 @@ func _on_quit_button_button_up() -> void:
 	if currently_gambling == false:
 		chosen_colour = 0
 		print("lame")
+		print(hover, "is hover")
 		$Control/Label.text = str("You have opted not to gamble.")
