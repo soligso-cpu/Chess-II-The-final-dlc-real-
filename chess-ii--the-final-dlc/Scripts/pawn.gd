@@ -83,8 +83,8 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Forward2.visible = false
 			
 			if(forward2_enemy):
-				if(forward_touching_border):
-					$MovementMarkers/Forward2.visible = false
+				$MovementMarkers/Forward2.visible = false
+
 
 			if(forward1_enemy):
 				$MovementMarkers/Forward.visible = false
@@ -205,6 +205,7 @@ func _on_forward_area_body_exited(body: Node2D) -> void:
 func _on_forward_button_button_up() -> void:
 	moved = true
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
@@ -262,6 +263,7 @@ func _on_forward_2_area_body_exited(body: Node2D) -> void:
 func _on_forward_2_button_button_up() -> void:
 	moved = true
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
@@ -324,6 +326,7 @@ func _on_left_area_body_exited(body: Node2D) -> void:
 func _on_left_button_button_up() -> void:
 	moved = true
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
