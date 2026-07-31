@@ -80,17 +80,18 @@ func _on_spin_timer_timeout() -> void:
 			
 
 func _on_switch_timer_timeout() -> void:
-	if colour_showing == 1:
-		print("black")
-		$Black.visible = true
-		$Red.visible = false
-		colour_showing = 2
-	elif colour_showing == 2:
-		print("red")
-		$Black.visible = false
-		$Red.visible = true
-		colour_showing = 1
 	if currently_gambling == true:
+		if colour_showing == 1:
+			print("black")
+			$Black.visible = true
+			$Red.visible = false
+			colour_showing = 2
+		elif colour_showing == 2:
+			print("red")
+			$Black.visible = false
+			$Red.visible = true
+			colour_showing = 1
+		
 		timer_length = timer_length * timer_slow
 		$SwitchTimer.start(timer_length)
 		print(currently_gambling)
