@@ -461,10 +461,10 @@ shape = SubResource("RectangleShape2D_5fj8h")
 
 [node name="White" type="Node2D" parent="." unique_id=1780591263]
 
-[node name="KnightWhite" parent="White" unique_id=1141139028 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
+[node name="KnightH2" parent="White" unique_id=1141139028 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
 position = Vector2(415, 602)
 
-[node name="KnightWhite2" parent="White" unique_id=760195180 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
+[node name="KnightH7" parent="White" unique_id=760195180 groups=["Tiles", "White"] instance=ExtResource("7_twe5h")]
 position = Vector2(815, 602)
 
 [node name="QueenWhite" parent="White" unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]

@@ -85,7 +85,6 @@ func _process(delta: float) -> void:
 			if(forward2_enemy):
 				$MovementMarkers/Forward2.visible = false
 
-
 			if(forward1_enemy):
 				$MovementMarkers/Forward.visible = false
 				$MovementMarkers/Forward2.visible = false

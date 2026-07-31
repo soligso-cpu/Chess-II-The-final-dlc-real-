@@ -53,6 +53,12 @@ var tile_group
 
 func _ready() -> void:
 	focused = false
+	if(self.name == "KnightH2"):
+		tile = "H2"
+		tile_group = "H"
+	elif(self.name == "KnightH7"):
+		tile = "H7"
+		tile_group = "H"
 
 func _process(delta: float) -> void:
 	if(Globals.piece_focused == self.name):
