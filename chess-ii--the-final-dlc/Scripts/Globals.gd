@@ -373,12 +373,14 @@ func _process(delta: float) -> void:
 			turn_count += 1
 			white_turns -= 1
 			moved = false
+			return
 	elif(black_turns >= 1):
 		turn_tracking = 0
 		if(moved):
 			turn_count += 1
 			black_turns -= 1
 			moved = false
+			return
 	elif(white_turns == 0 && turn_tracking > 1):
 		turn_tracking = 0
 		turn_count += 1
