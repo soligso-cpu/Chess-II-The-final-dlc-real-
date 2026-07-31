@@ -204,6 +204,7 @@ func _on_fl_area_body_exited(body: Node2D) -> void:
 
 func _on_fl_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = fl_tile # tells the global script that youre accessing tile X
@@ -262,6 +263,7 @@ func _on_fr_area_body_exited(body: Node2D) -> void:
 
 func _on_fr_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = fr_tile # tells the global script that youre accessing tile X
@@ -319,6 +321,7 @@ func _on_ru_area_body_exited(body: Node2D) -> void:
 
 func _on_ru_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = ru_tile # tells the global script that youre accessing tile X
@@ -377,6 +380,7 @@ func _on_rd_area_body_exited(body: Node2D) -> void:
 
 func _on_rd_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = rd_tile # tells the global script that youre accessing tile X
@@ -435,6 +439,7 @@ func _on_br_area_body_exited(body: Node2D) -> void:
 
 func _on_br_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = br_tile # tells the global script that youre accessing tile X
@@ -493,6 +498,7 @@ func _on_bl_area_body_exited(body: Node2D) -> void:
 
 func _on_bl_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = bl_tile # tells the global script that youre accessing tile X
@@ -550,6 +556,7 @@ func _on_ld_area_body_exited(body: Node2D) -> void:
 
 func _on_ld_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = ld_tile # tells the global script that youre accessing tile X
@@ -607,6 +614,7 @@ func _on_lu_area_body_exited(body: Node2D) -> void:
 
 func _on_lu_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = lu_tile # tells the global script that youre accessing tile X

@@ -114,6 +114,7 @@ var moved
 var taking
 var tile
 var tile_group
+var select_buffer
 
 var touching_border
 var forward_touching_border
@@ -398,15 +399,15 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left7.visible = false
 			#endregion
 		elif(!focused):
-	#		for child in $MovementMarkers.get_children():
-	#			child.process_mode = Node.PROCESS_MODE_DISABLED
+			for child in $MovementMarkers.get_children():
+				child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-	#	for child in $MovementMarkers.get_children():
-	#		child.process_mode = Node.PROCESS_MODE_DISABLED
+		for child in $MovementMarkers.get_children():
+			child.process_mode = Node.PROCESS_MODE_DISABLED
 		$SelectRook.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
@@ -467,6 +468,13 @@ func _on_select_rook_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
 		if(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
+			$MovementMarkers/Right/Right1.visible = true
+			$MovementMarkers/Right/Right2.visible = true
+			$MovementMarkers/Right/Right3.visible = true
+			$MovementMarkers/Right/Right4.visible = true
+			$MovementMarkers/Right/Right5.visible = true
+			$MovementMarkers/Right/Right6.visible = true
+			$MovementMarkers/Right/Right7.visible = true
 			focused = true
 		else:
 			Globals.piece_focused = ""
@@ -480,6 +488,7 @@ func _on_select_rook_button_up() -> void:
 
 func _on_right_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
@@ -494,6 +503,7 @@ func _on_right_button_button_up() -> void:
 
 func _on_right_button_2_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right2_tile # tells the global script that youre accessing tile X
@@ -509,6 +519,7 @@ func _on_right_button_2_button_up() -> void:
 
 func _on_right_button_3_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right3_tile # tells the global script that youre accessing tile X
@@ -525,6 +536,7 @@ func _on_right_button_3_button_up() -> void:
 
 func _on_right_button_4_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right4_tile # tells the global script that youre accessing tile X
@@ -541,6 +553,7 @@ func _on_right_button_4_button_up() -> void:
 
 func _on_right_button_5_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right5_tile # tells the global script that youre accessing tile X
@@ -558,6 +571,7 @@ func _on_right_button_5_button_up() -> void:
 
 func _on_right_button_6_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right6_tile # tells the global script that youre accessing tile X
@@ -573,6 +587,7 @@ func _on_right_button_6_button_up() -> void:
 
 func _on_right_button_7_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
@@ -874,6 +889,7 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 
 func _on_forward_button_1_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
@@ -888,6 +904,7 @@ func _on_forward_button_1_button_up() -> void:
 
 func _on_forward_button_2_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
@@ -901,6 +918,7 @@ func _on_forward_button_2_button_up() -> void:
 
 func _on_forward_button_3_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward3_tile # tells the global script that youre accessing tile X
@@ -915,6 +933,7 @@ func _on_forward_button_3_button_up() -> void:
 
 func _on_forward_button_4_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward4_tile
@@ -929,6 +948,7 @@ func _on_forward_button_4_button_up() -> void:
 
 func _on_forward_button_5_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward5_tile # tells the global script that youre accessing tile X
@@ -945,6 +965,7 @@ func _on_forward_button_5_button_up() -> void:
 
 func _on_forward_button_6_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward6_tile # tells the global script that youre accessing tile X
@@ -960,6 +981,7 @@ func _on_forward_button_6_button_up() -> void:
 func _on_forward_button_7_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward7_tile # tells the global script that youre accessing tile X
@@ -1259,7 +1281,7 @@ func _on_forward_7_area_body_exited(body: Node2D) -> void:
 
 func _on_back_1_button_button_up() -> void:
 	focused = false
-	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back1_tile # tells the global script that youre accessing tile X
@@ -1274,7 +1296,7 @@ func _on_back_1_button_button_up() -> void:
 
 func _on_back_2_button_button_up() -> void:
 	focused = false
-	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back2_tile # tells the global script that youre accessing tile X
@@ -1289,6 +1311,7 @@ func _on_back_2_button_button_up() -> void:
 
 func _on_back_3_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back3_tile # tells the global script that youre accessing tile X
@@ -1303,6 +1326,7 @@ func _on_back_3_button_button_up() -> void:
 
 func _on_back_4_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back4_tile # tells the global script that youre accessing tile X
@@ -1317,6 +1341,7 @@ func _on_back_4_button_button_up() -> void:
 
 func _on_back_5_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back5_tile # tells the global script that youre accessing tile X
@@ -1331,6 +1356,7 @@ func _on_back_5_button_button_up() -> void:
 
 func _on_back_6_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back6_tile # tells the global script that youre accessing tile X
@@ -1345,6 +1371,7 @@ func _on_back_6_button_button_up() -> void:
 
 func _on_back_7_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back7_tile # tells the global script that youre accessing tile X
@@ -1643,6 +1670,7 @@ func _on_back_7_area_area_exited(area: Area2D) -> void:
 
 func _on_left_1_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
@@ -1657,6 +1685,7 @@ func _on_left_1_button_button_up() -> void:
 
 func _on_left_2_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left2_tile # tells the global script that youre accessing tile X
@@ -1671,6 +1700,7 @@ func _on_left_2_button_button_up() -> void:
 
 func _on_left_3_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left3_tile # tells the global script that youre accessing tile X
@@ -1686,6 +1716,7 @@ func _on_left_3_button_button_up() -> void:
 
 func _on_left_4_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left4_tile # tells the global script that youre accessing tile X
@@ -1701,6 +1732,7 @@ func _on_left_4_button_button_up() -> void:
 
 func _on_left_5_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left5_tile # tells the global script that youre accessing tile X
@@ -1715,6 +1747,7 @@ func _on_left_5_button_button_up() -> void:
 
 func _on_left_6_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left6_tile # tells the global script that youre accessing tile X
@@ -1729,6 +1762,7 @@ func _on_left_6_button_button_up() -> void:
 
 func _on_left_7_button_button_up() -> void:
 	focused = false
+	Globals.moved = true
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left7_tile # tells the global script that youre accessing tile X
