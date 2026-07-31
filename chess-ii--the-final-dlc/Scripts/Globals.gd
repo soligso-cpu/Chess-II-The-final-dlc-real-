@@ -139,9 +139,9 @@ var h8_state = ""
 
 var turn_tracking
 var turn_amount = 2
-var moved = false
-var white_turns = 1
-var black_turns = 1
+var moved
+var white_turns = 0
+var black_turns = 0
 
 var piece_focused = ""
 
@@ -366,27 +366,19 @@ func _process(delta: float) -> void:
 		position_target = Vector2(896, 603)
 		board_tiles["H"]["H8"].state = true
 	#endregion
-	if(turn_tracking > 1):
-		if white_turns > 0:
-			turn_tracking = 1
-			if(moved):
-				turn_count += 1
-				white_turns -= 1
-				moved = false
-				if white_turns == 0:
-					turn_tracking = 0
-		else:
-			turn_tracking = 0
-			turn_count += 1
-	if(turn_tracking == 0):			
-		if black_turns > 0:
-			turn_tracking = 1
-			if(moved):
-				turn_count += 1
-				black_turns -= 1
-				moved = false
-				if black_turns == 0:
-					turn_tracking = 1
-				
 	
-# leaving this line here to seperate regions, and to stop you having to make a new line by opening the region.
+	if(white_turns >= 1):
+		turn_tracking = 1
+		if(moved):
+			turn_count += 1
+			white_turns -= 1
+			moved = false
+	elif(black_turns >= 1):
+		turn_tracking = 0
+		if(moved):
+			turn_count += 1
+			black_turns -= 1
+			moved = false
+	elif(white_turns == 0 && turn_tracking > 1):
+		turn_tracking = 0
+		turn_count += 1
