@@ -9,12 +9,18 @@
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
+[ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
+[ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fj8h"]
 size = Vector2(68, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
+size = Vector2(118, 122)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
@@ -532,3 +538,31 @@ position = Vector2(818, 123)
 
 [node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920 instance=ExtResource("6_bh37u")]
 position = Vector2(898, 123)
+
+[node name="RouletteOrganizer" type="Node2D" parent="." unique_id=596971121]
+
+[node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
+position = Vector2(589, 303)
+
+[node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("10_vjsom")]
+visible = false
+
+[node name="BoardMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=962987238]
+position = Vector2(620, 314)
+
+[node name="RouletteMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=1197052851]
+position = Vector2(1711, 418)
+
+[node name="Sprite2D" type="Sprite2D" parent="RouletteOrganizer" unique_id=1446117609]
+position = Vector2(81, 359)
+texture = ExtResource("11_upw65")
+
+[node name="RouletteTransport" type="Area2D" parent="RouletteOrganizer" unique_id=950492778]
+script = ExtResource("12_d7frl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1842208485]
+position = Vector2(81, 357)
+shape = SubResource("RectangleShape2D_d7frl")
+
+[connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]

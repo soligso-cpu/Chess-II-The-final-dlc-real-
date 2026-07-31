@@ -10,22 +10,23 @@ size = Vector2(129, 132)
 script = ExtResource("1_u7vc4")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=2111809431]
+position = Vector2(196, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1203648578]
 position = Vector2(334, 68)
 shape = SubResource("RectangleShape2D_l12oi")
 
 [node name="Black" type="Sprite2D" parent="." unique_id=1429336466]
-position = Vector2(91, 84)
+position = Vector2(287, 123)
 texture = ExtResource("2_sxnde")
 
 [node name="Red" type="Sprite2D" parent="." unique_id=112456723]
-position = Vector2(556, 81.00001)
+position = Vector2(752, 120.00001)
 scale = Vector2(0.94140524, 0.94140625)
 texture = ExtResource("2_sxnde")
 
 [node name="Button" type="Sprite2D" parent="." unique_id=415802366]
-position = Vector2(334, 69)
+position = Vector2(530, 108)
 texture = ExtResource("2_sxnde")
 
 [node name="SpinTimer" type="Timer" parent="." unique_id=510742156]
@@ -38,9 +39,14 @@ one_shot = true
 
 [node name="Control" type="Control" parent="." unique_id=376478417]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchor_left = 1.171
+anchor_top = 0.020000001
+anchor_right = 1.7110001
+anchor_bottom = 0.5
+offset_left = -1152.992
+offset_top = 26.039999
+offset_right = -1735.0721
+offset_bottom = -245.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -86,7 +92,6 @@ offset_top = -1.5258789e-05
 offset_bottom = -3.0517578e-05
 text = "I'm lame and don't wanna gamble. "
 
-[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]

@@ -96,3 +96,11 @@ func _on_quit_button_button_up() -> void:
 		print("lame")
 		print(hover, "is hover")
 		$Control/Label.text = str("You have opted not to gamble.")
+
+
+func _on_return_button_button_up() -> void:
+	pass # Replace with function body.
+	$"../Camera2D".global_position = $"../BoardMarker".global_position
+
+func _on_move_button_button_up() -> void:
+	$"../Camera2D".global_position = $"../RouletteMarker".global_position
