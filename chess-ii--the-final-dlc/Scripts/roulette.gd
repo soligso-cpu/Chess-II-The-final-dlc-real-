@@ -12,6 +12,8 @@ var colour_showing = 2
 var timer_length = 0.1
 var timer_slow = 1.1
 var chosen_colour
+var spin_speed = 1
+var spin_change = 0.95
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,6 +28,9 @@ func _process(delta: float) -> void:
 		$SpinTimer.start()
 		timer_length = 0.1
 		$SwitchTimer.start(timer_length)
+		$Button.rotation += spin_speed
+	if currently_gambling == true:
+		spin_speed * spin_change
 		
 func _on_area_2d_mouse_entered() -> void:
 	$Button.scale += hover_indicator
