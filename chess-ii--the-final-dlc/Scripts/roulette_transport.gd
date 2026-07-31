@@ -8,7 +8,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(hover)
+	
 	if Input.is_action_just_pressed("Click") and hover == true and on_roulette == false:
 		$"../Roulette".visible = true
 		$"../../TileMapLayer".visible = false

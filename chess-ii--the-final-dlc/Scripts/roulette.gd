@@ -46,20 +46,38 @@ func _on_spin_timer_timeout() -> void:
 	currently_gambling = false
 	print("no more gamba", currently_gambling)
 	winner = randi_range(winning_colour.BLACK, winning_colour.RED)
-	print(winner)
+	print(winner, "is winner")
 	if winner == winning_colour.BLACK:
 		$Black.visible = true
 		$Red.visible = false
+		
 	elif winner == winning_colour.RED:
 		$Black.visible = false
 		$Red.visible = true
+		
 	if winner == chosen_colour:
 		print("WIN")
 		$Control/Label.text = str("Congratualtions! You win an extra 
 		turn!")
+		if Globals.turn_tracking == 1:
+			Globals.white_turns = 3
+			print(Globals.white_turns, "id")
+			
+		elif Globals.turn_tracking == 0:
+			Globals.black_turns = 3
+			print(Globals.black_turns, "id")
+			
 	elif winner != chosen_colour:
 		print("aw dangit")
 		$Control/Label.text = str("Oh well, you lost your turn.")
+		if Globals.turn_tracking == 1:
+			Globals.turn_tracking = 0
+			Globals.moved = true
+			
+		elif Globals.turn_tracking == 0:
+			Globals.turn_tracking = 1
+			Globals.moved = true
+			
 
 func _on_switch_timer_timeout() -> void:
 	if colour_showing == 1:
@@ -81,12 +99,12 @@ func _on_switch_timer_timeout() -> void:
 func _on_red_button_button_up() -> void:
 	if currently_gambling == false:
 		chosen_colour = winning_colour.RED
-		print("all in on red")
+		print("all in on red", str(chosen_colour))
 		$Control/Label.text = str("Bet 1 turn on red")
 func _on_black_button_button_up() -> void:
 	if currently_gambling == false:
 		chosen_colour = winning_colour.BLACK
-		print("all in on black")
+		print("all in on black", str(chosen_colour))
 		$Control/Label.text = str("Bet 1 turn on black")
 
 
