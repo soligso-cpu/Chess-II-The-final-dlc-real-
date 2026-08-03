@@ -543,6 +543,7 @@ position = Vector2(898, 123)
 
 [node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
 position = Vector2(589, 303)
+zoom = Vector2(0.87, 0.87)
 
 [node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("10_vjsom")]
 visible = false
