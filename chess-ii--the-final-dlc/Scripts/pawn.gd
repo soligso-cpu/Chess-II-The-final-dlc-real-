@@ -283,12 +283,12 @@ func _on_forward_2_button_button_up() -> void:
 
 
 func _on_left_area_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Edge")):
-		left_touching_border = true
-		left_enemy = true
 	if(area.is_in_group("Tiles")):
 		left1_tile = area.name
 		left1_tile_group = str(area.name)[0]
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		left_enemy = true
 
 
 func _on_left_area_area_exited(area: Area2D) -> void:
@@ -304,17 +304,17 @@ func _on_left_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			left_enemy = true
-			left1_tile_group = true
+			left_touching_border = true
 		else:
 			left_enemy = true
-			left1_tile_group = false
+			left_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			left_enemy = true
-			left1_tile_group = true
+			left_touching_border = true
 		else:
 			left_enemy = true
-			left1_tile_group = false
+			left_touching_border = false
 
 
 func _on_left_area_body_exited(body: Node2D) -> void:
@@ -365,17 +365,17 @@ func _on_right_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			right_enemy = true
-			right1_tile_group = true
+			right_touching_border = true
 		else:
 			right_enemy = true
-			right1_tile_group = false
+			right_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			right_enemy = true
-			right1_tile_group = true
+			right_touching_border = true
 		else:
 			right_enemy = true
-			right1_tile_group = false
+			right_touching_border = false
 
 
 func _on_right_area_body_exited(body: Node2D) -> void:
