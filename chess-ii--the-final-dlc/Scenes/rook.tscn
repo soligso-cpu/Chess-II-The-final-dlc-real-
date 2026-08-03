@@ -95,7 +95,7 @@ script = ExtResource("1_wwc4d")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=199327806]
 
-[node name="Right" type="Marker2D" parent="MovementMarkers" unique_id=842532310]
+[node name="Right" type="Node2D" parent="MovementMarkers" unique_id=1642462163]
 process_priority = 1
 z_index = 1
 position = Vector2(1, 2)
@@ -219,7 +219,7 @@ offset_right = 37.0
 offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
-[node name="Forward" type="Marker2D" parent="MovementMarkers" unique_id=1812460378]
+[node name="Forward" type="Node2D" parent="MovementMarkers" unique_id=522195537]
 process_priority = 1
 z_index = 1
 position = Vector2(1, 2)
@@ -366,7 +366,7 @@ offset_bottom = 39.0
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="Marker2D" parent="MovementMarkers" unique_id=199673761]
+[node name="Back" type="Node2D" parent="MovementMarkers" unique_id=1343939738]
 process_priority = 1
 z_index = 1
 position = Vector2(1, 2)
@@ -525,7 +525,7 @@ offset_right = 65.211
 offset_bottom = -23.421001
 metadata/_edit_use_anchors_ = true
 
-[node name="Left" type="Marker2D" parent="MovementMarkers" unique_id=1185668008]
+[node name="Left" type="Node2D" parent="MovementMarkers" unique_id=572232538]
 process_priority = 1
 z_index = 1
 position = Vector2(1, 2)
