@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://y7fe4q7t1wet"]
+
+[ext_resource type="Script" uid="uid://b7bm6y6u5jcfm" path="res://Scripts/fishing_game.gd" id="1_4egeh"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="1_cigb7"]
+[ext_resource type="Script" uid="uid://ckpx4vayk0n7o" path="res://Scripts/fishing_rod.gd" id="3_n1wyh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4egeh"]
+size = Vector2(172, 99)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n1wyh"]
+size = Vector2(25.5, 24)
+
+[node name="FishingGame" type="Node2D" unique_id=1605624662]
+script = ExtResource("1_4egeh")
+
+[node name="FishArea" type="Area2D" parent="." unique_id=810304201]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FishArea" unique_id=1735822334]
+position = Vector2(508, 109)
+shape = SubResource("RectangleShape2D_4egeh")
+
+[node name="Sprite2D" type="Sprite2D" parent="FishArea" unique_id=266071788]
+position = Vector2(510.00006, 107)
+scale = Vector2(1.3984373, 0.7421875)
+texture = ExtResource("1_cigb7")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=550232012]
+script = ExtResource("3_n1wyh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1215322440]
+position = Vector2(7.25, 7)
+shape = SubResource("RectangleShape2D_n1wyh")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1386774303]
+position = Vector2(7.375, 7.1250014)
+scale = Vector2(0.21289064, 0.20117188)
+texture = ExtResource("1_cigb7")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=2073445008]
+position = Vector2(1093, 133)
+
+[node name="Area2D" type="Area2D" parent="Marker2D" unique_id=1875087008]
+position = Vector2(-1, 3)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Area2D" unique_id=1601021925]
+position = Vector2(64, -16)
+shape = SubResource("RectangleShape2D_4egeh")
+
+[node name="Marker2D2" type="Marker2D" parent="." unique_id=174288935]
+position = Vector2(48, 94)
+
+[node name="Area2D" type="Area2D" parent="Marker2D2" unique_id=32854790]
+position = Vector2(5, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2/Area2D" unique_id=1352720337]
+position = Vector2(-72, 1)
+shape = SubResource("RectangleShape2D_4egeh")
+
+[node name="RoundTimer" type="Timer" parent="." unique_id=1254774243]
+one_shot = true
+
+[connection signal="body_entered" from="FishArea" to="CharacterBody2D" method="_on_fish_area_body_entered"]
+[connection signal="body_exited" from="FishArea" to="CharacterBody2D" method="_on_fish_area_body_exited"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Marker2D2/Area2D" to="CharacterBody2D" method="_on_area_2d2_body_entered"]
+[connection signal="timeout" from="RoundTimer" to="CharacterBody2D" method="_on_round_timer_timeout"]
