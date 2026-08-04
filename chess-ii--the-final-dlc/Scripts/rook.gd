@@ -290,58 +290,58 @@ func _process(delta: float) -> void:
 					$MovementMarkers/Forward/Forward7.visible = false
 					#endregion
 			#region Back Movement Marker Visibility Control
-					
-					$MovementMarkers/Back.visible = true
-					$MovementMarkers/Back/Back1.visible = true
-					$MovementMarkers/Back/Back2.visible = true
-					$MovementMarkers/Back/Back3.visible = true
-					$MovementMarkers/Back/Back4.visible = true
-					$MovementMarkers/Back/Back5.visible = true
-					$MovementMarkers/Back/Back6.visible = true
-					$MovementMarkers/Back/Back7.visible = true
-					
-					if(enemy_back1):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back1.visible = false
-						$MovementMarkers/Back/Back2.visible = false
-						$MovementMarkers/Back/Back3.visible = false
-						$MovementMarkers/Back/Back4.visible = false
-						$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back2):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back2.visible = false
-						$MovementMarkers/Back/Back3.visible = false
-						$MovementMarkers/Back/Back4.visible = false
-						$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back3):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back3.visible = false
-						$MovementMarkers/Back/Back4.visible = false
-						$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back4):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back4.visible = false
-						$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back5):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back6):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back7.visible = false
-					if(enemy_back7):
-						if(back_touching_border):
-							$MovementMarkers/Back/Back7.visible = false
+			
+			$MovementMarkers/Back.visible = true
+			$MovementMarkers/Back/Back1.visible = true
+			$MovementMarkers/Back/Back2.visible = true
+			$MovementMarkers/Back/Back3.visible = true
+			$MovementMarkers/Back/Back4.visible = true
+			$MovementMarkers/Back/Back5.visible = true
+			$MovementMarkers/Back/Back6.visible = true
+			$MovementMarkers/Back/Back7.visible = true
+			
+			if(enemy_back1):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back1.visible = false
+				$MovementMarkers/Back/Back2.visible = false
+				$MovementMarkers/Back/Back3.visible = false
+				$MovementMarkers/Back/Back4.visible = false
+				$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back2):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back2.visible = false
+				$MovementMarkers/Back/Back3.visible = false
+				$MovementMarkers/Back/Back4.visible = false
+				$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back3):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back3.visible = false
+				$MovementMarkers/Back/Back4.visible = false
+				$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back4):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back4.visible = false
+				$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back5):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back6):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back7):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back7.visible = false
 						
 					#endregion
 			#region Left Movement Marker Visibility Control
@@ -1034,7 +1034,6 @@ func _on_forward_3_area_area_entered(area: Area2D) -> void:
 		enemy_forward3 = true
 	if(area.is_in_group("Tiles")):
 		forward3_tile = area.name
-		print(forward3_tile)
 		var group = str(area.name)[0]
 		forward3_tile_group = group
 
@@ -1051,7 +1050,6 @@ func _on_forward_4_area_area_entered(area: Area2D) -> void:
 		enemy_forward4 = true
 	if(area.is_in_group("Tiles")):
 		forward4_tile = area.name
-		print(forward4_tile)
 		forward4_tile_group = str(area.name)[0]
 		
 func _on_forward_4_area_area_exited(area: Area2D) -> void:
