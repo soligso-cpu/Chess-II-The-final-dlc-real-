@@ -35,6 +35,8 @@ var position_target
 var state
 var turn_count
 
+var lore_won = false
+
 #region Tile Variables
 
 #region "A" Tiles
@@ -387,7 +389,8 @@ func _process(delta: float) -> void:
 		
 func _game_won() -> void:
 	print("winwinwinwinwinwinwin")
-	var lore = randi_range(1, 100)
+	var lore = randi_range(3, 3)
 	if lore == 3:
 		print("Ker’vahrah is a lone dryad warrior sent from the outskirts of Mernath, attempting to go on solo raids far into the country, pillaging everything they can. Soon, after many travels, they would find the city of Terkast, a solitary and dark and hallowed ground; the skies are blackened with tar and lampblack and lightning strikes the tip of the castle. Entering such a castle through the lurid gates lined with skin-stretched wooden crude pikes, they would find a chess table. Sat at the other side of such a table is an unknown shadowy figure. They invite Ker’vahrah to play. Slowly, they sit and the game commences. The shadowed figure speaks. “Suppose two men at cards with nothing to wager save their lives. Who has not heard such a tale? A turn of the card. The whole universe for such a player has laboured clanking to this moment which will tell if he is to die at that man's hand or that man at his. What more certain validation of a man's worth could there be? This enhancement of the game to its ultimate state admits no argument concerning the notion of fate. The selection of one man over another is a preference absolute and irrevocable and it is a dull man indeed who could reckon so profound a decision without agency or significance either one. In such games as have for their stake the annihilation of the defeated the decisions are quite clear. This man holding this particular arrangement of cards in his hand is thereby removed from existence. This is the nature of gambling, whose stake is at once the game and the authority and the justification. Seen so, gambling is the truest form of divination. It is the testing of one's will and the will of another within that larger will which because it binds them is therefore forced to select. Gambling is the ultimate game because gambling is at last a forcing of the unity of existence. Gambling is god.”
 ")
+		lore_won = true
