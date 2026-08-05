@@ -1,7 +1,7 @@
-[gd_scene format=3 uid="uid://ce5fasgcxkdk2"]
+[gd_scene format=3 uid="uid://b6kajqyiy26p0"]
 
-[ext_resource type="Script" uid="uid://c4sdyh6xeg8yc" path="res://Scripts/bishop.gd" id="1_boa6r"]
-[ext_resource type="Texture2D" uid="uid://d2tn54x17f72v" path="res://Sprites/pngtree-white-chess-bishop-piece-on-a-black-background-png-image_18018790.webp" id="2_uqrk8"]
+[ext_resource type="Script" uid="uid://c4sdyh6xeg8yc" path="res://Scripts/bishop.gd" id="1_nvxg7"]
+[ext_resource type="Texture2D" uid="uid://is8o81lf8eke" path="res://Sprites/3d-rendering-black-bishop-isolated-on-transparent-background-object-clipping-path-on-file-png.png" id="2_nvxg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boa6r"]
 size = Vector2(72, 72)
@@ -90,8 +90,8 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg1m5"]
 size = Vector2(71.42857, 71.42857)
 
-[node name="Bishop" type="CharacterBody2D" unique_id=195200490 groups=["Pieces", "White"]]
-script = ExtResource("1_boa6r")
+[node name="BishopBlack" type="CharacterBody2D" unique_id=195200490 groups=["Black", "Pieces"]]
+script = ExtResource("1_nvxg7")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=826614182]
 
@@ -581,9 +581,9 @@ scale = Vector2(1.008, 1.008)
 shape = SubResource("RectangleShape2D_qg1m5")
 
 [node name="BishopSprite" type="Sprite2D" parent="." unique_id=2107927240]
-position = Vector2(1, 2)
-scale = Vector2(0.17434573, 0.19098213)
-texture = ExtResource("2_uqrk8")
+position = Vector2(1, -0.9999998)
+scale = Vector2(0.072668076, 0.0796022)
+texture = ExtResource("2_nvxg7")
 
 [node name="BishopShape" type="CollisionPolygon2D" parent="." unique_id=1768602213]
 polygon = PackedVector2Array(1, -29, -1, -29, -1, -25, -4, -21, -5, -17, -4, -11, -4, -7, -6, -4, -2, 0, -5, 17, -10, 27, -9, 30, 11, 30, 11, 21, 6, 15, 4, -2, 7, -3, 6, -5, 6, -11, 6, -16, 6, -19, 5, -25, 3, -25, 3, -27, 2, -29, 2, -29)

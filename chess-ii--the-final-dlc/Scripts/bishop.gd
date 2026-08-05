@@ -12,7 +12,7 @@ var tile
 var tile_group
 
 
-	#region Diagonals (FR, FL, DR, DL)
+#region Diagonals (FR, FL, DR, DL)
 
 var enemyfr_1
 var enemyfr_2
@@ -129,6 +129,9 @@ var bl7_tile_group
 
 func _ready() -> void:
 	focused = false
+	if(self.name == "BishopH6"):
+		tile = "H6"
+		tile_group = "H"
 
 
 func _process(delta: float) -> void:
@@ -155,7 +158,7 @@ func _process(delta: float) -> void:
 			$MovementMarkers/DiagonalRightForward/FR5.visible = true
 			$MovementMarkers/DiagonalRightForward/FR6.visible = true
 			$MovementMarkers/DiagonalRightForward/FR7.visible = true
-			
+
 			if(enemyfr_7):
 				if(fr_touching_border):
 					$MovementMarkers/DiagonalRightForward/FR7.visible = false
@@ -406,6 +409,7 @@ func _on_collision_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		tile = area.name
 		tile_group = str(area.name)[0]
+
 
 func reset_markers():
 	enemyfr_1 = false
