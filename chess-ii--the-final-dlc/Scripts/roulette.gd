@@ -59,6 +59,7 @@ func _on_spin_timer_timeout() -> void:
 		print("WIN")
 		$Control/Label.text = str("Congratualtions! You win an extra 
 		turn!")
+		Globals._game_won()
 		if Globals.turn_tracking == 1:
 			Globals.white_turns = 3
 			print(Globals.white_turns, "id")

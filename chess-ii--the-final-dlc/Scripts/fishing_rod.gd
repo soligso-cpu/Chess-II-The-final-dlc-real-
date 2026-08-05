@@ -5,6 +5,7 @@ var direction = Vector2()
 var flip = false
 var victory_window = false
 var won_games = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$".".global_position = $"../Marker2D2".global_position
@@ -15,6 +16,7 @@ func _process(delta: float) -> void:
 	if won_games == 3:
 		print("This is when the score would increase")
 		won_games = 0
+	
 	
 	if flip == false:
 		direction = global_position.direction_to($"../Marker2D".global_position)

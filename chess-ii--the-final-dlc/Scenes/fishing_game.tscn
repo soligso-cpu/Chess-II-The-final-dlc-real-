@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7bm6y6u5jcfm" path="res://Scripts/fishing_game.gd" id="1_4egeh"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="1_cigb7"]
+[ext_resource type="Script" uid="uid://bsx7coq3vwjnb" path="res://Scripts/fish_area.gd" id="2_v1qp7"]
 [ext_resource type="Script" uid="uid://ckpx4vayk0n7o" path="res://Scripts/fishing_rod.gd" id="3_n1wyh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4egeh"]
@@ -14,6 +15,7 @@ size = Vector2(25.5, 24)
 script = ExtResource("1_4egeh")
 
 [node name="FishArea" type="Area2D" parent="." unique_id=810304201]
+script = ExtResource("2_v1qp7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FishArea" unique_id=1735822334]
 position = Vector2(508, 109)
@@ -59,8 +61,14 @@ shape = SubResource("RectangleShape2D_4egeh")
 [node name="RoundTimer" type="Timer" parent="." unique_id=1254774243]
 one_shot = true
 
+[connection signal="body_entered" from="FishArea" to="FishArea" method="_on_body_entered"]
 [connection signal="body_entered" from="FishArea" to="CharacterBody2D" method="_on_fish_area_body_entered"]
+[connection signal="body_exited" from="FishArea" to="FishArea" method="_on_body_exited"]
 [connection signal="body_exited" from="FishArea" to="CharacterBody2D" method="_on_fish_area_body_exited"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="." method="_on_area_2d2_body_entered"]
+[connection signal="body_entered" from="Marker2D/Area2D" to="FishArea" method="_on_area_2d2_body_entered"]
 [connection signal="body_entered" from="Marker2D/Area2D" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Marker2D2/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Marker2D2/Area2D" to="FishArea" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Marker2D2/Area2D" to="CharacterBody2D" method="_on_area_2d2_body_entered"]
 [connection signal="timeout" from="RoundTimer" to="CharacterBody2D" method="_on_round_timer_timeout"]
