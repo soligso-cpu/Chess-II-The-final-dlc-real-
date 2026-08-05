@@ -149,7 +149,7 @@ func _process(delta: float) -> void:
 			move_to_front()
 			taking = true
 			#region Forward-Right Movement Marker Visibility Control
-			
+			$MovementMarkers.visible = true
 			$MovementMarkers/DiagonalRightForward.visible = true
 			$MovementMarkers/DiagonalRightForward/FR1.visible = true
 			$MovementMarkers/DiagonalRightForward/FR2.visible = true
