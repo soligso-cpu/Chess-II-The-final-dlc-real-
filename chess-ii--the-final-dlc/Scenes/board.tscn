@@ -9,10 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ce5fasgcxkdk2" path="res://Scenes/bishop.tscn" id="7_hm3vq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
+[ext_resource type="PackedScene" uid="uid://bdmuaqrv3pnlx" path="res://Scenes/king.tscn" id="8_7iy1p"]
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 [ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="9_vjyv8"]
 [ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
-[ext_resource type="PackedScene" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
+[ext_resource type="PackedScene" uid="uid://b6kajqyiy26p0" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 
@@ -41,7 +42,6 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="Edges" type="Node2D" parent="." unique_id=2093225668]
-visible = false
 
 [node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1903873758 groups=["Edge"]]
 position = Vector2(537, -596)
@@ -472,7 +472,6 @@ position = Vector2(896, 603)
 shape = SubResource("RectangleShape2D_5fj8h")
 
 [node name="White" type="Node2D" parent="." unique_id=1780591263]
-visible = false
 
 [node name="KnightH2" parent="White" unique_id=1141139028 instance=ExtResource("7_twe5h")]
 position = Vector2(415, 602)
@@ -483,17 +482,20 @@ position = Vector2(815, 602)
 [node name="QueenWhite" parent="White" unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
 position = Vector2(576, 604)
 
-[node name="Rook2" parent="White" unique_id=1039881567 instance=ExtResource("6_vw4oq")]
+[node name="RookH1" parent="White" unique_id=1039881567 instance=ExtResource("6_vw4oq")]
 position = Vector2(335, 602)
 
-[node name="Rook" parent="White" unique_id=773808664 instance=ExtResource("6_vw4oq")]
+[node name="RookH8" parent="White" unique_id=773808664 instance=ExtResource("6_vw4oq")]
 position = Vector2(895, 602)
 
 [node name="BishopH3" parent="White" unique_id=195200490 instance=ExtResource("7_hm3vq")]
 position = Vector2(496, 604)
 
-[node name="BishopH7" parent="White" unique_id=505501379 instance=ExtResource("7_hm3vq")]
+[node name="BishopH6" parent="White" unique_id=505501379 instance=ExtResource("7_hm3vq")]
 position = Vector2(736, 604)
+
+[node name="King" parent="White" unique_id=421995261 instance=ExtResource("8_7iy1p")]
+position = Vector2(657, 602)
 
 [node name="WhitePawns" type="Node2D" parent="White" unique_id=199717627]
 
@@ -522,7 +524,6 @@ position = Vector2(818, 523)
 position = Vector2(898, 523)
 
 [node name="Black" type="Node2D" parent="." unique_id=361448236]
-visible = false
 
 [node name="KnightBlackA7" parent="Black" unique_id=878598053 instance=ExtResource("8_d8vyx")]
 position = Vector2(815, 43)
@@ -533,10 +534,10 @@ position = Vector2(415, 43)
 [node name="QueenBlack" parent="Black" unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
 
-[node name="RookBlack" parent="Black" unique_id=1545077595 instance=ExtResource("9_vjyv8")]
+[node name="RookBlackA8" parent="Black" unique_id=1545077595 instance=ExtResource("9_vjyv8")]
 position = Vector2(895, 42)
 
-[node name="RookBlack2" parent="Black" unique_id=1062452820 instance=ExtResource("9_vjyv8")]
+[node name="RookBlackA1" parent="Black" unique_id=1062452820 instance=ExtResource("9_vjyv8")]
 position = Vector2(335, 42)
 
 [node name="BishopBlackH6" parent="Black" unique_id=448375492 instance=ExtResource("11_iehwj")]
