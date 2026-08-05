@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 [ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="9_vjyv8"]
 [ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
-[ext_resource type="PackedScene" uid="uid://b6kajqyiy26p0" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
+[ext_resource type="PackedScene" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 
@@ -25,6 +25,13 @@ size = Vector2(68, 68)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
 size = Vector2(118, 122)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iehwj"]
+size = Vector2(121, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7iy1p"]
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
 
@@ -34,6 +41,7 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="Edges" type="Node2D" parent="." unique_id=2093225668]
+visible = false
 
 [node name="UpEdgeArea" type="Area2D" parent="Edges" unique_id=1903873758 groups=["Edge"]]
 position = Vector2(537, -596)
@@ -61,6 +69,7 @@ position = Vector2(548, 1236)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
+visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -463,6 +472,7 @@ position = Vector2(896, 603)
 shape = SubResource("RectangleShape2D_5fj8h")
 
 [node name="White" type="Node2D" parent="." unique_id=1780591263]
+visible = false
 
 [node name="KnightH2" parent="White" unique_id=1141139028 instance=ExtResource("7_twe5h")]
 position = Vector2(415, 602)
@@ -512,6 +522,7 @@ position = Vector2(818, 523)
 position = Vector2(898, 523)
 
 [node name="Black" type="Node2D" parent="." unique_id=361448236]
+visible = false
 
 [node name="KnightBlackA7" parent="Black" unique_id=878598053 instance=ExtResource("8_d8vyx")]
 position = Vector2(815, 43)
@@ -586,5 +597,40 @@ script = ExtResource("12_d7frl")
 position = Vector2(81, 357)
 shape = SubResource("RectangleShape2D_d7frl")
 
+[node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
+
+[node name="Sprite2D" type="Sprite2D" parent="LoreOrganizer" unique_id=1357045085]
+position = Vector2(1081, 576)
+texture = ExtResource("11_upw65")
+
+[node name="Area2D" type="Area2D" parent="LoreOrganizer" unique_id=1629684044]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoreOrganizer/Area2D" unique_id=547201665]
+position = Vector2(1079.5, 579)
+shape = SubResource("RectangleShape2D_iehwj")
+
+[node name="Label" type="Label" parent="LoreOrganizer" unique_id=216923922]
+visible = false
+offset_right = 298.0
+offset_bottom = 190.0
+text = "Ker’vahrah is a lone dryad warrior sent from the outskirts of Mernath, attempting to go on solo raids far into the country,
+ pillaging everything they can. Soon, after many travels, they would find the city of Terkast, a solitary and dark and hallowed ground; 
+the skies are blackened with tar and lampblack and lightning strikes the tip of the castle. Entering such a castle through the lurid 
+gates lined with skin-stretched wooden crude pikes, they would find a chess table. Sat at the other side of such a table is an 
+unknown shadowy figure. They invite Ker’vahrah to play. Slowly, they sit and the game commences. The shadowed figure speaks.
+ “Suppose two men at cards with nothing to wager save their lives. Who has not heard such a tale? A turn of the card. The whole universe 
+for such a player has laboured clanking to this moment which will tell if he is to die at that man's hand or that man at his. What 
+more certain validation of a man's worth could there be? This enhancement of the game to its ultimate state admits no argument concerning
+ the notion of fate. The selection of one man over another is a preference absolute and irrevocable and it is a dull man indeed 
+who could reckon so profound a decision without agency or significance either one. In such games as have for their stake the annihilation 
+of the defeated the decisions are quite clear. This man holding this particular arrangement of cards in his hand is thereby removed from existence.
+ This is the nature of gambling, whose stake is at once the game and the authority and the justification. Seen so, gambling is the truest 
+form of divination. It is the testing of one's will and the will of another within that larger will which because it binds them is
+ therefore forced to select. Gambling is the ultimate game because gambling is at last a forcing of the unity of existence. Gambling is god.”
+"
+label_settings = SubResource("LabelSettings_7iy1p")
+
 [connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
+[connection signal="body_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_body_exited"]
