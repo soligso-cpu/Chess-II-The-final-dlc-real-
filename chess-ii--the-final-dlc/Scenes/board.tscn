@@ -12,9 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 [ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="9_vjyv8"]
 [ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
-[ext_resource type="PackedScene" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
+[ext_resource type="PackedScene" uid="uid://b6kajqyiy26p0" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
+[ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -22,15 +23,15 @@ size = Vector2(1240, 1128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5fj8h"]
 size = Vector2(68, 68)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
-size = Vector2(118, 122)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iehwj"]
 size = Vector2(121, 128)
 
 [sub_resource type="LabelSettings" id="LabelSettings_7iy1p"]
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
+size = Vector2(118, 122)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
@@ -571,6 +572,53 @@ position = Vector2(818, 123)
 [node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920 instance=ExtResource("6_bh37u")]
 position = Vector2(898, 123)
 
+[node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
+
+[node name="Sprite2D" type="Sprite2D" parent="LoreOrganizer" unique_id=1357045085]
+position = Vector2(1081, 576)
+texture = ExtResource("11_upw65")
+
+[node name="Area2D" type="Area2D" parent="LoreOrganizer" unique_id=1629684044]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoreOrganizer/Area2D" unique_id=547201665]
+position = Vector2(1079.5, 579)
+shape = SubResource("RectangleShape2D_iehwj")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="LoreOrganizer" unique_id=164585627]
+visible = false
+color = Color(1, 1, 1, 0.6627451)
+blend_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="LoreOrganizer" unique_id=1853598353]
+
+[node name="Label" type="Label" parent="LoreOrganizer/CanvasLayer" unique_id=216923922]
+visible = false
+offset_right = 1133.0
+offset_bottom = 387.0
+text = "Ker’vahrah is a lone dryad warrior sent from the outskirts of Mernath, attempting to go on solo raids far into the country,
+ pillaging everything they can. Soon, after many travels, they would find the city of Terkast, a solitary and dark and hallowed ground; 
+the skies are blackened with tar and lampblack and lightning strikes the tip of the castle. Entering such a castle through the lurid 
+gates lined with skin-stretched wooden crude pikes, they would find a chess table. Sat at the other side of such a table is an 
+unknown shadowy figure. They invite Ker’vahrah to play. Slowly, they sit and the game commences. The shadowed figure speaks.
+ “Suppose two men at cards with nothing to wager save their lives. Who has not heard such a tale? A turn of the card. The whole universe 
+for such a player has laboured clanking to this moment which will tell if he is to die at that man's hand or that man at his. What 
+more certain validation of a man's worth could there be? This enhancement of the game to its ultimate state admits no argument concerning
+ the notion of fate. The selection of one man over another is a preference absolute and irrevocable and it is a dull man indeed 
+who could reckon so profound a decision without agency or significance either one. In such games as have for their stake the annihilation 
+of the defeated the decisions are quite clear. This man holding this particular arrangement of cards in his hand is thereby removed from existence.
+ This is the nature of gambling, whose stake is at once the game and the authority and the justification. Seen so, gambling is the truest 
+form of divination. It is the testing of one's will and the will of another within that larger will which because it binds them is
+ therefore forced to select. Gambling is the ultimate game because gambling is at last a forcing of the unity of existence. Gambling is god.”
+"
+label_settings = SubResource("LabelSettings_7iy1p")
+
+[node name="JumpscareSprite" type="Sprite2D" parent="LoreOrganizer" unique_id=912285902]
+visible = false
+position = Vector2(604, 318)
+texture = ExtResource("14_7iy1p")
+
+[node name="JumpscareTimer" type="Timer" parent="LoreOrganizer" unique_id=1750988115]
+
 [node name="RouletteOrganizer" type="Node2D" parent="." unique_id=596971121]
 
 [node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
@@ -597,40 +645,7 @@ script = ExtResource("12_d7frl")
 position = Vector2(81, 357)
 shape = SubResource("RectangleShape2D_d7frl")
 
-[node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
-
-[node name="Sprite2D" type="Sprite2D" parent="LoreOrganizer" unique_id=1357045085]
-position = Vector2(1081, 576)
-texture = ExtResource("11_upw65")
-
-[node name="Area2D" type="Area2D" parent="LoreOrganizer" unique_id=1629684044]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="LoreOrganizer/Area2D" unique_id=547201665]
-position = Vector2(1079.5, 579)
-shape = SubResource("RectangleShape2D_iehwj")
-
-[node name="Label" type="Label" parent="LoreOrganizer" unique_id=216923922]
-visible = false
-offset_right = 298.0
-offset_bottom = 190.0
-text = "Ker’vahrah is a lone dryad warrior sent from the outskirts of Mernath, attempting to go on solo raids far into the country,
- pillaging everything they can. Soon, after many travels, they would find the city of Terkast, a solitary and dark and hallowed ground; 
-the skies are blackened with tar and lampblack and lightning strikes the tip of the castle. Entering such a castle through the lurid 
-gates lined with skin-stretched wooden crude pikes, they would find a chess table. Sat at the other side of such a table is an 
-unknown shadowy figure. They invite Ker’vahrah to play. Slowly, they sit and the game commences. The shadowed figure speaks.
- “Suppose two men at cards with nothing to wager save their lives. Who has not heard such a tale? A turn of the card. The whole universe 
-for such a player has laboured clanking to this moment which will tell if he is to die at that man's hand or that man at his. What 
-more certain validation of a man's worth could there be? This enhancement of the game to its ultimate state admits no argument concerning
- the notion of fate. The selection of one man over another is a preference absolute and irrevocable and it is a dull man indeed 
-who could reckon so profound a decision without agency or significance either one. In such games as have for their stake the annihilation 
-of the defeated the decisions are quite clear. This man holding this particular arrangement of cards in his hand is thereby removed from existence.
- This is the nature of gambling, whose stake is at once the game and the authority and the justification. Seen so, gambling is the truest 
-form of divination. It is the testing of one's will and the will of another within that larger will which because it binds them is
- therefore forced to select. Gambling is the ultimate game because gambling is at last a forcing of the unity of existence. Gambling is god.”
-"
-label_settings = SubResource("LabelSettings_7iy1p")
-
+[connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
-[connection signal="body_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_body_exited"]
