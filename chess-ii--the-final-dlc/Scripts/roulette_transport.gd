@@ -8,6 +8,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if $"../../LoreOrganizer/JumpscareSprite".visible == true:
+		$"../../LoreOrganizer/JumpscareSprite".scale += Vector2(0.1,0.1)
 	
 	if Input.is_action_just_pressed("Click") and hover == true and on_roulette == false:
 		$"../Roulette".visible = true
@@ -25,7 +27,13 @@ func _process(delta: float) -> void:
 		on_roulette = false
 func _on_mouse_entered() -> void:
 	hover = true
-
+	jumpscare()
 
 func _on_mouse_exited() -> void:
 	hover = false
+
+	
+func jumpscare():
+	$"../../LoreOrganizer/JumpscareSprite".visible = true
+	$"../../LoreOrganizer/JumpscareSprite".scale += Vector2(0.1,0.1)
+	

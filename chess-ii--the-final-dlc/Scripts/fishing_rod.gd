@@ -16,6 +16,7 @@ func _process(delta: float) -> void:
 	if won_games == 3:
 		print("This is when the score would increase")
 		won_games = 0
+		
 	
 	
 	if flip == false:
@@ -53,4 +54,3 @@ func _on_fish_area_body_exited(body: Node2D) -> void:
 func _on_round_timer_timeout() -> void:
 	move_speed = 15 + speed_boost
 	speed_boost += 5
-	
