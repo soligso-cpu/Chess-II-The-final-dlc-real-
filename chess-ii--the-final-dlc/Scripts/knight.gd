@@ -68,9 +68,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if(Globals.piece_focused == self.name):
-		focused = true
+		true
 	else:
 		focused = false
+	
 	$MovementMarkers.global_position = global_position
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
 		$SelectKnight.mouse_filter = Control.MOUSE_FILTER_STOP

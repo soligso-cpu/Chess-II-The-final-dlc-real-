@@ -124,6 +124,18 @@ var back_touching_border
 func _ready() -> void:
 	moved = false
 	taking = false
+	if(self.name == "RookBlackA1"):
+		tile = "A1"
+		tile_group = "A"
+	elif(self.name == "RookBlackA8"):
+		tile = "A8"
+		tile_group = "A"
+	elif(self.name == "RookH1"):
+		tile = "H1"
+		tile_group = "H"
+	elif(self.name == "RookH8"):
+		tile = "H8"
+		tile_group = "H"
 	#region markers
 	enemy_right1 = false
 	enemy_right2 = false

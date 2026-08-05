@@ -29,7 +29,7 @@ var board_tiles = {
 	
 }
 
-var accessing
+var accessing: String
 var accessing_group
 var position_target
 var state
@@ -169,9 +169,7 @@ func _process(delta: float) -> void:
 		position_target = Vector2(496, 43)
 		board_tiles["A"]["A3"].state = true
 	if(accessing == "A4"):
-		print("accessing a4")
 		position_target = Vector2(576, 43)
-		print(position_target)
 		board_tiles["A"]["A4"].state = true
 	if(accessing == "A5"):
 		position_target = Vector2(656, 43)
