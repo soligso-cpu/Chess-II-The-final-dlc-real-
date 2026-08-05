@@ -89,7 +89,7 @@ offset_bottom = 39.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Left2" type="Node2D" parent="MovementMarkers" unique_id=103123674]
-position = Vector2(-240, 0)
+position = Vector2(-160, 0)
 
 [node name="Left2Sprite" type="Sprite2D" parent="MovementMarkers/Left2" unique_id=548836765]
 
@@ -100,6 +100,24 @@ position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_n3uat")
 
 [node name="Left2Button" type="Button" parent="MovementMarkers/Left2/Left2Sprite" unique_id=1262678665]
+offset_left = -39.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 39.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Left3" type="Node2D" parent="MovementMarkers" unique_id=822901308]
+position = Vector2(-240, 0)
+
+[node name="Left3Sprite" type="Sprite2D" parent="MovementMarkers/Left3" unique_id=446209613]
+
+[node name="Left3Area" type="Area2D" parent="MovementMarkers/Left3/Left3Sprite" unique_id=1892894042]
+
+[node name="Left3Shape" type="CollisionShape2D" parent="MovementMarkers/Left3/Left3Sprite/Left3Area" unique_id=1867451073]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_n3uat")
+
+[node name="Left3Button" type="Button" parent="MovementMarkers/Left3/Left3Sprite" unique_id=302963076]
 offset_left = -39.0
 offset_top = -37.0
 offset_right = 37.0
@@ -142,6 +160,24 @@ offset_right = 37.0
 offset_bottom = 39.0
 metadata/_edit_use_anchors_ = true
 
+[node name="Right3" type="Node2D" parent="MovementMarkers" unique_id=1641557939]
+position = Vector2(240, 0)
+
+[node name="Right3Sprite" type="Sprite2D" parent="MovementMarkers/Right3" unique_id=1811732395]
+
+[node name="Right3Area" type="Area2D" parent="MovementMarkers/Right3/Right3Sprite" unique_id=1566645711]
+
+[node name="Right3Shape" type="CollisionShape2D" parent="MovementMarkers/Right3/Right3Sprite/Right3Area" unique_id=1910532492]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_n3uat")
+
+[node name="Right3Button" type="Button" parent="MovementMarkers/Right3/Right3Sprite" unique_id=1671854093]
+offset_left = -39.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 39.0
+metadata/_edit_use_anchors_ = true
+
 [node name="Back" type="Node2D" parent="MovementMarkers" unique_id=698644078]
 
 [node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back" unique_id=1595579413]
@@ -174,6 +210,10 @@ polygon = PackedVector2Array(-1, -33, -4, -29, -2, -25, -9, -21, -6, -10, -8, -5
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_u63x5")
 
+[node name="SelectKing" type="Button" parent="." unique_id=551362732]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [connection signal="body_entered" from="CloseToKing/CloseLeft/CloseLeftArea" to="." method="_on_close_left_area_body_entered"]
 [connection signal="body_exited" from="CloseToKing/CloseLeft/CloseLeftArea" to="." method="_on_close_left_area_body_exited"]
 [connection signal="body_entered" from="CloseToKing/CloseRight/CloseRightArea" to="." method="_on_close_right_area_body_entered"]
@@ -196,6 +236,11 @@ shape = SubResource("RectangleShape2D_u63x5")
 [connection signal="body_entered" from="MovementMarkers/Left2/Left2Sprite/Left2Area" to="." method="_on_left_2_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Left2/Left2Sprite/Left2Area" to="." method="_on_left_2_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Left2/Left2Sprite/Left2Button" to="." method="_on_left_2_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Left3/Left3Sprite/Left3Area" to="." method="_on_left_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Left3/Left3Sprite/Left3Area" to="." method="_on_left_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Left3/Left3Sprite/Left3Area" to="." method="_on_left_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Left3/Left3Sprite/Left3Area" to="." method="_on_left_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Left3/Left3Sprite/Left3Button" to="." method="_on_left_3_button_button_up"]
 [connection signal="area_entered" from="MovementMarkers/Right1/Right1Sprite/Right1Area" to="." method="_on_right_1_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right1/Right1Sprite/Right1Area" to="." method="_on_right_1_area_area_exited"]
 [connection signal="body_entered" from="MovementMarkers/Right1/Right1Sprite/Right1Area" to="." method="_on_right_1_area_body_entered"]
@@ -206,3 +251,13 @@ shape = SubResource("RectangleShape2D_u63x5")
 [connection signal="body_entered" from="MovementMarkers/Right2/Right2Sprite/Right2Area" to="." method="_on_right_2_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Right2/Right2Sprite/Right2Area" to="." method="_on_right_2_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Right2/Right2Sprite/Right2Button" to="." method="_on_right_2_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Right3/Right3Sprite/Right3Area" to="." method="_on_right_3_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Right3/Right3Sprite/Right3Area" to="." method="_on_right_3_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Right3/Right3Sprite/Right3Area" to="." method="_on_right_3_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Right3/Right3Sprite/Right3Area" to="." method="_on_right_3_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Right3/Right3Sprite/Right3Button" to="." method="_on_right_3_button_button_up"]
+[connection signal="area_entered" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_area_entered"]
+[connection signal="area_exited" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_area_exited"]
+[connection signal="body_entered" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_body_entered"]
+[connection signal="body_exited" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_body_exited"]
+[connection signal="button_up" from="MovementMarkers/Back/BackSprite/BackButton" to="." method="_on_back_button_button_up"]

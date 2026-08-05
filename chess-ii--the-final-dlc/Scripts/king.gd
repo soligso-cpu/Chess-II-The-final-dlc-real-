@@ -3,6 +3,7 @@ extends CharacterBody2D
 var forward_touching_border
 var touching_border
 var left_touching_border
+var back_touching_border
 
 var moved
 var focused
@@ -18,6 +19,7 @@ var close_to_king_back
 
 var enemy_left1
 var enemy_left2
+var enemy_left3
 var enemy_right1
 var enemy_right2
 var enemy_forward
@@ -27,12 +29,8 @@ var forward_tile
 var forward_tile_group
 var left1_tile
 var left1_tile_group
-var left2_tile
-var left2_tile_group
 var right1_tile
 var right1_tile_group
-var right2_tile
-var right2_tile_group
 var back_tile
 var back_tile_group
 
@@ -41,7 +39,103 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	pass
+	if(Globals.piece_focused == self.name):
+		focused = true
+	else:
+		focused = false
+	$MovementMarkers.global_position = global_position
+	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
+		$SelectKing.mouse_filter = Control.MOUSE_FILTER_STOP
+		if(focused):
+			for child in $MovementMarkers.get_children():
+				child.process_mode = Node.PROCESS_MODE_INHERIT
+			z_index = 5
+			move_to_front()
+			taking = true
+			
+			#region forward
+			
+			$MovementMarkers.visible = true
+			$MovementMarkers/Forward.visible = true
+			if(enemy_forward):
+				$MovementMarkers/Forward.visible = false
+			
+			#endregion
+			#region back
+			
+			$MovementMarkers/Back.visible = true
+			if(enemy_back):
+				$MovementMarkers/Back.visible = false
+			
+			#endregion
+			#region left
+			
+			$MovementMarkers/Left1.visible = true
+			$MovementMarkers/Left2.visible = true
+			$MovementMarkers/Left3.visible = true
+			
+			if(moved):
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
+			elif(!moved):
+				$MovementMarkers/Left2.visible = true
+				$MovementMarkers/Left3.visible = true
+			
+			if(enemy_left1):
+				$MovementMarkers/Left1.visible = false
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
+			elif(enemy_left2):
+				$MovementMarkers/Left1.visible = true
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
+			elif(enemy_left3):
+				$MovementMarkers/Left1.visible = true
+				$MovementMarkers/Left2.visible = true
+				$MovementMarkers/Left3.visible = false
+			
+			#endregion
+			#region right
+			
+			$MovementMarkers/Right1.visible = true
+			$MovementMarkers/Right2.visible = true
+			$MovementMarkers/Right3.visible = true
+			
+			if(!moved):
+				$MovementMarkers/Right2.visible = true
+				$MovementMarkers/Right3.visible = true
+			if(enemy_left1):
+				if(left_touching_border):
+					$MovementMarkers/Right1.visible = false
+				$MovementMarkers/Right1.visible = true
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			elif(enemy_left2):
+				$MovementMarkers/Right1.visible = true
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			elif(enemy_left3):
+				$MovementMarkers/Right1.visible = true
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			if(moved):
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			if(close_to_king_right):
+				$MovementMarkers/Right1.visible = false
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+		elif(!focused):
+			for child in $MovementMarkers.get_children():
+				child.process_mode = Node.PROCESS_MODE_DISABLED
+			z_index = 1
+			$MovementMarkers.visible = false
+	else:
+		$MovementMarkers.visible = false
+		focused = false
+		for child in $MovementMarkers.get_children():
+			child.process_mode = Node.PROCESS_MODE_DISABLED
+		$SelectKing.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func reset_markers():
 	enemy_back = false
@@ -197,9 +291,6 @@ func _on_left_1_button_button_up() -> void:
 
 
 func _on_left_2_area_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Tiles")):
-		left2_tile = area.name
-		left2_tile_group = str(area.name)[0]
 	if(area.is_in_group("Edge")):
 		left_touching_border = true
 		enemy_left2 = true
@@ -212,8 +303,6 @@ func _on_left_2_area_area_exited(area: Area2D) -> void:
 
 
 func _on_left_2_area_body_entered(body: Node2D) -> void:
-	left2_tile = body.tile
-	left2_tile_group = body.tile_group
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left2 = true
@@ -239,11 +328,48 @@ func _on_left_2_button_button_up() -> void:
 	if(self.name == "BlackKing"):
 		$RookBlackA1.global_positon = Vector2(576, 43)
 		global_position = Vector2(496, 43)
+
+
+#endregion
+#region left3
+func _on_left_3_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = true
+		enemy_left3 = true
+
+
+func _on_left_3_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		left_touching_border = false
+		enemy_left3 = false
+
+
+func _on_left_3_area_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_left3 = true
+			left_touching_border = true
+		else:
+			enemy_left3 = true
+			left_touching_border = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_left3 = true
+			left_touching_border = true
+		else:
+			enemy_left3 = true
+			left_touching_border = false
+
+
+func _on_left_3_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemy_left2 = false
+
+
+func _on_left_3_button_button_up() -> void:
 	if(self.name == "WhiteKing"):
 		$RookH1.global_position = Vector2(576, 603)
 		global_position = Vector2(496, 603)
-
-
 #endregion
 #region close_to_king
 
@@ -325,11 +451,7 @@ func _on_right_1_button_button_up() -> void:
 #endregion
 #region right2
 
-
 func _on_right_2_area_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Tiles")):
-		right2_tile = area.name
-		right2_tile_group = str(area.name)[0]
 	if(area.is_in_group("Edge")):
 		touching_border = true
 		enemy_right2 = true
@@ -342,8 +464,6 @@ func _on_right_2_area_area_exited(area: Area2D) -> void:
 
 
 func _on_right_2_area_body_entered(body: Node2D) -> void:
-	right2_tile = body.tile
-	right2_tile_group = body.tile_group
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right2 = true
@@ -366,13 +486,51 @@ func _on_right_2_area_body_exited(body: Node2D) -> void:
 
 
 func _on_right_2_button_button_up() -> void:
-	if(self.name == "BlackKing"):
-		$RookBlackA8.global_positon = Vector2(736, 43)
-		global_position = Vector2(816, 43)
 	if(self.name == "WhiteKing"):
 		$RookH8.global_position = Vector2(736, 603)
 		global_position = Vector2(816, 603)
 
+#endregion
+#region right3
+
+func _on_right_3_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		touching_border = true
+		enemy_right2 = true
+
+
+func _on_right_3_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		touching_border = false
+		enemy_right2 = false
+
+
+func _on_right_3_area_body_entered(body: Node2D) -> void:
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_right2 = true
+			touching_border = true
+		else:
+			enemy_right2 = true
+			touching_border = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_right2 = true
+			touching_border = true
+		else:
+			enemy_right2 = true
+			touching_border = false
+
+
+func _on_right_3_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemy_right2 = false
+
+
+func _on_right_3_button_button_up() -> void:
+	if(self.name == "BlackKing"):
+		$RookBlackA8.global_positon = Vector2(736, 43)
+		global_position = Vector2(816, 43)
 #endregion
 #region close to king
 
@@ -391,4 +549,64 @@ func _on_close_right_area_body_exited(body: Node2D) -> void:
 		pass
 
 #endregion
+#endregion
+
+#region back
+
+
+func _on_back_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		back_tile = area.name
+		back_tile_group = str(area.name)[0]
+	if(area.is_in_group("Edge")):
+		back_touching_border = true
+		enemy_back = true
+
+
+func _on_back_area_area_exited(area: Area2D) -> void:
+	if(area.is_in_group("Edge")):
+		back_touching_border = false
+		enemy_back = false
+
+
+func _on_back_area_body_entered(body: Node2D) -> void:
+	back_tile = body.tile
+	back_tile_group = body.tile_group
+	if(body.is_in_group("White")):
+		if(self.is_in_group("White")):
+			enemy_back = true
+			back_touching_border = true
+		else:
+			enemy_back = true
+			back_touching_border = false
+	elif(body.is_in_group("Black")):
+		if(self.is_in_group("Black")):
+			enemy_back = true
+			back_touching_border = true
+		else:
+			enemy_back = true
+			back_touching_border = false
+
+
+func _on_back_area_body_exited(body: Node2D) -> void:
+	if(body.is_in_group("Pieces")):
+		enemy_back = false
+
+
+func _on_back_button_button_up() -> void:
+	moved = true
+	focused = false
+	Globals.moved = true
+	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
+		Globals.board_tiles[tile_group][tile].state = false
+	Globals.accessing = back_tile # tells the global script that youre accessing tile X
+	await get_tree().process_frame # process frame to let process in globals work
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	var target_with_offset = Globals.position_target + Vector2(2, 0)
+	global_position = target_with_offset # change the position to the target.
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	reset_markers()
+	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	Globals.turn_tracking += 1 # change turn
+
 #endregion
