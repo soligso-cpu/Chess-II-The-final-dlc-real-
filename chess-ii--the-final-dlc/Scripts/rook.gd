@@ -464,6 +464,15 @@ func reset_markers():
 	focused = false
 	Globals.piece_focused = " "
 
+func castle_prevention():
+	if(self.name == "RookH1"):
+		Globals.rook_h1_moved = true
+	elif(self.name == "RookH8"):
+		Globals.rook_h8_moved = true
+	elif(self.name == "RookBlackA1"):
+		Globals.rook_a1_moved = true
+	elif(self.name == "RookBlackA8"):
+		Globals.rook_a8_moved = true
 
 func _on_tile_collision_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
@@ -505,14 +514,7 @@ func _on_select_rook_button_up() -> void:
 func _on_right_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
@@ -528,14 +530,7 @@ func _on_right_button_button_up() -> void:
 func _on_right_button_2_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right2_tile # tells the global script that youre accessing tile X
@@ -552,14 +547,7 @@ func _on_right_button_2_button_up() -> void:
 func _on_right_button_3_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right3_tile # tells the global script that youre accessing tile X
@@ -577,14 +565,7 @@ func _on_right_button_3_button_up() -> void:
 func _on_right_button_4_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right4_tile # tells the global script that youre accessing tile X
@@ -602,14 +583,7 @@ func _on_right_button_4_button_up() -> void:
 func _on_right_button_5_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right5_tile # tells the global script that youre accessing tile X
@@ -628,14 +602,7 @@ func _on_right_button_5_button_up() -> void:
 func _on_right_button_6_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right6_tile # tells the global script that youre accessing tile X
@@ -652,14 +619,7 @@ func _on_right_button_6_button_up() -> void:
 func _on_right_button_7_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
@@ -962,14 +922,7 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 func _on_forward_button_1_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
@@ -985,14 +938,7 @@ func _on_forward_button_1_button_up() -> void:
 func _on_forward_button_2_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
@@ -1007,14 +953,7 @@ func _on_forward_button_2_button_up() -> void:
 func _on_forward_button_3_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward3_tile # tells the global script that youre accessing tile X
@@ -1030,14 +969,7 @@ func _on_forward_button_3_button_up() -> void:
 func _on_forward_button_4_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward4_tile
@@ -1053,14 +985,7 @@ func _on_forward_button_4_button_up() -> void:
 func _on_forward_button_5_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward5_tile # tells the global script that youre accessing tile X
@@ -1078,14 +1003,7 @@ func _on_forward_button_5_button_up() -> void:
 func _on_forward_button_6_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward6_tile # tells the global script that youre accessing tile X
@@ -1102,14 +1020,7 @@ func _on_forward_button_7_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward7_tile # tells the global script that youre accessing tile X
@@ -1408,14 +1319,7 @@ func _on_forward_7_area_body_exited(body: Node2D) -> void:
 func _on_back_1_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back1_tile # tells the global script that youre accessing tile X
@@ -1431,14 +1335,7 @@ func _on_back_1_button_button_up() -> void:
 func _on_back_2_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back2_tile # tells the global script that youre accessing tile X
@@ -1454,14 +1351,7 @@ func _on_back_2_button_button_up() -> void:
 func _on_back_3_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back3_tile # tells the global script that youre accessing tile X
@@ -1477,14 +1367,7 @@ func _on_back_3_button_button_up() -> void:
 func _on_back_4_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back4_tile # tells the global script that youre accessing tile X
@@ -1500,14 +1383,7 @@ func _on_back_4_button_button_up() -> void:
 func _on_back_5_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back5_tile # tells the global script that youre accessing tile X
@@ -1523,14 +1399,7 @@ func _on_back_5_button_button_up() -> void:
 func _on_back_6_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back6_tile # tells the global script that youre accessing tile X
@@ -1546,14 +1415,7 @@ func _on_back_6_button_button_up() -> void:
 func _on_back_7_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = back7_tile # tells the global script that youre accessing tile X
@@ -1853,14 +1715,7 @@ func _on_back_7_area_area_exited(area: Area2D) -> void:
 func _on_left_1_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
@@ -1876,14 +1731,7 @@ func _on_left_1_button_button_up() -> void:
 func _on_left_2_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left2_tile # tells the global script that youre accessing tile X
@@ -1899,14 +1747,7 @@ func _on_left_2_button_button_up() -> void:
 func _on_left_3_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left3_tile # tells the global script that youre accessing tile X
@@ -1923,14 +1764,7 @@ func _on_left_3_button_button_up() -> void:
 func _on_left_4_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left4_tile # tells the global script that youre accessing tile X
@@ -1947,14 +1781,7 @@ func _on_left_4_button_button_up() -> void:
 func _on_left_5_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left5_tile # tells the global script that youre accessing tile X
@@ -1970,14 +1797,7 @@ func _on_left_5_button_button_up() -> void:
 func _on_left_6_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left6_tile # tells the global script that youre accessing tile X
@@ -1993,14 +1813,7 @@ func _on_left_6_button_button_up() -> void:
 func _on_left_7_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
-	if(self.name == "RookH1"):
-		Globals.rook_h1_moved = true
-	elif(self.name == "RookH8"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA1"):
-		Globals.rook_a1_moved = true
-	elif(self.name == "RookBlackA8"):
-		Globals.rook_a1_moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = left7_tile # tells the global script that youre accessing tile X

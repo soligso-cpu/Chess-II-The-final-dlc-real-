@@ -6,6 +6,8 @@ var left_touching_border
 var back_touching_border
 
 var moved
+var no_castle_right
+var no_castle_left
 var focused
 var taking
 
@@ -43,14 +45,14 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
-			moved = true
+			no_castle_left = true
 		elif(Globals.rook_a8_moved):
-			moved = true
+			no_castle_right = true
 	if(self.name == "WhiteKing"):
 		if(Globals.rook_h1_moved):
-			moved = true
+			no_castle_left = true
 		elif(Globals.rook_h8_moved):
-			moved = true
+			no_castle_right = true
 	if(Globals.piece_focused == self.name):
 		focused = true
 	else:
@@ -112,6 +114,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left1.visible = false
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
+			if(no_castle_left):
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
 			if(moved):
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
@@ -145,6 +150,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right3.visible = false
 			if(close_to_king_right):
 				$MovementMarkers/Right1.visible = false
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			if(no_castle_right):
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
 			if(moved):
@@ -596,7 +604,7 @@ func _on_right_3_area_body_exited(body: Node2D) -> void:
 
 func _on_right_3_button_button_up() -> void:
 	if(self.name == "BlackKing"):
-		$RookBlackA8.global_positon = Vector2(736, 43)
+		$"../../Black/RookBlackA8".global_positon = Vector2(736, 43)
 		global_position = Vector2(816, 43)
 		Globals.rook_a8_moved = true
 		Globals.moved = true
