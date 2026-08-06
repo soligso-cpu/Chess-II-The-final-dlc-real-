@@ -37,6 +37,11 @@ var turn_count
 
 var lore_won = false
 
+var rook_a1_moved
+var rook_a8_moved
+var rook_h1_moved
+var rook_h8_moved
+
 #region Tile Variables
 
 #region "A" Tiles

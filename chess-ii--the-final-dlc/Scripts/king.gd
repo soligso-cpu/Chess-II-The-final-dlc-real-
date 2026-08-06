@@ -22,6 +22,7 @@ var enemy_left2
 var enemy_left3
 var enemy_right1
 var enemy_right2
+var enemy_right3
 var enemy_forward
 var enemy_back
 
@@ -40,6 +41,16 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if(self.name == "BlackKing"):
+		if(Globals.rook_a1_moved):
+			moved = true
+		elif(Globals.rook_a8_moved):
+			moved = true
+	if(self.name == "WhiteKing"):
+		if(Globals.rook_h1_moved):
+			moved = true
+		elif(Globals.rook_h8_moved):
+			moved = true
 	if(Globals.piece_focused == self.name):
 		focused = true
 	else:
@@ -81,9 +92,8 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Left3.visible = true
 			
 			if(!moved):
-				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = true
-			
+				$MovementMarkers/Left3.visible = true
 			if(enemy_left1):
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = false
@@ -98,13 +108,17 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = false
-			if(close_to_king_right):
+			if(close_to_king_left):
 				$MovementMarkers/Left1.visible = false
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 			if(moved):
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
+			if(self.is_in_group("White")):
+				$MovementMarkers/Left3.visible = false
+			else:
+				$MovementMarkers/Left2.visible = false
 			#endregion
 			#region right
 			
@@ -115,22 +129,19 @@ func _process(delta: float) -> void:
 			if(!moved):
 				$MovementMarkers/Right2.visible = true
 				$MovementMarkers/Right3.visible = true
-			if(enemy_left1):
+			if(enemy_right1):
 				$MovementMarkers/Right1.visible = true
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
-				if(left_touching_border):
+				if(touching_border):
 					$MovementMarkers/Right1.visible = false
-			elif(enemy_left2):
+			elif(enemy_right2):
 				$MovementMarkers/Right1.visible = true
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
-			elif(enemy_left3):
+			elif(enemy_right3):
 				$MovementMarkers/Right1.visible = true
-				$MovementMarkers/Right2.visible = false
-				$MovementMarkers/Right3.visible = false
-			if(moved):
-				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right2.visible = true
 				$MovementMarkers/Right3.visible = false
 			if(close_to_king_right):
 				$MovementMarkers/Right1.visible = false
@@ -139,7 +150,10 @@ func _process(delta: float) -> void:
 			if(moved):
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
-			
+			if(self.is_in_group("White")):
+				$MovementMarkers/Right3.visible = false
+			else:
+				$MovementMarkers/Right2.visible = false
 			#endregion
 		elif(!focused):
 			for child in $MovementMarkers.get_children():
@@ -154,12 +168,19 @@ func _process(delta: float) -> void:
 		$SelectKing.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func reset_markers():
+	
 	enemy_back = false
 	enemy_forward = false
 	enemy_left1 = false
 	enemy_left2 = false
+	enemy_left3 = false
 	enemy_right1 = false
 	enemy_right2 = false
+	enemy_right3 = false
+	close_to_king_back = false
+	close_to_king_forward = false
+	close_to_king_left = false
+	close_to_king_right = false
 	
 	focused = false
 	Globals.piece_focused = ""
@@ -530,8 +551,11 @@ func _on_right_2_area_body_exited(body: Node2D) -> void:
 
 func _on_right_2_button_button_up() -> void:
 	if(self.name == "WhiteKing"):
-		$RookH8.global_position = Vector2(736, 603)
+		$"../RookH8".global_position = Vector2(736, 603)
 		global_position = Vector2(816, 603)
+		Globals.rook_h8_moved = true
+		Globals.moved = true
+		moved = true
 
 #endregion
 #region right3
@@ -539,41 +563,44 @@ func _on_right_2_button_button_up() -> void:
 func _on_right_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = true
-		enemy_right2 = true
+		enemy_right3 = true
 
 
 func _on_right_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		touching_border = false
-		enemy_right2 = false
+		enemy_right3 = false
 
 
 func _on_right_3_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
-			enemy_right2 = true
+			enemy_right3 = true
 			touching_border = true
 		else:
-			enemy_right2 = true
+			enemy_right3 = true
 			touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
-			enemy_right2 = true
+			enemy_right3 = true
 			touching_border = true
 		else:
-			enemy_right2 = true
+			enemy_right3 = true
 			touching_border = false
 
 
 func _on_right_3_area_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Pieces")):
-		enemy_right2 = false
+		enemy_right3 = false
 
 
 func _on_right_3_button_button_up() -> void:
 	if(self.name == "BlackKing"):
 		$RookBlackA8.global_positon = Vector2(736, 43)
 		global_position = Vector2(816, 43)
+		Globals.rook_a8_moved = true
+		Globals.moved = true
+		moved = true
 #endregion
 #region close to king
 
@@ -602,11 +629,8 @@ func _on_back_area_area_entered(area: Area2D) -> void:
 		back_tile = area.name
 		back_tile_group = str(area.name)[0]
 	if(area.is_in_group("Edge")):
-		print("back edge")
 		back_touching_border = true
-		print("black_touching_border:"+ str(back_touching_border))
 		enemy_back = true
-		print("enemy back: "+ str(enemy_back))
 
 
 func _on_back_area_area_exited(area: Area2D) -> void:

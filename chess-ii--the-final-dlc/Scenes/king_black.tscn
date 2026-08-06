@@ -9,7 +9,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u63x5"]
 size = Vector2(72, 72)
 
-[node name="BlackKing" type="CharacterBody2D" unique_id=421995261 groups=["Pieces"]]
+[node name="BlackKing" type="CharacterBody2D" unique_id=421995261 groups=["Black", "Pieces"]]
 script = ExtResource("1_75cpy")
 
 [node name="CloseToKing" type="Node2D" parent="." unique_id=1698945103]

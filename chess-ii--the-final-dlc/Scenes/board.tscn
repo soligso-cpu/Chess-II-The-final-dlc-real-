@@ -480,7 +480,7 @@ position = Vector2(415, 602)
 [node name="KnightH7" parent="White" unique_id=760195180 instance=ExtResource("7_twe5h")]
 position = Vector2(815, 602)
 
-[node name="QueenWhite" parent="White" unique_id=1356915549 groups=["White"] instance=ExtResource("3_shhme")]
+[node name="QueenWhite" parent="White" unique_id=1356915549 instance=ExtResource("3_shhme")]
 position = Vector2(576, 604)
 
 [node name="RookH1" parent="White" unique_id=1039881567 instance=ExtResource("6_vw4oq")]
