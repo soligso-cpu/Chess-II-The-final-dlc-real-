@@ -9,7 +9,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u63x5"]
 size = Vector2(72, 72)
 
-[node name="King" type="CharacterBody2D" unique_id=421995261 groups=["Pieces", "White"]]
+[node name="WhiteKing" type="CharacterBody2D" unique_id=421995261 groups=["Pieces", "White"]]
 script = ExtResource("1_n3uat")
 
 [node name="CloseToKing" type="Node2D" parent="." unique_id=1698945103]
@@ -51,6 +51,7 @@ position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_n3uat")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=929866203]
+position = Vector2(0, -1)
 
 [node name="Forward" type="Node2D" parent="MovementMarkers" unique_id=481875354]
 position = Vector2(0, -80)
@@ -179,9 +180,9 @@ offset_bottom = 39.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Back" type="Node2D" parent="MovementMarkers" unique_id=698644078]
+position = Vector2(0, 80)
 
 [node name="BackSprite" type="Sprite2D" parent="MovementMarkers/Back" unique_id=1595579413]
-position = Vector2(0, 80)
 
 [node name="BackArea" type="Area2D" parent="MovementMarkers/Back/BackSprite" unique_id=1974585320]
 
@@ -211,8 +212,10 @@ position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_u63x5")
 
 [node name="SelectKing" type="Button" parent="." unique_id=551362732]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -39.0
+offset_top = -37.0
+offset_right = 37.0
+offset_bottom = 39.0
 
 [connection signal="body_entered" from="CloseToKing/CloseLeft/CloseLeftArea" to="." method="_on_close_left_area_body_entered"]
 [connection signal="body_exited" from="CloseToKing/CloseLeft/CloseLeftArea" to="." method="_on_close_left_area_body_exited"]
@@ -261,3 +264,6 @@ offset_bottom = 8.0
 [connection signal="body_entered" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Back/BackSprite/BackArea" to="." method="_on_back_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Back/BackSprite/BackButton" to="." method="_on_back_button_button_up"]
+[connection signal="area_entered" from="CollisionArea" to="." method="_on_collision_area_area_entered"]
+[connection signal="body_entered" from="CollisionArea" to="." method="_on_collision_area_body_entered"]
+[connection signal="button_up" from="SelectKing" to="." method="_on_select_king_button_up"]

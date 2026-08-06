@@ -309,6 +309,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Back" type="Marker2D" parent="MovementMarkers" unique_id=533455622]
 process_priority = 1
 z_index = 1
+position = Vector2(0, -1)
 
 [node name="Back1" type="Node2D" parent="MovementMarkers/Back" unique_id=744473611]
 position = Vector2(0, 79)

@@ -36,6 +36,7 @@ var back_tile_group
 
 func _ready() -> void:
 	focused = false
+	moved = false
 
 
 func _process(delta: float) -> void:
@@ -59,12 +60,17 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Forward.visible = true
 			if(enemy_forward):
 				$MovementMarkers/Forward.visible = false
-			
+			if(close_to_king_forward):
+				$MovementMarkers/Forward.visible = false
 			#endregion
 			#region back
 			
 			$MovementMarkers/Back.visible = true
 			if(enemy_back):
+				$MovementMarkers/Back.visible = true
+				if(back_touching_border):
+					$MovementMarkers/Back.visible = false
+			if(close_to_king_back):
 				$MovementMarkers/Back.visible = false
 			
 			#endregion
@@ -74,17 +80,16 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Left2.visible = true
 			$MovementMarkers/Left3.visible = true
 			
-			if(moved):
-				$MovementMarkers/Left2.visible = false
-				$MovementMarkers/Left3.visible = false
-			elif(!moved):
+			if(!moved):
 				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = true
 			
 			if(enemy_left1):
-				$MovementMarkers/Left1.visible = false
+				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
+				if(left_touching_border):
+					$MovementMarkers/Left1.visible = false
 			elif(enemy_left2):
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = false
@@ -93,7 +98,13 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = false
-			
+			if(close_to_king_right):
+				$MovementMarkers/Left1.visible = false
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
+			if(moved):
+				$MovementMarkers/Left2.visible = false
+				$MovementMarkers/Left3.visible = false
 			#endregion
 			#region right
 			
@@ -105,11 +116,11 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right2.visible = true
 				$MovementMarkers/Right3.visible = true
 			if(enemy_left1):
-				if(left_touching_border):
-					$MovementMarkers/Right1.visible = false
 				$MovementMarkers/Right1.visible = true
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
+				if(left_touching_border):
+					$MovementMarkers/Right1.visible = false
 			elif(enemy_left2):
 				$MovementMarkers/Right1.visible = true
 				$MovementMarkers/Right2.visible = false
@@ -125,6 +136,11 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right1.visible = false
 				$MovementMarkers/Right2.visible = false
 				$MovementMarkers/Right3.visible = false
+			if(moved):
+				$MovementMarkers/Right2.visible = false
+				$MovementMarkers/Right3.visible = false
+			
+			#endregion
 		elif(!focused):
 			for child in $MovementMarkers.get_children():
 				child.process_mode = Node.PROCESS_MODE_DISABLED
@@ -148,6 +164,33 @@ func reset_markers():
 	focused = false
 	Globals.piece_focused = ""
 
+
+func _on_select_king_button_up() -> void:
+	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
+		if(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		elif(Globals.piece_focused != self.name):
+			Globals.piece_focused = self.name
+			focused = true
+		else:
+			Globals.piece_focused = ""
+			focused = false
+
+
+func _on_collision_area_area_entered(area: Area2D) -> void:
+	if(area.is_in_group("Tiles")):
+		tile = area.name
+		tile_group = str(area.name)[0]
+
+
+func _on_collision_area_body_entered(body: Node2D) -> void:
+	if(self.name != body.name):
+		if(taking):
+			body.queue_free()
+			taking = false
+		else:
+			queue_free()
 
 #region forward
 #region movementmarker
@@ -559,8 +602,11 @@ func _on_back_area_area_entered(area: Area2D) -> void:
 		back_tile = area.name
 		back_tile_group = str(area.name)[0]
 	if(area.is_in_group("Edge")):
+		print("back edge")
 		back_touching_border = true
+		print("black_touching_border:"+ str(back_touching_border))
 		enemy_back = true
+		print("enemy back: "+ str(enemy_back))
 
 
 func _on_back_area_area_exited(area: Area2D) -> void:

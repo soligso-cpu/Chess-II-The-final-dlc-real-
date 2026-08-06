@@ -9,13 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ce5fasgcxkdk2" path="res://Scenes/bishop.tscn" id="7_hm3vq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
-[ext_resource type="PackedScene" uid="uid://bdmuaqrv3pnlx" path="res://Scenes/king.tscn" id="8_7iy1p"]
+[ext_resource type="PackedScene" uid="uid://bdmuaqrv3pnlx" path="res://Scenes/white_black.tscn" id="8_7iy1p"]
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 [ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="9_vjyv8"]
 [ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
 [ext_resource type="PackedScene" uid="uid://b6kajqyiy26p0" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
+[ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
@@ -70,7 +71,6 @@ position = Vector2(548, 1236)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="TileAreas" type="Node2D" parent="." unique_id=1526180137 groups=["Tiles"]]
-visible = false
 
 [node name="A" type="Node2D" parent="TileAreas" unique_id=26445241]
 
@@ -495,8 +495,8 @@ position = Vector2(496, 604)
 [node name="BishopH6" parent="White" unique_id=505501379 instance=ExtResource("7_hm3vq")]
 position = Vector2(736, 604)
 
-[node name="King" parent="White" unique_id=421995261 instance=ExtResource("8_7iy1p")]
-position = Vector2(657, 602)
+[node name="WhiteKing" parent="White" unique_id=421995261 instance=ExtResource("8_7iy1p")]
+position = Vector2(657, 603)
 
 [node name="WhitePawns" type="Node2D" parent="White" unique_id=199717627]
 
@@ -546,6 +546,9 @@ position = Vector2(736, 44)
 
 [node name="BishopBlackH3" parent="Black" unique_id=728376784 instance=ExtResource("11_iehwj")]
 position = Vector2(496, 45)
+
+[node name="BlackKing" parent="Black" unique_id=2054794464 instance=ExtResource("13_2cdyc")]
+position = Vector2(577, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
 
