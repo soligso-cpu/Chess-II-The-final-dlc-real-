@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://crn83ymyeb22p"]
+
+[ext_resource type="Script" uid="uid://baytx473s5k3v" path="res://Scripts/slot_jackpot.gd" id="1_8cpis"]
+[ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="2_4jowp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0rs"]
+size = Vector2(591.4516, 900.9094)
+
+[node name="SlotJackpot" type="CharacterBody2D" unique_id=1508876994]
+scale = Vector2(0.17714286, 0.12571429)
+script = ExtResource("1_8cpis")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=343089066]
+position = Vector2(285.7258, 440.4545)
+scale = Vector2(1, 0.9999996)
+shape = SubResource("RectangleShape2D_lf0rs")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72111660]
+position = Vector2(512.72577, 639.6136)
+scale = Vector2(3.002835, 3.4984906)
+texture = ExtResource("2_4jowp")

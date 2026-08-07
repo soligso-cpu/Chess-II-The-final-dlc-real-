@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://boqmcwbli3p7j"]
+
+[ext_resource type="Script" uid="uid://cq20qsr7rmiyk" path="res://Scripts/slot_double.gd" id="1_0uy5w"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="1_w5cht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0uy5w"]
+size = Vector2(1121.1812, 1082.137)
+
+[node name="SlotDouble" type="CharacterBody2D" unique_id=31808016]
+scale = Vector2(0.06479591, 0.05969387)
+script = ExtResource("1_0uy5w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=601455189]
+position = Vector2(550.5907, 531.0686)
+shape = SubResource("RectangleShape2D_0uy5w")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126810247]
+position = Vector2(531.3071, 537.5727)
+scale = Vector2(9.301674, 9.399573)
+texture = ExtResource("1_w5cht")

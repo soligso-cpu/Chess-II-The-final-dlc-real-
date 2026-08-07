@@ -1,4 +1,4 @@
-#extends Area2D
+extends Area2D
 #var move_speed  = 10
 #var speed_boost = 5
 #var direction = Vector2()

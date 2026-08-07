@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cx8ffmhw47e0r"]
+
+[ext_resource type="Script" uid="uid://bk0w1apgvgdjo" path="res://Scripts/slot_machine.gd" id="1_7abct"]
+[ext_resource type="PackedScene" uid="uid://dx4ntsmqd26bk" path="res://Scenes/Slots/slot_7.tscn" id="2_kpwbf"]
+[ext_resource type="PackedScene" uid="uid://df7n4x8qj3exu" path="res://Scenes/Slots/slot_bust.tscn" id="3_jfulg"]
+[ext_resource type="PackedScene" uid="uid://boqmcwbli3p7j" path="res://Scenes/Slots/slot_double.tscn" id="4_nvm1u"]
+[ext_resource type="PackedScene" uid="uid://crn83ymyeb22p" path="res://Scenes/Slots/slot_jackpot.tscn" id="5_dwfc2"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="5_nvm1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjjkd"]
+size = Vector2(573, 20)
+
+[node name="SlotMachine" type="Node2D" unique_id=446480958]
+script = ExtResource("1_7abct")
+
+[node name="Slot7" parent="." unique_id=1698224738 instance=ExtResource("2_kpwbf")]
+position = Vector2(547, 49.00001)
+
+[node name="SlotBust" parent="." unique_id=520040797 instance=ExtResource("3_jfulg")]
+position = Vector2(603, 48)
+
+[node name="SlotDouble" parent="." unique_id=1691589849 instance=ExtResource("4_nvm1u")]
+position = Vector2(666.00006, 53.000008)
+
+[node name="SlotJackpot" parent="." unique_id=1399318989 instance=ExtResource("5_dwfc2")]
+position = Vector2(741, 53.000008)
+
+[node name="SlotTop" type="Sprite2D" parent="." unique_id=809689986]
+position = Vector2(413, 124)
+scale = Vector2(3.515625, 0.5)
+texture = ExtResource("5_nvm1u")
+
+[node name="SlotBottom" type="Sprite2D" parent="." unique_id=1994108374]
+position = Vector2(417, 351)
+scale = Vector2(3.53125, 1)
+texture = ExtResource("5_nvm1u")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=161872660]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=531175869]
+position = Vector2(404, 404)
+shape = SubResource("RectangleShape2D_bjjkd")
+
+[node name="LineMarkers" type="Node2D" parent="." unique_id=951351868]
+
+[node name="Line1" type="Marker2D" parent="LineMarkers" unique_id=578472605]
+position = Vector2(559, 120)
+
+[node name="Line2" type="Marker2D" parent="LineMarkers" unique_id=900104009]
+position = Vector2(405, 118)
+
+[node name="Line3" type="Marker2D" parent="LineMarkers" unique_id=1430328474]
+position = Vector2(242, 121)

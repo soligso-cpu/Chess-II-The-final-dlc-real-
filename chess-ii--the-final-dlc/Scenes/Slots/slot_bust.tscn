@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://df7n4x8qj3exu"]
+
+[ext_resource type="Texture2D" uid="uid://bce33it5dev3y" path="res://Sprites/rook-3d-render-icon-illustration-with-transparent-background-chess-game-png.webp" id="1_1wcu6"]
+[ext_resource type="Script" uid="uid://c6s4qdtwvvyou" path="res://Scripts/slot_bust.gd" id="1_hfcvy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hfcvy"]
+size = Vector2(2165.1726, 2018.9288)
+
+[node name="SlotBust" type="CharacterBody2D" unique_id=1578886680]
+scale = Vector2(0.023200002, 0.0224)
+script = ExtResource("1_hfcvy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=339350919]
+position = Vector2(1162.4998, 983.9286)
+scale = Vector2(7.642856, 6.6224494)
+texture = ExtResource("1_1wcu6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111491238]
+position = Vector2(1072.586, 999.46423)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_hfcvy")

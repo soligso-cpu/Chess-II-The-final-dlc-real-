@@ -4,12 +4,218 @@
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="1_cigb7"]
 [ext_resource type="Script" uid="uid://bsx7coq3vwjnb" path="res://Scripts/fish_area.gd" id="2_v1qp7"]
 [ext_resource type="Script" uid="uid://ckpx4vayk0n7o" path="res://Scripts/fishing_rod.gd" id="3_n1wyh"]
+[ext_resource type="Texture2D" uid="uid://b4q5foox1sk31" path="res://Sprites/pngtree-black-pawn-chess-piece-clipart-isolated-png-image_20439369.png" id="5_whgq6"]
+[ext_resource type="Texture2D" uid="uid://bbbnu6vvwort0" path="res://Sprites/black-knight-chess-piece-3d-design-free-png.webp" id="6_gukw0"]
+[ext_resource type="Texture2D" uid="uid://dtjwpkjmhrs4o" path="res://Sprites/black_queen_placeholder.webp" id="7_554vw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4egeh"]
 size = Vector2(172, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n1wyh"]
 size = Vector2(25.5, 24)
+
+[sub_resource type="Animation" id="Animation_whgq6"]
+resource_name = "Common_win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("CommonFish:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("CommonFish:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.43333334, 0.7, 1, 1.1666666, 1.4, 1.6333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0733774899765127, 0.49567350756638945, -0.661479786505851, 0.49567350756638945, -0.9162978572970232, 0.5497787143782138, -0.7976154681614086, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CommonFish:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 1.2333333, 1.9666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.054000005, 0.04580002), Vector2(0.1, 0.085), Vector2(0.155, 0.132), Vector2(0.1, 0.085)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CommonFish:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CommonFish:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(5.9604645e-08, 0.20000005, 0.4333334, 0.70000005, 1.0000001, 1.1666666, 1.4, 1.6333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0733774899765127, 0.49567350756638945, -0.661479786505851, 0.49567350756638945, -0.9162978572970232, 0.5497787143782138, -0.7976154681614086, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hv133"]
+resource_name = "Epic_win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EpicFish:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EpicFish:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EpicFish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EpicFish:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_gukw0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CommonFish:skew")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CommonFish:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.054000005, 0.04580002)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CommonFish:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_554vw"]
+resource_name = "Rare_win"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RareFish:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334, 0.9526, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.054000005, 0.04580002), Vector2(0.1, 0.085), Vector2(0.606, 0.516), Vector2(0.27, 0.229)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RareFish:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RareFish:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.9604645e-08, 0.20000005, 0.4333334, 0.70000005, 1.0000001, 1.1666666, 1.4, 1.6333333, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0733774899765127, 0.49567350756638945, -0.661479786505851, 0.49567350756638945, -0.9162978572970232, 0.5497787143782138, -0.7976154681614086, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_554vw"]
+_data = {
+&"Common_win": SubResource("Animation_whgq6"),
+&"Epic_win": SubResource("Animation_hv133"),
+&"RESET": SubResource("Animation_gukw0"),
+&"Rare_win": SubResource("Animation_554vw")
+}
 
 [node name="FishingGame" type="Node2D" unique_id=1605624662]
 script = ExtResource("1_4egeh")
@@ -55,11 +261,31 @@ position = Vector2(48, 94)
 position = Vector2(5, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D2/Area2D" unique_id=1352720337]
-position = Vector2(-72, 1)
+position = Vector2(-15, 14)
 shape = SubResource("RectangleShape2D_4egeh")
 
 [node name="RoundTimer" type="Timer" parent="." unique_id=1254774243]
 one_shot = true
+
+[node name="Victory organizer" type="Node2D" parent="." unique_id=246979348]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Victory organizer" unique_id=413510325]
+libraries/ = SubResource("AnimationLibrary_554vw")
+
+[node name="CommonFish" type="Sprite2D" parent="Victory organizer" unique_id=428517797]
+position = Vector2(748, 561.625)
+scale = Vector2(0.054000005, 0.04580002)
+texture = ExtResource("5_whgq6")
+
+[node name="RareFish" type="Sprite2D" parent="Victory organizer" unique_id=2117644349]
+position = Vector2(496, 546)
+scale = Vector2(0.054000005, 0.04580002)
+texture = ExtResource("6_gukw0")
+
+[node name="EpicFish" type="Sprite2D" parent="Victory organizer" unique_id=1121413699]
+position = Vector2(208.00012, 571)
+scale = Vector2(0.30859375, 0.26757813)
+texture = ExtResource("7_554vw")
 
 [connection signal="body_entered" from="FishArea" to="FishArea" method="_on_body_entered"]
 [connection signal="body_entered" from="FishArea" to="CharacterBody2D" method="_on_fish_area_body_entered"]

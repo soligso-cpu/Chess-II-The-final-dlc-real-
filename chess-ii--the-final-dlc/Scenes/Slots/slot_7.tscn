@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dx4ntsmqd26bk"]
+
+[ext_resource type="Texture2D" uid="uid://bbbnu6vvwort0" path="res://Sprites/black-knight-chess-piece-3d-design-free-png.webp" id="1_5lkjg"]
+[ext_resource type="Script" uid="uid://cghbwqq8h3qna" path="res://Scripts/slot_7.gd" id="1_h1soa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1soa"]
+size = Vector2(164.5366, 242.4408)
+
+[node name="Slot7" type="CharacterBody2D" unique_id=2005260119]
+scale = Vector2(0.28472218, 0.176389)
+script = ExtResource("1_h1soa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1527316057]
+position = Vector2(-7.6293945e-06, -7.6293945e-06)
+scale = Vector2(1, 0.99999994)
+shape = SubResource("RectangleShape2D_h1soa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2127361500]
+position = Vector2(7.6293945e-06, -7.6293945e-06)
+scale = Vector2(0.15994275, 0.22768357)
+texture = ExtResource("1_5lkjg")

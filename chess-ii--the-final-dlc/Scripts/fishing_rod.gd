@@ -16,8 +16,19 @@ func _process(delta: float) -> void:
 	if won_games == 3:
 		print("This is when the score would increase")
 		won_games = 0
+		Globals._game_won()
+		var prize = randi_range(1,100)
+		if prize <= 10:
+			print("Win a large prize")
+		elif prize <= 30 and prize > 10:
+			print("win a mid prize")
+			$"../Victory organizer/AnimationPlayer".play("Rare_win")
+
+		else:
+			print("win a crap prize")
+			$"../Victory organizer/AnimationPlayer".play("Common_win")
 		
-	
+		speed_boost = 5
 	
 	if flip == false:
 		direction = global_position.direction_to($"../Marker2D".global_position)
@@ -34,6 +45,9 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("Click") and victory_window == false:
 		print("aw dangit")
 		move_speed = 0
+		$"../RoundTimer".start()
+		speed_boost = 5
+		won_games = 0
 	move_and_collide(direction * move_speed)
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	flip = true
@@ -52,5 +66,5 @@ func _on_fish_area_body_exited(body: Node2D) -> void:
 
 
 func _on_round_timer_timeout() -> void:
-	move_speed = 15 + speed_boost
+	move_speed = 10 + speed_boost
 	speed_boost += 5
