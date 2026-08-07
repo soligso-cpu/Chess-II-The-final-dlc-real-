@@ -132,6 +132,15 @@ func _ready() -> void:
 	if(self.name == "BishopH6"):
 		tile = "H6"
 		tile_group = "H"
+	elif(self.name == "BishopBlackA6"):
+		tile = "A6"
+		tile_group = "H"
+	elif(self.name == "BishopBlackA3"):
+		tile = "A3"
+		tile_group = "A"
+	else:
+		tile = "H3"
+		tile_group = "H"
 
 
 func _process(delta: float) -> void:

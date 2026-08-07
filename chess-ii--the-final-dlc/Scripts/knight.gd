@@ -98,7 +98,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/ForwardLeft.visible = false
 			
 			if(fr_enemy):
-				if(fl_touching_border):
+				if(fr_touching_border):
 					$MovementMarkers/ForwardRight.visible = false
 			
 			if(ru_enemy):
@@ -114,7 +114,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/BackRight.visible = false
 			
 			if(bl_enemy):
-				if(br_touching_border):
+				if(bl_touching_border):
 					$MovementMarkers/BackLeft.visible = false
 			
 			if(ld_enemy):

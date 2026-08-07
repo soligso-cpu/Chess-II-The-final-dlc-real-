@@ -40,9 +40,15 @@ var back_tile_group
 func _ready() -> void:
 	focused = false
 	moved = false
+	no_castle_left = false
+	no_castle_right = false
 
 
 func _process(delta: float) -> void:
+	if not $MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies():
+		enemy_left3 = false
+	else:
+		print(str($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()))
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
 			no_castle_left = true
@@ -94,36 +100,42 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Left3.visible = true
 			
 			if(!moved):
-				$MovementMarkers/Left3.visible = true
+				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = true
 			if(enemy_left1):
+				print("enemy left 1 hahhhhaha")
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 				if(left_touching_border):
 					$MovementMarkers/Left1.visible = false
 			elif(enemy_left2):
+				print("enemty left 2 tung utng")
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 			elif(enemy_left3):
+				print("enemy left 3 tung tung")
 				$MovementMarkers/Left1.visible = true
 				$MovementMarkers/Left2.visible = true
 				$MovementMarkers/Left3.visible = false
 			if(close_to_king_left):
+				print("close to kingf left")
 				$MovementMarkers/Left1.visible = false
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 			if(no_castle_left):
+				print("No caslte left")
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 			if(moved):
+				print("moved")
 				$MovementMarkers/Left2.visible = false
 				$MovementMarkers/Left3.visible = false
 			if(self.is_in_group("White")):
-				$MovementMarkers/Left3.visible = false
-			else:
 				$MovementMarkers/Left2.visible = false
+			else:
+				$MovementMarkers/Left3.visible = false
 			#endregion
 			#region right
 			
@@ -219,6 +231,13 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 			body.queue_free()
 			taking = false
 		else:
+			var who_lost
+			if(self.is_in_group("White")):
+				Globals.white_lost = true
+				Globals.black_won = true
+			else:
+				Globals.black_lost = true
+				Globals.white_won = true
 			queue_free()
 
 #region forward
@@ -398,8 +417,12 @@ func _on_left_2_area_body_exited(body: Node2D) -> void:
 
 func _on_left_2_button_button_up() -> void:
 	if(self.name == "BlackKing"):
-		$RookBlackA1.global_positon = Vector2(576, 43)
-		global_position = Vector2(496, 43)
+		$"../../Black/RookBlackA1".global_position = Vector2(496, 43)
+		global_position = Vector2(416, 43)
+		Globals.rook_a1_moved = true
+		Globals.moved = true
+		moved = true
+		Globals.turn_tracking += 1
 
 
 #endregion
@@ -417,8 +440,10 @@ func _on_left_3_area_area_exited(area: Area2D) -> void:
 
 
 func _on_left_3_area_body_entered(body: Node2D) -> void:
+	print("body entered: "+ str(body))
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
+			print("body is in white")
 			enemy_left3 = true
 			left_touching_border = true
 		else:
@@ -440,8 +465,12 @@ func _on_left_3_area_body_exited(body: Node2D) -> void:
 
 func _on_left_3_button_button_up() -> void:
 	if(self.name == "WhiteKing"):
-		$RookH1.global_position = Vector2(576, 603)
-		global_position = Vector2(496, 603)
+		$"../RookH1".global_position = Vector2(496, 603)
+		global_position = Vector2(416, 603)
+		Globals.rook_h1_moved = true
+		Globals.moved = true
+		moved = true
+		Globals.turn_tracking += 1
 #endregion
 #region close_to_king
 
@@ -564,6 +593,7 @@ func _on_right_2_button_button_up() -> void:
 		Globals.rook_h8_moved = true
 		Globals.moved = true
 		moved = true
+		Globals.turn_tracking += 1
 
 #endregion
 #region right3
@@ -604,10 +634,11 @@ func _on_right_3_area_body_exited(body: Node2D) -> void:
 
 func _on_right_3_button_button_up() -> void:
 	if(self.name == "BlackKing"):
-		$"../../Black/RookBlackA8".global_positon = Vector2(736, 43)
+		$"../../Black/RookBlackA8".global_position = Vector2(736, 43)
 		global_position = Vector2(816, 43)
 		Globals.rook_a8_moved = true
 		Globals.moved = true
+		Globals.turn_tracking += 1
 		moved = true
 #endregion
 #region close to king

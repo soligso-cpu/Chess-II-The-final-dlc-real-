@@ -1,9 +1,45 @@
 [gd_scene format=3 uid="uid://bdmuaqrv3pnlx"]
 
 [ext_resource type="Script" uid="uid://gslv1gtvre7b" path="res://Scripts/king.gd" id="1_n3uat"]
-[ext_resource type="Texture2D" uid="uid://yns48sfgbuye" path="res://Scenes/white-king-chess-piece-clipart-flat-design-icon-isolated-on-transparent-background-3d-render-chess-and-board-game-concept-png.webp" id="1_u63x5"]
+[ext_resource type="Texture2D" uid="uid://yns48sfgbuye" path="res://Sprites/white-king-chess-piece-clipart-flat-design-icon-isolated-on-transparent-background-3d-render-chess-and-board-game-concept-png.webp" id="1_u63x5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3uat"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_25sm7"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_161y7"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0vvc"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5uk3i"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4m5qi"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xulo6"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4sla"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vyvu"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lux3r"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h765k"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1uj1"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xp3ll"]
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u63x5"]
@@ -50,6 +86,109 @@ position = Vector2(0, -160)
 position = Vector2(-1, 1)
 shape = SubResource("RectangleShape2D_n3uat")
 
+[node name="Forward" type="Marker2D" parent="CloseToKing" unique_id=1585644659]
+
+[node name="UpForwardLeft" type="Node2D" parent="CloseToKing/Forward" unique_id=1211675662]
+position = Vector2(-80, -160)
+
+[node name="UpForwardLeftArea" type="Area2D" parent="CloseToKing/Forward/UpForwardLeft" unique_id=235023871]
+
+[node name="UpForwardLeftShape" type="CollisionShape2D" parent="CloseToKing/Forward/UpForwardLeft/UpForwardLeftArea" unique_id=973025681]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="LeftForwardLeft" type="Node2D" parent="CloseToKing/Forward" unique_id=1533555157]
+position = Vector2(-160, -160)
+
+[node name="LeftForwardLeftArea" type="Area2D" parent="CloseToKing/Forward/LeftForwardLeft" unique_id=701664393]
+
+[node name="LeftForwardLeftShape" type="CollisionShape2D" parent="CloseToKing/Forward/LeftForwardLeft/LeftForwardLeftArea" unique_id=1213544368]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="DownFowardLeft" type="Node2D" parent="CloseToKing/Forward" unique_id=1635294598]
+position = Vector2(-160, -80)
+
+[node name="DownForwardLeftArea" type="Area2D" parent="CloseToKing/Forward/DownFowardLeft" unique_id=1556557869]
+
+[node name="DownForwardLeftShape" type="CollisionShape2D" parent="CloseToKing/Forward/DownFowardLeft/DownForwardLeftArea" unique_id=961368766]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="UpForwardRight" type="Node2D" parent="CloseToKing/Forward" unique_id=1340731422]
+position = Vector2(80, -160)
+
+[node name="UpForwardRightArea" type="Area2D" parent="CloseToKing/Forward/UpForwardRight" unique_id=1699584621]
+
+[node name="UpForwardRightShape" type="CollisionShape2D" parent="CloseToKing/Forward/UpForwardRight/UpForwardRightArea" unique_id=442357226]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="RightForwardRight" type="Node2D" parent="CloseToKing/Forward" unique_id=1938785696]
+position = Vector2(160, -160)
+
+[node name="RightForwardRightArea" type="Area2D" parent="CloseToKing/Forward/RightForwardRight" unique_id=2019615772]
+
+[node name="RightForwardRightShape" type="CollisionShape2D" parent="CloseToKing/Forward/RightForwardRight/RightForwardRightArea" unique_id=1298502643]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="DownForwardRight" type="Node2D" parent="CloseToKing/Forward" unique_id=738498788]
+position = Vector2(160, -80)
+
+[node name="DownForwardRightArea" type="Area2D" parent="CloseToKing/Forward/DownForwardRight" unique_id=206910521]
+
+[node name="DownForwardRightShape" type="CollisionShape2D" parent="CloseToKing/Forward/DownForwardRight/DownForwardRightArea" unique_id=184550650]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_25sm7")
+
+[node name="Down" type="Marker2D" parent="CloseToKing" unique_id=1977843101]
+
+[node name="UpBackLeft" type="Node2D" parent="CloseToKing/Down" unique_id=193573602]
+position = Vector2(-160, 80)
+
+[node name="UpBackLeftArea" type="Area2D" parent="CloseToKing/Down/UpBackLeft" unique_id=1344052359]
+
+[node name="UpBackLeftShape" type="CollisionShape2D" parent="CloseToKing/Down/UpBackLeft/UpBackLeftArea" unique_id=1292282571]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_161y7")
+
+[node name="LeftBackLeft" type="Node2D" parent="CloseToKing/Down" unique_id=1617043602]
+position = Vector2(-160, 160)
+
+[node name="LeftBackLeftArea" type="Area2D" parent="CloseToKing/Down/LeftBackLeft" unique_id=474484389]
+
+[node name="LeftBackLeftShape" type="CollisionShape2D" parent="CloseToKing/Down/LeftBackLeft/LeftBackLeftArea" unique_id=1999207349]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_161y7")
+
+[node name="DownBackLeft" type="Node2D" parent="CloseToKing/Down" unique_id=1554603558]
+position = Vector2(-80, 160)
+
+[node name="DownBackLeftArea" type="Area2D" parent="CloseToKing/Down/DownBackLeft" unique_id=906380306]
+
+[node name="DownBackLeftShape" type="CollisionShape2D" parent="CloseToKing/Down/DownBackLeft/DownBackLeftArea" unique_id=783200763]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_161y7")
+
+[node name="DownBackRight" type="Node2D" parent="CloseToKing/Down" unique_id=376213437]
+position = Vector2(80, 160)
+
+[node name="DownBackRightArea" type="Area2D" parent="CloseToKing/Down/DownBackRight" unique_id=1378316563]
+
+[node name="DownBackRightShape" type="CollisionShape2D" parent="CloseToKing/Down/DownBackRight/DownBackRightArea" unique_id=1531205977]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_161y7")
+
+[node name="RightBackRight" type="Node2D" parent="CloseToKing/Down" unique_id=1180933488]
+position = Vector2(160, 160)
+
+[node name="RightBackRightArea" type="Area2D" parent="CloseToKing/Down/RightBackRight" unique_id=1114684887]
+
+[node name="RightBackRightShape" type="CollisionShape2D" parent="CloseToKing/Down/RightBackRight/RightBackRightArea" unique_id=1286926929]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_161y7")
+
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=929866203]
 position = Vector2(0, -1)
 
@@ -62,7 +201,7 @@ position = Vector2(0, -80)
 
 [node name="ForwardShape" type="CollisionShape2D" parent="MovementMarkers/Forward/ForwardSprite/ForwardArea" unique_id=1919586566]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_m0vvc")
 
 [node name="ForwardButton" type="Button" parent="MovementMarkers/Forward/ForwardSprite" unique_id=1741113960]
 offset_left = -39.0
@@ -80,7 +219,7 @@ position = Vector2(-80, 0)
 
 [node name="Left1Shape" type="CollisionShape2D" parent="MovementMarkers/Left1/Left1Sprite/Left1Area" unique_id=1336872337]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_5uk3i")
 
 [node name="Left1Button" type="Button" parent="MovementMarkers/Left1/Left1Sprite" unique_id=223340659]
 offset_left = -39.0
@@ -98,7 +237,7 @@ position = Vector2(-160, 0)
 
 [node name="Left2Shape" type="CollisionShape2D" parent="MovementMarkers/Left2/Left2Sprite/Left2Area" unique_id=662309190]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_4m5qi")
 
 [node name="Left2Button" type="Button" parent="MovementMarkers/Left2/Left2Sprite" unique_id=1262678665]
 offset_left = -39.0
@@ -116,7 +255,7 @@ position = Vector2(-240, 0)
 
 [node name="Left3Shape" type="CollisionShape2D" parent="MovementMarkers/Left3/Left3Sprite/Left3Area" unique_id=1867451073]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_xulo6")
 
 [node name="Left3Button" type="Button" parent="MovementMarkers/Left3/Left3Sprite" unique_id=302963076]
 offset_left = -39.0
@@ -134,7 +273,7 @@ position = Vector2(80, 0)
 
 [node name="Right1Shape" type="CollisionShape2D" parent="MovementMarkers/Right1/Right1Sprite/Right1Area" unique_id=1494625758]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_s4sla")
 
 [node name="Right1Button" type="Button" parent="MovementMarkers/Right1/Right1Sprite" unique_id=641050146]
 offset_left = -39.0
@@ -152,7 +291,7 @@ position = Vector2(160, 0)
 
 [node name="Right2Shape" type="CollisionShape2D" parent="MovementMarkers/Right2/Right2Sprite/Right2Area" unique_id=329457653]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_8vyvu")
 
 [node name="Right2Button" type="Button" parent="MovementMarkers/Right2/Right2Sprite" unique_id=632789205]
 offset_left = -39.0
@@ -170,7 +309,7 @@ position = Vector2(240, 0)
 
 [node name="Right3Shape" type="CollisionShape2D" parent="MovementMarkers/Right3/Right3Sprite/Right3Area" unique_id=1910532492]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_lux3r")
 
 [node name="Right3Button" type="Button" parent="MovementMarkers/Right3/Right3Sprite" unique_id=1671854093]
 offset_left = -39.0
@@ -188,7 +327,7 @@ position = Vector2(0, 80)
 
 [node name="BackShape" type="CollisionShape2D" parent="MovementMarkers/Back/BackSprite/BackArea" unique_id=2052782571]
 position = Vector2(-1, 1)
-shape = SubResource("RectangleShape2D_n3uat")
+shape = SubResource("RectangleShape2D_h765k")
 
 [node name="BackButton" type="Button" parent="MovementMarkers/Back/BackSprite" unique_id=997926414]
 offset_left = -39.0
@@ -196,6 +335,75 @@ offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 39.0
 metadata/_edit_use_anchors_ = true
+
+[node name="FL" type="Node2D" parent="MovementMarkers" unique_id=109220518]
+position = Vector2(-80, -80)
+
+[node name="FLSprite" type="Sprite2D" parent="MovementMarkers/FL" unique_id=1233621705]
+position = Vector2(0, -1)
+
+[node name="FLArea" type="Area2D" parent="MovementMarkers/FL/FLSprite" unique_id=831898559]
+position = Vector2(-1, 2)
+
+[node name="FLShape" type="CollisionShape2D" parent="MovementMarkers/FL/FLSprite/FLArea" unique_id=662142693]
+shape = SubResource("RectangleShape2D_h1uj1")
+
+[node name="FLButton" type="Button" parent="MovementMarkers/FL/FLSprite" unique_id=668331611]
+offset_left = -39.0
+offset_top = -36.0
+offset_right = 37.0
+offset_bottom = 40.0
+
+[node name="FR" type="Node2D" parent="MovementMarkers" unique_id=484505806]
+position = Vector2(80, -80)
+
+[node name="FRSprite" type="Sprite2D" parent="MovementMarkers/FR" unique_id=893953358]
+
+[node name="FRArea" type="Area2D" parent="MovementMarkers/FR/FRSprite" unique_id=1613889518]
+
+[node name="FRShape" type="CollisionShape2D" parent="MovementMarkers/FR/FRSprite/FRArea" unique_id=276387780]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_xp3ll")
+
+[node name="FRButton" type="Button" parent="MovementMarkers/FR/FRSprite" unique_id=1558431988]
+offset_left = -39.0
+offset_top = -36.0
+offset_right = 37.0
+offset_bottom = 40.0
+
+[node name="DR" type="Node2D" parent="MovementMarkers" unique_id=325333985]
+position = Vector2(-80, 79)
+
+[node name="DRSprite" type="Sprite2D" parent="MovementMarkers/DR" unique_id=1572839266]
+
+[node name="DRArea" type="Area2D" parent="MovementMarkers/DR/DRSprite" unique_id=1155914024]
+
+[node name="DRShape" type="CollisionShape2D" parent="MovementMarkers/DR/DRSprite/DRArea" unique_id=803499273]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_xp3ll")
+
+[node name="DRButton" type="Button" parent="MovementMarkers/DR/DRSprite" unique_id=378465981]
+offset_left = -39.0
+offset_top = -36.0
+offset_right = 37.0
+offset_bottom = 40.0
+
+[node name="DL" type="Node2D" parent="MovementMarkers" unique_id=1885335815]
+position = Vector2(80, 79)
+
+[node name="DLSprite" type="Sprite2D" parent="MovementMarkers/DL" unique_id=494509962]
+
+[node name="DLArea" type="Area2D" parent="MovementMarkers/DL/DLSprite" unique_id=1186122761]
+
+[node name="DLShape" type="CollisionShape2D" parent="MovementMarkers/DL/DLSprite/DLArea" unique_id=1450075947]
+position = Vector2(-1, 2)
+shape = SubResource("RectangleShape2D_xp3ll")
+
+[node name="DLButton" type="Button" parent="MovementMarkers/DL/DLSprite" unique_id=1398730423]
+offset_left = -39.0
+offset_top = -36.0
+offset_right = 37.0
+offset_bottom = 40.0
 
 [node name="KingSprite" type="Sprite2D" parent="." unique_id=1646308163]
 position = Vector2(-0.12500376, 0.12499738)
