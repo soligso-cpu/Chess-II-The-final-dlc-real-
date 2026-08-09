@@ -75,21 +75,33 @@ func _process(delta: float) -> void:
 	if not $MovementMarkers/DR/DRSprite/DRArea.get_overlapping_bodies():
 		if(!br_touching_border):
 			enemy_br = false
+	else:
+		print(str($MovementMarkers/DR/DRSprite/DRArea.get_overlapping_bodies()))
 	if not $MovementMarkers/DL/DLSprite/DLArea.get_overlapping_bodies():
 		if(!bl_touching_border):
 			enemy_bl = false
+	else:
+		print(str($MovementMarkers/DL/DLSprite/DLArea.get_overlapping_bodies()))
 	if not $MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies():
 		if(!fr_touching_border):
 			enemy_fr = false
+	else:
+		print(str($MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies()))
 	if not $MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies():
 		if(!fl_touching_border):
 			enemy_fl = false
+	else:
+		print(str($MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies()))
 	if not $MovementMarkers/Forward/ForwardSprite/ForwardArea.get_overlapping_bodies():
 		if(!forward_touching_border):
 			enemy_forward = false
+	else:
+		print(str($MovementMarkers/Forward/ForwardSprite/ForwardArea.get_overlapping_bodies()))
 	if not $MovementMarkers/Back/BackSprite/BackArea.get_overlapping_bodies():
 		if(!back_touching_border):
 			enemy_back = false
+	else:
+		print(str($MovementMarkers/Back/BackSprite/BackArea.get_overlapping_bodies()))
 	if not $MovementMarkers/Left1/Left1Sprite/Left1Area.get_overlapping_bodies():
 		if(!left_touching_border):
 			enemy_left1 = false
