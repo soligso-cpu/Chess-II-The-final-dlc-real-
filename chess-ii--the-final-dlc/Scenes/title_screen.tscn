@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dhq0xl1gn3rj2"]
+
+[ext_resource type="Script" uid="uid://ccp42x2cgvulg" path="res://Scripts/title_screen.gd" id="1_klylv"]
+
+[node name="TitleScreen" type="Node2D" unique_id=349354344]
+script = ExtResource("1_klylv")
+
+[node name="Start" type="Button" parent="." unique_id=1930625247]
+offset_left = 409.0
+offset_top = 243.0
+offset_right = 717.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 50
+text = "START"
+
+[node name="Tutorial" type="Button" parent="." unique_id=1500249890]
+offset_left = 409.0
+offset_top = 364.0
+offset_right = 717.0
+offset_bottom = 458.0
+theme_override_font_sizes/font_size = 50
+text = "TUTORIAL"
+
+[node name="Exit" type="Button" parent="." unique_id=1744687975]
+offset_left = 409.0
+offset_top = 490.0
+offset_right = 717.0
+offset_bottom = 584.0
+theme_override_font_sizes/font_size = 50
+text = "EXIT"
+
+[node name="Title" type="Label" parent="." unique_id=1997013502]
+offset_left = 84.0
+offset_top = 49.0
+offset_right = 1078.0
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 85
+text = "CHESS 2: THE FINAL DLC"
+
+[connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="Tutorial" to="." method="_on_tutorial_button_up"]
+[connection signal="button_up" from="Exit" to="." method="_on_exit_button_up"]

@@ -71,10 +71,42 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	#region safety overlapping bodies
+	if not $MovementMarkers/DR/DRSprite/DRArea.get_overlapping_bodies():
+		if(!br_touching_border):
+			enemy_br = false
+	if not $MovementMarkers/DL/DLSprite/DLArea.get_overlapping_bodies():
+		if(!bl_touching_border):
+			enemy_bl = false
+	if not $MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies():
+		if(!fr_touching_border):
+			enemy_fr = false
+	if not $MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies():
+		if(!fl_touching_border):
+			enemy_fl = false
+	if not $MovementMarkers/Forward/ForwardSprite/ForwardArea.get_overlapping_bodies():
+		if(!forward_touching_border):
+			enemy_forward = false
+	if not $MovementMarkers/Back/BackSprite/BackArea.get_overlapping_bodies():
+		if(!back_touching_border):
+			enemy_back = false
+	if not $MovementMarkers/Left1/Left1Sprite/Left1Area.get_overlapping_bodies():
+		if(!left_touching_border):
+			enemy_left1 = false
+	else:
+		print(str($MovementMarkers/Left1/Left1Sprite/Left1Area.get_overlapping_bodies()))
+	if not $MovementMarkers/Left2/Left2Sprite/Left2Area.get_overlapping_bodies():
+		if(!left_touching_border):
+			enemy_left2 = false
+	else:
+		print(str($MovementMarkers/Left2/Left2Sprite/Left2Area.get_overlapping_bodies()))
 	if not $MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies():
-		enemy_left3 = false
+		if(!left_touching_border):
+			enemy_left3 = false
 	else:
 		print(str($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()))
+		
+	#endregion
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
 			no_castle_left = true
