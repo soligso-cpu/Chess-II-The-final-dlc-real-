@@ -15,30 +15,74 @@ var slot_full_3
 var slot
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	spawn_slot($LineMarkers/Line1)
+	spawn_slot($LineMarkers/Line2)
+	spawn_slot($LineMarkers/Line3)
+	$SpawnTimer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if slot_full_1 == false:
-		var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
-		if slot_randi == 0:
-			var slot_1 = SLOT_7_SCENE.instantiate()
-			spawn_slot(slot_1, $LineMarkers/Line1)
-		if slot_randi == 1:
-			var slot_bust = SLOT_BUST_SCENE.instantiate()
-			spawn_slot(slot_bust, $LineMarkers/Line1)
-		if slot_randi == 2:
-			var slot_double = SLOT_DOUBLE_SCENE.instantiate()
-			spawn_slot(slot_double, $LineMarkers/Line1)
-		if slot_randi == 3:
-			var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
-			spawn_slot(slot_jackpot, $LineMarkers/Line1)
-		slot_full_1 = true
+	pass
 		
-func spawn_slot(slot, line):
-	print(slot)
-	slot.global_position = line.global_position
+func spawn_slot(slot):
 	
-	#okay, system is flawed on a few levels. the teleing where to go should be in
-	#the og block, not the new one. dang. 
+		
+	var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
+	if slot_randi == 0:
+		var slot_7 = SLOT_7_SCENE.instantiate()
+		$SpawnedSlots.add_child(slot_7)
+		slot_7.global_position = slot.global_position
+		
+	if slot_randi == 1:
+		var slot_bust = SLOT_BUST_SCENE.instantiate()
+		$SpawnedSlots.add_child(slot_bust)
+		slot_bust.global_position = slot.global_position
+		
+	if slot_randi == 2:
+		var slot_double = SLOT_DOUBLE_SCENE.instantiate()
+		$SpawnedSlots.add_child(slot_double)
+		slot_double.global_position = slot.global_position
+		
+	if slot_randi == 3:
+		var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
+		$SpawnedSlots.add_child(slot_jackpot)
+		slot_jackpot.global_position = slot.global_position
+	
+
+
+
+
+
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	body.queue_free()
+
+
+func _on_spawn_timer_timeout() -> void:
+	spawn_slot($LineMarkers/Line1)
+	spawn_slot($LineMarkers/Line2)
+	spawn_slot($LineMarkers/Line3)
+	
+	#var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
+	#if slot_randi == 0:
+		#var slot_7 = SLOT_7_SCENE.instantiate()
+		#$SpawnedSlots.add_child(slot_7)
+		#slot_7.global_position = $LineMarkers/Line1.global_position
+		#
+	#if slot_randi == 1:
+		#var slot_bust = SLOT_BUST_SCENE.instantiate()
+		#$SpawnedSlots.add_child(slot_bust)
+		#slot_bust.global_position = $LineMarkers/Line1.global_position
+		#
+	#if slot_randi == 2:
+		#var slot_double = SLOT_DOUBLE_SCENE.instantiate()
+		#$SpawnedSlots.add_child(slot_double)
+		#slot_double.global_position = $LineMarkers/Line1.global_position
+		#
+	#if slot_randi == 3:
+		#var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
+		#$SpawnedSlots.add_child(slot_jackpot)
+		#slot_jackpot.global_position = $LineMarkers/Line1.global_position
+	#
+	#print(slot_randi)

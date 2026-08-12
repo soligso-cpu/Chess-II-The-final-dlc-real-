@@ -59,7 +59,7 @@ position = Vector2(242, 121)
 [node name="SpawnedSlots" type="Node2D" parent="." unique_id=1754121867]
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=229642939]
-wait_time = 0.491
+wait_time = 0.707
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
