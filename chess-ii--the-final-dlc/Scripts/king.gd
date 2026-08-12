@@ -71,54 +71,11 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	#region safety overlapping bodies
-	if not $MovementMarkers/DR/DRSprite/DRArea.get_overlapping_bodies():
-		if(!br_touching_border):
-			enemy_br = false
-	else:
-		print(str($MovementMarkers/DR/DRSprite/DRArea.get_overlapping_bodies()))
-	if not $MovementMarkers/DL/DLSprite/DLArea.get_overlapping_bodies():
-		if(!bl_touching_border):
-			enemy_bl = false
-	else:
-		print(str($MovementMarkers/DL/DLSprite/DLArea.get_overlapping_bodies()))
-	if not $MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies():
-		if(!fr_touching_border):
-			enemy_fr = false
-	else:
-		print(str($MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies()))
-	if not $MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies():
-		if(!fl_touching_border):
-			enemy_fl = false
-	else:
-		print(str($MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies()))
-	if not $MovementMarkers/Forward/ForwardSprite/ForwardArea.get_overlapping_bodies():
-		if(!forward_touching_border):
-			enemy_forward = false
-	else:
-		print(str($MovementMarkers/Forward/ForwardSprite/ForwardArea.get_overlapping_bodies()))
-	if not $MovementMarkers/Back/BackSprite/BackArea.get_overlapping_bodies():
-		if(!back_touching_border):
-			enemy_back = false
-	else:
-		print(str($MovementMarkers/Back/BackSprite/BackArea.get_overlapping_bodies()))
-	if not $MovementMarkers/Left1/Left1Sprite/Left1Area.get_overlapping_bodies():
-		if(!left_touching_border):
-			enemy_left1 = false
-	else:
-		print(str($MovementMarkers/Left1/Left1Sprite/Left1Area.get_overlapping_bodies()))
-	if not $MovementMarkers/Left2/Left2Sprite/Left2Area.get_overlapping_bodies():
-		if(!left_touching_border):
-			enemy_left2 = false
-	else:
-		print(str($MovementMarkers/Left2/Left2Sprite/Left2Area.get_overlapping_bodies()))
-	if not $MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies():
+	
+	if not($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()):
 		if(!left_touching_border):
 			enemy_left3 = false
-	else:
-		print(str($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()))
-		
-	#endregion
+
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
 			no_castle_left = true
@@ -341,6 +298,7 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 				Globals.white_won = true
 			queue_free()
 
+
 #region cardinal movement
 #region forward
 #region movementmarker
@@ -541,10 +499,8 @@ func _on_left_3_area_area_exited(area: Area2D) -> void:
 
 
 func _on_left_3_area_body_entered(body: Node2D) -> void:
-	print("body entered: "+ str(body))
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
-			print("body is in white")
 			enemy_left3 = true
 			left_touching_border = true
 		else:
@@ -826,82 +782,96 @@ func _on_back_button_button_up() -> void:
 
 #region forward
 func _on_up_forward_left_body_entered(body: Node2D) -> void:
-	close_to_king_fl = true
-	close_to_king_forward = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_fl = true
+		close_to_king_forward = true
 
 
 func _on_left_forward_left_body_entered(body: Node2D) -> void:
-	close_to_king_fl = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_fl = true
 
 
 func _on_down_forward_left_body_entered(body: Node2D) -> void:
-	close_to_king_fl = true
-	close_to_king_left = true
-	close_to_king_castle_left1 = true
-	close_to_king_castle_left2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_fl = true
+		close_to_king_left = true
+		close_to_king_castle_left1 = true
+		close_to_king_castle_left2 = true
 
 
 func _on_up_forward_right_body_entered(body: Node2D) -> void:
-	close_to_king_forward = true
-	close_to_king_fr = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_forward = true
+		close_to_king_fr = true
 
 
 func _on_right_forward_right_body_entered(body: Node2D) -> void:
-	close_to_king_fr = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_fr = true
 
 
 func _on_down_forward_right_body_entered(body: Node2D) -> void:
-	close_to_king_fr = true
-	close_to_king_right = true
-	close_to_king_castle_right1 = true
-	close_to_king_castle_right2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_fr = true
+		close_to_king_right = true
+		close_to_king_castle_right1 = true
+		close_to_king_castle_right2 = true
 
 #endregion
 
 #region back
 func _on_up_right_back_body_entered(body: Node2D) -> void:
-	close_to_king_bl = true
-	close_to_king_right = true
-	close_to_king_castle_right1 = true
-	close_to_king_castle_right2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_bl = true
+		close_to_king_right = true
+		close_to_king_castle_right1 = true
+		close_to_king_castle_right2 = true
 
 
 func _on_right_back_right_body_entered(body: Node2D) -> void:
-	close_to_king_bl = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_bl = true
 
 
 func _on_down_back_right_body_entered(body: Node2D) -> void:
-	close_to_king_br = true
-	close_to_king_back = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_br = true
+		close_to_king_back = true
 
 
 func _on_down_back_left_body_entered(body: Node2D) -> void:
-	close_to_king_bl = true
-	close_to_king_back = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_bl = true
+		close_to_king_back = true
 
 
 func _on_left_back_left_body_entered(body: Node2D) -> void:
-	close_to_king_bl = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_bl = true
 
 
 func _on_up_back_left_body_entered(body: Node2D) -> void:
-	close_to_king_bl = true
-	close_to_king_left = true
-	close_to_king_castle_left1 = true
-	close_to_king_castle_left2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_bl = true
+		close_to_king_left = true
+		close_to_king_castle_left1 = true
+		close_to_king_castle_left2 = true
 
 #endregion
 
 #region absolute
 
 func _on_absolute_left_up_body_entered(body: Node2D) -> void:
-	close_to_king_castle_left1 = true
-	close_to_king_castle_left2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_castle_left1 = true
+		close_to_king_castle_left2 = true
 
 
 func _on_absolute_right_up_body_entered(body: Node2D) -> void:
-	close_to_king_castle_right1 = true
-	close_to_king_castle_right2 = true
+	if(body.name == "BlackKing" && self.name != "BlackKing" || body.name == "WhiteKing" && self.name != "WhiteKing"):
+		close_to_king_castle_right1 = true
+		close_to_king_castle_right2 = true
 
 #endregion
 
@@ -1140,5 +1110,7 @@ func _on_dr_button_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
+
+#endregion
 
 #endregion
