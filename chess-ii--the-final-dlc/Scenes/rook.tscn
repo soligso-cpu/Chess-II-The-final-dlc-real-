@@ -665,6 +665,8 @@ position = Vector2(0, 9.536743e-07)
 scale = Vector2(0.18298611, 0.2019157)
 texture = ExtResource("1_f608j")
 
+[node name="MoveCheck" type="Node2D" parent="." unique_id=1478371590]
+
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]
 [connection signal="body_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_body_entered"]
