@@ -30,7 +30,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_64cfu"]
 size = Vector2(71.42857, 71.42857)
 
-[node name="QueenBlack" type="CharacterBody2D" unique_id=581118255 groups=["Black", "Pieces"]]
+[node name="QueenBlack" type="CharacterBody2D" unique_id=581118255 groups=["Black", "Pieces", "Queen"]]
 process_priority = 1
 z_index = 10
 script = ExtResource("1_kuars")

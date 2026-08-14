@@ -90,7 +90,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f608j"]
 size = Vector2(72, 72)
 
-[node name="Rook" type="CharacterBody2D" unique_id=1039881567 groups=["Pieces", "White"]]
+[node name="Rook" type="CharacterBody2D" unique_id=1039881567 groups=["Pieces", "Rook", "White"]]
 script = ExtResource("1_wwc4d")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=199327806]

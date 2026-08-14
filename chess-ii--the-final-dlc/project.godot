@@ -30,6 +30,12 @@ Black=""
 Pieces=""
 Tiles="All the tiles forthe boaerd"
 PromotionTiles=""
+Knight=""
+Bishop=""
+King=""
+Pawn=""
+Queen=""
+Rook=""
 
 [input]
 

@@ -31,6 +31,9 @@ var tile_group
 
 var focused
 var taking
+var is_passantable
+var en_passanting
+var body_being_passanted
 
 var moved
 
@@ -131,6 +134,7 @@ func reset_markers():
 	right_enemy = false
 	left_enemy = false
 	promoting = false
+	is_passantable = false
 	
 	focused = false
 	Globals.piece_focused = ""
@@ -141,9 +145,11 @@ func _on_select_pawn_button_up() -> void:
 		if(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
 			focused = true
+			is_passantable = false
 		elif(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
 			focused = true
+			is_passantable = false
 		else:
 			Globals.piece_focused = ""
 			focused = false
@@ -160,6 +166,42 @@ func _on_tile_collision_area_body_entered(body: Node2D) -> void:
 		if(taking):
 			body.queue_free()
 			taking = false
+			if(body.is_in_group("Queen")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 10
+				else:
+					Globals.black_score += 10
+			if(body.is_in_group("Rook")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 5
+				else:
+					Globals.black_score += 5
+			if(body.is_in_group("Bishop")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Knight")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Pawn")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 1
+				else:
+					Globals.black_score += 1
+			if(body.is_in_group("King")):
+				if(self.is_in_group("White")):
+					Globals.white_lost = true
+					Globals.black_won = true
+					Globals.white_won = false
+					Globals.black_lost = false
+				else:
+					Globals.white_lost = false
+					Globals.black_won = false
+					Globals.white_won = true
+					Globals.black_lost = true
 		else:
 			queue_free()
 
@@ -290,6 +332,7 @@ func _on_forward_2_button_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
+	is_passantable = true
 
 #endregion
 
@@ -351,6 +394,9 @@ func _on_left_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
+	if(en_passanting):
+		var test = get_tree().get_root().find_child(body_being_passanted, true, false)
+		test.queue_free()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	if(!promoting):
 		reset_markers()
@@ -369,9 +415,7 @@ func _on_left_button_button_up() -> void:
 
 #endregion
 
-#region Back
-
-
+#region Right
 
 func _on_right_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -424,6 +468,9 @@ func _on_right_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
+	if(en_passanting):
+		var test = get_tree().get_root().find_child(body_being_passanted, true, false)
+		test.queue_free()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	if(!promoting):
 		reset_markers()
@@ -441,3 +488,47 @@ func _on_right_button_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
+
+
+func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
+	if "is_passantable" in body:
+		if body.is_passantable == true:
+			if(left_enemy == false):
+				en_passanting = true
+				body_being_passanted = body.name
+				if(body.is_in_group("White")):
+					if(self.is_in_group("Black")):
+						left_enemy = true
+						left_touching_border = false
+					else:
+						left_enemy = false
+						left_touching_border = true
+				if(body.is_in_group("Black")):
+					if(self.is_in_group("White")):
+						left_enemy = true
+						left_touching_border = false
+					else:
+						left_enemy = false
+						left_touching_border = true
+
+
+func _on_right_en_passant_area_body_entered(body: Node2D) -> void:
+	if "is_passantable" in body:
+		if(body.is_passantable == true):
+			if(right_enemy == false):
+				en_passanting = true
+				body_being_passanted = body.name
+				if(body.is_in_group("White")):
+					if(self.is_in_group("Black")):
+						right_enemy = true
+						right_touching_border = false
+					else:
+						right_enemy = false
+						right_touching_border = true
+				if(body.is_in_group("Black")):
+					if(self.is_in_group("White")):
+						right_enemy = true
+						right_touching_border = false
+					else:
+						right_enemy = false
+						right_touching_border = true

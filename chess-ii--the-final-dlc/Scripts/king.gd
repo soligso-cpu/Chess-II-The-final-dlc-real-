@@ -291,6 +291,31 @@ func _on_collision_area_body_entered(body: Node2D) -> void:
 		if(taking):
 			body.queue_free()
 			taking = false
+			if(body.is_in_group("Queen")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 10
+				else:
+					Globals.black_score += 10
+			if(body.is_in_group("Rook")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 5
+				else:
+					Globals.black_score += 5
+			if(body.is_in_group("Bishop")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Knight")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Pawn")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 1
+				else:
+					Globals.black_score += 1
 		else:
 			var who_lost
 			if(self.is_in_group("White")):
