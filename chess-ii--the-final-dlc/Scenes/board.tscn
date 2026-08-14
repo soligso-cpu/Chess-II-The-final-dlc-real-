@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 [ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
-[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="6_bh37u"]
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ce5fasgcxkdk2" path="res://Scenes/bishop.tscn" id="7_hm3vq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
@@ -646,28 +645,28 @@ position = Vector2(577, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
 
-[node name="Pawn9" parent="Black/BlackPawns" unique_id=1873266235 instance=ExtResource("6_bh37u")]
+[node name="Pawn9" parent="Black/BlackPawns" unique_id=1873266235]
 position = Vector2(338, 123)
 
-[node name="Pawn10" parent="Black/BlackPawns" unique_id=1614310368 instance=ExtResource("6_bh37u")]
+[node name="Pawn10" parent="Black/BlackPawns" unique_id=1614310368]
 position = Vector2(418, 123)
 
-[node name="Pawn11" parent="Black/BlackPawns" unique_id=1036945592 instance=ExtResource("6_bh37u")]
+[node name="Pawn11" parent="Black/BlackPawns" unique_id=1036945592]
 position = Vector2(498, 123)
 
-[node name="Pawn12" parent="Black/BlackPawns" unique_id=1474532087 instance=ExtResource("6_bh37u")]
+[node name="Pawn12" parent="Black/BlackPawns" unique_id=1474532087]
 position = Vector2(578, 123)
 
-[node name="Pawn13" parent="Black/BlackPawns" unique_id=1190208367 instance=ExtResource("6_bh37u")]
+[node name="Pawn13" parent="Black/BlackPawns" unique_id=1190208367]
 position = Vector2(658, 123)
 
-[node name="Pawn14" parent="Black/BlackPawns" unique_id=748202758 instance=ExtResource("6_bh37u")]
+[node name="Pawn14" parent="Black/BlackPawns" unique_id=748202758]
 position = Vector2(738, 123)
 
-[node name="Pawn15" parent="Black/BlackPawns" unique_id=162669236 instance=ExtResource("6_bh37u")]
+[node name="Pawn15" parent="Black/BlackPawns" unique_id=162669236]
 position = Vector2(818, 123)
 
-[node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920 instance=ExtResource("6_bh37u")]
+[node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920]
 position = Vector2(898, 123)
 
 [node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
