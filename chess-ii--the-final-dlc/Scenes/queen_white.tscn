@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c71blssr34xe8"]
 
 [ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen.gd" id="1_k28i3"]
-[ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="2_ek64s"]
+[ext_resource type="Texture2D" uid="uid://dxurijl6w4v3n" path="res://Sprites/White-Queen.png" id="2_k28i3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tlfm"]
 size = Vector2(72, 72.25)
@@ -1075,9 +1075,8 @@ scale = Vector2(0.87248874, 0.8724889)
 polygon = PackedVector2Array(0, -37, -2, -32, -6, -28, -9, -27, -6, -24, -4, -14, -3, -3, -6, 13, -11, 23, -11, 31, -14, 34, -13, 37, -2, 37, 12, 36, 14, 35, 12, 29, 12, 24, 8, 16, 5, 4, 2, -4, 2, -17, 6, -24, 8, -26, 5, -28, 4, -32, 1, -34, 0, -36)
 
 [node name="QueenSprite" type="Sprite2D" parent="." unique_id=917682721]
-position = Vector2(0.49609375, -0.5160713)
-scale = Vector2(0.13478088, 0.1402083)
-texture = ExtResource("2_ek64s")
+scale = Vector2(0.52000004, 0.54285717)
+texture = ExtResource("2_k28i3")
 
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]

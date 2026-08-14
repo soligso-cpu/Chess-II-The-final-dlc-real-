@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b56lr6hugpfo4"]
 
 [ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen.gd" id="1_kuars"]
-[ext_resource type="Texture2D" uid="uid://dtjwpkjmhrs4o" path="res://Sprites/black_queen_placeholder.webp" id="2_e81vg"]
+[ext_resource type="Texture2D" uid="uid://mlneufw4f8sk" path="res://Sprites/Black-Queen.png" id="2_kuars"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6tlfm"]
 size = Vector2(72, 72.25)
@@ -1067,9 +1067,8 @@ scale = Vector2(1.008, 1.008)
 shape = SubResource("RectangleShape2D_64cfu")
 
 [node name="QueenSprite" type="Sprite2D" parent="." unique_id=1156985265]
-position = Vector2(0.49609375, -0.5160713)
-scale = Vector2(0.13478088, 0.1402083)
-texture = ExtResource("2_e81vg")
+scale = Vector2(0.52, 0.543)
+texture = ExtResource("2_kuars")
 
 [node name="QueenShape" type="CollisionPolygon2D" parent="." unique_id=2103492733]
 position = Vector2(0.45624924, -0.2057991)
