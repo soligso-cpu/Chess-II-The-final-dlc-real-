@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 [ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
-[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawnblack.tscn" id="6_bh37u"]
+[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="6_bh37u"]
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ce5fasgcxkdk2" path="res://Scenes/bishop.tscn" id="7_hm3vq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
@@ -626,7 +626,7 @@ position = Vector2(815, 43)
 [node name="KnightBlackA2" parent="Black" unique_id=56098321 instance=ExtResource("8_d8vyx")]
 position = Vector2(415, 43)
 
-[node name="QueenBlack" parent="Black" unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
+[node name="QueenBlack" parent="Black" unique_id=581118255 instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
 
 [node name="RookBlackA8" parent="Black" unique_id=1545077595 instance=ExtResource("9_vjyv8")]

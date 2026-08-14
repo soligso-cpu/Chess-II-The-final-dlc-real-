@@ -171,6 +171,42 @@ func _on_tile_collision_area_body_entered(body: Node2D) -> void:
 		if(taking):
 			body.queue_free()
 			taking = false
+			if(body.is_in_group("Queen")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 10
+				else:
+					Globals.black_score += 10
+			if(body.is_in_group("Rook")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 5
+				else:
+					Globals.black_score += 5
+			if(body.is_in_group("Bishop")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Knight")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Pawn")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 1
+				else:
+					Globals.black_score += 1
+			if(body.is_in_group("King")):
+				if(self.is_in_group("White")):
+					Globals.white_lost = true
+					Globals.black_won = true
+					Globals.white_won = false
+					Globals.black_lost = false
+				else:
+					Globals.white_lost = false
+					Globals.black_won = false
+					Globals.white_won = true
+					Globals.black_lost = true
 		else:
 			queue_free()
 
