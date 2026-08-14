@@ -72,11 +72,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if not($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()):
+	if ($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies().is_empty()):
 		if(!left_touching_border):
 			enemy_left3 = false
 		else:
-			if($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies() == []):
+			if($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies().is_empty()):
 				enemy_left3 = false
 			print(str($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()))
 
