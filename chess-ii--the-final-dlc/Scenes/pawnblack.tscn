@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cftk3c535i0r0"]
 
 [ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_687s0"]
-[ext_resource type="Texture2D" uid="uid://b4q5foox1sk31" path="res://Sprites/pngtree-black-pawn-chess-piece-clipart-isolated-png-image_20439369.png" id="2_687s0"]
+[ext_resource type="Texture2D" uid="uid://bt54b3tipu2q4" path="res://Sprites/Black-Pawn.png" id="2_qipmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3865y"]
 size = Vector2(72, 72)
@@ -86,9 +86,9 @@ metadata/_edit_use_anchors_ = true
 polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525306621]
-position = Vector2(-1.7126753, 1.3737583)
-scale = Vector2(0.02777014, 0.030150441)
-texture = ExtResource("2_687s0")
+position = Vector2(0, 23)
+scale = Vector2(1.35, 1.43)
+texture = ExtResource("2_qipmx")
 
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=959678191]
 
