@@ -158,6 +158,8 @@ var white_score = 0
 var black_score = 0
 
 var promotion_instance_position
+var promotion_instance_tile
+var promotion_instance_tile_group
 
 var piece_focused = ""
 

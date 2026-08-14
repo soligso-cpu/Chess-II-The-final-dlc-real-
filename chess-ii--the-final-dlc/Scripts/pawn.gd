@@ -135,6 +135,7 @@ func reset_markers():
 	left_enemy = false
 	promoting = false
 	is_passantable = false
+	en_passanting = false
 	
 	focused = false
 	Globals.piece_focused = ""
@@ -143,10 +144,6 @@ func reset_markers():
 func _on_select_pawn_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
 		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
-			is_passantable = false
-		elif(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
 			focused = true
 			is_passantable = false
@@ -477,6 +474,8 @@ func _on_right_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	if(promoting):
 		Globals.promotion_instance_position = self.global_position
+		Globals.promotion_instance_tile = tile
+		Globals.promotion_instance_tile_group = tile_group
 		var promotion_ui = PROMOTION_UI.instantiate()
 		$"../".add_child(promotion_ui)
 		if(self.is_in_group("Black")):

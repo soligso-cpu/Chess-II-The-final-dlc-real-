@@ -72,12 +72,16 @@ func _on_bishop_button_button_up() -> void:
 		var white_bishop_instance = WHITE_BISHOP.instantiate()
 		$"../".add_child(white_bishop_instance)
 		white_bishop_instance.global_position = Globals.promotion_instance_position
+		white_bishop_instance.tile = Globals.promotion_instance_tile
+		white_bishop_instance.tile_group = Globals.promotion_instance_tile_group
 		Globals.turn_tracking += 1
 		self.queue_free()
 	if(black_turn):
 		var black_bishop_instance = BLACK_BISHOP.instantiate()
 		$"../".add_child(black_bishop_instance)
 		black_bishop_instance.global_position = Globals.promotion_instance_position
+		black_bishop_instance.tile = Globals.promotion_instance_tile
+		black_bishop_instance.tile_group = Globals.promotion_instance_tile_group
 		Globals.turn_tracking += 1
 		self.queue_free()
 
