@@ -154,6 +154,12 @@ var turn_amount = 2
 var moved
 var white_turns = 0
 var black_turns = 0
+var white_score = 0
+var black_score = 0
+
+var promotion_instance_position
+var promotion_instance_tile
+var promotion_instance_tile_group
 
 var piece_focused = ""
 
@@ -394,6 +400,8 @@ func _process(delta: float) -> void:
 	elif(white_turns == 0 && turn_tracking > 1):
 		turn_tracking = 0
 		turn_count += 1
+		print("white score: "+ str(white_score))
+		print("black score: "+ str(black_score))
 		
 func _game_won() -> void:
 	print("winwinwinwinwinwinwin")

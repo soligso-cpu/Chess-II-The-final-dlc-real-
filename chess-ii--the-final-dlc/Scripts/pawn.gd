@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const PROMOTION_UI = preload("res://Scenes/promotion_ui.tscn")
 
 var forward1_tile
 var forward1_tile_group
@@ -16,6 +17,7 @@ var forward_enemy1
 var forward_enemy2
 var right_enemy
 var left_enemy
+var promoting
 
 var forward1_enemy
 var forward2_enemy
@@ -29,6 +31,9 @@ var tile_group
 
 var focused
 var taking
+var is_passantable
+var en_passanting
+var body_being_passanted
 
 var moved
 
@@ -128,6 +133,9 @@ func reset_markers():
 	forward2_enemy = false
 	right_enemy = false
 	left_enemy = false
+	promoting = false
+	is_passantable = false
+	en_passanting = false
 	
 	focused = false
 	Globals.piece_focused = ""
@@ -138,9 +146,7 @@ func _on_select_pawn_button_up() -> void:
 		if(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
 			focused = true
-		elif(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
-			focused = true
+			is_passantable = false
 		else:
 			Globals.piece_focused = ""
 			focused = false
@@ -157,6 +163,42 @@ func _on_tile_collision_area_body_entered(body: Node2D) -> void:
 		if(taking):
 			body.queue_free()
 			taking = false
+			if(body.is_in_group("Queen")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 10
+				else:
+					Globals.black_score += 10
+			if(body.is_in_group("Rook")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 5
+				else:
+					Globals.black_score += 5
+			if(body.is_in_group("Bishop")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Knight")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 3
+				else:
+					Globals.black_score += 3
+			if(body.is_in_group("Pawn")):
+				if(self.is_in_group("White")):
+					Globals.white_score += 1
+				else:
+					Globals.black_score += 1
+			if(body.is_in_group("King")):
+				if(self.is_in_group("White")):
+					Globals.white_lost = true
+					Globals.black_won = true
+					Globals.white_won = false
+					Globals.black_lost = false
+				else:
+					Globals.white_lost = false
+					Globals.black_won = false
+					Globals.white_won = true
+					Globals.black_lost = true
 		else:
 			queue_free()
 
@@ -171,6 +213,8 @@ func _on_forward_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		forward1_tile = area.name
 		forward1_tile_group = str(area.name)[0]
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 func _on_forward_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -213,8 +257,19 @@ func _on_forward_button_button_up() -> void:
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
@@ -274,6 +329,7 @@ func _on_forward_2_button_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
+	is_passantable = true
 
 #endregion
 
@@ -289,6 +345,8 @@ func _on_left_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		left_touching_border = true
 		left_enemy = true
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 
 func _on_left_area_area_exited(area: Area2D) -> void:
@@ -333,16 +391,28 @@ func _on_left_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
+	if(en_passanting):
+		var test = get_tree().get_root().find_child(body_being_passanted, true, false)
+		test.queue_free()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
 
-#region Back
-
-
+#region Right
 
 func _on_right_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -351,6 +421,8 @@ func _on_right_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 
 func _on_right_area_area_exited(area: Area2D) -> void:
@@ -393,9 +465,69 @@ func _on_right_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
+	if(en_passanting):
+		var test = get_tree().get_root().find_child(body_being_passanted, true, false)
+		test.queue_free()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		Globals.promotion_instance_tile = tile
+		Globals.promotion_instance_tile_group = tile_group
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
+
+
+func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
+	if "is_passantable" in body:
+		if body.is_passantable == true:
+			if(left_enemy == false):
+				en_passanting = true
+				body_being_passanted = body.name
+				if(body.is_in_group("White")):
+					if(self.is_in_group("Black")):
+						left_enemy = true
+						left_touching_border = false
+					else:
+						left_enemy = false
+						left_touching_border = true
+				if(body.is_in_group("Black")):
+					if(self.is_in_group("White")):
+						left_enemy = true
+						left_touching_border = false
+					else:
+						left_enemy = false
+						left_touching_border = true
+
+
+func _on_right_en_passant_area_body_entered(body: Node2D) -> void:
+	if "is_passantable" in body:
+		if(body.is_passantable == true):
+			if(right_enemy == false):
+				en_passanting = true
+				body_being_passanted = body.name
+				if(body.is_in_group("White")):
+					if(self.is_in_group("Black")):
+						right_enemy = true
+						right_touching_border = false
+					else:
+						right_enemy = false
+						right_touching_border = true
+				if(body.is_in_group("Black")):
+					if(self.is_in_group("White")):
+						right_enemy = true
+						right_touching_border = false
+					else:
+						right_enemy = false
+						right_touching_border = true

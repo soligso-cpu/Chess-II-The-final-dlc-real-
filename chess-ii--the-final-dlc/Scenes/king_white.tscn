@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdmuaqrv3pnlx"]
 
 [ext_resource type="Script" uid="uid://gslv1gtvre7b" path="res://Scripts/king.gd" id="1_n3uat"]
-[ext_resource type="Texture2D" uid="uid://yns48sfgbuye" path="res://Sprites/white-king-chess-piece-clipart-flat-design-icon-isolated-on-transparent-background-3d-render-chess-and-board-game-concept-png.webp" id="1_u63x5"]
+[ext_resource type="Texture2D" uid="uid://dqo3h6k7c4pc1" path="res://Sprites/White-King.png" id="2_m0vvc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3uat"]
 size = Vector2(72, 72)
@@ -51,7 +51,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u63x5"]
 size = Vector2(72, 72)
 
-[node name="WhiteKing" type="CharacterBody2D" unique_id=421995261 groups=["Pieces", "White"]]
+[node name="WhiteKing" type="CharacterBody2D" unique_id=421995261 groups=["King", "Pieces", "White"]]
 script = ExtResource("1_n3uat")
 
 [node name="CloseToKing" type="Node2D" parent="." unique_id=1698945103]
@@ -409,9 +409,8 @@ offset_right = 37.0
 offset_bottom = 40.0
 
 [node name="KingSprite" type="Sprite2D" parent="." unique_id=1646308163]
-position = Vector2(-0.12500376, 0.12499738)
-scale = Vector2(0.073214285, 0.073214285)
-texture = ExtResource("1_u63x5")
+scale = Vector2(0.48000002, 0.49285713)
+texture = ExtResource("2_m0vvc")
 
 [node name="KingShape" type="CollisionPolygon2D" parent="." unique_id=781631242]
 polygon = PackedVector2Array(-1, -33, -4, -29, -2, -25, -9, -21, -6, -10, -8, -5, -4, -1, -9, 20, -13, 28, -10, 32, -6, 33, 1, 35, 5, 33, 11, 30, 9, 24, 4, 12, 5, -5, 5, -7, 4, -9, 4, -13, 8, -21, 0, -23, 2, -26, 2, -29)

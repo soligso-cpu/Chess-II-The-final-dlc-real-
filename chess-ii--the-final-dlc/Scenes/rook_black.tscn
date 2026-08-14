@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b4q7sa1qr2yin"]
 
 [ext_resource type="Script" uid="uid://85bhrl8qxrvf" path="res://Scripts/rook.gd" id="1_mv25j"]
-[ext_resource type="Texture2D" uid="uid://bce33it5dev3y" path="res://Sprites/rook-3d-render-icon-illustration-with-transparent-background-chess-game-png.webp" id="2_mv25j"]
+[ext_resource type="Texture2D" uid="uid://crhba3m3gpxru" path="res://Sprites/Black-Rook.png" id="2_mv25j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwc4d"]
 size = Vector2(72, 72.25)
@@ -90,7 +90,7 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f608j"]
 size = Vector2(72, 72)
 
-[node name="RookBlack" type="CharacterBody2D" unique_id=1039881567 groups=["Black", "Pieces"]]
+[node name="RookBlack" type="CharacterBody2D" unique_id=1039881567 groups=["Black", "Pieces", "Rook"]]
 script = ExtResource("1_mv25j")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=199327806]
@@ -661,8 +661,8 @@ scale = Vector2(1, 1.0000001)
 polygon = PackedVector2Array(-3, -26, -1, -24, 2, -25, 2, -29, 10, -29, 10, -20, 10, -17, 8, -15, 6, -13, 6, 0, 11, 11, 10, 15, 15, 20, 15, 24, 15, 26, 11, 28, -8, 29, -16, 28, -17, 25, -16, 23, -16, 20, -13, 19, -11, 16, -11, 12, -11, 12, -9, 9, -7, 2, -5, -10, -7, -15, -10, -19, -10, -28, -6, -29, -2, -29)
 
 [node name="RookSprite" type="Sprite2D" parent="." unique_id=923636450]
-position = Vector2(0, 9.536743e-07)
-scale = Vector2(0.18298611, 0.2019157)
+position = Vector2(0, 17)
+scale = Vector2(0.96, 1.02)
 texture = ExtResource("2_mv25j")
 
 [node name="MoveCheck" type="Node2D" parent="." unique_id=1336702933]

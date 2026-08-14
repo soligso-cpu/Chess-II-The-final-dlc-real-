@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://byxnkb5wfka2n"]
+
+[ext_resource type="Texture2D" uid="uid://dtjwpkjmhrs4o" path="res://Sprites/black_queen_placeholder.webp" id="1_1u3yq"]
+[ext_resource type="Script" uid="uid://sqffqv8lrnd0" path="res://Scripts/promotion_ui.gd" id="1_78874"]
+[ext_resource type="Texture2D" uid="uid://bce33it5dev3y" path="res://Sprites/rook-3d-render-icon-illustration-with-transparent-background-chess-game-png.webp" id="2_1u3yq"]
+[ext_resource type="Texture2D" uid="uid://is8o81lf8eke" path="res://Sprites/3d-rendering-black-bishop-isolated-on-transparent-background-object-clipping-path-on-file-png.png" id="2_olj0u"]
+[ext_resource type="Texture2D" uid="uid://bbbnu6vvwort0" path="res://Sprites/black-knight-chess-piece-3d-design-free-png.webp" id="4_tb8kl"]
+[ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="5_e6pp0"]
+[ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="6_78874"]
+[ext_resource type="Texture2D" uid="uid://d2tn54x17f72v" path="res://Sprites/pngtree-white-chess-bishop-piece-on-a-black-background-png-image_18018790.webp" id="7_8fg2o"]
+[ext_resource type="Texture2D" uid="uid://hvnd71ey1aft" path="res://Sprites/3d-chess-knight-piece-isolated-on-transparent-background-png.webp" id="8_g1wln"]
+
+[node name="PromotionUI" type="Node2D" unique_id=2087677008]
+script = ExtResource("1_78874")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=580355615]
+offset_left = -151.0
+offset_top = -38.0
+offset_right = 153.0
+offset_bottom = 37.0
+color = Color(0.32358396, 0.32358384, 0.32358375, 1)
+
+[node name="QueenButton" type="Button" parent="." unique_id=1000578157]
+offset_left = -140.0
+offset_top = -33.0
+offset_right = -76.0
+offset_bottom = 31.901405
+metadata/_edit_use_anchors_ = true
+
+[node name="RookButton" type="Button" parent="." unique_id=977742780]
+offset_left = -68.0
+offset_top = -33.0
+offset_right = -4.0
+offset_bottom = 31.901405
+metadata/_edit_use_anchors_ = true
+
+[node name="BishopButton" type="Button" parent="." unique_id=1607425160]
+offset_left = 4.0
+offset_top = -33.0
+offset_right = 68.0
+offset_bottom = 31.901405
+metadata/_edit_use_anchors_ = true
+
+[node name="KnightButton" type="Button" parent="." unique_id=174689576]
+offset_left = 76.0
+offset_top = -33.0
+offset_right = 140.0
+offset_bottom = 31.901405
+metadata/_edit_use_anchors_ = true
+
+[node name="BlackSprites" type="Node2D" parent="." unique_id=261772416]
+
+[node name="QueenSprite" type="Sprite2D" parent="BlackSprites" unique_id=983551073]
+position = Vector2(-107.99999, -3.33786e-06)
+scale = Vector2(0.12109375, 0.125)
+texture = ExtResource("1_1u3yq")
+
+[node name="RookSprite" type="Sprite2D" parent="BlackSprites" unique_id=2059020339]
+position = Vector2(36.500004, 1.5854836e-05)
+scale = Vector2(0.17428571, 0.17714295)
+texture = ExtResource("2_1u3yq")
+
+[node name="BishopSprite" type="Sprite2D" parent="BlackSprites" unique_id=1351562430]
+position = Vector2(-36, 5.3644175e-07)
+scale = Vector2(0.07142858, 0.07142858)
+texture = ExtResource("2_olj0u")
+
+[node name="KnightSprite" type="Sprite2D" parent="BlackSprites" unique_id=485027381]
+position = Vector2(108, -0.9999962)
+scale = Vector2(0.06326531, 0.06326531)
+texture = ExtResource("4_tb8kl")
+
+[node name="WhiteSprites" type="Node2D" parent="." unique_id=679046668]
+
+[node name="QueenSprite" type="Sprite2D" parent="WhiteSprites" unique_id=4111148]
+position = Vector2(-107.00001, -0.99998474)
+scale = Vector2(0.109375, 0.109375)
+texture = ExtResource("5_e6pp0")
+
+[node name="RookSprite" type="Sprite2D" parent="WhiteSprites" unique_id=2094168599]
+position = Vector2(-36, -0.5000076)
+scale = Vector2(0.17222223, 0.18055555)
+texture = ExtResource("6_78874")
+
+[node name="BishopSprite" type="Sprite2D" parent="WhiteSprites" unique_id=1423527886]
+position = Vector2(36, 0.9999998)
+scale = Vector2(0.17222221, 0.18888889)
+texture = ExtResource("7_8fg2o")
+
+[node name="KnightSprite" type="Sprite2D" parent="WhiteSprites" unique_id=2003849488]
+position = Vector2(106.5, -0.49999863)
+scale = Vector2(0.06632653, 0.06428571)
+texture = ExtResource("8_g1wln")
+
+[connection signal="button_up" from="QueenButton" to="." method="_on_queen_button_button_up"]
+[connection signal="button_up" from="RookButton" to="." method="_on_rook_button_button_up"]
+[connection signal="button_up" from="BishopButton" to="." method="_on_bishop_button_button_up"]
+[connection signal="button_up" from="KnightButton" to="." method="_on_knight_button_button_up"]

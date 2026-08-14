@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cftk3c535i0r0"]
 
 [ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_687s0"]
-[ext_resource type="Texture2D" uid="uid://b4q5foox1sk31" path="res://Sprites/pngtree-black-pawn-chess-piece-clipart-isolated-png-image_20439369.png" id="2_687s0"]
+[ext_resource type="Texture2D" uid="uid://bt54b3tipu2q4" path="res://Sprites/Black-Pawn.png" id="2_qipmx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3865y"]
 size = Vector2(72, 72)
@@ -9,7 +9,13 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
 size = Vector2(72, 72)
 
-[node name="Pawn" type="CharacterBody2D" unique_id=1056477142 groups=["Black", "Pieces"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rpu5m"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0v0t"]
+size = Vector2(72, 72)
+
+[node name="Pawn" type="CharacterBody2D" unique_id=1056477142 groups=["Black", "Pawn", "Pieces"]]
 script = ExtResource("1_687s0")
 
 [node name="MovementMarkers" type="Node2D" parent="." unique_id=1593394419]
@@ -86,9 +92,9 @@ metadata/_edit_use_anchors_ = true
 polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525306621]
-position = Vector2(-1.7126753, 1.3737583)
-scale = Vector2(0.02777014, 0.030150441)
-texture = ExtResource("2_687s0")
+position = Vector2(0, 23)
+scale = Vector2(1.35, 1.43)
+texture = ExtResource("2_qipmx")
 
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=959678191]
 
@@ -101,6 +107,22 @@ offset_left = -38.0
 offset_top = -36.0
 offset_right = 34.0
 offset_bottom = 36.0
+
+[node name="EnPassantDetect" type="Node2D" parent="." unique_id=1160157163]
+
+[node name="LeftEnPassantArea" type="Area2D" parent="EnPassantDetect" unique_id=316833005]
+position = Vector2(-80, 0)
+
+[node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/LeftEnPassantArea" unique_id=219320392]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_rpu5m")
+
+[node name="RightEnPassantArea" type="Area2D" parent="EnPassantDetect" unique_id=2010507298]
+position = Vector2(80, 0)
+
+[node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=2022162474]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_p0v0t")
 
 [connection signal="area_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_exited"]
@@ -125,3 +147,5 @@ offset_bottom = 36.0
 [connection signal="area_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_area_entered"]
 [connection signal="body_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_body_entered"]
 [connection signal="button_up" from="SelectPawn" to="." method="_on_select_pawn_button_up"]
+[connection signal="body_entered" from="EnPassantDetect/LeftEnPassantArea" to="." method="_on_left_en_passant_area_body_entered"]
+[connection signal="body_entered" from="EnPassantDetect/RightEnPassantArea" to="." method="_on_right_en_passant_area_body_entered"]

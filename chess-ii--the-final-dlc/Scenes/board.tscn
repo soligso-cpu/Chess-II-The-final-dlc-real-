@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c71blssr34xe8" path="res://Scenes/queen_white.tscn" id="3_shhme"]
 [ext_resource type="PackedScene" uid="uid://b56lr6hugpfo4" path="res://Scenes/queen_black.tscn" id="4_shhme"]
 [ext_resource type="PackedScene" uid="uid://cydbmsjlcq5u8" path="res://Scenes/pawn.tscn" id="5_s4i1f"]
-[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawnblack.tscn" id="6_bh37u"]
+[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="6_bh37u"]
 [ext_resource type="PackedScene" uid="uid://fminm5njgf7s" path="res://Scenes/rook.tscn" id="6_vw4oq"]
 [ext_resource type="PackedScene" uid="uid://ce5fasgcxkdk2" path="res://Scenes/bishop.tscn" id="7_hm3vq"]
 [ext_resource type="PackedScene" uid="uid://ctfwtutp78axx" path="res://Scenes/knight.tscn" id="7_twe5h"]
@@ -122,6 +122,12 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
 size = Vector2(118, 122)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdyc"]
+size = Vector2(484, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjv7d"]
+size = Vector2(656, 93)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
@@ -620,7 +626,7 @@ position = Vector2(815, 43)
 [node name="KnightBlackA2" parent="Black" unique_id=56098321 instance=ExtResource("8_d8vyx")]
 position = Vector2(415, 43)
 
-[node name="QueenBlack" parent="Black" unique_id=581118255 groups=["Black"] instance=ExtResource("4_shhme")]
+[node name="QueenBlack" parent="Black" unique_id=581118255 instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
 
 [node name="RookBlackA8" parent="Black" unique_id=1545077595 instance=ExtResource("9_vjyv8")]
@@ -720,7 +726,8 @@ libraries/ = SubResource("AnimationLibrary_bb5wj")
 
 [node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
 position = Vector2(589, 303)
-zoom = Vector2(0.87, 0.87)
+offset = Vector2(0, 18.77)
+zoom = Vector2(0.81, 0.81)
 
 [node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("10_vjsom")]
 visible = false
@@ -741,6 +748,21 @@ script = ExtResource("12_d7frl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1842208485]
 position = Vector2(81, 357)
 shape = SubResource("RectangleShape2D_d7frl")
+
+[node name="Promotion" type="Node2D" parent="." unique_id=1415129723]
+
+[node name="BlackPromotion" type="Area2D" parent="Promotion" unique_id=1960621730 groups=["PromotionTiles"]]
+position = Vector2(-8, 578)
+
+[node name="BlackPromotionShape" type="CollisionShape2D" parent="Promotion/BlackPromotion" unique_id=433070782 groups=["PromotionTiles"]]
+position = Vector2(615, 37.5)
+shape = SubResource("RectangleShape2D_2cdyc")
+
+[node name="WhitePromotion" type="Area2D" parent="Promotion" unique_id=832048618 groups=["PromotionTiles"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Promotion/WhitePromotion" unique_id=974402148 groups=["PromotionTiles"]]
+position = Vector2(620, 36.5)
+shape = SubResource("RectangleShape2D_qjv7d")
 
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
