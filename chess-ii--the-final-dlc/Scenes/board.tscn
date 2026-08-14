@@ -123,6 +123,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
 size = Vector2(118, 122)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdyc"]
+size = Vector2(484, 95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjv7d"]
+size = Vector2(656, 93)
+
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
 
@@ -720,7 +726,8 @@ libraries/ = SubResource("AnimationLibrary_bb5wj")
 
 [node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
 position = Vector2(589, 303)
-zoom = Vector2(0.87, 0.87)
+offset = Vector2(0, 18.77)
+zoom = Vector2(0.81, 0.81)
 
 [node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("10_vjsom")]
 visible = false
@@ -741,6 +748,21 @@ script = ExtResource("12_d7frl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1842208485]
 position = Vector2(81, 357)
 shape = SubResource("RectangleShape2D_d7frl")
+
+[node name="Promotion" type="Node2D" parent="." unique_id=1415129723]
+
+[node name="BlackPromotion" type="Area2D" parent="Promotion" unique_id=1960621730 groups=["PromotionTiles"]]
+position = Vector2(-8, 578)
+
+[node name="BlackPromotionShape" type="CollisionShape2D" parent="Promotion/BlackPromotion" unique_id=433070782 groups=["PromotionTiles"]]
+position = Vector2(615, 37.5)
+shape = SubResource("RectangleShape2D_2cdyc")
+
+[node name="WhitePromotion" type="Area2D" parent="Promotion" unique_id=832048618 groups=["PromotionTiles"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Promotion/WhitePromotion" unique_id=974402148 groups=["PromotionTiles"]]
+position = Vector2(620, 36.5)
+shape = SubResource("RectangleShape2D_qjv7d")
 
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]

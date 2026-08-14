@@ -78,7 +78,6 @@ func _process(delta: float) -> void:
 		else:
 			if($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies().is_empty()):
 				enemy_left3 = false
-			print(str($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies()))
 
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
