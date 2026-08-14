@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6kajqyiy26p0"]
 
 [ext_resource type="Script" uid="uid://c4sdyh6xeg8yc" path="res://Scripts/bishop.gd" id="1_nvxg7"]
-[ext_resource type="Texture2D" uid="uid://is8o81lf8eke" path="res://Sprites/3d-rendering-black-bishop-isolated-on-transparent-background-object-clipping-path-on-file-png.png" id="2_nvxg7"]
+[ext_resource type="Texture2D" uid="uid://yrwrqnh5vkvn" path="res://Sprites/Black-Bishop.png" id="2_nvxg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boa6r"]
 size = Vector2(72, 72)
@@ -581,8 +581,7 @@ scale = Vector2(1.008, 1.008)
 shape = SubResource("RectangleShape2D_qg1m5")
 
 [node name="BishopSprite" type="Sprite2D" parent="." unique_id=2107927240]
-position = Vector2(1, -0.9999998)
-scale = Vector2(0.072668076, 0.0796022)
+scale = Vector2(0.73, 0.83)
 texture = ExtResource("2_nvxg7")
 
 [node name="BishopShape" type="CollisionPolygon2D" parent="." unique_id=1768602213]

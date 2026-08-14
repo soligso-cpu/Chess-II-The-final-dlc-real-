@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://l0g2chhunsiv"]
 
 [ext_resource type="Script" uid="uid://gslv1gtvre7b" path="res://Scripts/king.gd" id="1_75cpy"]
-[ext_resource type="Texture2D" uid="uid://c6eu4hd4p8i2v" path="res://Sprites/722242-200.png" id="2_75cpy"]
+[ext_resource type="Texture2D" uid="uid://b75suridv3arv" path="res://Sprites/Black-KingV2.png" id="2_75cpy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n3uat"]
 size = Vector2(72, 72)
@@ -409,8 +409,7 @@ offset_right = 37.0
 offset_bottom = 40.0
 
 [node name="KingSprite" type="Sprite2D" parent="." unique_id=1646308163]
-position = Vector2(-1.4999981, 0.9999981)
-scale = Vector2(0.365, 0.36999997)
+scale = Vector2(0.48, 0.493)
 texture = ExtResource("2_75cpy")
 
 [node name="KingShape" type="CollisionPolygon2D" parent="." unique_id=781631242]

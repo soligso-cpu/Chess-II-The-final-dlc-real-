@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ctfwtutp78axx"]
 
 [ext_resource type="Script" uid="uid://cjamrl1e20i72" path="res://Scripts/knight.gd" id="1_b66j6"]
-[ext_resource type="Texture2D" uid="uid://hvnd71ey1aft" path="res://Sprites/3d-chess-knight-piece-isolated-on-transparent-background-png.webp" id="1_rrk28"]
+[ext_resource type="Texture2D" uid="uid://bejkmi8nun6ok" path="res://Sprites/White-Knight.png" id="2_b66j6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrk28"]
 size = Vector2(72, 72)
@@ -166,9 +166,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="KnightSprite" type="Sprite2D" parent="." unique_id=1173373730]
-position = Vector2(0.093750775, -0.09375071)
-scale = Vector2(0.07531888, 0.07531888)
-texture = ExtResource("1_rrk28")
+scale = Vector2(0.51000005, 0.65000004)
+texture = ExtResource("2_b66j6")
 
 [connection signal="area_entered" from="MovementMarkers/ForwardLeft/FLSprite/FLArea" to="." method="_on_fl_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/ForwardLeft/FLSprite/FLArea" to="." method="_on_fl_area_area_exited"]
