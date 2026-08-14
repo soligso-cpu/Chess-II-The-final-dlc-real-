@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const PROMOTION_UI = preload("res://Scenes/promotion_ui.tscn")
 
 var forward1_tile
 var forward1_tile_group
@@ -16,6 +17,7 @@ var forward_enemy1
 var forward_enemy2
 var right_enemy
 var left_enemy
+var promoting
 
 var forward1_enemy
 var forward2_enemy
@@ -128,6 +130,7 @@ func reset_markers():
 	forward2_enemy = false
 	right_enemy = false
 	left_enemy = false
+	promoting = false
 	
 	focused = false
 	Globals.piece_focused = ""
@@ -171,6 +174,8 @@ func _on_forward_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		forward1_tile = area.name
 		forward1_tile_group = str(area.name)[0]
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 func _on_forward_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
@@ -213,8 +218,19 @@ func _on_forward_button_button_up() -> void:
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
@@ -289,6 +305,8 @@ func _on_left_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		left_touching_border = true
 		left_enemy = true
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 
 func _on_left_area_area_exited(area: Area2D) -> void:
@@ -334,8 +352,19 @@ func _on_left_button_button_up() -> void:
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
@@ -351,6 +380,8 @@ func _on_right_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
+	if(area.is_in_group("PromotionTiles")):
+		promoting = true
 
 
 func _on_right_area_area_exited(area: Area2D) -> void:
@@ -394,8 +425,19 @@ func _on_right_button_button_up() -> void:
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	reset_markers()
+	if(!promoting):
+		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	if(promoting):
+		Globals.promotion_instance_position = self.global_position
+		var promotion_ui = PROMOTION_UI.instantiate()
+		$"../".add_child(promotion_ui)
+		if(self.is_in_group("Black")):
+			promotion_ui.global_position = self.global_position + Vector2(0, 100)
+		else:
+			promotion_ui.global_position = self.global_position - Vector2(0, 100)
+		self.queue_free()
+		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion

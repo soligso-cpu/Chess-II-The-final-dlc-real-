@@ -155,6 +155,8 @@ var moved
 var white_turns = 0
 var black_turns = 0
 
+var promotion_instance_position
+
 var piece_focused = ""
 
 # Called when the node enters the scene tree for the first time.
