@@ -4,18 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="2_4jowp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0rs"]
-size = Vector2(591.4516, 900.9094)
+size = Vector2(103.185486, 92.704575)
 
 [node name="SlotJackpot" type="CharacterBody2D" unique_id=1508876994]
-scale = Vector2(0.17714286, 0.12571429)
 script = ExtResource("1_8cpis")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=343089066]
-position = Vector2(5.645172, 7.9545593)
+position = Vector2(0, -1)
 scale = Vector2(1, 0.9999996)
 shape = SubResource("RectangleShape2D_lf0rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=72111660]
-position = Vector2(5.6451416, 7.954529)
-scale = Vector2(1.8367409, 1.9000131)
+position = Vector2(-7.6293945e-06, -8)
+scale = Vector2(0.23715894, 0.21519342)
 texture = ExtResource("2_4jowp")

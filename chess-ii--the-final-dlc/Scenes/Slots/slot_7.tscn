@@ -4,18 +4,17 @@
 [ext_resource type="Script" uid="uid://cghbwqq8h3qna" path="res://Scripts/slot_7.gd" id="1_h1soa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1soa"]
-size = Vector2(243.82932, 393.34625)
+size = Vector2(111.503815, 100.60126)
 
-[node name="Slot7" type="CharacterBody2D" unique_id=2005260119]
-scale = Vector2(0.28472218, 0.176389)
+[node name="Slot7" type="CharacterBody2D" unique_id=2005260119 groups=["Slot7Group"]]
 script = ExtResource("1_h1soa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1527316057]
-position = Vector2(39.646343, 75.452705)
+position = Vector2(1, 1)
 scale = Vector2(1, 0.9999999)
 shape = SubResource("RectangleShape2D_h1soa")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2127361500]
-position = Vector2(43.35063, 77.445786)
-scale = Vector2(0.24841341, 0.38573623)
+position = Vector2(1.0000038, 1.0000038)
+scale = Vector2(0.12819384, 0.10509433)
 texture = ExtResource("1_5lkjg")

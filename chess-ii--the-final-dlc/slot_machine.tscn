@@ -10,24 +10,32 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjjkd"]
 size = Vector2(573, 20)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7abct"]
+size = Vector2(56, 53)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jfulg"]
+size = Vector2(55.875, 43)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpwbf"]
+size = Vector2(707, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvm1u"]
+size = Vector2(1058, 649)
+
 [node name="SlotMachine" type="Node2D" unique_id=446480958]
 script = ExtResource("1_7abct")
 
 [node name="Slot7" parent="." unique_id=1698224738 instance=ExtResource("2_kpwbf")]
-visible = false
-position = Vector2(547, 49.00001)
+position = Vector2(1010, 286)
 
 [node name="SlotBust" parent="." unique_id=520040797 instance=ExtResource("3_jfulg")]
-visible = false
-position = Vector2(603, 48)
+position = Vector2(962, 430.99997)
 
 [node name="SlotDouble" parent="." unique_id=1691589849 instance=ExtResource("4_nvm1u")]
-visible = false
-position = Vector2(666.00006, 53.000008)
+position = Vector2(942, 96)
 
 [node name="SlotJackpot" parent="." unique_id=1399318989 instance=ExtResource("5_dwfc2")]
-visible = false
-position = Vector2(741, 53.000008)
+position = Vector2(1021, -68)
 
 [node name="SlotTop" type="Sprite2D" parent="." unique_id=809689986]
 position = Vector2(416, 112)
@@ -42,7 +50,7 @@ texture = ExtResource("5_nvm1u")
 [node name="Area2D" type="Area2D" parent="." unique_id=161872660]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=531175869]
-position = Vector2(418, 478)
+position = Vector2(414, 492)
 shape = SubResource("RectangleShape2D_bjjkd")
 
 [node name="LineMarkers" type="Node2D" parent="." unique_id=951351868]
@@ -58,9 +66,109 @@ position = Vector2(242, 121)
 
 [node name="SpawnedSlots" type="Node2D" parent="." unique_id=1754121867]
 
+[node name="SpawnedSlots2" type="Node2D" parent="." unique_id=1902234019]
+
+[node name="SpawnedSlots3" type="Node2D" parent="." unique_id=691723031]
+
+[node name="SpawnedSlots4" type="Node2D" parent="." unique_id=1689613598]
+
 [node name="SpawnTimer" type="Timer" parent="." unique_id=229642939]
 wait_time = 0.491
+
+[node name="Button" type="Button" parent="." unique_id=1656719596]
+offset_left = 721.0
+offset_top = 256.0
+offset_right = 797.0
+offset_bottom = 284.0
+text = "GAMBLE!"
+
+[node name="SlotDetection" type="Node2D" parent="." unique_id=527394925]
+
+[node name="Slot3" type="Area2D" parent="SlotDetection" unique_id=788578452]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Slot3" unique_id=64668425]
+position = Vector2(239, 433.5)
+shape = SubResource("RectangleShape2D_7abct")
+
+[node name="Slot2" type="Area2D" parent="SlotDetection" unique_id=988524807]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Slot2" unique_id=244991761]
+position = Vector2(412, 434)
+shape = SubResource("RectangleShape2D_7abct")
+
+[node name="Slot1" type="Area2D" parent="SlotDetection" unique_id=2001450455]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Slot1" unique_id=610173082]
+position = Vector2(568, 428)
+shape = SubResource("RectangleShape2D_7abct")
+
+[node name="Line1" type="Area2D" parent="SlotDetection" unique_id=512032678]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Line1" unique_id=1438131941]
+position = Vector2(562, 325)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="Line2" type="Area2D" parent="SlotDetection" unique_id=964650303]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Line2" unique_id=345110473]
+position = Vector2(408, 327)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="Line3" type="Area2D" parent="SlotDetection" unique_id=2030882668]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Line3" unique_id=40599786]
+position = Vector2(233, 325)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="Top1" type="Area2D" parent="SlotDetection" unique_id=137806989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Top1" unique_id=996418562]
+position = Vector2(549, 206)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="Top2" type="Area2D" parent="SlotDetection" unique_id=1708042222]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Top2" unique_id=320453947]
+position = Vector2(404, 208)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="Top3" type="Area2D" parent="SlotDetection" unique_id=1735961940]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlotDetection/Top3" unique_id=757234606]
+position = Vector2(231, 210)
+shape = SubResource("RectangleShape2D_jfulg")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1139486139]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1144830031]
+position = Vector2(413, 483)
+shape = SubResource("RectangleShape2D_kpwbf")
+disabled = true
+
+[node name="ProcessTimer" type="Timer" parent="." unique_id=1235693079]
+one_shot = true
+
+[node name="Area2D2" type="Area2D" parent="." unique_id=831113117]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=970348947]
+position = Vector2(531, 323)
+shape = SubResource("RectangleShape2D_nvm1u")
+
+[node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
+one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[connection signal="body_entered" from="SlotDetection/Slot3" to="." method="_on_slot_3_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Slot2" to="." method="_on_slot_2_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Slot1" to="." method="_on_slot_1_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Line1" to="." method="_on_line_1_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Line2" to="." method="_on_line_2_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Line3" to="." method="_on_line_3_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Top1" to="." method="_on_top_1_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Top2" to="." method="_on_top_2_body_entered"]
+[connection signal="body_entered" from="SlotDetection/Top3" to="." method="_on_top_3_body_entered"]
+[connection signal="timeout" from="ProcessTimer" to="." method="_on_process_timer_timeout"]
+[connection signal="timeout" from="PurgeTimer" to="." method="_on_purge_timer_timeout"]

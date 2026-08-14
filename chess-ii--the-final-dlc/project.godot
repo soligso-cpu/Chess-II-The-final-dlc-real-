@@ -29,6 +29,7 @@ White=""
 Black=""
 Pieces=""
 Tiles="All the tiles forthe boaerd"
+Slot7Group=""
 
 [input]
 
