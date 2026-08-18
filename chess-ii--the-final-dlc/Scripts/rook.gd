@@ -665,13 +665,7 @@ func _on_select_rook_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
 		if(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
-			$MovementMarkers/Right/Right1.visible = true
-			$MovementMarkers/Right/Right2.visible = true
-			$MovementMarkers/Right/Right3.visible = true
-			$MovementMarkers/Right/Right4.visible = true
-			$MovementMarkers/Right/Right5.visible = true
-			$MovementMarkers/Right/Right6.visible = true
-			$MovementMarkers/Right/Right7.visible = true
+			
 			focused = true
 		else:
 			Globals.piece_focused = ""
@@ -692,6 +686,7 @@ func _on_right_button_button_up() -> void:
 	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -708,6 +703,7 @@ func _on_right_button_2_button_up() -> void:
 	Globals.accessing = right2_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -725,6 +721,7 @@ func _on_right_button_3_button_up() -> void:
 	Globals.accessing = right3_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -743,6 +740,7 @@ func _on_right_button_4_button_up() -> void:
 	Globals.accessing = right4_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -761,6 +759,7 @@ func _on_right_button_5_button_up() -> void:
 	Globals.accessing = right5_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -780,6 +779,7 @@ func _on_right_button_6_button_up() -> void:
 	Globals.accessing = right6_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -797,26 +797,27 @@ func _on_right_button_7_button_up() -> void:
 	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	if(r_train):
 		$RTrainSound.play()
 		var e1 = get_tree().get_root().find_child(r_train_enemy1, true, false)
-		print(e1)
 		var e2 = get_tree().get_root().find_child(r_train_enemy2, true, false)
-		print(e2)
 		var e3 = get_tree().get_root().find_child(r_train_enemy3, true, false)
-		print(e3)
 		var e4 = get_tree().get_root().find_child(r_train_enemy4, true, false)
-		print(e4)
 		var e5 = get_tree().get_root().find_child(r_train_enemy5, true, false)
-		print(e5)
 		var e6 = get_tree().get_root().find_child(r_train_enemy6, true, false)
-		print(e6)
-		e1.queue_free()
-		e2.queue_free()
-		e3.queue_free()
-		e4.queue_free()
-		e5.queue_free()
-		e6.queue_free()
+		if(e1 != null):
+			e1.queue_free()
+		if(e2 != null):
+			e2.queue_free()
+		if(e3 != null):
+			e3.queue_free()
+		if(e4 != null):
+			e4.queue_free()
+		if(e5 != null):
+			e5.queue_free()
+		if(e6 != null):
+			e6.queue_free()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
