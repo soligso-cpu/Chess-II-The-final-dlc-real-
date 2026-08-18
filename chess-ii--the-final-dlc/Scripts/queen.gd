@@ -11,6 +11,7 @@ var fl_touching_border
 var br_touching_border
 var bl_touching_border
 
+
 var tile
 var tile_group
 
@@ -1756,20 +1757,45 @@ func _on_back_7_button_button_up() -> void:
 func _on_back_1_area_body_entered(body: Node2D) -> void:
 	back1_tile = body.tile
 	back1_tile_group = body.tile_group
-	if(body.is_in_group("White")):
-		if(self.is_in_group("White")):
+	# IF THE KING IS IN CHECK
+	if(self.is_in_group("White") && Globals.white_in_check):
+		if(body.is_in_group(Globals.piece_attacking_king)):
 			enemy_back1 = true
-			back_touching_border = true
-		else:
+			touching_border = false
+	elif(self.is_in_group("Black") && Globals.black_in_check):
+		if(body.is_in_group(Globals.piece_attacking_king)):
 			enemy_back1 = true
-			back_touching_border = false
-	elif(body.is_in_group("Black")):
-		if(self.is_in_group("Black")):
-			enemy_back1 = true
-			back_touching_border = true
-		else:
-			enemy_back1 = true
-			back_touching_border = false
+			touching_border = false
+	elif(self.is_in_group("Black") && Globals.white_in_check):
+		if(body.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = true
+	elif(self.is_in_group("White") && Globals.black_in_check):
+		if(body.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = true
+		elif(body.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = true
+			else:
+				enemy_back1 = true
+				back_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = true
+			else:
+				enemy_back1 = true
+				back_touching_border = false
 
 
 func _on_back_1_area_body_exited(body: Node2D) -> void:

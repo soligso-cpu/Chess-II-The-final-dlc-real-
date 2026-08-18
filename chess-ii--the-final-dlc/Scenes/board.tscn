@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 [ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
+[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
@@ -645,28 +646,28 @@ position = Vector2(577, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
 
-[node name="Pawn9" parent="Black/BlackPawns" unique_id=1873266235]
+[node name="Pawn" parent="Black/BlackPawns" unique_id=273139928 instance=ExtResource("14_2cdyc")]
 position = Vector2(338, 123)
 
-[node name="Pawn10" parent="Black/BlackPawns" unique_id=1614310368]
+[node name="Pawn2" parent="Black/BlackPawns" unique_id=2328780 instance=ExtResource("14_2cdyc")]
 position = Vector2(418, 123)
 
-[node name="Pawn11" parent="Black/BlackPawns" unique_id=1036945592]
+[node name="Pawn3" parent="Black/BlackPawns" unique_id=998544226 instance=ExtResource("14_2cdyc")]
 position = Vector2(498, 123)
 
-[node name="Pawn12" parent="Black/BlackPawns" unique_id=1474532087]
+[node name="Pawn4" parent="Black/BlackPawns" unique_id=1089025073 instance=ExtResource("14_2cdyc")]
 position = Vector2(578, 123)
 
-[node name="Pawn13" parent="Black/BlackPawns" unique_id=1190208367]
+[node name="Pawn5" parent="Black/BlackPawns" unique_id=194757362 instance=ExtResource("14_2cdyc")]
 position = Vector2(658, 123)
 
-[node name="Pawn14" parent="Black/BlackPawns" unique_id=748202758]
+[node name="Pawn6" parent="Black/BlackPawns" unique_id=1072286131 instance=ExtResource("14_2cdyc")]
 position = Vector2(738, 123)
 
-[node name="Pawn15" parent="Black/BlackPawns" unique_id=162669236]
+[node name="Pawn7" parent="Black/BlackPawns" unique_id=1609065919 instance=ExtResource("14_2cdyc")]
 position = Vector2(818, 123)
 
-[node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920]
+[node name="Pawn8" parent="Black/BlackPawns" unique_id=1706449368 instance=ExtResource("14_2cdyc")]
 position = Vector2(898, 123)
 
 [node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]

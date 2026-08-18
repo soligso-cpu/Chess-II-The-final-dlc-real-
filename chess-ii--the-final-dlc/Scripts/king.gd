@@ -79,6 +79,25 @@ func _process(delta: float) -> void:
 			if($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies().is_empty()):
 				enemy_left3 = false
 
+	if($MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies().is_empty()):
+		if(!fl_touching_border):
+			enemy_fl = false
+			close_to_king_fl = false
+		else:
+			if($MovementMarkers/FL/FLSprite/FLArea.get_overlapping_bodies().is_empty()):
+				enemy_fl = false
+				close_to_king_fl = false
+				
+	
+	if($MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies().is_empty()):
+		if(!fr_touching_border):
+			enemy_fr = false
+			close_to_king_fr = false
+		else:
+			if($MovementMarkers/FR/FRSprite/FRArea.get_overlapping_bodies().is_empty()):
+				enemy_fr = false
+				close_to_king_fr = false
+
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
 			no_castle_left = true

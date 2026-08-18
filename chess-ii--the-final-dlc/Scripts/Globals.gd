@@ -161,6 +161,11 @@ var promotion_instance_position
 var promotion_instance_tile
 var promotion_instance_tile_group
 
+var piece_attacking_king: String
+var piece_attacking_king_direction: String
+var white_in_check
+var black_in_check
+
 var piece_focused = ""
 
 # Called when the node enters the scene tree for the first time.
