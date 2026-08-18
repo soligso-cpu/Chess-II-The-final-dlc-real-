@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://85bhrl8qxrvf" path="res://Scripts/rook.gd" id="1_wwc4d"]
 [ext_resource type="Texture2D" uid="uid://bfs38qa1ur45d" path="res://Sprites/White-Rook.png" id="2_wwc4d"]
+[ext_resource type="AudioStream" uid="uid://1q0ea8a74plq" path="res://dragon-studio-boom-356126.mp3" id="3_j1kqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwc4d"]
 size = Vector2(72, 72.25)
@@ -666,6 +667,9 @@ scale = Vector2(0.96, 1.0199999)
 texture = ExtResource("2_wwc4d")
 
 [node name="MoveCheck" type="Node2D" parent="." unique_id=1478371590]
+
+[node name="RTrainSound" type="AudioStreamPlayer" parent="." unique_id=1516134958]
+stream = ExtResource("3_j1kqh")
 
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]

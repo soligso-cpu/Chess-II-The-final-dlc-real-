@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
+[ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -149,7 +150,7 @@ shape = SubResource("RectangleShape2D_shhme")
 position = Vector2(1570, 302)
 
 [node name="RightEdgeShape" type="CollisionShape2D" parent="Edges/RightEdgeArea" unique_id=116950547 groups=["Edge"]]
-position = Vector2(0, 81)
+position = Vector2(39, 45)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="LeftEdgeArea" type="Area2D" parent="Edges" unique_id=456620726 groups=["Edge"]]
@@ -764,6 +765,16 @@ shape = SubResource("RectangleShape2D_2cdyc")
 position = Vector2(620, 36.5)
 shape = SubResource("RectangleShape2D_qjv7d")
 
+[node name="RTrainButtonSprite" type="Sprite2D" parent="." unique_id=1786799883]
+position = Vector2(1169, 277)
+texture = ExtResource("19_qjv7d")
+
+[node name="RTrainButton" type="Button" parent="RTrainButtonSprite" unique_id=820491727]
+offset_left = -102.0
+offset_top = -163.0
+offset_right = 110.0
+offset_bottom = 157.0
+
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
@@ -771,3 +782,4 @@ shape = SubResource("RectangleShape2D_qjv7d")
 [connection signal="animation_finished" from="LoreOrganizer/AnimationPlayer" to="RouletteOrganizer/RouletteTransport" method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
+[connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]

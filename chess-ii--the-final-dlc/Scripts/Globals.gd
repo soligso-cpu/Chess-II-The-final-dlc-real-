@@ -47,6 +47,8 @@ var rook_a8_moved
 var rook_h1_moved
 var rook_h8_moved
 
+var rook_a_train
+
 #region Tile Variables
 
 #region "A" Tiles
@@ -172,7 +174,7 @@ var piece_focused = ""
 func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
-
+	rook_a_train = false
 	turn_count = 1
 	piece_focused = ""
 

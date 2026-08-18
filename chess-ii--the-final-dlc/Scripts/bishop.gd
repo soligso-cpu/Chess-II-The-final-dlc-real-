@@ -152,8 +152,6 @@ func _process(delta: float) -> void:
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
 		$SelectBishop.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_INHERIT
 			z_index = 5
 			move_to_front()
 			taking = true
@@ -383,16 +381,11 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 			#endregion
 		elif(!focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		for child in $MovementMarkers.get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-		$SelectBishop.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
 func _on_select_bishop_button_up() -> void:
