@@ -16,7 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 [ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
+[ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
+[ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -148,7 +150,7 @@ shape = SubResource("RectangleShape2D_shhme")
 position = Vector2(1570, 302)
 
 [node name="RightEdgeShape" type="CollisionShape2D" parent="Edges/RightEdgeArea" unique_id=116950547 groups=["Edge"]]
-position = Vector2(0, 81)
+position = Vector2(39, 45)
 shape = SubResource("RectangleShape2D_shhme")
 
 [node name="LeftEdgeArea" type="Area2D" parent="Edges" unique_id=456620726 groups=["Edge"]]
@@ -645,28 +647,28 @@ position = Vector2(577, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
 
-[node name="Pawn9" parent="Black/BlackPawns" unique_id=1873266235]
+[node name="Pawn" parent="Black/BlackPawns" unique_id=273139928 instance=ExtResource("14_2cdyc")]
 position = Vector2(338, 123)
 
-[node name="Pawn10" parent="Black/BlackPawns" unique_id=1614310368]
+[node name="Pawn2" parent="Black/BlackPawns" unique_id=2328780 instance=ExtResource("14_2cdyc")]
 position = Vector2(418, 123)
 
-[node name="Pawn11" parent="Black/BlackPawns" unique_id=1036945592]
+[node name="Pawn3" parent="Black/BlackPawns" unique_id=998544226 instance=ExtResource("14_2cdyc")]
 position = Vector2(498, 123)
 
-[node name="Pawn12" parent="Black/BlackPawns" unique_id=1474532087]
+[node name="Pawn4" parent="Black/BlackPawns" unique_id=1089025073 instance=ExtResource("14_2cdyc")]
 position = Vector2(578, 123)
 
-[node name="Pawn13" parent="Black/BlackPawns" unique_id=1190208367]
+[node name="Pawn5" parent="Black/BlackPawns" unique_id=194757362 instance=ExtResource("14_2cdyc")]
 position = Vector2(658, 123)
 
-[node name="Pawn14" parent="Black/BlackPawns" unique_id=748202758]
+[node name="Pawn6" parent="Black/BlackPawns" unique_id=1072286131 instance=ExtResource("14_2cdyc")]
 position = Vector2(738, 123)
 
-[node name="Pawn15" parent="Black/BlackPawns" unique_id=162669236]
+[node name="Pawn7" parent="Black/BlackPawns" unique_id=1609065919 instance=ExtResource("14_2cdyc")]
 position = Vector2(818, 123)
 
-[node name="Pawn16" parent="Black/BlackPawns" unique_id=451976920]
+[node name="Pawn8" parent="Black/BlackPawns" unique_id=1706449368 instance=ExtResource("14_2cdyc")]
 position = Vector2(898, 123)
 
 [node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
@@ -763,6 +765,16 @@ shape = SubResource("RectangleShape2D_2cdyc")
 position = Vector2(620, 36.5)
 shape = SubResource("RectangleShape2D_qjv7d")
 
+[node name="RTrainButtonSprite" type="Sprite2D" parent="." unique_id=1786799883]
+position = Vector2(1169, 277)
+texture = ExtResource("19_qjv7d")
+
+[node name="RTrainButton" type="Button" parent="RTrainButtonSprite" unique_id=820491727]
+offset_left = -102.0
+offset_top = -163.0
+offset_right = 110.0
+offset_bottom = 157.0
+
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
@@ -770,3 +782,4 @@ shape = SubResource("RectangleShape2D_qjv7d")
 [connection signal="animation_finished" from="LoreOrganizer/AnimationPlayer" to="RouletteOrganizer/RouletteTransport" method="_on_animation_player_animation_finished"]
 [connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
+[connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]

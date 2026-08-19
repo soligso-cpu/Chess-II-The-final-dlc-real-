@@ -47,6 +47,8 @@ var rook_a8_moved
 var rook_h1_moved
 var rook_h8_moved
 
+var rook_a_train
+
 #region Tile Variables
 
 #region "A" Tiles
@@ -161,13 +163,18 @@ var promotion_instance_position
 var promotion_instance_tile
 var promotion_instance_tile_group
 
+var piece_attacking_king: String
+var piece_attacking_king_direction: String
+var white_in_check
+var black_in_check
+
 var piece_focused = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
-
+	rook_a_train = false
 	turn_count = 1
 	piece_focused = ""
 

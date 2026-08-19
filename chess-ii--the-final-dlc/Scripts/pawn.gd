@@ -73,8 +73,6 @@ func _process(delta: float) -> void:
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
 		$SelectPawn.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_INHERIT
 			z_index = 5
 			move_to_front()
 			taking = true
@@ -117,16 +115,12 @@ func _process(delta: float) -> void:
 			
 			#endregion
 		elif(!focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		for child in $MovementMarkers.get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-		$SelectPawn.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 
 func reset_markers():
 	forward1_enemy = false

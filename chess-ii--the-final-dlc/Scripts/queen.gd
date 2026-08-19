@@ -11,6 +11,7 @@ var fl_touching_border
 var br_touching_border
 var bl_touching_border
 
+
 var tile
 var tile_group
 
@@ -258,8 +259,6 @@ func _process(delta: float) -> void:
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
 		$SelectQueen.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_INHERIT
 			z_index = 5
 			move_to_front()
 			taking = true
@@ -332,12 +331,27 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Forward/Forward6.visible = true
 			$MovementMarkers/Forward/Forward7.visible = true
 			
-		
-			if(enemy_forward1):
+			if(enemy_forward7):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward1.visible = false
-				$MovementMarkers/Forward/Forward2.visible = false
-				$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward6):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward5):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward4):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward3):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward3.visible = false
 				$MovementMarkers/Forward/Forward4.visible = false
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
@@ -350,31 +364,16 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
 				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward3):
+			if(enemy_forward1):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward1.visible = false
+				$MovementMarkers/Forward/Forward2.visible = false
+				$MovementMarkers/Forward/Forward3.visible = false
 				$MovementMarkers/Forward/Forward4.visible = false
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
 				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward4):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward5):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward6):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward7):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward7.visible = false
+
 			#endregion
 			#region Back Movement Marker Visibility Control
 			
@@ -711,16 +710,12 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 			#endregion
 		elif(!focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		for child in $MovementMarkers.get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
-		$SelectQueen.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
 
 func _on_select_queen_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
@@ -1401,7 +1396,6 @@ func _on_forward_3_area_area_entered(area: Area2D) -> void:
 		enemy_forward3 = true
 	if(area.is_in_group("Tiles")):
 		forward3_tile = area.name
-		print(forward3_tile)
 		var group = str(area.name)[0]
 		forward3_tile_group = group
 
@@ -1417,7 +1411,6 @@ func _on_forward_4_area_area_entered(area: Area2D) -> void:
 		enemy_forward4 = true
 	if(area.is_in_group("Tiles")):
 		forward4_tile = area.name
-		print(forward4_tile)
 		forward4_tile_group = str(area.name)[0]
 		
 func _on_forward_4_area_area_exited(area: Area2D) -> void:
@@ -1756,20 +1749,45 @@ func _on_back_7_button_button_up() -> void:
 func _on_back_1_area_body_entered(body: Node2D) -> void:
 	back1_tile = body.tile
 	back1_tile_group = body.tile_group
-	if(body.is_in_group("White")):
-		if(self.is_in_group("White")):
+	# IF THE KING IS IN CHECK
+	if(self.is_in_group("White") && Globals.white_in_check):
+		if(body.is_in_group(Globals.piece_attacking_king)):
 			enemy_back1 = true
-			back_touching_border = true
-		else:
+			touching_border = false
+	elif(self.is_in_group("Black") && Globals.black_in_check):
+		if(body.is_in_group(Globals.piece_attacking_king)):
 			enemy_back1 = true
-			back_touching_border = false
-	elif(body.is_in_group("Black")):
-		if(self.is_in_group("Black")):
-			enemy_back1 = true
-			back_touching_border = true
-		else:
-			enemy_back1 = true
-			back_touching_border = false
+			touching_border = false
+	elif(self.is_in_group("Black") && Globals.white_in_check):
+		if(body.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = true
+	elif(self.is_in_group("White") && Globals.black_in_check):
+		if(body.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = true
+		elif(body.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemy_back1 = true
+				back_touching_border = true
+			else:
+				enemy_back1 = true
+				back_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_back1 = true
+				back_touching_border = true
+			else:
+				enemy_back1 = true
+				back_touching_border = false
 
 
 func _on_back_1_area_body_exited(body: Node2D) -> void:

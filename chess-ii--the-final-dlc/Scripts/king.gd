@@ -79,6 +79,7 @@ func _process(delta: float) -> void:
 			if($MovementMarkers/Left3/Left3Sprite/Left3Area.get_overlapping_bodies().is_empty()):
 				enemy_left3 = false
 
+
 	if(self.name == "BlackKing"):
 		if(Globals.rook_a1_moved):
 			no_castle_left = true
@@ -103,10 +104,7 @@ func _process(delta: float) -> void:
 	if(close_to_king_castle_right2):
 		no_castle_right = true
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
-		$SelectKing.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_INHERIT
 			z_index = 5
 			move_to_front()
 			taking = true
@@ -225,15 +223,11 @@ func _process(delta: float) -> void:
 			
 			#endregion
 		elif(!focused):
-			for child in $MovementMarkers.get_children():
-				child.process_mode = Node.PROCESS_MODE_DISABLED
 			z_index = 1
 			$MovementMarkers.visible = false
 	else:
 		$MovementMarkers.visible = false
 		focused = false
-		for child in $MovementMarkers.get_children():
-			child.process_mode = Node.PROCESS_MODE_DISABLED
 		$SelectKing.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 func reset_markers():
@@ -755,6 +749,9 @@ func _on_back_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		back_touching_border = true
 		enemy_back = true
+	elif(!area.is_in_group("Edge")):
+		if(!enemy_back):
+			back_touching_border = false
 
 
 func _on_back_area_area_exited(area: Area2D) -> void:
@@ -915,6 +912,9 @@ func _on_fl_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		fl_touching_border = true
 		enemy_fl = true
+	elif(!area.is_in_group("Edge")):
+		if(!enemy_fl):
+			fl_touching_border = false
 
 
 func _on_fl_area_area_exited(area: Area2D) -> void:
@@ -974,6 +974,9 @@ func _on_fr_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		fr_touching_border = true
 		enemy_fr = true
+	elif(!area.is_in_group("Edge")):
+		if(!enemy_fr):
+			fr_touching_border = false
 
 
 func _on_fr_area_area_exited(area: Area2D) -> void:
@@ -1033,6 +1036,9 @@ func _on_dl_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		bl_touching_border = true
 		enemy_bl = true
+	elif(!area.is_in_group("Edge")):
+		if(!enemy_bl):
+			bl_touching_border = false
 
 
 func _on_dl_area_area_exited(area: Area2D) -> void:
@@ -1091,6 +1097,9 @@ func _on_dr_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
 		br_touching_border = true
 		enemy_br = true
+	elif(!area.is_in_group("Edge")):
+		if(!enemy_br):
+			br_touching_border = false
 
 
 func _on_dr_area_area_exited(area: Area2D) -> void:
