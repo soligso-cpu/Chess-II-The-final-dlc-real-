@@ -238,6 +238,7 @@ func _process(delta: float) -> void:
 			move_to_front()
 			taking = true
 			if(!r_train):
+				#region movement
 				#region Right Movement Marker Visibility Control
 				
 				$MovementMarkers.visible = true
@@ -494,6 +495,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/Left/Left5.visible = false
 					$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
+				#endregion
 				#endregion
 			else:
 				#region atrain

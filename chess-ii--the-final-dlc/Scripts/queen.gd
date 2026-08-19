@@ -331,12 +331,27 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Forward/Forward6.visible = true
 			$MovementMarkers/Forward/Forward7.visible = true
 			
-		
-			if(enemy_forward1):
+			if(enemy_forward7):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward1.visible = false
-				$MovementMarkers/Forward/Forward2.visible = false
-				$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward6):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward5):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward4):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
+			if(enemy_forward3):
+				if(forward_touching_border):
+					$MovementMarkers/Forward/Forward3.visible = false
 				$MovementMarkers/Forward/Forward4.visible = false
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
@@ -349,31 +364,16 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
 				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward3):
+			if(enemy_forward1):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward1.visible = false
+				$MovementMarkers/Forward/Forward2.visible = false
+				$MovementMarkers/Forward/Forward3.visible = false
 				$MovementMarkers/Forward/Forward4.visible = false
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
 				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward4):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward5):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward6):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward7):
-				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward7.visible = false
+
 			#endregion
 			#region Back Movement Marker Visibility Control
 			
@@ -1396,7 +1396,6 @@ func _on_forward_3_area_area_entered(area: Area2D) -> void:
 		enemy_forward3 = true
 	if(area.is_in_group("Tiles")):
 		forward3_tile = area.name
-		print(forward3_tile)
 		var group = str(area.name)[0]
 		forward3_tile_group = group
 
@@ -1412,7 +1411,6 @@ func _on_forward_4_area_area_entered(area: Area2D) -> void:
 		enemy_forward4 = true
 	if(area.is_in_group("Tiles")):
 		forward4_tile = area.name
-		print(forward4_tile)
 		forward4_tile_group = str(area.name)[0]
 		
 func _on_forward_4_area_area_exited(area: Area2D) -> void:
