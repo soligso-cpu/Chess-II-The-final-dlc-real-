@@ -37,12 +37,12 @@ func _process(delta: float) -> void:
 		if purge == true:
 			body.queue_free()
 			count -= 1
-		
+			print("purge")
 			
 	print("count is,", count)
 		
 func spawn_slot(slot):
-
+	count += 1
 		
 	var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
 	if slot_randi == 0:
@@ -129,8 +129,13 @@ func _on_button_button_up() -> void:
 		spawn_slot($LineMarkers/Line3)
 		print($SlotDetection/Line3.get_overlapping_bodies() )
 		if count < 9:
-			$SpawnTimer.start()
-
+			spawn_slot($LineMarkers/Line1)
+			spawn_slot($LineMarkers/Line2)
+			spawn_slot($LineMarkers/Line3)
+			if count < 9:
+				spawn_slot($LineMarkers/Line1)
+				spawn_slot($LineMarkers/Line2)
+				spawn_slot($LineMarkers/Line3)
 		spinning = false
 		$ProcessTimer.start()
 		can_gamble = false
