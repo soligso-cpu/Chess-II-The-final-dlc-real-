@@ -40,4 +40,7 @@ func _on_area_2d_mouse_exited() -> void:
 
 
 func _on_r_train_button_button_up() -> void:
-	Globals.rook_a_train = true
+	if(Globals.rook_a_train):
+		Globals.rook_a_train = false
+	else:
+		Globals.rook_a_train = true
