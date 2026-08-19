@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	print("count is,", count)
 		
 func spawn_slot(slot):
-	count += 1
+	
 		
 	var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
 	if slot_randi == 0:
@@ -68,7 +68,7 @@ func spawn_slot(slot):
 		slot_jackpot.global_position = slot.global_position
 		
 	
-
+	count += 1
 
 
 
@@ -117,6 +117,7 @@ func _on_button_button_up() -> void:
 		spawn_slot($LineMarkers/Line3)
 		$SpawnTimer.start()
 		$StaticBody2D/CollisionShape2D.disabled = true
+		
 		spinning = true
 		
 	elif spinning == true and can_gamble == true:
@@ -124,18 +125,21 @@ func _on_button_button_up() -> void:
 		print("next step, gud")
 		$StaticBody2D/CollisionShape2D.disabled = false
 		$SpawnTimer.stop()
-		spawn_slot($LineMarkers/Line1)
-		spawn_slot($LineMarkers/Line2)
-		spawn_slot($LineMarkers/Line3)
-		print($SlotDetection/Line3.get_overlapping_bodies() )
+		
+		print($SlotDetection/Line3.get_overlapping_bodies(), "work" )
 		if count < 9:
+			print("count is still", count)
 			spawn_slot($LineMarkers/Line1)
 			spawn_slot($LineMarkers/Line2)
 			spawn_slot($LineMarkers/Line3)
+			print("top-up", count)
 			if count < 9:
 				spawn_slot($LineMarkers/Line1)
 				spawn_slot($LineMarkers/Line2)
 				spawn_slot($LineMarkers/Line3)
+				print("top up again")
+		else:
+			print("huh", count)
 		spinning = false
 		$ProcessTimer.start()
 		can_gamble = false
@@ -181,14 +185,62 @@ func _on_slot_1_body_entered(body: Node2D) -> void:
 func _on_process_timer_timeout() -> void:
 	print(slot1,slot2,slot3)
 	if slot1 == slot2 and slot2 == slot3:
-		
+	#JQACKPOT is 4 slot7 is 1 bust is2 and double is 3
 		print("WOW IT WORKS")
+		if slot1 == 1:
+			regular_win()
+		elif slot1 == 2:
+			bust_win()
+		elif slot1 == 3:
+			double_win()
+		elif slot1 == 4:
+			jackpot_win()
+		
+		
+		
+		
 		
 	if line1 == line2 and line2 == line3:
 		print("WOW IT WORKS PT 2")
+		if line1 == 1:
+			regular_win()
+		elif line1 == 2:
+			bust_win()
+		elif line1 == 3:
+			double_win()
+		elif line1 == 4:
+			jackpot_win()
 		
 	if top1 == top2 and top2 == top3:
 		print("WOW IT WORKS 3")
+		if top1 == 1:
+			regular_win()
+		elif top1 == 2:
+			bust_win()
+		elif top1 == 3:
+			double_win()
+		elif top1 == 4:
+			jackpot_win()
+	if top1 == line2 and line2 == slot3:
+		print("WOW IT WORKS 4")
+		if slot3 == 1:
+			regular_win()
+		elif slot3 == 2:
+			bust_win()
+		elif slot3 == 3:
+			double_win()
+		elif slot3 == 4:
+			jackpot_win()
+	if top3 == line2 and line2 == slot1:
+		print("WOW IT WORKS 5")
+		if slot1 == 1:
+			regular_win()
+		elif slot1 == 2:
+			bust_win()
+		elif slot1 == 3:
+			double_win()
+		elif slot1 == 4:
+			jackpot_win()
 	$PurgeTimer.start()
 		
 	
@@ -273,3 +325,13 @@ func _on_top_3_body_entered(body: Node2D) -> void:
 	elif body.get_parent() == $SpawnedSlots4:
 		top3 = 4
 	print(top3)
+	
+	
+func regular_win():
+	print("reg win")
+func bust_win():
+	print("bust win")
+func double_win():
+	print("Double win")
+func jackpot_win():
+	print("Jackpot win")

@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="5_nvm1u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bjjkd"]
-size = Vector2(573, 20)
+size = Vector2(573, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7abct"]
 size = Vector2(56, 53)
@@ -17,7 +17,7 @@ size = Vector2(56, 53)
 size = Vector2(55.875, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kpwbf"]
-size = Vector2(707, 20)
+size = Vector2(707, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nvm1u"]
 size = Vector2(1058, 649)
@@ -43,14 +43,14 @@ scale = Vector2(3.515625, 0.5)
 texture = ExtResource("5_nvm1u")
 
 [node name="SlotBottom" type="Sprite2D" parent="." unique_id=1994108374]
-position = Vector2(418, 535)
+position = Vector2(408, 525)
 scale = Vector2(3.53125, 1)
 texture = ExtResource("5_nvm1u")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=161872660]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=531175869]
-position = Vector2(414, 492)
+position = Vector2(426, 474)
 shape = SubResource("RectangleShape2D_bjjkd")
 
 [node name="LineMarkers" type="Node2D" parent="." unique_id=951351868]
@@ -141,7 +141,7 @@ shape = SubResource("RectangleShape2D_jfulg")
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1139486139]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1144830031]
-position = Vector2(413, 483)
+position = Vector2(413, 467)
 shape = SubResource("RectangleShape2D_kpwbf")
 disabled = true
 
@@ -151,7 +151,7 @@ one_shot = true
 [node name="Area2D2" type="Area2D" parent="." unique_id=831113117]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=970348947]
-position = Vector2(531, 323)
+position = Vector2(433, 301)
 shape = SubResource("RectangleShape2D_nvm1u")
 
 [node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
