@@ -262,8 +262,8 @@ func _process(delta: float) -> void:
 			z_index = 5
 			move_to_front()
 			taking = true
-			#region Right Movement Marker Visibility Control
-			
+			#region making sure flags are a-ok
+			#region right
 			$MovementMarkers.visible = true
 			$MovementMarkers/Right.visible = true
 			$MovementMarkers/Right/Right1.visible = true
@@ -274,6 +274,81 @@ func _process(delta: float) -> void:
 			$MovementMarkers/Right/Right6.visible = true
 			$MovementMarkers/Right/Right7.visible = true
 			
+			#endregion
+			#region forward
+			$MovementMarkers/Forward.visible = true
+			$MovementMarkers/Forward/Forward1/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward2/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward3/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward4/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward5/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward6/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward7/ForwardSprite.visible = true
+			
+			#endregion
+			#region back
+			$MovementMarkers/Back.visible = true
+			$MovementMarkers/Back/Back1.visible = true
+			$MovementMarkers/Back/Back2.visible = true
+			$MovementMarkers/Back/Back3.visible = true
+			$MovementMarkers/Back/Back4.visible = true
+			$MovementMarkers/Back/Back5.visible = true
+			$MovementMarkers/Back/Back6.visible = true
+
+			$MovementMarkers/Back/Back7.visible = true
+			#endregion
+			#region left
+			$MovementMarkers/Left.visible = true
+			$MovementMarkers/Left/Left1.visible = true
+			$MovementMarkers/Left/Left2.visible = true
+			$MovementMarkers/Left/Left3.visible = true
+			$MovementMarkers/Left/Left4.visible = true
+			$MovementMarkers/Left/Left5.visible = true
+			$MovementMarkers/Left/Left6.visible = true
+			$MovementMarkers/Left/Left7.visible = true
+			#endregion
+			#region forward right
+			$MovementMarkers/DiagonalRightForward.visible = true
+			$MovementMarkers/DiagonalRightForward/FR1.visible = true
+			$MovementMarkers/DiagonalRightForward/FR2.visible = true
+			$MovementMarkers/DiagonalRightForward/FR3.visible = true
+			$MovementMarkers/DiagonalRightForward/FR4.visible = true
+			$MovementMarkers/DiagonalRightForward/FR5.visible = true
+			$MovementMarkers/DiagonalRightForward/FR6.visible = true
+			$MovementMarkers/DiagonalRightForward/FR7.visible = true
+			#endregion
+			#region forward left
+			$MovementMarkers/DiagonalLeftFoward.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
+			$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
+			#endregion
+			#region right back
+			$MovementMarkers/DiagonalRightBack.visible = true
+			$MovementMarkers/DiagonalRightBack/BR1.visible = true
+			$MovementMarkers/DiagonalRightBack/BR2.visible = true
+			$MovementMarkers/DiagonalRightBack/BR3.visible = true
+			$MovementMarkers/DiagonalRightBack/BR4.visible = true
+			$MovementMarkers/DiagonalRightBack/BR5.visible = true
+			$MovementMarkers/DiagonalRightBack/BR6.visible = true
+			$MovementMarkers/DiagonalRightBack/BR7.visible = true
+			#endregion
+			#region back left
+			$MovementMarkers/DiagonalLeftBack.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL1.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL2.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL3.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL4.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL5.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL6.visible = true
+			$MovementMarkers/DiagonalLeftBack/BL7.visible = true
+			#endregion
+			#endregion
+			#region Right Movement Marker Visibility Control
 		
 			if(enemy_right7):
 				if(touching_border):
@@ -319,78 +394,74 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right/Right5.visible = false
 				$MovementMarkers/Right/Right6.visible = false
 				$MovementMarkers/Right/Right7.visible = false
-			#endregion
+					#endregion
 			#region Forward Movement Marker Visibility Control
-			
-			$MovementMarkers/Forward.visible = true
-			$MovementMarkers/Forward/Forward1.visible = true
-			$MovementMarkers/Forward/Forward2.visible = true
-			$MovementMarkers/Forward/Forward3.visible = true
-			$MovementMarkers/Forward/Forward4.visible = true
-			$MovementMarkers/Forward/Forward5.visible = true
-			$MovementMarkers/Forward/Forward6.visible = true
-			$MovementMarkers/Forward/Forward7.visible = true
-			
 			if(enemy_forward7):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward6):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward5):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward4):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward3):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward3.visible = false
-				$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward2):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward2.visible = false
-				$MovementMarkers/Forward/Forward3.visible = false
-				$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
+					$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
 			if(enemy_forward1):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward1.visible = false
-				$MovementMarkers/Forward/Forward2.visible = false
-				$MovementMarkers/Forward/Forward3.visible = false
-				$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-
-			#endregion
+					$MovementMarkers/Forward/Forward1/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
+				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					#endregion
 			#region Back Movement Marker Visibility Control
 			
-			$MovementMarkers/Back.visible = true
-			$MovementMarkers/Back/Back1.visible = true
-			$MovementMarkers/Back/Back2.visible = true
-			$MovementMarkers/Back/Back3.visible = true
-			$MovementMarkers/Back/Back4.visible = true
-			$MovementMarkers/Back/Back5.visible = true
-			$MovementMarkers/Back/Back6.visible = true
-			$MovementMarkers/Back/Back7.visible = true
-			
-			if(enemy_back1):
+			if(enemy_back7):
 				if(back_touching_border):
-					$MovementMarkers/Back/Back1.visible = false
-				$MovementMarkers/Back/Back2.visible = false
-				$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back6):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back5):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back4):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back4.visible = false
+				$MovementMarkers/Back/Back5.visible = false
+				$MovementMarkers/Back/Back6.visible = false
+				$MovementMarkers/Back/Back7.visible = false
+			if(enemy_back3):
+				if(back_touching_border):
+					$MovementMarkers/Back/Back3.visible = false
 				$MovementMarkers/Back/Back4.visible = false
 				$MovementMarkers/Back/Back5.visible = false
 				$MovementMarkers/Back/Back6.visible = false
@@ -403,43 +474,17 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Back/Back5.visible = false
 				$MovementMarkers/Back/Back6.visible = false
 				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back3):
+			if(enemy_back1):
 				if(back_touching_border):
-					$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back1.visible = false
+				$MovementMarkers/Back/Back2.visible = false
+				$MovementMarkers/Back/Back3.visible = false
 				$MovementMarkers/Back/Back4.visible = false
 				$MovementMarkers/Back/Back5.visible = false
 				$MovementMarkers/Back/Back6.visible = false
 				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back4):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back5):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back6):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back7):
-				if(back_touching_border):
-					$MovementMarkers/Back/Back7.visible = false
-				
-			#endregion
+					#endregion
 			#region Left Movement Marker Visibility Control
-			
-			$MovementMarkers/Left.visible = true
-			$MovementMarkers/Left/Left1.visible = true
-			$MovementMarkers/Left/Left2.visible = true
-			$MovementMarkers/Left/Left3.visible = true
-			$MovementMarkers/Left/Left4.visible = true
-			$MovementMarkers/Left/Left5.visible = true
-			$MovementMarkers/Left/Left6.visible = true
-			$MovementMarkers/Left/Left7.visible = true
 			
 			if(enemy_left7):
 				if(left_touching_border):
@@ -483,17 +528,8 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left5.visible = false
 				$MovementMarkers/Left/Left6.visible = false
 				$MovementMarkers/Left/Left7.visible = false
-			#endregion
+				#endregion
 			#region Forward-Right Movement Marker Visibility Control
-			
-			$MovementMarkers/DiagonalRightForward.visible = true
-			$MovementMarkers/DiagonalRightForward/FR1.visible = true
-			$MovementMarkers/DiagonalRightForward/FR2.visible = true
-			$MovementMarkers/DiagonalRightForward/FR3.visible = true
-			$MovementMarkers/DiagonalRightForward/FR4.visible = true
-			$MovementMarkers/DiagonalRightForward/FR5.visible = true
-			$MovementMarkers/DiagonalRightForward/FR6.visible = true
-			$MovementMarkers/DiagonalRightForward/FR7.visible = true
 			
 			if(enemyfr_7):
 				if(fr_touching_border):
@@ -541,16 +577,6 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalRightForward/FR7.visible = false
 			#endregion
 			#region Forward-Left Movement Marker Visibility Control
-			
-			$MovementMarkers/DiagonalLeftFoward.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
-			
 			if(enemyfl_7):
 				if(fl_touching_border):
 					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
@@ -599,15 +625,6 @@ func _process(delta: float) -> void:
 			#endregion
 			#region Back-Right Movement Marker Visibility Control
 			
-			$MovementMarkers/DiagonalRightBack.visible = true
-			$MovementMarkers/DiagonalRightBack/BR1.visible = true
-			$MovementMarkers/DiagonalRightBack/BR2.visible = true
-			$MovementMarkers/DiagonalRightBack/BR3.visible = true
-			$MovementMarkers/DiagonalRightBack/BR4.visible = true
-			$MovementMarkers/DiagonalRightBack/BR5.visible = true
-			$MovementMarkers/DiagonalRightBack/BR6.visible = true
-			$MovementMarkers/DiagonalRightBack/BR7.visible = true
-			
 			if(enemybr_7):
 				if(br_touching_border):
 					$MovementMarkers/DiagonalRightBack/BR7.visible = false
@@ -654,16 +671,6 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalRightBack/BR7.visible = false
 				#endregion
 			#region Back-Left Movement Markers Visibility Control
-			
-			$MovementMarkers/DiagonalLeftBack.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL1.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL2.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL3.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL4.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL5.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL6.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL7.visible = true
-
 			if(enemybl_7):
 				if(bl_touching_border):
 					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
