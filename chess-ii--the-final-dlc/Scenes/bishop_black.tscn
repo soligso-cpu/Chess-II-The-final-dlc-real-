@@ -87,6 +87,16 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skn0d"]
 size = Vector2(72, 72)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nvxg7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h72nc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uwmp8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hw0qu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nx8y0"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qg1m5"]
 size = Vector2(71.42857, 71.42857)
 
@@ -571,6 +581,11 @@ offset_left = -39.0
 offset_top = -40.0
 offset_right = 39.01333
 offset_bottom = 38.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nvxg7")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h72nc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uwmp8")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hw0qu")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nx8y0")
 
 [node name="CollisionArea" type="Area2D" parent="." unique_id=1463437123]
 position = Vector2(0, -7.6293945e-06)

@@ -51,6 +51,16 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u63x5"]
 size = Vector2(72, 72)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_75cpy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqjxw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_63n53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mc3th"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wlv76"]
+
 [node name="BlackKing" type="CharacterBody2D" unique_id=421995261 groups=["Black", "King", "Pieces"]]
 script = ExtResource("1_75cpy")
 
@@ -426,6 +436,11 @@ offset_left = -39.0
 offset_top = -37.0
 offset_right = 37.0
 offset_bottom = 39.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_75cpy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kqjxw")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_63n53")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_mc3th")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wlv76")
 
 [connection signal="area_exited" from="CloseToKing/Cardinal/CloseForwardArea" to="." method="_on_close_forward_area_area_exited"]
 [connection signal="body_entered" from="CloseToKing/Cardinal/CloseForwardArea" to="." method="_on_close_forward_area_body_entered"]

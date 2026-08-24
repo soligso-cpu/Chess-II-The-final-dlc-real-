@@ -168,6 +168,7 @@ var lr_train_enemy5: String
 var lr_train_enemy6: String
 var lr_train_enemy7: String
 #endregion
+
 func _ready() -> void:
 	Globals.rook_a1_moved = false
 	Globals.rook_a8_moved = false
@@ -225,8 +226,8 @@ func _ready() -> void:
 	Globals.piece_focused = " "
 	#endregion
 
-
 func _process(delta: float) -> void:
+	move_and_slide()
 	if(test):
 		var markers = $MovementMarkers
 		var test_gp = $MovementMarkers.global_position
@@ -236,8 +237,6 @@ func _process(delta: float) -> void:
 		$MovementMarkers.global_position = test_gp
 		test = false
 		return
-	if(r_train):
-		touching_border = false
 	if(Globals.rook_a_train):
 		r_train = true
 	else:
@@ -260,356 +259,220 @@ func _process(delta: float) -> void:
 				$MovementMarkers.visible = true
 				$MovementMarkers/Right.visible = true
 				$MovementMarkers/Right/Right1.visible = true
-				$MovementMarkers/Right/Right1.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right2.visible = true
-				$MovementMarkers/Right/Right2.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right3.visible = true
-				$MovementMarkers/Right/Right3.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right4.visible = true
-				$MovementMarkers/Right/Right4.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right5.visible = true
-				$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right6.visible = true
-				$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Right/Right7.visible = true
-				$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_INHERIT
 				
 			
 				if(enemy_right7):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right7.visible = false
-						$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 					else:
 						pass
 				if(enemy_right6):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right6.visible = false
-						$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 				if(enemy_right5):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right5.visible = false
-						$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right6.visible = false
-					$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 				if(enemy_right4):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right4.visible = false
-						$MovementMarkers/Right/Right4.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right5.visible = false
-					$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right6.visible = false
-					$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 				if(enemy_right3):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right3.visible = false
-						$MovementMarkers/Right/Right3.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right4.visible = false
-					$MovementMarkers/Right/Right4.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right5.visible = false
-					$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right6.visible = false
-					$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 				if(enemy_right2):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right2.visible = false
-						$MovementMarkers/Right/Right2.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right3.visible = false
-					$MovementMarkers/Right/Right3.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right4.visible = false
-					$MovementMarkers/Right/Right4.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right5.visible = false
-					$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right6.visible = false
-					$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 				if(enemy_right1):
 					if(touching_border || right_friendly_border):
 						$MovementMarkers/Right/Right1.visible = false
-						$MovementMarkers/Right/Right1.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right2.visible = false
-					$MovementMarkers/Right/Right2.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right3.visible = false
-					$MovementMarkers/Right/Right3.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right4.visible = false
-					$MovementMarkers/Right/Right4.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right5.visible = false
-					$MovementMarkers/Right/Right5.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right6.visible = false
-					$MovementMarkers/Right/Right6.process_mode = Node.PROCESS_MODE_DISABLED
 					$MovementMarkers/Right/Right7.visible = false
-					$MovementMarkers/Right/Right7.process_mode = Node.PROCESS_MODE_DISABLED
 						#endregion
 				#region Forward Movement Marker Visibility Control
 						
 				$MovementMarkers/Forward.visible = true
-				$MovementMarkers/Forward/Forward1/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward1.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward2/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward2.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward3/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward3.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward4.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward5.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward6.process_mode = Node.PROCESS_MODE_INHERIT
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = true
-				$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_INHERIT
+				$MovementMarkers/Forward/Forward1.visible = true
+				$MovementMarkers/Forward/Forward2.visible = true
+				$MovementMarkers/Forward/Forward3.visible = true
+				$MovementMarkers/Forward/Forward4.visible = true
+				$MovementMarkers/Forward/Forward5.visible = true
+				$MovementMarkers/Forward/Forward6.visible = true
+				$MovementMarkers/Forward/Forward7.visible = true
 				
 				if(enemy_forward7):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-						$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward6):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-						$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward5):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-						$MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward4):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-						$MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward3):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-						$MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward2):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward1):
 					if(forward_touching_border || forward_friendly_border):
-						$MovementMarkers/Forward/Forward1/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward3/ForwardSprite/Forward3Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward4/ForwardSprite/Forward4Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward5/ForwardSprite/Forward5Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward6/ForwardSprite/Forward6Area.process_mode = Node.PROCESS_MODE_DISABLED
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
-					$MovementMarkers/Forward/Forward7/ForwardSprite/Forward7Area.process_mode = Node.PROCESS_MODE_DISABLED
+						$MovementMarkers/Forward/Forward1.visible = false
+					$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 						#endregion
 				#region Back Movement Marker Visibility Control
 				
 				$MovementMarkers/Back.visible = true
 				$MovementMarkers/Back/Back1.visible = true
-				$MovementMarkers/Back/Back1.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back2.visible = true
-				$MovementMarkers/Back/Back2.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back3.visible = true
-				$MovementMarkers/Back/Back3.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back4.visible = true
-				$MovementMarkers/Back/Back4.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back5.visible = true
-				$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back6.visible = true
-				$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Back/Back7.visible = true
-				$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				
 				if(enemy_back7):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back7.visible = false
-						$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_back6):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back6.visible = false
-						$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
-					$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_back5):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back5.visible = false
-						$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back6.visible = false
-					$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
-					$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_back4):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back4.visible = false
-						$MovementMarkers/Back/Back4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back5.visible = false
-					$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back6.visible = false
-					$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
-					$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_back3):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back3.visible = false
-						$MovementMarkers/Back/Back3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back4.visible = false
-					$MovementMarkers/Back/Back4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back5.visible = false
-					$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back6.visible = false
-					$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
-					$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_back2):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back2.visible = false
-						$MovementMarkers/Back/Back2.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back3.visible = false
-					$MovementMarkers/Back/Back3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back4.visible = false
-					$MovementMarkers/Back/Back4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back5.visible = false
-					$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back6.visible = false
-					$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back1):
 					if(back_touching_border || back_friendly_border):
 						$MovementMarkers/Back/Back1.visible = false
-						$MovementMarkers/Back/Back1.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back2.visible = false
-					$MovementMarkers/Back/Back2.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back3.visible = false
-					$MovementMarkers/Back/Back3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back4.visible = false
-					$MovementMarkers/Back/Back4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back5.visible = false
-					$MovementMarkers/Back/Back5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back6.visible = false
-					$MovementMarkers/Back/Back6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Back/Back7.visible = false
-					$MovementMarkers/Back/Back7.process_mode = Node.PROCESS_MODE_INHERIT
 						#endregion
 				#region Left Movement Marker Visibility Control
 				
 				$MovementMarkers/Left.visible = true
 				$MovementMarkers/Left/Left1.visible = true
-				$MovementMarkers/Left/Left1.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left2.visible = true
-				$MovementMarkers/Left/Left2.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left3.visible = true
-				$MovementMarkers/Left/Left3.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left4.visible = true
-				$MovementMarkers/Left/Left4.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left5.visible = true
-				$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left6.visible = true
-				$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 				$MovementMarkers/Left/Left7.visible = true
-				$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				
 				if(enemy_left7):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left7.visible = false
-						$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left6):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left6.visible = false
-						$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left5):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left5.visible = false
-						$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left6.visible = false
-					$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left4):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left4.visible = false
-						$MovementMarkers/Left/Left4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left5.visible = false
-					$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left6.visible = false
-					$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left3):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left3.visible = false
-						$MovementMarkers/Left/Left3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left4.visible = false
-					$MovementMarkers/Left/Left4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left5.visible = false
-					$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left6.visible = false
-					$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left2):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left2.visible = false
-						$MovementMarkers/Left/Left2.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left3.visible = false
-					$MovementMarkers/Left/Left3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left4.visible = false
-					$MovementMarkers/Left/Left4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left5.visible = false
-					$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left6.visible = false
-					$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				if(enemy_left1):
 					if(left_touching_border || left_friendly_border):
 						$MovementMarkers/Left/Left1.visible = false
-						$MovementMarkers/Left/Left1.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left2.visible = false
-					$MovementMarkers/Left/Left2.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left3.visible = false
-					$MovementMarkers/Left/Left3.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left4.visible = false
-					$MovementMarkers/Left/Left4.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left5.visible = false
-					$MovementMarkers/Left/Left5.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left6.visible = false
-					$MovementMarkers/Left/Left6.process_mode = Node.PROCESS_MODE_INHERIT
 					$MovementMarkers/Left/Left7.visible = false
-					$MovementMarkers/Left/Left7.process_mode = Node.PROCESS_MODE_INHERIT
 				#endregion
 				#endregion
 			else:
@@ -708,6 +571,8 @@ func _process(delta: float) -> void:
 		focused = false
 
 
+
+
 func reset_markers():
 	enemy_right1 = false
 	enemy_right2 = false
@@ -741,6 +606,14 @@ func reset_markers():
 	enemy_left6 = false
 	enemy_left7 = false
 	
+	touching_border = false
+	right_friendly_border = false
+	forward_touching_border = false
+	forward_friendly_border = false
+	left_touching_border = false
+	left_friendly_border = false
+	back_touching_border = false
+	back_friendly_border = false
 	focused = false
 	Globals.piece_focused = " "
 
@@ -1180,6 +1053,7 @@ func _on_right_area_7_body_exited(body: Node2D) -> void:
 
 func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
+		print("1 edge")
 		touching_border = true
 		enemy_right1 = true
 	if(area.is_in_group("Tiles")):
@@ -1195,6 +1069,7 @@ func _on_right_area_1_area_exited(area: Area2D) -> void:
 
 func _on_right_area_2_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
+		print("2 edge")
 		touching_border = true
 		enemy_right2 = true
 	if(area.is_in_group("Tiles")):
@@ -1210,6 +1085,7 @@ func _on_right_area_2_area_exited(area: Area2D) -> void:
 
 func _on_right_area_3_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
+		print("3 edge")
 		touching_border = true
 		enemy_right3 = true
 	if(area.is_in_group("Tiles")):
@@ -1224,7 +1100,8 @@ func _on_right_area_3_area_exited(area: Area2D) -> void:
 
 
 func _on_right_area_4_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Edge")):	
+	if(area.is_in_group("Edge")):
+		print("4 edge")
 		touching_border = true
 		enemy_right4 = true
 	if(area.is_in_group("Tiles")):
@@ -1239,7 +1116,8 @@ func _on_right_area_4_area_exited(area: Area2D) -> void:
 
 
 func _on_right_area_5_area_entered(area: Area2D) -> void:
-	if(area.is_in_group("Edge")):	
+	if(area.is_in_group("Edge")):
+		print("5 edge")
 		touching_border = true
 		enemy_right5 = true
 	if(area.is_in_group("Tiles")):
@@ -1256,6 +1134,7 @@ func _on_right_area_5_area_exited(area: Area2D) -> void:
 
 func _on_right_area_6_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
+		print("6 edge")
 		touching_border = true
 		enemy_right6 = true
 	if(area.is_in_group("Tiles")):
@@ -1271,6 +1150,7 @@ func _on_right_area_6_area_exited(area: Area2D) -> void:
 
 func _on_right_area_7_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
+		print("7 edge")
 		touching_border = true
 		enemy_right7 = true
 	if(area.is_in_group("Tiles")):

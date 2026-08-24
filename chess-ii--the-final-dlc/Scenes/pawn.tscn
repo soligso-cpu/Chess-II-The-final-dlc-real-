@@ -9,6 +9,16 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
 size = Vector2(72, 72)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3865y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_culnp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_018tw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ab40"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr4cw"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_018tw"]
 size = Vector2(72, 72)
 
@@ -102,6 +112,11 @@ offset_left = -41.0
 offset_top = -39.0
 offset_right = 37.0
 offset_bottom = 39.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3865y")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_culnp")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_018tw")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3ab40")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cr4cw")
 
 [node name="PawnSprite" type="Sprite2D" parent="." unique_id=525306621]
 position = Vector2(0, 23)

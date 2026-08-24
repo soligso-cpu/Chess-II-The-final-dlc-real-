@@ -6,6 +6,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rrk28"]
 size = Vector2(72, 72)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy2k0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wojvf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkyet"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o60ur"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aul0r"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b66j6"]
 size = Vector2(42, 72)
 
@@ -162,6 +172,11 @@ offset_left = -37.0
 offset_top = -38.0
 offset_right = 39.0
 offset_bottom = 39.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iy2k0")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_wojvf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jkyet")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o60ur")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aul0r")
 
 [node name="TileCollisionArea" type="Area2D" parent="." unique_id=1827609162]
 

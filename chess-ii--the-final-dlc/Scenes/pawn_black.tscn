@@ -9,6 +9,16 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
 size = Vector2(72, 72)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rpu5m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p0v0t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gswg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qt7p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvyi4"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rpu5m"]
 size = Vector2(72, 72)
 
@@ -107,6 +117,11 @@ offset_left = -38.0
 offset_top = -36.0
 offset_right = 34.0
 offset_bottom = 36.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rpu5m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_p0v0t")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_4gswg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7qt7p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qvyi4")
 
 [node name="EnPassantDetect" type="Node2D" parent="." unique_id=1160157163]
 

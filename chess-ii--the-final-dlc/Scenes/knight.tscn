@@ -9,6 +9,16 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b66j6"]
 size = Vector2(45, 67)
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b66j6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_43hye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rslyr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5h62n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nf5tg"]
+
 [node name="Knight" type="CharacterBody2D" unique_id=1141139028 groups=["Knight", "Pieces", "White"]]
 script = ExtResource("1_b66j6")
 
@@ -164,6 +174,11 @@ offset_left = -38.0
 offset_top = -38.0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b66j6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_43hye")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rslyr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_5h62n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nf5tg")
 
 [node name="KnightSprite" type="Sprite2D" parent="." unique_id=1173373730]
 scale = Vector2(0.51000005, 0.65000004)

@@ -2,14 +2,30 @@ extends CharacterBody2D
 
 var focused
 var taking
+
 var touching_border
+var right_friendly_border
+
 var forward_touching_border
+var forward_friendly_border
+
 var back_touching_border
+var back_friendly_border
+
 var left_touching_border
+var left_friendly_border
+
 var fr_touching_border
+var fr_friendly_border
+
 var fl_touching_border
+var fl_friendly_border
+
 var br_touching_border
+var br_friendly_border
+
 var bl_touching_border
+var bl_friendly_border
 
 
 var tile
@@ -277,13 +293,13 @@ func _process(delta: float) -> void:
 			#endregion
 			#region forward
 			$MovementMarkers/Forward.visible = true
-			$MovementMarkers/Forward/Forward1/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward2/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward3/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward4/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward5/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward6/ForwardSprite.visible = true
-			$MovementMarkers/Forward/Forward7/ForwardSprite.visible = true
+			$MovementMarkers/Forward/Forward1.visible = true
+			$MovementMarkers/Forward/Forward2.visible = true
+			$MovementMarkers/Forward/Forward3.visible = true
+			$MovementMarkers/Forward/Forward4.visible = true
+			$MovementMarkers/Forward/Forward5.visible = true
+			$MovementMarkers/Forward/Forward6.visible = true
+			$MovementMarkers/Forward/Forward7.visible = true
 			
 			#endregion
 			#region back
@@ -396,48 +412,49 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Right/Right7.visible = false
 					#endregion
 			#region Forward Movement Marker Visibility Control
+			
 			if(enemy_forward7):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward6):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward5):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward4):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward3):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+				$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward2):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward2.visible = false
+				$MovementMarkers/Forward/Forward3.visible = false
+				$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 			if(enemy_forward1):
 				if(forward_touching_border):
-					$MovementMarkers/Forward/Forward1/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward2/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward3/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward4/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward5/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = false
-				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = false
+					$MovementMarkers/Forward/Forward1.visible = false
+				$MovementMarkers/Forward/Forward2.visible = false
+				$MovementMarkers/Forward/Forward3.visible = false
+				$MovementMarkers/Forward/Forward4.visible = false
+				$MovementMarkers/Forward/Forward5.visible = false
+				$MovementMarkers/Forward/Forward6.visible = false
+				$MovementMarkers/Forward/Forward7.visible = false
 					#endregion
 			#region Back Movement Marker Visibility Control
 			
@@ -980,17 +997,17 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right1 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right1 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right1 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right1 = true
-			touching_border = false
+			right_friendly_border = false
 	
 
 func _on_right_area_1_body_exited(body: Node2D) -> void:
@@ -1004,17 +1021,17 @@ func _on_right_area_2_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right2 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right2 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right2 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right2 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_2_body_exited(body: Node2D) -> void:
@@ -1028,17 +1045,17 @@ func _on_right_area_3_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right3 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right3 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right3 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right3 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_3_body_exited(body: Node2D) -> void:
@@ -1052,17 +1069,17 @@ func _on_right_area_4_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right4 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right4 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right4 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right4 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_4_body_exited(body: Node2D) -> void:
@@ -1076,17 +1093,17 @@ func _on_right_area_5_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right5 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right5 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right5 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right5 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_5_body_exited(body: Node2D) -> void:
@@ -1100,17 +1117,17 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right6 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right6 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right6 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right6 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_6_body_exited(body: Node2D) -> void:
@@ -1124,17 +1141,17 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_right7 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right7 = true
-			touching_border = false
+			right_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_right7 = true
-			touching_border = true
+			right_friendly_border = true
 		else:
 			enemy_right7 = true
-			touching_border = false
+			right_friendly_border = false
 
 
 func _on_right_area_7_body_exited(body: Node2D) -> void:
