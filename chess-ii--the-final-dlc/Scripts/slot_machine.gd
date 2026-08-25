@@ -26,6 +26,7 @@ var top3
 var purge = false
 var count = 0
 var can_gamble = true
+var top_check = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -40,6 +41,12 @@ func _process(delta: float) -> void:
 			print("purge")
 			
 	print("count is,", count)
+	if top_check == true and count < 9:
+		spawn_slot($LineMarkers/Line1)
+		spawn_slot($LineMarkers/Line2)
+		spawn_slot($LineMarkers/Line3)
+	if count > 9:
+		top_check = false
 		
 func spawn_slot(slot):
 	
@@ -121,7 +128,7 @@ func _on_button_button_up() -> void:
 		spinning = true
 		
 	elif spinning == true and can_gamble == true:
-		
+		top_check = true
 		print("next step, gud")
 		$StaticBody2D/CollisionShape2D.disabled = false
 		$SpawnTimer.stop()
@@ -183,6 +190,7 @@ func _on_slot_1_body_entered(body: Node2D) -> void:
 	print(slot3)
 
 func _on_process_timer_timeout() -> void:
+	top_check = false
 	print(slot1,slot2,slot3)
 	if slot1 == slot2 and slot2 == slot3:
 	#JQACKPOT is 4 slot7 is 1 bust is2 and double is 3
