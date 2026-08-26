@@ -37,16 +37,6 @@ position = Vector2(942, 96)
 [node name="SlotJackpot" parent="." unique_id=1399318989 instance=ExtResource("5_dwfc2")]
 position = Vector2(1021, -68)
 
-[node name="SlotTop" type="Sprite2D" parent="." unique_id=809689986]
-position = Vector2(416, 112)
-scale = Vector2(3.515625, 0.5)
-texture = ExtResource("5_nvm1u")
-
-[node name="SlotBottom" type="Sprite2D" parent="." unique_id=1994108374]
-position = Vector2(408, 525)
-scale = Vector2(3.53125, 1)
-texture = ExtResource("5_nvm1u")
-
 [node name="Area2D" type="Area2D" parent="." unique_id=161872660]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=531175869]
@@ -74,6 +64,7 @@ position = Vector2(242, 121)
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=229642939]
 wait_time = 0.491
+one_shot = true
 
 [node name="Button" type="Button" parent="." unique_id=1656719596]
 offset_left = 721.0
@@ -160,6 +151,16 @@ one_shot = true
 [node name="StageTimer" type="Timer" parent="." unique_id=1447818968]
 wait_time = 0.586
 one_shot = true
+
+[node name="SlotBottom" type="Sprite2D" parent="." unique_id=1994108374]
+position = Vector2(408, 525)
+scale = Vector2(3.53125, 1)
+texture = ExtResource("5_nvm1u")
+
+[node name="SlotTop" type="Sprite2D" parent="." unique_id=809689986]
+position = Vector2(416, 112)
+scale = Vector2(3.515625, 0.5)
+texture = ExtResource("5_nvm1u")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
