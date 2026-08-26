@@ -5,7 +5,7 @@ var taking
 var tile
 var tile_group
 var turn
-
+var readd_markers
 
 #region border touch variables
 #region right
@@ -380,8 +380,19 @@ var bl7_tile_group
 #endregion
 func _ready() -> void:
 	focused = false
+	readd_markers = true
+
 
 func _process(delta: float) -> void:
+	if(readd_markers):
+		var markers = $MovementMarkers
+		var test_gp = $MovementMarkers.global_position
+		$".".remove_child(markers)
+		await get_tree().process_frame
+		$".".add_child(markers)
+		$MovementMarkers.global_position = test_gp
+		readd_markers = false
+		return
 	if(Globals.piece_focused == "QueenWhite" && self.name == "QueenWhite" || Globals.piece_focused == "QueenBlack" && self.name == "QueenBlack"):
 		focused = true
 	else:
@@ -978,7 +989,7 @@ func reset_markers():
 	enemybr_5 = false
 	enemybr_6 = false
 	enemybr_7 = false
-
+	readd_markers = true
 	focused = false
 	Globals.piece_focused = ""
 
@@ -1582,7 +1593,7 @@ func _on_right_area_2_area_entered(area: Area2D) -> void:
 
 func _on_right_area_2_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		right3_touching_border = false
+		right2_touching_border = false
 		enemy_right2 = false
 
 func _on_right_area_3_area_entered(area: Area2D) -> void:
@@ -1596,7 +1607,7 @@ func _on_right_area_3_area_entered(area: Area2D) -> void:
 
 func _on_right_area_3_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		right4_touching_border = false
+		right3_touching_border = false
 		enemy_right3 = false
 
 
@@ -3538,20 +3549,59 @@ func _on_left_5_area_body_exited(body: Node2D) -> void:
 func _on_left_6_area_body_entered(body: Node2D) -> void:
 	left6_tile = body.tile
 	left6_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemy_left6 = true
-			left_touching_border = true
-		else:
-			enemy_left6 = true
-			left_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemy_left6 = true
+				left6_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemy_left6 = true
+					left6_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemy_left6 = true
+					left6_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemy_left6 = true
-			left_touching_border = true
-		else:
-			enemy_left6 = true
-			left_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemy_left6 = true
+				left6_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemy_left6 = true
+					left6_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemy_left6 = true
+					left6_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemy_left6 = true
+				left6_touching_border = true
+			else:
+				enemy_left6 = true
+				left6_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_left6 = true
+				left6_touching_border = true
+			else:
+				enemy_left6 = true
+				left6_touching_border = false
 
 
 func _on_left_6_area_body_exited(body: Node2D) -> void:
@@ -3561,20 +3611,59 @@ func _on_left_6_area_body_exited(body: Node2D) -> void:
 func _on_left_7_area_body_entered(body: Node2D) -> void:
 	left7_tile = body.tile
 	left7_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemy_left7 = true
-			left_touching_border = true
-		else:
-			enemy_left7 = true
-			left_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemy_left7 = true
+				left7_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemy_left7 = true
+					left7_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemy_left7 = true
+					left7_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemy_left7 = true
-			left_touching_border = true
-		else:
-			enemy_left7 = true
-			left_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemy_left7 = true
+				left7_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemy_left7 = true
+					left7_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemy_left7 = true
+					left7_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemy_left7 = true
+				left7_touching_border = true
+			else:
+				enemy_left7 = true
+				left7_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemy_left7 = true
+				left7_touching_border = true
+			else:
+				enemy_left7 = true
+				left7_touching_border = false
 
 
 func _on_left_7_area_body_exited(body: Node2D) -> void:
@@ -3589,7 +3678,6 @@ func _on_left_7_area_body_exited(body: Node2D) -> void:
 #region Diagonal (FR, FL, BR, BL)
 
 #region Diagonal Forward-Right
-
 #region All the Button Signals
 
 
@@ -3703,7 +3791,7 @@ func _on_fr_7_button_button_up() -> void:
 
 func _on_fr_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr1_touching_border = true
 		enemyfr_1 = true
 	if(area.is_in_group("Tiles")):
 		fr1_tile = area.name
@@ -3712,13 +3800,13 @@ func _on_fr_1_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr1_touching_border = false
 		enemyfr_1 = false
 
 
 func _on_fr_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr2_touching_border = true
 		enemyfr_2 = true
 	if(area.is_in_group("Tiles")):
 		fr2_tile = area.name
@@ -3727,13 +3815,13 @@ func _on_fr_2_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr2_touching_border = false
 		enemyfr_2 = false
 
 
 func _on_fr_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr3_touching_border = true
 		enemyfr_3 = true
 	if(area.is_in_group("Tiles")):
 		fr3_tile = area.name
@@ -3742,13 +3830,13 @@ func _on_fr_3_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr3_touching_border = false
 		enemyfr_3 = false
 
 
 func _on_fr_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr4_touching_border = true
 		enemyfr_4 = true
 	if(area.is_in_group("Tiles")):
 		fr4_tile = area.name
@@ -3757,13 +3845,13 @@ func _on_fr_4_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr4_touching_border = false
 		enemyfr_4 = false
 
 
 func _on_fr_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr5_touching_border = true
 		enemyfr_5 = true
 	if(area.is_in_group("Tiles")):
 		fr5_tile = area.name
@@ -3772,13 +3860,13 @@ func _on_fr_5_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr5_touching_border = false
 		enemyfr_5 = false
 
 
 func _on_fr_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr6_touching_border = true
 		enemyfr_6 = true
 	if(area.is_in_group("Tiles")):
 		fr6_tile = area.name
@@ -3787,13 +3875,13 @@ func _on_fr_6_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr6_touching_border = false
 		enemyfr_6 = false
 
 
 func _on_fr_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = true
+		fr7_touching_border = true
 		enemyfr_7 = true
 	if(area.is_in_group("Tiles")):
 		fr7_tile = area.name
@@ -3802,7 +3890,7 @@ func _on_fr_7_area_area_entered(area: Area2D) -> void:
 
 func _on_fr_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fr_touching_border = false
+		fr7_touching_border = false
 		enemyfr_7 = false
 
 #endregion
@@ -3815,17 +3903,17 @@ func _on_fr_1_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_1 = true
-			fr_touching_border = true
+			fr1_touching_border = true
 		else:
 			enemyfr_1 = true
-			fr_touching_border = false
+			fr1_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_1 = true
-			fr_touching_border = true
+			fr1_touching_border = true
 		else:
 			enemyfr_1 = true
-			fr_touching_border = false
+			fr1_touching_border = false
 
 
 func _on_fr_1_area_body_exited(body: Node2D) -> void:
@@ -3839,17 +3927,17 @@ func _on_fr_2_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_2 = true
-			fr_touching_border = true
+			fr2_touching_border = true
 		else:
 			enemyfr_2 = true
-			fr_touching_border = false
+			fr2_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_2 = true
-			fr_touching_border = true
+			fr2_touching_border = true
 		else:
 			enemyfr_2 = true
-			fr_touching_border = false
+			fr2_touching_border = false
 
 
 func _on_fr_2_area_body_exited(body: Node2D) -> void:
@@ -3858,22 +3946,22 @@ func _on_fr_2_area_body_exited(body: Node2D) -> void:
 
 
 func _on_fr_3_area_body_entered(body: Node2D) -> void:
-	fr2_tile = body.tile
-	fr2_tile_group = body.tile_group
+	fr3_tile = body.tile
+	fr3_tile_group = body.tile_group
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_3 = true
-			fr_touching_border = true
+			fr3_touching_border = true
 		else:
 			enemyfr_3 = true
-			fr_touching_border = false
+			fr3_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_3 = true
-			fr_touching_border = true
+			fr3_touching_border = true
 		else:
 			enemyfr_3 = true
-			fr_touching_border = false
+			fr3_touching_border = false
 
 func _on_fr_3_area_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Pieces")):
@@ -3886,17 +3974,17 @@ func _on_fr_4_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_4 = true
-			fr_touching_border = true
+			fr4_touching_border = true
 		else:
 			enemyfr_4 = true
-			fr_touching_border = false
+			fr4_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_4 = true
-			fr_touching_border = true
+			fr4_touching_border = true
 		else:
 			enemyfr_4 = true
-			fr_touching_border = false
+			fr4_touching_border = false
 
 
 func _on_fr_4_area_body_exited(body: Node2D) -> void:
@@ -3910,17 +3998,17 @@ func _on_fr_5_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_5 = true
-			fr_touching_border = true
+			fr5_touching_border = true
 		else:
 			enemyfr_5 = true
-			fr_touching_border = false
+			fr5_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_5 = true
-			fr_touching_border = true
+			fr5_touching_border = true
 		else:
 			enemyfr_5 = true
-			fr_touching_border = false
+			fr5_touching_border = false
 
 
 func _on_fr_5_area_body_exited(body: Node2D) -> void:
@@ -3934,17 +4022,17 @@ func _on_fr_6_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_6 = true
-			fr_touching_border = true
+			fr6_touching_border = true
 		else:
 			enemyfr_6 = true
-			fr_touching_border = false
+			fr6_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_6 = true
-			fr_touching_border = true
+			fr6_touching_border = true
 		else:
 			enemyfr_6 = true
-			fr_touching_border = false
+			fr6_touching_border = false
 
 
 func _on_fr_6_area_body_exited(body: Node2D) -> void:
@@ -3958,17 +4046,17 @@ func _on_fr_7_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemyfr_7 = true
-			fr_touching_border = true
+			fr7_touching_border = true
 		else:
 			enemyfr_7 = true
-			fr_touching_border = false
+			fr7_touching_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemyfr_7 = true
-			fr_touching_border = true
+			fr7_touching_border = true
 		else:
 			enemyfr_7 = true
-			fr_touching_border = false
+			fr7_touching_border = false
 
 
 func _on_fr_7_area_body_exited(body: Node2D) -> void:
@@ -3976,11 +4064,8 @@ func _on_fr_7_area_body_exited(body: Node2D) -> void:
 		enemyfr_7 = false
 
 #endregion
-
 #endregion
-
 #region Diagonal Forward-Left
-
 #region ALl the Button Signals
 
 
@@ -4094,7 +4179,7 @@ func _on_fl_7_button_button_up() -> void:
 
 func _on_fl_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl1_touching_border = true
 		enemyfl_1 = true
 	if(area.is_in_group("Tiles")):
 		fl1_tile = area.name
@@ -4103,13 +4188,13 @@ func _on_fl_1_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl1_touching_border = false
 		enemyfl_1 = false
 
 
 func _on_fl_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl2_touching_border = true
 		enemyfl_2 = true
 	if(area.is_in_group("Tiles")):
 		fl2_tile = area.name
@@ -4118,13 +4203,13 @@ func _on_fl_2_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl2_touching_border = false
 		enemyfl_2 = false
 
 
 func _on_fl_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl3_touching_border = true
 		enemyfl_3 = true
 	if(area.is_in_group("Tiles")):
 		fl3_tile = area.name
@@ -4133,13 +4218,13 @@ func _on_fl_3_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl3_touching_border = false
 		enemyfl_3 = false
 
 
 func _on_fl_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl4_touching_border = true
 		enemyfl_4 = true
 	if(area.is_in_group("Tiles")):
 		fl4_tile = area.name
@@ -4148,13 +4233,13 @@ func _on_fl_4_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl4_touching_border = false
 		enemyfl_4 = false
 
 
 func _on_fl_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl5_touching_border = true
 		enemyfl_5 = true
 	if(area.is_in_group("Tiles")):
 		fl5_tile = area.name
@@ -4163,13 +4248,13 @@ func _on_fl_5_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl5_touching_border = false
 		enemyfl_5 = false
 
 
 func _on_fl_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl6_touching_border = true
 		enemyfl_6 = true
 	if(area.is_in_group("Tiles")):
 		fl6_tile = area.name
@@ -4178,13 +4263,13 @@ func _on_fl_6_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl6_touching_border = false
 		enemyfl_6 = false
 
 
 func _on_fl_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = true
+		fl7_touching_border = true
 		enemyfl_7 = true
 	if(area.is_in_group("Tiles")):
 		fl7_tile = area.name
@@ -4193,7 +4278,7 @@ func _on_fl_7_area_area_entered(area: Area2D) -> void:
 
 func _on_fl_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		fl_touching_border = false
+		fl7_touching_border = false
 		enemyfl_7 = false
 
 #endregion
@@ -4204,20 +4289,59 @@ func _on_fl_7_area_area_exited(area: Area2D) -> void:
 func _on_fl_1_area_body_entered(body: Node2D) -> void:
 	fl1_tile = body.tile
 	fl1_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_1 = true
-			fl_touching_border = true
-		else:
-			enemyfl_1 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_1 = true
+				fl1_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_1 = true
+					fl1_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_1 = true
+					fl1_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_1 = true
-			fl_touching_border = true
-		else:
-			enemyfl_1 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_1 = true
+				fl1_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_1 = true
+					fl1_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_1 = true
+					fl1_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_1 = true
+				fl1_touching_border = true
+			else:
+				enemyfl_1 = true
+				fl1_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_1 = true
+				fl1_touching_border = true
+			else:
+				enemyfl_1 = true
+				fl1_touching_border = false
 
 
 func _on_fl_1_area_body_exited(body: Node2D) -> void:
@@ -4228,20 +4352,59 @@ func _on_fl_1_area_body_exited(body: Node2D) -> void:
 func _on_fl_2_area_body_entered(body: Node2D) -> void:
 	fl2_tile = body.tile
 	fl2_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_2 = true
-			fl_touching_border = true
-		else:
-			enemyfl_2 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_2 = true
+				fl2_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_2 = true
+					fl2_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_2 = true
+					fl2_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_2 = true
-			fl_touching_border = true
-		else:
-			enemyfl_2 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_2 = true
+				fl2_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_2 = true
+					fl2_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_2 = true
+					fl2_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_2 = true
+				fl2_touching_border = true
+			else:
+				enemyfl_2 = true
+				fl2_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_2 = true
+				fl2_touching_border = true
+			else:
+				enemyfl_2 = true
+				fl2_touching_border = false
 
 
 func _on_fl_2_area_body_exited(body: Node2D) -> void:
@@ -4252,20 +4415,59 @@ func _on_fl_2_area_body_exited(body: Node2D) -> void:
 func _on_fl_3_area_body_entered(body: Node2D) -> void:
 	fl3_tile = body.tile
 	fl3_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_3 = true
-			fl_touching_border = true
-		else:
-			enemyfl_3 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_3 = true
+				fl3_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_3 = true
+					fl3_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_3 = true
+					fl3_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_3 = true
-			fl_touching_border = true
-		else:
-			enemyfl_3 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_3 = true
+				fl3_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_3 = true
+					fl3_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_3 = true
+					fl3_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_3 = true
+				fl3_touching_border = true
+			else:
+				enemyfl_3 = true
+				fl3_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_3 = true
+				fl3_touching_border = true
+			else:
+				enemyfl_3 = true
+				fl3_touching_border = false
 
 
 func _on_fl_3_area_body_exited(body: Node2D) -> void:
@@ -4276,20 +4478,59 @@ func _on_fl_3_area_body_exited(body: Node2D) -> void:
 func _on_fl_4_area_body_entered(body: Node2D) -> void:
 	fl4_tile = body.tile
 	fl4_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_4 = true
-			fl_touching_border = true
-		else:
-			enemyfl_4 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_4 = true
+				fl4_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_4 = true
+					fl4_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_4 = true
+					fl4_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_4 = true
-			fl_touching_border = true
-		else:
-			enemyfl_4 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_4 = true
+				fl4_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_4 = true
+					fl4_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_4 = true
+					fl4_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_4 = true
+				fl4_touching_border = true
+			else:
+				enemyfl_4 = true
+				fl4_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_4 = true
+				fl4_touching_border = true
+			else:
+				enemyfl_4 = true
+				fl4_touching_border = false
 
 
 func _on_fl_4_area_body_exited(body: Node2D) -> void:
@@ -4300,20 +4541,59 @@ func _on_fl_4_area_body_exited(body: Node2D) -> void:
 func _on_fl_5_area_body_entered(body: Node2D) -> void:
 	fl5_tile = body.tile
 	fl5_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_5 = true
-			fl_touching_border = true
-		else:
-			enemyfl_5 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_5 = true
+				fl5_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_5 = true
+					fl5_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_5 = true
+					fl5_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_5 = true
-			fl_touching_border = true
-		else:
-			enemyfl_5 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_5 = true
+				fl5_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_5 = true
+					fl5_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_5 = true
+					fl5_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_5 = true
+				fl5_touching_border = true
+			else:
+				enemyfl_5 = true
+				fl5_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_5 = true
+				fl5_touching_border = true
+			else:
+				enemyfl_5 = true
+				fl5_touching_border = false
 
 
 func _on_fl_5_area_body_exited(body: Node2D) -> void:
@@ -4324,20 +4604,59 @@ func _on_fl_5_area_body_exited(body: Node2D) -> void:
 func _on_fl_6_area_body_entered(body: Node2D) -> void:
 	fl6_tile = body.tile
 	fl6_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_6 = true
-			fl_touching_border = true
-		else:
-			enemyfl_6 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_6 = true
+				fl6_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_6 = true
+					fl6_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_6 = true
+					fl6_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_6 = true
-			fl_touching_border = true
-		else:
-			enemyfl_6 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_6 = true
+				fl6_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_6 = true
+					fl6_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_6 = true
+					fl6_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_6 = true
+				fl6_touching_border = true
+			else:
+				enemyfl_6 = true
+				fl6_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_6 = true
+				fl6_touching_border = true
+			else:
+				enemyfl_6 = true
+				fl6_touching_border = false
 
 
 func _on_fl_6_area_body_exited(body: Node2D) -> void:
@@ -4348,20 +4667,59 @@ func _on_fl_6_area_body_exited(body: Node2D) -> void:
 func _on_fl_7_area_body_entered(body: Node2D) -> void:
 	fl7_tile = body.tile
 	fl7_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemyfl_7 = true
-			fl_touching_border = true
-		else:
-			enemyfl_7 = true
-			fl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemyfl_7 = true
+				fl7_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_7 = true
+					fl7_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemyfl_7 = true
+					fl7_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemyfl_7 = true
-			fl_touching_border = true
-		else:
-			enemyfl_7 = true
-			fl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemyfl_7 = true
+				fl7_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemyfl_7 = true
+					fl7_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemyfl_7 = true
+					fl7_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemyfl_7 = true
+				fl7_touching_border = true
+			else:
+				enemyfl_7 = true
+				fl7_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemyfl_7 = true
+				fl7_touching_border = true
+			else:
+				enemyfl_7 = true
+				fl7_touching_border = false
 
 
 func _on_fl_7_area_body_exited(body: Node2D) -> void:
@@ -4369,9 +4727,7 @@ func _on_fl_7_area_body_exited(body: Node2D) -> void:
 		enemyfl_7 = false
 
 #endregion
-
 #endregion
-
 #region Diagonal Back-Right
 
 #region All the Button Signals
@@ -4486,7 +4842,7 @@ func _on_br_7_button_button_up() -> void:
 
 func _on_br_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br1_touching_border = true
 		enemybr_1 = true
 	if(area.is_in_group("Tiles")):
 		br1_tile = area.name
@@ -4495,13 +4851,13 @@ func _on_br_1_area_area_entered(area: Area2D) -> void:
 
 func _on_br_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br1_touching_border = false
 		enemybr_1 = false
 
 
 func _on_br_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br2_touching_border = true
 		enemybr_2 = true
 	if(area.is_in_group("Tiles")):
 		br2_tile = area.name
@@ -4510,13 +4866,13 @@ func _on_br_2_area_area_entered(area: Area2D) -> void:
 
 func _on_br_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br2_touching_border = false
 		enemybr_2 = false
 
 
 func _on_br_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br3_touching_border = true
 		enemybr_3 = true
 	if(area.is_in_group("Tiles")):
 		br3_tile = area.name
@@ -4525,13 +4881,13 @@ func _on_br_3_area_area_entered(area: Area2D) -> void:
 
 func _on_br_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br3_touching_border = false
 		enemybr_3 = false
 
 
 func _on_br_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br4_touching_border = true
 		enemybr_4 = true
 	if(area.is_in_group("Tiles")):
 		br4_tile = area.name
@@ -4540,13 +4896,13 @@ func _on_br_4_area_area_entered(area: Area2D) -> void:
 
 func _on_br_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br4_touching_border = false
 		enemybr_4 = false
 
 
 func _on_br_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br5_touching_border = true
 		enemybr_5 = true
 	if(area.is_in_group("Tiles")):
 		br5_tile = area.name
@@ -4555,13 +4911,13 @@ func _on_br_5_area_area_entered(area: Area2D) -> void:
 
 func _on_br_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br5_touching_border = false
 		enemybr_5 = false
 
 
 func _on_br_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br6_touching_border = true
 		enemybr_6 = true
 	if(area.is_in_group("Tiles")):
 		br6_tile = area.name
@@ -4569,13 +4925,13 @@ func _on_br_6_area_area_entered(area: Area2D) -> void:
 
 func _on_br_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br6_touching_border = false
 		enemybr_6 = false
 
 
 func _on_br_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = true
+		br7_touching_border = true
 		enemybr_7 = true
 	if(area.is_in_group("Tiles")):
 		br7_tile = area.name
@@ -4584,7 +4940,7 @@ func _on_br_7_area_area_entered(area: Area2D) -> void:
 
 func _on_br_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		br_touching_border = false
+		br7_touching_border = false
 		enemybr_7 = false
 
 #endregion
@@ -4594,20 +4950,59 @@ func _on_br_7_area_area_exited(area: Area2D) -> void:
 func _on_br_1_area_body_entered(body: Node2D) -> void:
 	br1_tile = body.tile
 	br1_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_1 = true
-			br_touching_border = true
-		else:
-			enemybr_1 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_1 = true
+				br1_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_1 = true
+					br1_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_1 = true
+					br1_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_1 = true
-			br_touching_border = true
-		else:
-			enemybr_1 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_1 = true
+				br1_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_1 = true
+					br1_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_1 = true
+					br1_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_1 = true
+				br1_touching_border = true
+			else:
+				enemybr_1 = true
+				br1_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_1 = true
+				br1_touching_border = true
+			else:
+				enemybr_1 = true
+				br1_touching_border = false
 
 
 func _on_br_1_area_body_exited(body: Node2D) -> void:
@@ -4618,20 +5013,59 @@ func _on_br_1_area_body_exited(body: Node2D) -> void:
 func _on_br_2_area_body_entered(body: Node2D) -> void:
 	br1_tile = body.tile
 	br2_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_2 = true
-			br_touching_border = true
-		else:
-			enemybr_2 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_2 = true
+				br2_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_2 = true
+					br2_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_2 = true
+					br2_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_2 = true
-			br_touching_border = true
-		else:
-			enemybr_2 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_2 = true
+				br2_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_2 = true
+					br2_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_2 = true
+					br2_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_2 = true
+				br2_touching_border = true
+			else:
+				enemybr_2 = true
+				br2_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_2 = true
+				br2_touching_border = true
+			else:
+				enemybr_2 = true
+				br2_touching_border = false
 
 
 func _on_br_2_area_body_exited(body: Node2D) -> void:
@@ -4642,20 +5076,59 @@ func _on_br_2_area_body_exited(body: Node2D) -> void:
 func _on_br_3_area_body_entered(body: Node2D) -> void:
 	br3_tile = body.tile
 	br3_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_3 = true
-			br_touching_border = true
-		else:
-			enemybr_3 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_3 = true
+				br3_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_3 = true
+					br3_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_3 = true
+					br3_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_3 = true
-			br_touching_border = true
-		else:
-			enemybr_3 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_3 = true
+				br3_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_3 = true
+					br3_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_3 = true
+					br3_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_3 = true
+				br3_touching_border = true
+			else:
+				enemybr_3 = true
+				br3_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_3 = true
+				br3_touching_border = true
+			else:
+				enemybr_3 = true
+				br3_touching_border = false
 
 
 func _on_br_3_area_body_exited(body: Node2D) -> void:
@@ -4666,20 +5139,59 @@ func _on_br_3_area_body_exited(body: Node2D) -> void:
 func _on_br_4_area_body_entered(body: Node2D) -> void:
 	br4_tile = body.tile
 	br4_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_4 = true
-			br_touching_border = true
-		else:
-			enemybr_4 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_4 = true
+				br4_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_4 = true
+					br4_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_4 = true
+					br4_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_4 = true
-			br_touching_border = true
-		else:
-			enemybr_4 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_4 = true
+				br4_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_4 = true
+					br4_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_4 = true
+					br4_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_4 = true
+				br4_touching_border = true
+			else:
+				enemybr_4 = true
+				br4_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_4 = true
+				br4_touching_border = true
+			else:
+				enemybr_4 = true
+				br4_touching_border = false
 
 func _on_br_4_area_body_exited(body: Node2D) -> void:
 	if(body.is_in_group("Pieces")):
@@ -4689,20 +5201,59 @@ func _on_br_4_area_body_exited(body: Node2D) -> void:
 func _on_br_5_area_body_entered(body: Node2D) -> void:
 	br5_tile = body.tile
 	br5_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_5 = true
-			br_touching_border = true
-		else:
-			enemybr_5 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_5 = true
+				br5_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_5 = true
+					br5_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_5 = true
+					br5_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_5 = true
-			br_touching_border = true
-		else:
-			enemybr_5 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_5 = true
+				br5_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_5 = true
+					br5_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_5 = true
+					br5_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_5 = true
+				br5_touching_border = true
+			else:
+				enemybr_5 = true
+				br5_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_5 = true
+				br5_touching_border = true
+			else:
+				enemybr_5 = true
+				br5_touching_border = false
 
 
 func _on_br_5_area_body_exited(body: Node2D) -> void:
@@ -4713,20 +5264,59 @@ func _on_br_5_area_body_exited(body: Node2D) -> void:
 func _on_br_6_area_body_entered(body: Node2D) -> void:
 	br6_tile = body.tile
 	br6_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_6 = true
-			br_touching_border = true
-		else:
-			enemybr_6 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_6 = true
+				br6_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_6 = true
+					br6_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_6 = true
+					br6_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_6 = true
-			br_touching_border = true
-		else:
-			enemybr_6 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_6 = true
+				br6_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_6 = true
+					br6_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_6 = true
+					br6_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_6 = true
+				br6_touching_border = true
+			else:
+				enemybr_6 = true
+				br6_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_6 = true
+				br6_touching_border = true
+			else:
+				enemybr_6 = true
+				br6_touching_border = false
 
 
 func _on_br_6_area_body_exited(body: Node2D) -> void:
@@ -4737,20 +5327,59 @@ func _on_br_6_area_body_exited(body: Node2D) -> void:
 func _on_br_7_area_body_entered(body: Node2D) -> void:
 	br7_tile = body.tile
 	br7_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybr_7 = true
-			br_touching_border = true
-		else:
-			enemybr_7 = true
-			br_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybr_7 = true
+				br7_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_7 = true
+					br7_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybr_7 = true
+					br7_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybr_7 = true
-			br_touching_border = true
-		else:
-			enemybr_7 = true
-			br_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybr_7 = true
+				br7_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybr_7 = true
+					br7_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybr_7 = true
+					br7_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybr_7 = true
+				br7_touching_border = true
+			else:
+				enemybr_7 = true
+				br7_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybr_7 = true
+				br7_touching_border = true
+			else:
+				enemybr_7 = true
+				br7_touching_border = false
 
 
 func _on_br_7_area_body_exited(body: Node2D) -> void:
@@ -4760,7 +5389,6 @@ func _on_br_7_area_body_exited(body: Node2D) -> void:
 #endregion
 
 #endregion
-
 #region Diagonal Back-Left
 
 #region All the Button Signals
@@ -4874,7 +5502,7 @@ func _on_bl_7_button_button_up() -> void:
 
 func _on_bl_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl1_touching_border = true
 		enemybl_1 = true
 	if(area.is_in_group("Tiles")):
 		bl1_tile = area.name
@@ -4883,13 +5511,13 @@ func _on_bl_1_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl1_touching_border = false
 		enemybl_1 = false
 
 
 func _on_bl_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl2_touching_border = true
 		enemybl_2 = true
 	if(area.is_in_group("Tiles")):
 		bl2_tile = area.name
@@ -4898,13 +5526,13 @@ func _on_bl_2_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl2_touching_border = false
 		enemybl_2 = false
 
 
 func _on_bl_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl3_touching_border = true
 		enemybl_3 = true
 	if(area.is_in_group("Tiles")):
 		bl3_tile = area.name
@@ -4913,13 +5541,13 @@ func _on_bl_3_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl3_touching_border = false
 		enemybl_3 = false
 
 
 func _on_bl_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl4_touching_border = true
 		enemybl_4 = true
 	if(area.is_in_group("Tiles")):
 		bl4_tile = area.name
@@ -4928,13 +5556,13 @@ func _on_bl_4_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl4_touching_border = false
 		enemybl_4 = false
 
 
 func _on_bl_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl5_touching_border = true
 		enemybl_5 = true
 	if(area.is_in_group("Tiles")):
 		bl5_tile = area.name
@@ -4943,13 +5571,13 @@ func _on_bl_5_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl5_touching_border = false
 		enemybl_5 = false
 
 
 func _on_bl_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl6_touching_border = true
 		enemybl_6 = true
 	if(area.is_in_group("Tiles")):
 		bl6_tile = area.name
@@ -4958,13 +5586,13 @@ func _on_bl_6_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl6_touching_border = false
 		enemybl_6 = false
 
 
 func _on_bl_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = true
+		bl7_touching_border = true
 		enemybl_7 = true
 	if(area.is_in_group("Tiles")):
 		bl7_tile = area.name
@@ -4973,7 +5601,7 @@ func _on_bl_7_area_area_entered(area: Area2D) -> void:
 
 func _on_bl_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		bl_touching_border = false
+		bl7_touching_border = false
 		enemybl_7 = false
 
 #endregion
@@ -4982,20 +5610,59 @@ func _on_bl_7_area_area_exited(area: Area2D) -> void:
 func _on_bl_1_area_body_entered(body: Node2D) -> void:
 	bl1_tile = body.tile
 	bl1_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_1 = true
-			bl_touching_border = true
-		else:
-			enemybl_1 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_1 = true
+				bl1_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_1 = true
+					bl1_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_1 = true
+					bl1_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_1 = true
-			bl_touching_border = true
-		else:
-			enemybl_1 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_1 = true
+				bl1_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_1 = true
+					bl1_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_1 = true
+					bl1_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_1 = true
+				bl1_touching_border = true
+			else:
+				enemybl_1 = true
+				bl1_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_1 = true
+				bl1_touching_border = true
+			else:
+				enemybl_1 = true
+				bl1_touching_border = false
 
 
 func _on_bl_1_area_body_exited(body: Node2D) -> void:
@@ -5006,20 +5673,59 @@ func _on_bl_1_area_body_exited(body: Node2D) -> void:
 func _on_bl_2_area_body_entered(body: Node2D) -> void:
 	bl2_tile = body.tile
 	bl2_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_2 = true
-			bl_touching_border = true
-		else:
-			enemybl_2 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_2 = true
+				bl2_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_2 = true
+					bl2_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_2 = true
+					bl2_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_2 = true
-			bl_touching_border = true
-		else:
-			enemybl_2 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_2 = true
+				bl2_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_2 = true
+					bl2_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_2 = true
+					bl2_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_2 = true
+				bl2_touching_border = true
+			else:
+				enemybl_2 = true
+				bl2_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_2 = true
+				bl2_touching_border = true
+			else:
+				enemybl_2 = true
+				bl2_touching_border = false
 
 
 func _on_bl_2_area_body_exited(body: Node2D) -> void:
@@ -5030,20 +5736,59 @@ func _on_bl_2_area_body_exited(body: Node2D) -> void:
 func _on_bl_3_area_body_entered(body: Node2D) -> void:
 	bl3_tile = body.tile
 	bl3_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_3 = true
-			bl_touching_border = true
-		else:
-			enemybl_3 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_3 = true
+				bl3_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_3 = true
+					bl3_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_3 = true
+					bl3_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_3 = true
-			bl_touching_border = true
-		else:
-			enemybl_3 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_3 = true
+				bl3_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_3 = true
+					bl3_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_3 = true
+					bl3_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_3 = true
+				bl3_touching_border = true
+			else:
+				enemybl_3 = true
+				bl3_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_3 = true
+				bl3_touching_border = true
+			else:
+				enemybl_3 = true
+				bl3_touching_border = false
 
 
 func _on_bl_3_area_body_exited(body: Node2D) -> void:
@@ -5054,20 +5799,59 @@ func _on_bl_3_area_body_exited(body: Node2D) -> void:
 func _on_bl_4_area_body_entered(body: Node2D) -> void:
 	bl4_tile = body.tile
 	bl4_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_4 = true
-			bl_touching_border = true
-		else:
-			enemybl_4 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_4 = true
+				bl4_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_4 = true
+					bl4_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_4 = true
+					bl4_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_4 = true
-			bl_touching_border = true
-		else:
-			enemybl_4 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_4 = true
+				bl4_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_4 = true
+					bl4_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_4 = true
+					bl4_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_4 = true
+				bl4_touching_border = true
+			else:
+				enemybl_4 = true
+				bl4_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_4 = true
+				bl4_touching_border = true
+			else:
+				enemybl_4 = true
+				bl4_touching_border = false
 
 
 func _on_bl_4_area_body_exited(body: Node2D) -> void:
@@ -5078,20 +5862,59 @@ func _on_bl_4_area_body_exited(body: Node2D) -> void:
 func _on_bl_5_area_body_entered(body: Node2D) -> void:
 	bl5_tile = body.tile
 	bl5_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_5 = true
-			bl_touching_border = true
-		else:
-			enemybl_5 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_5 = true
+				bl5_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_5 = true
+					bl5_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_5 = true
+					bl5_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_5 = true
-			bl_touching_border = true
-		else:
-			enemybl_5 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_5 = true
+				bl5_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_5 = true
+					bl5_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_5 = true
+					bl5_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_5 = true
+				bl5_touching_border = true
+			else:
+				enemybl_5 = true
+				bl5_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_5 = true
+				bl5_touching_border = true
+			else:
+				enemybl_5 = true
+				bl5_touching_border = false
 
 
 func _on_bl_5_area_body_exited(body: Node2D) -> void:
@@ -5102,20 +5925,59 @@ func _on_bl_5_area_body_exited(body: Node2D) -> void:
 func _on_bl_6_area_body_entered(body: Node2D) -> void:
 	bl6_tile = body.tile
 	bl6_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_6 = true
-			bl_touching_border = true
-		else:
-			enemybl_6 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_6 = true
+				bl6_touching_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_6 = true
+					bl6_touching_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_6 = true
+					bl6_touching_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_6 = true
-			bl_touching_border = true
-		else:
-			enemybl_6 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_6 = true
+				bl6_touching_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_6 = true
+					bl6_touching_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_6 = true
+					bl6_touching_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_6 = true
+				bl6_touching_border = true
+			else:
+				enemybl_6 = true
+				bl6_touching_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_6 = true
+				bl6_touching_border = true
+			else:
+				enemybl_6 = true
+				bl6_touching_border = false
 
 
 func _on_bl_6_area_body_exited(body: Node2D) -> void:
@@ -5126,20 +5988,59 @@ func _on_bl_6_area_body_exited(body: Node2D) -> void:
 func _on_bl_7_area_body_entered(body: Node2D) -> void:
 	bl7_tile = body.tile
 	bl7_tile_group = body.tile_group
-	if(body.is_in_group("White")):
+	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
-			enemybl_7 = true
-			bl_touching_border = true
-		else:
-			enemybl_7 = true
-			bl_touching_border = false
-	elif(body.is_in_group("Black")):
+			# if the white king is in check and im white
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body that entered is the one attacking the king:
+				enemybl_7 = true
+				bl7_friendly_border = false
+				# allow attack
+		elif(self.is_in_group("Black")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_7 = true
+					bl7_friendly_border = false
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+				if(self.is_in_group("Black")):
+					enemybl_7 = true
+					bl7_friendly_border = true
+	if(Globals.black_in_check):
 		if(self.is_in_group("Black")):
-			enemybl_7 = true
-			bl_touching_border = true
-		else:
-			enemybl_7 = true
-			bl_touching_border = false
+			# if the black king is in check and im black
+			if(body.is_in_group(Globals.piece_attacking_king)):
+				#if the body is the one attacking the king:
+				enemybl_7 = true
+				bl7_friendly_border = false
+				#allow attack
+		elif(self.is_in_group("White")):
+			# if my king is not in check
+			if(body.is_in_group("White")):
+				#jsut check if the body is an ally or not.
+					enemybl_7 = true
+					bl7_friendly_border = true
+			elif(body.is_in_group("Black")):
+				#jsut check if the body is an ally or not.
+					enemybl_7 = true
+					bl7_friendly_border = false
+	elif(Globals.black_in_check == false && Globals.white_in_check == false):
+		# if the king isnt in check at all....
+		if(body.is_in_group("White")):
+			if(self.is_in_group("White")):
+				enemybl_7 = true
+				bl7_friendly_border = true
+			else:
+				enemybl_7 = true
+				bl7_friendly_border = false
+		elif(body.is_in_group("Black")):
+			if(self.is_in_group("Black")):
+				enemybl_7 = true
+				bl7_friendly_border = true
+			else:
+				enemybl_7 = true
+				bl7_friendly_border = false
 
 
 func _on_bl_7_area_body_exited(body: Node2D) -> void:
