@@ -7,6 +7,8 @@
 size = Vector2(111.503815, 100.60126)
 
 [node name="Slot7" type="CharacterBody2D" unique_id=2005260119 groups=["Slot7Group"]]
+light_mask = 2
+visibility_layer = 2
 script = ExtResource("1_h1soa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1527316057]

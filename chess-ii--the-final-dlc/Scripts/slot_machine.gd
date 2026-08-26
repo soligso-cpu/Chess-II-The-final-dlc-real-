@@ -34,12 +34,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#pruges slots after rewards
 	for body in $Area2D2.get_overlapping_bodies():
 		if purge == true:
 			body.queue_free()
 			count -= 1
 			print("purge")
-			
+	#this makes sure there is 9, and only 9, slots at the end of the sequence	
 	print("count is,", count)
 	if top_check == true and count < 8:
 		var spawn_timer: Timer = $SpawnTimer
@@ -95,11 +96,13 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_spawn_timer_timeout() -> void:
-	print("now")
-	spawn_slot($LineMarkers/Line1)
-	spawn_slot($LineMarkers/Line2)
-	spawn_slot($LineMarkers/Line3)
-	
+	if count <= 9:
+		print("now")
+		spawn_slot($LineMarkers/Line1)
+		spawn_slot($LineMarkers/Line2)
+		spawn_slot($LineMarkers/Line3)
+	if count <= 9 and top_check == false:
+		$SpawnTimer.start()
 	
 	#var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
 	#if slot_randi == 0:
