@@ -157,6 +157,10 @@ shape = SubResource("RectangleShape2D_nvm1u")
 [node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
 one_shot = true
 
+[node name="StageTimer" type="Timer" parent="." unique_id=1447818968]
+wait_time = 0.586
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
@@ -172,3 +176,4 @@ one_shot = true
 [connection signal="body_entered" from="SlotDetection/Top3" to="." method="_on_top_3_body_entered"]
 [connection signal="timeout" from="ProcessTimer" to="." method="_on_process_timer_timeout"]
 [connection signal="timeout" from="PurgeTimer" to="." method="_on_purge_timer_timeout"]
+[connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]

@@ -44,3 +44,13 @@ func _on_r_train_button_button_up() -> void:
 		Globals.rook_a_train = false
 	else:
 		Globals.rook_a_train = true
+
+
+func _on_slot_button_button_up() -> void:
+	$RouletteOrganizer/Camera2D.global_position = $SlotsOrganiser/CameraPositioning.global_position
+	
+
+
+
+func _on_return_button_button_up() -> void:
+	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position

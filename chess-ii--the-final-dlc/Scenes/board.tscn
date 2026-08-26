@@ -19,6 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
+[ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://slot_machine.tscn" id="20_ardhx"]
+[ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -139,6 +141,7 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="TileDullBox" type="ColorRect" parent="." unique_id=2121900850]
+visible = false
 offset_left = 293.0
 offset_top = 2.0
 offset_right = 936.0
@@ -782,6 +785,29 @@ offset_top = -163.0
 offset_right = 110.0
 offset_bottom = 157.0
 
+[node name="SlotsOrganiser" type="Node2D" parent="." unique_id=112713170]
+script = ExtResource("20_bb5wj")
+
+[node name="SlotMachine" parent="SlotsOrganiser" unique_id=446480958 instance=ExtResource("20_ardhx")]
+position = Vector2(1335, 1283)
+
+[node name="SlotButton" type="Button" parent="SlotsOrganiser" unique_id=1279185386]
+offset_left = 17.0
+offset_top = 442.0
+offset_right = 138.0
+offset_bottom = 503.0
+text = "SLOTS ****"
+
+[node name="CameraPositioning" type="Marker2D" parent="SlotsOrganiser" unique_id=571470279]
+position = Vector2(1752, 1558)
+
+[node name="ReturnButton" type="Button" parent="SlotsOrganiser" unique_id=554052801]
+offset_left = 1325.0
+offset_top = 1652.0
+offset_right = 1406.0
+offset_bottom = 1685.0
+text = "Back to chess"
+
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
@@ -790,3 +816,5 @@ offset_bottom = 157.0
 [connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
 [connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]
+[connection signal="button_up" from="SlotsOrganiser/SlotButton" to="." method="_on_slot_button_button_up"]
+[connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
