@@ -110,7 +110,7 @@ var enemy_right7
 #endregion
 
 #region border touch variables
-
+#region right
 var right1_touching_border
 var right2_touching_border
 var right3_touching_border
@@ -126,7 +126,59 @@ var right4_friendly_border
 var right5_friendly_border
 var right6_friendly_border
 var right7_friendly_border
+#endregion
+#region forward
+var forward1_touching_border
+var forward2_touching_border
+var forward3_touching_border
+var forward4_touching_border
+var forward5_touching_border
+var forward6_touching_border
+var forward7_touching_border
 
+var forward1_friendly_border
+var forward2_friendly_border
+var forward3_friendly_border
+var forward4_friendly_border
+var forward5_friendly_border
+var forward6_friendly_border
+var forward7_friendly_border
+#endregion
+#region back
+
+var back1_touching_border
+var back2_touching_border
+var back3_touching_border
+var back4_touching_border
+var back5_touching_border
+var back6_touching_border
+var back7_touching_border
+
+var back1_friendly_border
+var back2_friendly_border
+var back3_friendly_border
+var back4_friendly_border
+var back5_friendly_border
+var back6_friendly_border
+var back7_friendly_border
+#endregion
+#region left
+var left1_touching_border
+var left2_touching_border
+var left3_touching_border
+var left4_touching_border
+var left5_touching_border
+var left6_touching_border
+var left7_touching_border
+
+var left1_friendly_border
+var left2_friendly_border
+var left3_friendly_border
+var left4_friendly_border
+var left5_friendly_border
+var left6_friendly_border
+var left7_friendly_border
+#endregion
 #endregion
 var focused
 var moved
@@ -135,16 +187,9 @@ var tile
 var tile_group
 var select_buffer
 
-var test
+var readd_markers
 
 var r_train = false
-
-var forward_touching_border
-var forward_friendly_border
-var left_touching_border
-var left_friendly_border
-var back_touching_border
-var back_friendly_border
 
 #region a train rook variables
 
@@ -191,7 +236,7 @@ func _ready() -> void:
 	Globals.rook_a8_moved = false
 	Globals.rook_h1_moved = false
 	Globals.rook_h8_moved = false
-	test = true
+	readd_markers = true
 	moved = false
 	taking = false
 	if(self.name == "RookBlackA1"):
@@ -244,14 +289,14 @@ func _ready() -> void:
 	#endregion
 
 func _process(delta: float) -> void:
-	if(test):
+	if(readd_markers):
 		var markers = $MovementMarkers
 		var test_gp = $MovementMarkers.global_position
 		$".".remove_child(markers)
 		await get_tree().process_frame
 		$".".add_child(markers)
 		$MovementMarkers.global_position = test_gp
-		test = false
+		readd_markers = false
 		return
 	if(Globals.rook_a_train):
 		r_train = true
@@ -340,32 +385,32 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Forward/Forward7.visible = true
 				
 				if(enemy_forward7):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward7_touching_border || forward7_friendly_border):
 						$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward6):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward6_touching_border || forward6_friendly_border):
 						$MovementMarkers/Forward/Forward6.visible = false
 					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward5):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward5_touching_border || forward5_friendly_border):
 						$MovementMarkers/Forward/Forward5.visible = false
 					$MovementMarkers/Forward/Forward6.visible = false
 					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward4):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward4_touching_border || forward4_friendly_border):
 						$MovementMarkers/Forward/Forward4.visible = false
 					$MovementMarkers/Forward/Forward5.visible = false
 					$MovementMarkers/Forward/Forward6.visible = false
 					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward3):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward3_touching_border || forward3_friendly_border):
 						$MovementMarkers/Forward/Forward3.visible = false
 					$MovementMarkers/Forward/Forward4.visible = false
 					$MovementMarkers/Forward/Forward5.visible = false
 					$MovementMarkers/Forward/Forward6.visible = false
 					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward2):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward2_touching_border || forward2_friendly_border):
 						$MovementMarkers/Forward/Forward2.visible = false
 					$MovementMarkers/Forward/Forward3.visible = false
 					$MovementMarkers/Forward/Forward4.visible = false
@@ -373,7 +418,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/Forward/Forward6.visible = false
 					$MovementMarkers/Forward/Forward7.visible = false
 				if(enemy_forward1):
-					if(forward_touching_border || forward_friendly_border):
+					if(forward1_touching_border || forward1_friendly_border):
 						$MovementMarkers/Forward/Forward1.visible = false
 					$MovementMarkers/Forward/Forward2.visible = false
 					$MovementMarkers/Forward/Forward3.visible = false
@@ -394,32 +439,32 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Back/Back7.visible = true
 				
 				if(enemy_back7):
-					if(back_touching_border || back_friendly_border):
+					if(back7_touching_border || back7_friendly_border):
 						$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back6):
-					if(back_touching_border || back_friendly_border):
+					if(back6_touching_border || back6_friendly_border):
 						$MovementMarkers/Back/Back6.visible = false
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back5):
-					if(back_touching_border || back_friendly_border):
+					if(back5_touching_border || back5_friendly_border):
 						$MovementMarkers/Back/Back5.visible = false
 					$MovementMarkers/Back/Back6.visible = false
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back4):
-					if(back_touching_border || back_friendly_border):
+					if(back4_touching_border || back4_friendly_border):
 						$MovementMarkers/Back/Back4.visible = false
 					$MovementMarkers/Back/Back5.visible = false
 					$MovementMarkers/Back/Back6.visible = false
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back3):
-					if(back_touching_border || back_friendly_border):
+					if(back3_touching_border || back3_friendly_border):
 						$MovementMarkers/Back/Back3.visible = false
 					$MovementMarkers/Back/Back4.visible = false
 					$MovementMarkers/Back/Back5.visible = false
 					$MovementMarkers/Back/Back6.visible = false
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back2):
-					if(back_touching_border || back_friendly_border):
+					if(back2_touching_border || back2_friendly_border):
 						$MovementMarkers/Back/Back2.visible = false
 					$MovementMarkers/Back/Back3.visible = false
 					$MovementMarkers/Back/Back4.visible = false
@@ -427,7 +472,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/Back/Back6.visible = false
 					$MovementMarkers/Back/Back7.visible = false
 				if(enemy_back1):
-					if(back_touching_border || back_friendly_border):
+					if(back1_touching_border || back1_friendly_border):
 						$MovementMarkers/Back/Back1.visible = false
 					$MovementMarkers/Back/Back2.visible = false
 					$MovementMarkers/Back/Back3.visible = false
@@ -448,32 +493,32 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left7.visible = true
 				
 				if(enemy_left7):
-					if(left_touching_border || left_friendly_border):
+					if(left7_touching_border || left7_friendly_border):
 						$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left6):
-					if(left_touching_border || left_friendly_border):
+					if(left6_touching_border || left6_friendly_border):
 						$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left5):
-					if(left_touching_border || left_friendly_border):
+					if(left5_touching_border || left5_friendly_border):
 						$MovementMarkers/Left/Left5.visible = false
 					$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left4):
-					if(left_touching_border || left_friendly_border):
+					if(left4_touching_border || left4_friendly_border):
 						$MovementMarkers/Left/Left4.visible = false
 					$MovementMarkers/Left/Left5.visible = false
 					$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left3):
-					if(left_touching_border || left_friendly_border):
+					if(left3_touching_border || left3_friendly_border):
 						$MovementMarkers/Left/Left3.visible = false
 					$MovementMarkers/Left/Left4.visible = false
 					$MovementMarkers/Left/Left5.visible = false
 					$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left2):
-					if(left_touching_border || left_friendly_border):
+					if(left2_touching_border || left2_friendly_border):
 						$MovementMarkers/Left/Left2.visible = false
 					$MovementMarkers/Left/Left3.visible = false
 					$MovementMarkers/Left/Left4.visible = false
@@ -481,7 +526,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/Left/Left6.visible = false
 					$MovementMarkers/Left/Left7.visible = false
 				if(enemy_left1):
-					if(left_touching_border || left_friendly_border):
+					if(left1_touching_border || left1_friendly_border):
 						$MovementMarkers/Left/Left1.visible = false
 					$MovementMarkers/Left/Left2.visible = false
 					$MovementMarkers/Left/Left3.visible = false
@@ -502,9 +547,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left6.visible = false
 				$MovementMarkers/Left/Left7.visible = true
 				
-				if(left_touching_border):
+				if(left7_touching_border):
 					$MovementMarkers/Left/Left7.visible = false
-				if(left_friendly_border):
+				if(left7_friendly_border):
 					$MovementMarkers/Left/Left7.visible = true
 	
 				$MovementMarkers/Back.visible = true
@@ -516,9 +561,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Back/Back6.visible = true
 				$MovementMarkers/Back/Back7.visible = true
 				
-				if(back_touching_border):
+				if(back7_touching_border):
 					$MovementMarkers/Back/Back7.visible = false
-				if(back_friendly_border):
+				if(back7_friendly_border):
 					$MovementMarkers/Back/Back7.visible = true
 					
 				$MovementMarkers/Forward.visible = true
@@ -530,9 +575,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Forward/Forward6/ForwardSprite.visible = true
 				$MovementMarkers/Forward/Forward7/ForwardSprite.visible = true
 				
-				if(forward_touching_border):
+				if(forward7_touching_border):
 					$MovementMarkers/Forward/Forward7.visible = false
-				if(forward_friendly_border):
+				if(forward7_friendly_border):
 					$MovementMarkers/Forward/Forward7.visible = true
 				
 				$MovementMarkers.visible = true
@@ -562,14 +607,6 @@ func _process(delta: float) -> void:
 
 
 func reset_markers():
-
-	enemy_forward1 = false
-	enemy_forward2 = false
-	enemy_forward3 = false
-	enemy_forward4 = false
-	enemy_forward5 = false
-	enemy_forward6 = false
-	enemy_forward7 = false
 
 	enemy_back1 = false
 	enemy_back2 = false
@@ -611,14 +648,67 @@ func reset_markers():
 	right6_touching_border = false
 	right7_touching_border = false
 	#endregion
-	forward_touching_border = false
-	forward_friendly_border = false
-	left_touching_border = false
-	left_friendly_border = false
-	back_touching_border = false
-	back_friendly_border = false
+	#region forward
+	enemy_forward1 = false
+	enemy_forward2 = false
+	enemy_forward3 = false
+	enemy_forward4 = false
+	enemy_forward5 = false
+	enemy_forward6 = false
+	enemy_forward7 = false
+	
+	forward1_friendly_border = false
+	forward2_friendly_border = false
+	forward3_friendly_border = false
+	forward4_friendly_border = false
+	forward5_friendly_border = false
+	forward6_friendly_border = false
+	forward7_friendly_border = false
+	
+	forward1_touching_border = false
+	forward2_touching_border = false
+	forward3_touching_border = false
+	forward4_touching_border = false
+	forward5_touching_border = false
+	forward6_touching_border = false
+	forward7_touching_border = false
+	#endregion
+	#region back
+	back1_friendly_border = false
+	back2_friendly_border = false
+	back3_friendly_border = false
+	back4_friendly_border = false
+	back5_friendly_border = false
+	back6_friendly_border = false
+	back7_friendly_border = false
+	
+	back1_touching_border = false
+	back2_touching_border = false
+	back3_touching_border = false
+	back4_touching_border = false
+	back5_touching_border = false
+	back6_touching_border = false
+	back7_touching_border = false
+	#endregion
+	#region left
+	left1_touching_border = false
+	left2_touching_border = false
+	left3_touching_border = false
+	left4_touching_border = false
+	left5_touching_border = false
+	left6_touching_border = false
+	left7_touching_border = false
+	
+	left1_friendly_border = false
+	left2_friendly_border = false
+	left3_friendly_border = false
+	left4_friendly_border = false
+	left5_friendly_border = false
+	left6_friendly_border = false
+	left7_friendly_border = false
+	#endregion
 	focused = false
-	test = true
+	readd_markers = true
 	Globals.piece_focused = " "
 
 
@@ -689,7 +779,7 @@ func _on_select_rook_button_up() -> void:
 		if(Globals.piece_focused != self.name):
 			Globals.piece_focused = self.name
 			focused = true
-			test = true
+			readd_markers = true
 		else:
 			Globals.piece_focused = ""
 			focused = false
@@ -1002,34 +1092,19 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 	right6_tile_group = body.tile_group
 	if(!r_train):
 		if(body.is_in_group("White")):
-			print("WHITE BODY")
 			if(self.is_in_group("White")):
-				print("ME WHITE")
 				enemy_right6 = true
-				print("ENEMY_RIGHT 6 is..."+ str(enemy_right6))
 				right6_friendly_border = true
-				print("RIGHT_FRIENDLY_BORDER IS...." + str(right6_friendly_border))
 			else:
-				print("I AINT WHITE")
 				enemy_right6 = true
-				print("ENEMY RIGHT 6 IS...."+ str(enemy_right6))
 				right6_friendly_border = false
-				print("right frendly vorder is .... "+ str(right6_friendly_border))
 		elif(body.is_in_group("Black")):
-			print("BLACK BODY")
 			if(self.is_in_group("Black")):
-				print("SELF BLACK")
 				enemy_right6 = true
-				print("right 6 !!! "+ str(enemy_right6))
 				right6_friendly_border = true
-				print("right b order: "+ str(right6_friendly_border))
 			else:
-				print("I AINT BLACK")
 				enemy_right6 = true
-				print("enemy 6>>!:>: "+ str(enemy_right6))
 				right6_friendly_border = false
-				print("le border: "+ str(right6_friendly_border))
-				print("tocuhing border (not friendly): "+str(right6_touching_border))
 	else:
 		enemy_right6 = true
 		right6_friendly_border = false
@@ -1311,7 +1386,7 @@ func _on_forward_button_7_button_up() -> void:
 
 func _on_forward_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward1_touching_border = true
 		enemy_forward1 = true
 	if(area.is_in_group("Tiles")):
 		forward1_tile = area.name
@@ -1320,13 +1395,13 @@ func _on_forward_1_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward1_touching_border = false
 		enemy_forward1 = false
 
 
 func _on_forward_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward2_touching_border = true
 		enemy_forward2 = true
 	if(area.is_in_group("Tiles")):
 		forward2_tile = area.name
@@ -1335,13 +1410,13 @@ func _on_forward_2_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward2_touching_border = false
 		enemy_forward2 = false
 
 
 func _on_forward_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward3_touching_border = true
 		enemy_forward3 = true
 	if(area.is_in_group("Tiles")):
 		forward3_tile = area.name
@@ -1350,13 +1425,13 @@ func _on_forward_3_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward3_touching_border = false
 		enemy_forward3 = false
 
 
 func _on_forward_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward4_touching_border = true
 		enemy_forward4 = true
 	if(area.is_in_group("Tiles")):
 		forward4_tile = area.name
@@ -1364,13 +1439,13 @@ func _on_forward_4_area_area_entered(area: Area2D) -> void:
 		
 func _on_forward_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward4_touching_border = false
 		enemy_forward4 = false
 
 
 func _on_forward_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward5_touching_border = true
 		enemy_forward5 = true
 	if(area.is_in_group("Tiles")):
 		forward5_tile = area.name
@@ -1380,13 +1455,13 @@ func _on_forward_5_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward5_touching_border = false
 		enemy_forward5 = false
 
 
 func _on_forward_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward6_touching_border = true
 		enemy_forward6 = true
 	if(area.is_in_group("Tiles")):
 		forward6_tile = area.name
@@ -1396,13 +1471,13 @@ func _on_forward_6_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward6_touching_border = false
 		enemy_forward6 = false
 
 
 func _on_forward_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = true
+		forward7_touching_border = true
 		enemy_forward7 = true
 	if(area.is_in_group("Tiles")):
 		forward7_tile = area.name
@@ -1412,7 +1487,7 @@ func _on_forward_7_area_area_entered(area: Area2D) -> void:
 
 func _on_forward_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		forward_touching_border = false
+		forward7_touching_border = false
 		enemy_forward7 = false
 
 
@@ -1426,17 +1501,17 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward1 = true
-			forward_friendly_border = true
+			forward1_friendly_border = true
 		else:
 			enemy_forward1 = true
-			forward_friendly_border = false
+			forward1_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward1 = true
-			forward_friendly_border = true
+			forward1_friendly_border = true
 		else:
 			enemy_forward1 = true
-			forward_friendly_border = false
+			forward1_friendly_border = false
 
 
 func _on_forward_1_area_body_exited(body: Node2D) -> void:
@@ -1449,17 +1524,17 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward2 = true
-			forward_friendly_border = true
+			forward2_friendly_border = true
 		else:
 			enemy_forward2 = true
-			forward_friendly_border = false
+			forward2_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward2 = true
-			forward_friendly_border = true
+			forward2_friendly_border = true
 		else:
 			enemy_forward2 = true
-			forward_friendly_border = false
+			forward2_friendly_border = false
 
 
 func _on_forward_2_area_body_exited(body: Node2D) -> void:
@@ -1472,17 +1547,17 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward3 = true
-			forward_friendly_border = true
+			forward3_friendly_border = true
 		else:
 			enemy_forward3 = true
-			forward_friendly_border = false
+			forward3_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward3 = true
-			forward_friendly_border = true
+			forward3_friendly_border = true
 		else:
 			enemy_forward3 = true
-			forward_friendly_border = false
+			forward3_friendly_border = false
 
 
 func _on_forward_3_area_body_exited(body: Node2D) -> void:
@@ -1495,17 +1570,17 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward4 = true
-			forward_friendly_border = true
+			forward4_friendly_border = true
 		else:
 			enemy_forward4 = true
-			forward_friendly_border = false
+			forward4_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward4 = true
-			forward_friendly_border = true
+			forward4_friendly_border = true
 		else:
 			enemy_forward4 = true
-			forward_friendly_border = false
+			forward4_friendly_border = false
 
 
 func _on_forward_4_area_body_exited(body: Node2D) -> void:
@@ -1518,17 +1593,17 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward5 = true
-			forward_friendly_border = true
+			forward5_friendly_border = true
 		else:
 			enemy_forward5 = true
-			forward_friendly_border = false
+			forward5_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward5 = true
-			forward_friendly_border = true
+			forward5_friendly_border = true
 		else:
 			enemy_forward5 = true
-			forward_friendly_border = false
+			forward5_friendly_border = false
 
 
 func _on_forward_5_area_body_exited(body: Node2D) -> void:
@@ -1541,17 +1616,17 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward6 = true
-			forward_friendly_border = true
+			forward6_friendly_border = true
 		else:
 			enemy_forward6 = true
-			forward_friendly_border = false
+			forward6_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward6 = true
-			forward_friendly_border = true
+			forward6_friendly_border = true
 		else:
 			enemy_forward6 = true
-			forward_friendly_border = false
+			forward6_friendly_border = false
 	
 
 func _on_forward_6_area_body_exited(body: Node2D) -> void:
@@ -1564,17 +1639,17 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_forward7 = true
-			forward_friendly_border = true
+			forward7_friendly_border = true
 		else:
 			enemy_forward7 = true
-			forward_friendly_border = true
+			forward7_friendly_border = true
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_forward7 = true
-			forward_friendly_border = true
+			forward7_friendly_border = true
 		else:
 			enemy_forward7 = true
-			forward_friendly_border = true
+			forward7_friendly_border = true
 
 
 
@@ -1710,17 +1785,17 @@ func _on_back_1_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back1 = true
-			back_friendly_border = true
+			back1_friendly_border = true
 		else:
 			enemy_back1 = true
-			back_friendly_border = false
+			back1_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back1 = true
-			back_friendly_border = true
+			back1_friendly_border = true
 		else:
 			enemy_back1 = true
-			back_friendly_border = false
+			back1_friendly_border = false
 
 
 func _on_back_1_area_body_exited(body: Node2D) -> void:
@@ -1733,17 +1808,17 @@ func _on_back_2_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back2 = true
-			back_friendly_border = true
+			back2_friendly_border = true
 		else:
 			enemy_back2 = true
-			back_friendly_border = false
+			back2_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back2 = true
-			back_friendly_border = true
+			back2_friendly_border = true
 		else:
 			enemy_back2 = true
-			back_friendly_border = false
+			back2_friendly_border = false
 
 
 
@@ -1757,17 +1832,17 @@ func _on_back_3_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back3 = true
-			back_friendly_border = true
+			back3_friendly_border = true
 		else:
 			enemy_back3 = true
-			back_friendly_border = false
+			back3_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back3 = true
-			back_friendly_border = true
+			back3_friendly_border = true
 		else:
 			enemy_back3 = true
-			back_friendly_border = false
+			back3_friendly_border = false
 
 
 func _on_back_3_area_body_exited(body: Node2D) -> void:
@@ -1780,17 +1855,17 @@ func _on_back_4_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back4 = true
-			back_friendly_border = true
+			back4_friendly_border = true
 		else:
 			enemy_back4 = true
-			back_friendly_border = false
+			back4_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back4 = true
-			back_friendly_border = true
+			back4_friendly_border = true
 		else:
 			enemy_back4 = true
-			back_friendly_border = false
+			back4_friendly_border = false
 
 
 
@@ -1804,17 +1879,17 @@ func _on_back_5_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back5 = true
-			back_friendly_border = true
+			back5_friendly_border = true
 		else:
 			enemy_back5 = true
-			back_friendly_border = false
+			back5_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back5 = true
-			back_friendly_border = true
+			back5_friendly_border = true
 		else:
 			enemy_back5 = true
-			back_friendly_border = false
+			back5_friendly_border = false
 
 
 
@@ -1828,17 +1903,17 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back6 = true
-			back_friendly_border = true
+			back6_friendly_border = true
 		else:
 			enemy_back6 = true
-			back_friendly_border = false
+			back6_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back6 = true
-			back_friendly_border = true
+			back6_friendly_border = true
 		else:
 			enemy_back6 = true
-			back_friendly_border = false
+			back6_friendly_border = false
 
 
 
@@ -1852,17 +1927,17 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_back7 = true
-			back_friendly_border = true
+			back7_friendly_border = true
 		else:
 			enemy_back7 = true
-			back_friendly_border = false
+			back7_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_back7 = true
-			back_friendly_border = true
+			back7_friendly_border = true
 		else:
 			enemy_back7 = true
-			back_friendly_border = false
+			back7_friendly_border = false
 
 
 
@@ -1875,7 +1950,7 @@ func _on_back_7_area_body_exited(body: Node2D) -> void:
 
 func _on_back_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back1_touching_border = true
 		enemy_back1 = true
 	if(area.is_in_group("Tiles")):
 		back1_tile = area.name
@@ -1884,13 +1959,13 @@ func _on_back_1_area_area_entered(area: Area2D) -> void:
 
 func _on_back_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back1_touching_border = false
 		enemy_back1 = false
 
 
 func _on_back_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back2_touching_border = true
 		enemy_back2 = true
 	if(area.is_in_group("Tiles")):
 		back2_tile = area.name
@@ -1899,13 +1974,13 @@ func _on_back_2_area_area_entered(area: Area2D) -> void:
 
 func _on_back_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back2_touching_border = false
 		enemy_back2 = false
 
 
 func _on_back_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back3_touching_border = true
 		enemy_back3 = true
 	if(area.is_in_group("Tiles")):
 		back3_tile = area.name
@@ -1914,13 +1989,13 @@ func _on_back_3_area_area_entered(area: Area2D) -> void:
 
 func _on_back_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back3_touching_border = false
 		enemy_back3 = false
 
 
 func _on_back_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back4_touching_border = true
 		enemy_back4 = true
 	if(area.is_in_group("Tiles")):
 		back4_tile = area.name
@@ -1929,13 +2004,13 @@ func _on_back_4_area_area_entered(area: Area2D) -> void:
 
 func _on_back_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back4_touching_border = false
 		enemy_back4 = false
 
 
 func _on_back_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back5_touching_border = true
 		enemy_back5 = true
 	if(area.is_in_group("Tiles")):
 		back5_tile = area.name
@@ -1944,13 +2019,13 @@ func _on_back_5_area_area_entered(area: Area2D) -> void:
 
 func _on_back_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back5_touching_border = false
 		enemy_back5 = false
 
 
 func _on_back_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back6_touching_border = true
 		enemy_back6 = true
 	if(area.is_in_group("Tiles")):
 		back6_tile = area.name
@@ -1959,13 +2034,13 @@ func _on_back_6_area_area_entered(area: Area2D) -> void:
 
 func _on_back_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back6_touching_border = false
 		enemy_back6 = false
 
 
 func _on_back_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = true
+		back7_touching_border = true
 		enemy_back7 = true
 	if(area.is_in_group("Tiles")):
 		back7_tile = area.name
@@ -1974,7 +2049,7 @@ func _on_back_7_area_area_entered(area: Area2D) -> void:
 
 func _on_back_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		back_touching_border = false
+		back7_touching_border = false
 		enemy_back7 = false
 
 #endregion
@@ -2104,7 +2179,7 @@ func _on_left_7_button_button_up() -> void:
 
 func _on_left_1_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left1_touching_border = true
 		enemy_left1 = true
 	if(area.is_in_group("Tiles")):
 		left1_tile = area.name
@@ -2113,7 +2188,7 @@ func _on_left_1_area_area_entered(area: Area2D) -> void:
 
 func _on_left_2_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left2_touching_border = true
 		enemy_left2 = true
 	if(area.is_in_group("Tiles")):
 		left2_tile = area.name
@@ -2122,7 +2197,7 @@ func _on_left_2_area_area_entered(area: Area2D) -> void:
 
 func _on_left_3_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left3_touching_border = true
 		enemy_left3 = true
 	if(area.is_in_group("Tiles")):
 		left3_tile = area.name
@@ -2131,7 +2206,7 @@ func _on_left_3_area_area_entered(area: Area2D) -> void:
 
 func _on_left_4_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left4_touching_border = true
 		enemy_left4 = true
 	if(area.is_in_group("Tiles")):
 		left4_tile = area.name
@@ -2140,7 +2215,7 @@ func _on_left_4_area_area_entered(area: Area2D) -> void:
 
 func _on_left_5_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left5_touching_border = true
 		enemy_left5 = true
 	if(area.is_in_group("Tiles")):
 		left5_tile = area.name
@@ -2149,7 +2224,7 @@ func _on_left_5_area_area_entered(area: Area2D) -> void:
 
 func _on_left_6_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left6_touching_border = true
 		enemy_left6 = true
 	if(area.is_in_group("Tiles")):
 		left6_tile = area.name
@@ -2158,7 +2233,7 @@ func _on_left_6_area_area_entered(area: Area2D) -> void:
 
 func _on_left_7_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = true
+		left7_touching_border = true
 		enemy_left7 = true
 	if(area.is_in_group("Tiles")):
 		left7_tile = area.name
@@ -2167,43 +2242,43 @@ func _on_left_7_area_area_entered(area: Area2D) -> void:
 
 func _on_left_7_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left7_touching_border = false
 		enemy_left7 = false
 
 
 func _on_left_6_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left6_touching_border = false
 		enemy_left6 = false
 
 
 func _on_left_5_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left5_touching_border = false
 		enemy_left5 = false
 
 
 func _on_left_4_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left4_touching_border = false
 		enemy_left4 = false
 
 
 func _on_left_3_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left3_touching_border = false
 		enemy_left3 = false
 
 
 func _on_left_2_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left2_touching_border = false
 		enemy_left2 = false
 
 
 func _on_left_1_area_area_exited(area: Area2D) -> void:
 	if(area.is_in_group("Edge")):
-		left_touching_border = false
+		left1_touching_border = false
 		enemy_left1 = false
 
 #endregion
@@ -2216,17 +2291,17 @@ func _on_left_1_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left1 = true
-			left_friendly_border = true
+			left1_friendly_border = true
 		else:
 			enemy_left1 = true
-			left_friendly_border = false
+			left1_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left1 = true
-			left_friendly_border = true
+			left1_friendly_border = true
 		else:
 			enemy_left1 = true
-			left_friendly_border = false
+			left1_friendly_border = false
 
 
 func _on_left_1_area_body_exited(body: Node2D) -> void:
@@ -2239,17 +2314,17 @@ func _on_left_2_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left2 = true
-			left_friendly_border = true
+			left2_friendly_border = true
 		else:
 			enemy_left2 = true
-			left_friendly_border = false
+			left2_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left2 = true
-			left_friendly_border = true
+			left2_friendly_border = true
 		else:
 			enemy_left2 = true
-			left_friendly_border = false
+			left2_friendly_border = false
 
 
 func _on_left_2_area_body_exited(body: Node2D) -> void:
@@ -2262,17 +2337,17 @@ func _on_left_3_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left3 = true
-			left_friendly_border = true
+			left3_friendly_border = true
 		else:
 			enemy_left3 = true
-			left_friendly_border = false
+			left3_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left3 = true
-			left_friendly_border = true
+			left3_friendly_border = true
 		else:
 			enemy_left3 = true
-			left_friendly_border = false
+			left3_friendly_border = false
 
 
 func _on_left_3_area_body_exited(body: Node2D) -> void:
@@ -2285,17 +2360,17 @@ func _on_left_4_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left4 = true
-			left_friendly_border = true
+			left4_friendly_border = true
 		else:
 			enemy_left4 = true
-			left_friendly_border = false
+			left4_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left4 = true
-			left_friendly_border = true
+			left4_friendly_border = true
 		else:
 			enemy_left4 = true
-			left_friendly_border = false
+			left4_friendly_border = false
 
 
 func _on_left_4_area_body_exited(body: Node2D) -> void:
@@ -2308,17 +2383,17 @@ func _on_left_5_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left5 = true
-			left_friendly_border = true
+			left5_friendly_border = true
 		else:
 			enemy_left5 = true
-			left_friendly_border = false
+			left5_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left5 = true
-			left_friendly_border = true
+			left5_friendly_border = true
 		else:
 			enemy_left5 = true
-			left_friendly_border = false
+			left5_friendly_border = false
 
 
 func _on_left_5_area_body_exited(body: Node2D) -> void:
@@ -2331,17 +2406,17 @@ func _on_left_6_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left6 = true
-			left_friendly_border = true
+			left6_friendly_border = true
 		else:
 			enemy_left6 = true
-			left_friendly_border = false
+			left6_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left6 = true
-			left_friendly_border = true
+			left6_friendly_border = true
 		else:
 			enemy_left6 = true
-			left_friendly_border = false
+			left6_friendly_border = false
 
 
 func _on_left_6_area_body_exited(body: Node2D) -> void:
@@ -2354,17 +2429,17 @@ func _on_left_7_area_body_entered(body: Node2D) -> void:
 	if(body.is_in_group("White")):
 		if(self.is_in_group("White")):
 			enemy_left7 = true
-			left_friendly_border = true
+			left7_friendly_border = true
 		else:
 			enemy_left7 = true
-			left_friendly_border = false
+			left7_friendly_border = false
 	elif(body.is_in_group("Black")):
 		if(self.is_in_group("Black")):
 			enemy_left7 = true
-			left_friendly_border = true
+			left7_friendly_border = true
 		else:
 			enemy_left7 = true
-			left_friendly_border = false
+			left7_friendly_border = false
 
 
 func _on_left_7_area_body_exited(body: Node2D) -> void:

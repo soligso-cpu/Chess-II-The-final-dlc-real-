@@ -383,7 +383,7 @@ func _on_left_button_button_up() -> void:
 	Globals.accessing = left1_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	var target_with_offset = Globals.position_target + Vector2(2, 0)
+	var target_with_offset = Globals.position_target + Vector2(2, 0) #adding offset to the movement
 	global_position = target_with_offset # change the position to the target.
 	if(en_passanting):
 		var test = get_tree().get_root().find_child(body_being_passanted, true, false)
