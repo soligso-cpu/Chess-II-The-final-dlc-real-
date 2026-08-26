@@ -177,10 +177,15 @@ func _ready() -> void:
 	rook_a_train = false
 	turn_count = 1
 	piece_focused = ""
+	white_in_check = false
+	black_in_check = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	#region accessing stuff
+	# when a piece goes to move, it needs to see what its moving to and where, so it sets the "accessing" variable to the name of the tile it wants to move to. When this happens, this script finds the accessing name is a certain tile and turns the position_target to the x and y of the target tile. The piece, after processing a frame, gets this position_target and moves there.
+	# TLDR: This returns a position for the tile the piece wants to access.
 	#region accessing A
 	if(accessing == "A1"):
 		position_target = Vector2(336, 43)
@@ -389,7 +394,7 @@ func _process(delta: float) -> void:
 		position_target = Vector2(896, 603)
 		board_tiles["H"]["H8"].state = true
 	#endregion
-	
+	#endregion
 	if(white_turns >= 1):
 		turn_tracking = 1
 		if(moved):
