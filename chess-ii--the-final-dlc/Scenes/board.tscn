@@ -145,12 +145,12 @@ tile_map_data = PackedByteArray("AAAUAAIAAgAAAAAAAAAVAAIAAgAAAAAAAAAVAAMAAgAAAAA
 tile_set = ExtResource("2_s4i1f")
 
 [node name="TileDullBox" type="ColorRect" parent="." unique_id=2121900850]
-visible = false
 offset_left = 293.0
 offset_top = 2.0
 offset_right = 936.0
 offset_bottom = 646.0
-color = Color(0, 0, 0, 0.40392157)
+mouse_filter = 2
+color = Color(0, 0, 0, 0.75686276)
 
 [node name="Edges" type="Node2D" parent="." unique_id=2093225668]
 
