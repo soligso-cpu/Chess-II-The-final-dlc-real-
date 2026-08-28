@@ -65,7 +65,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if(Globals.piece_focused == self.name):
+	if(Globals.piece_focused == self):
 		focused = true
 	else:
 		focused = false
@@ -132,17 +132,17 @@ func reset_markers():
 	en_passanting = false
 	
 	focused = false
-	Globals.piece_focused = ""
+	Globals.piece_focused = null
 
 
 func _on_select_pawn_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		if(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
 			is_passantable = false
 		else:
-			Globals.piece_focused = ""
+			Globals.piece_focused = null
 			focused = false
 
 

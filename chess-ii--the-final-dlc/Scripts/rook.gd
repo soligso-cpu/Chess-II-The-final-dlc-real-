@@ -285,7 +285,7 @@ func _ready() -> void:
 	enemy_left7 = false
 	
 	focused = false
-	Globals.piece_focused = " "
+	Globals.piece_focused = null
 	#endregion
 
 func _process(delta: float) -> void:
@@ -302,7 +302,7 @@ func _process(delta: float) -> void:
 		r_train = true
 	else:
 		r_train = false
-	if(Globals.piece_focused == self.name):
+	if(Globals.piece_focused == self):
 		focused = true
 	else:
 		focused = false
@@ -709,7 +709,7 @@ func reset_markers():
 	#endregion
 	focused = false
 	readd_markers = true
-	Globals.piece_focused = " "
+	Globals.piece_focused = null
 
 
 func castle_prevention():
@@ -776,12 +776,12 @@ func _on_tile_collision_area_body_entered(body: Node2D) -> void:
 
 func _on_select_rook_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		if(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
 			readd_markers = true
 		else:
-			Globals.piece_focused = ""
+			Globals.piece_focused = null
 			focused = false
 
 #region movement
@@ -804,101 +804,92 @@ func _on_right_button_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
 func _on_right_button_2_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right2_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
-
 func _on_right_button_3_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right3_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
-
-
 func _on_right_button_4_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right4_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
-
-
 func _on_right_button_5_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right5_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
 	
-
-
-
 func _on_right_button_6_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right6_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
-
 func _on_right_button_7_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right7_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	if(r_train):
 		$RTrainSound.play()
 		var e1 = get_tree().get_root().find_child(r_train_enemy1, true, false)
@@ -919,10 +910,11 @@ func _on_right_button_7_button_up() -> void:
 			e5.queue_free()
 		if(e6 != null):
 			e6.queue_free()
+	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	Globals.turn_tracking += 1 # change tur
+	Globals.turn_tracking += 1 # change turn
 	
 
 
@@ -934,59 +926,64 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 	right1_tile = body.tile
 	right1_tile_group = body.tile_group
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
-	if(Globals.white_in_check):
-		if(self.is_in_group("White")):
-			# if the white king is in check and im white
-			if(body.is_in_group(Globals.piece_attacking_king)):
-				#if the body that entered is the one attacking the king:
-				enemy_right1 = true
-				right1_touching_border = false
-				# allow attack
-		elif(self.is_in_group("Black")):
-			# if my king is not in check
+	if(!r_train):
+		if(Globals.white_in_check):
+			if(self.is_in_group("White")):
+				# if the white king is in check and im white
+				if(body.is_in_group(Globals.piece_attacking_king)):
+					#if the body that entered is the one attacking the king:
+					enemy_right1 = true
+					right1_touching_border = false
+					# allow attack
+			elif(self.is_in_group("Black")):
+				# if my king is not in check
+				if(body.is_in_group("White")):
+					#jsut check if the body is an ally or not.
+						enemy_right1 = true
+						right1_touching_border = false
+				elif(body.is_in_group("Black")):
+					#jsut check if the body is an ally or not.
+					if(self.is_in_group("Black")):
+						enemy_right1 = true
+						right1_touching_border = true
+		if(Globals.black_in_check):
+			if(self.is_in_group("Black")):
+				# if the black king is in check and im black
+				if(body.is_in_group(Globals.piece_attacking_king)):
+					#if the body is the one attacking the king:
+					enemy_right1 = true
+					right1_touching_border = false
+					#allow attack
+			elif(self.is_in_group("White")):
+				# if my king is not in check
+				if(body.is_in_group("White")):
+					#jsut check if the body is an ally or not.
+						enemy_right1 = true
+						right1_touching_border = true
+				elif(body.is_in_group("Black")):
+					#jsut check if the body is an ally or not.
+						enemy_right1 = true
+						right1_touching_border = false
+		elif(Globals.black_in_check == false && Globals.white_in_check == false):
+			# if the king isnt in check at all....
 			if(body.is_in_group("White")):
-				#jsut check if the body is an ally or not.
+				if(self.is_in_group("White")):
+					enemy_right1 = true
+					right1_touching_border = true
+				else:
 					enemy_right1 = true
 					right1_touching_border = false
 			elif(body.is_in_group("Black")):
-				#jsut check if the body is an ally or not.
 				if(self.is_in_group("Black")):
 					enemy_right1 = true
 					right1_touching_border = true
-	if(Globals.black_in_check):
-		if(self.is_in_group("Black")):
-			# if the black king is in check and im black
-			if(body.is_in_group(Globals.piece_attacking_king)):
-				#if the body is the one attacking the king:
-				enemy_right1 = true
-				right1_touching_border = false
-				#allow attack
-		elif(self.is_in_group("White")):
-			# if my king is not in check
-			if(body.is_in_group("White")):
-				#jsut check if the body is an ally or not.
-					enemy_right1 = true
-					right1_touching_border = true
-			elif(body.is_in_group("Black")):
-				#jsut check if the body is an ally or not.
+				else:
 					enemy_right1 = true
 					right1_touching_border = false
-	elif(Globals.black_in_check == false && Globals.white_in_check == false):
-		# if the king isnt in check at all....
-		if(body.is_in_group("White")):
-			if(self.is_in_group("White")):
-				enemy_right1 = true
-				right1_touching_border = true
-			else:
-				enemy_right1 = true
-				right1_touching_border = false
-		elif(body.is_in_group("Black")):
-			if(self.is_in_group("Black")):
-				enemy_right1 = true
-				right1_touching_border = true
-			else:
-				enemy_right1 = true
-				right1_touching_border = false
+	else:
+		r_train_enemy1 = body.name
+		right1_friendly_border = false
+		right1_touching_border = false
 	
 
 func _on_right_area_1_body_exited(body: Node2D) -> void:
@@ -1495,6 +1492,7 @@ func _on_right_area_7_area_exited(area: Area2D) -> void:
 func _on_forward_button_1_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward1_tile # tells the global script that youre accessing tile X
@@ -1506,10 +1504,11 @@ func _on_forward_button_1_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
 	
-
+	
 func _on_forward_button_2_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward2_tile # tells the global script that youre accessing tile X
@@ -1520,10 +1519,12 @@ func _on_forward_button_2_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
+	
+	
 func _on_forward_button_3_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward3_tile # tells the global script that youre accessing tile X
@@ -1534,11 +1535,12 @@ func _on_forward_button_3_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
+	
+	
 func _on_forward_button_4_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward4_tile
@@ -1549,11 +1551,12 @@ func _on_forward_button_4_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
+	
+	
 func _on_forward_button_5_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward5_tile # tells the global script that youre accessing tile X
@@ -1565,12 +1568,10 @@ func _on_forward_button_5_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
 	
-
-
-
 func _on_forward_button_6_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward6_tile # tells the global script that youre accessing tile X
@@ -1581,12 +1582,13 @@ func _on_forward_button_6_button_up() -> void:
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
-
-
+	
+	
 func _on_forward_button_7_button_up() -> void:
 	Globals.turn_tracking += 1 # change turn
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = forward7_tile # tells the global script that youre accessing tile X
@@ -1598,6 +1600,7 @@ func _on_forward_button_7_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	Globals.turn_tracking += 1 # change turn
 	
+
 
 
 #endregion

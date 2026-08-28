@@ -67,7 +67,7 @@ func _ready() -> void:
 		tile_group = "A"
 
 func _process(delta: float) -> void:
-	if(Globals.piece_focused == self.name):
+	if(Globals.piece_focused == self):
 		true
 	else:
 		focused = false
@@ -141,18 +141,18 @@ func reset_markers():
 	ld_enemy = false
 	lu_enemy = false
 	focused = false
-	Globals.piece_focused = ""
+	Globals.piece_focused = null
 
 func _on_select_knight_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		if(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
-		elif(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		elif(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
 		else:
-			Globals.piece_focused = ""
+			Globals.piece_focused = null
 			focused = false
 
 func _on_tile_collision_area_area_entered(area: Area2D) -> void:

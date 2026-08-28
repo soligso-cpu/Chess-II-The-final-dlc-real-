@@ -392,7 +392,7 @@ func _process(delta: float) -> void:
 		$MovementMarkers.global_position = test_gp
 		readd_markers = false
 		return
-	if(Globals.piece_focused == "QueenWhite" && self.name == "QueenWhite" || Globals.piece_focused == "QueenBlack" && self.name == "QueenBlack"):
+	if(Globals.piece_focused == self):
 		focused = true
 	else:
 		focused = false
@@ -868,12 +868,12 @@ func _process(delta: float) -> void:
 
 func _on_select_queen_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		if(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
 			readd_markers = true
 		else:
-			Globals.piece_focused = ""
+			Globals.piece_focused = null
 			focused = false
 
 func _on_collision_area_area_entered(area: Area2D) -> void:
@@ -882,7 +882,7 @@ func _on_collision_area_area_entered(area: Area2D) -> void:
 		tile_group = str(area.name)[0]
 
 func _on_collision_area_body_entered(body: Node2D) -> void:
-	if(self.name == "QueenWhite" && body.name != "QueenWhite" || self.name == "QueenBlack" && body.name != "QueenBlack"):
+	if(self.name != body.name):
 		if(taking):
 			body.queue_free()
 			taking = false
@@ -1147,7 +1147,7 @@ func reset_markers():
 
 	readd_markers = true
 	focused = false
-	Globals.piece_focused = ""
+	Globals.piece_focused = null
 
 #region Up, Down, Left, and Right
 

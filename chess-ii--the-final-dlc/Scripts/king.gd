@@ -90,7 +90,7 @@ func _process(delta: float) -> void:
 			no_castle_left = true
 		elif(Globals.rook_h8_moved):
 			no_castle_right = true
-	if(Globals.piece_focused == self.name):
+	if(Globals.piece_focused == self):
 		focused = true
 	else:
 		focused = false
@@ -258,19 +258,19 @@ func reset_markers():
 	close_to_king_castle_left2 = false
 	
 	focused = false
-	Globals.piece_focused = ""
+	Globals.piece_focused = null
 
 
 func _on_select_king_button_up() -> void:
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") || Globals.turn_tracking == 1 && self.is_in_group("White")):
-		if(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		if(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
-		elif(Globals.piece_focused != self.name):
-			Globals.piece_focused = self.name
+		elif(Globals.piece_focused != self):
+			Globals.piece_focused = self
 			focused = true
 		else:
-			Globals.piece_focused = ""
+			Globals.piece_focused = null
 			focused = false
 
 
