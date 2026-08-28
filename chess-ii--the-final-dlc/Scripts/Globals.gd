@@ -40,6 +40,18 @@ var white_won
 var black_lost
 var black_won
 
+var roulette_unlocked = false
+var cards_unlocked = false
+var fish_unlocked = false
+var slot_unlocked = false
+
+var gamble_win_white
+var gamble_win_black
+var gamble_loose_white
+var gamble_loose_black
+var white_odds = 50
+var black_odds = 50
+
 var lore_won = false
 
 var rook_a1_moved
