@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
 [ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://slot_machine.tscn" id="20_ardhx"]
 [ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
+[ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://background_animation.tscn" id="22_o57li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -134,6 +135,9 @@ size = Vector2(656, 93)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
+
+[node name="Background_Animation" parent="." unique_id=445361103 instance=ExtResource("22_o57li")]
+visibility_layer = 524288
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1820083446]
 position = Vector2(0, -5)

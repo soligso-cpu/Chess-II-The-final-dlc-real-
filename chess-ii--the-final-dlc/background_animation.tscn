@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://df37elk5xjpaq"]
+
+[ext_resource type="Texture2D" uid="uid://csce2071j17so" path="res://Sprites/SpriteSheets/Background animation.png" id="1_lf6ac"]
+
+[sub_resource type="Animation" id="Animation_lf6ac"]
+resource_name = "Background"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_pr2pg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1terh"]
+_data = {
+&"Background": SubResource("Animation_lf6ac"),
+&"RESET": SubResource("Animation_pr2pg")
+}
+
+[node name="Background_Animation" type="Node2D" unique_id=445361103]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1490890007]
+position = Vector2(600, 300)
+scale = Vector2(2.4, 2.4)
+texture = ExtResource("1_lf6ac")
+hframes = 2
+vframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1296841755]
+root_node = NodePath("../Sprite2D")
+libraries/ = SubResource("AnimationLibrary_1terh")
+autoplay = &"Background"
