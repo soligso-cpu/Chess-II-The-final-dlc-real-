@@ -5,6 +5,8 @@ enum winning_colour {
 	BLACK = 1, 
 	RED = 2
 }
+var white_odds = 100
+var black_odds = 0
 var winner 
 var hover = false
 var currently_gambling = false 
@@ -14,6 +16,8 @@ var timer_slow = 1.1
 var chosen_colour
 var spin_speed = 0.7
 var spin_change = 0.989
+var loosing_colour
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,8 +49,20 @@ func _on_area_2d_mouse_exited() -> void:
 func _on_spin_timer_timeout() -> void:
 	currently_gambling = false
 	print("no more gamba", currently_gambling)
-	winner = randi_range(winning_colour.BLACK, winning_colour.RED)
+	var roll = randi_range(0,100)
 	print(winner, "is winner")
+	if Globals.turn_tracking == 1:
+		if roll >= Globals.white_odds:
+			winner = chosen_colour
+		elif roll < Globals.white_odds:
+			winner = loosing_colour
+			
+	elif Globals.turn_tracking == 0:
+		if roll >= Globals.black_odds:
+			winner = chosen_colour
+		elif roll < Globals.black_odds:
+			winner = loosing_colour
+			
 	if winner == winning_colour.BLACK:
 		$Black.visible = true
 		$Red.visible = false
@@ -101,11 +117,13 @@ func _on_switch_timer_timeout() -> void:
 func _on_red_button_button_up() -> void:
 	if currently_gambling == false:
 		chosen_colour = winning_colour.RED
+		loosing_colour = winning_colour.BLACK
 		print("all in on red", str(chosen_colour))
 		$Control/Label.text = str("Bet 1 turn on red")
 func _on_black_button_button_up() -> void:
 	if currently_gambling == false:
 		chosen_colour = winning_colour.BLACK
+		loosing_colour = winning_colour.RED
 		print("all in on black", str(chosen_colour))
 		$Control/Label.text = str("Bet 1 turn on black")
 

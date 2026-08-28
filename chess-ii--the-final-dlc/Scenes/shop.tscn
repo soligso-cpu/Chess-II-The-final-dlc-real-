@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dcy23yasqtrks"]
+
+[ext_resource type="Script" uid="uid://b2m6qkf71wjr7" path="res://Scripts/shop.gd" id="1_io27d"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_fdj0q"]
+[ext_resource type="Texture2D" uid="uid://c5da0kyc2rfsi" path="res://Sprites/pixil-frame-0 (8).png" id="3_k6jq0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_io27d"]
+
+[node name="Shop" type="Node2D" unique_id=1260812166]
+script = ExtResource("1_io27d")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=504055641]
+position = Vector2(587, 329)
+scale = Vector2(11.605001, 6.4950004)
+texture = ExtResource("3_k6jq0")
+
+[node name="GameKey" type="Node2D" parent="." unique_id=1976907842]
+position = Vector2(176, 327)
+
+[node name="Sprite2D" type="Sprite2D" parent="GameKey" unique_id=1357411381]
+position = Vector2(-55.5, -90)
+scale = Vector2(1.3515625, 1.328125)
+texture = ExtResource("2_fdj0q")
+
+[node name="GameKeyButton" type="Button" parent="GameKey" unique_id=1433245161]
+offset_left = -140.5
+offset_top = -179.0
+offset_right = 25.0
+offset_bottom = -4.5
+metadata/_edit_use_anchors_ = true
+
+[node name="GameKeyLabel" type="Label" parent="GameKey" unique_id=192459822]
+offset_left = -137.0
+offset_top = -207.0
+offset_right = 47.0
+offset_bottom = -174.0
+text = "and move it"
+metadata/_edit_use_anchors_ = true
+
+[node name="GameKeyPopUp" type="Label" parent="GameKey" unique_id=2088728774]
+visible = false
+offset_left = -141.0
+offset_top = -172.0
+offset_right = 49.0
+offset_bottom = -123.0
+text = "Unlock a new minigame!
+cost: dunno"
+metadata/_edit_use_anchors_ = true
+
+[node name="MajorPowerup" type="Node2D" parent="." unique_id=1528439271]
+position = Vector2(765, 299)
+
+[node name="Sprite2D" type="Sprite2D" parent="MajorPowerup" unique_id=1140000430]
+position = Vector2(-55.5, -90)
+scale = Vector2(1.3515625, 1.328125)
+texture = ExtResource("2_fdj0q")
+
+[node name="MajorButton" type="Button" parent="MajorPowerup" unique_id=1651855304]
+offset_left = -140.5
+offset_top = -179.0
+offset_right = 25.0
+offset_bottom = -4.5
+metadata/_edit_use_anchors_ = true
+
+[node name="MajorText" type="Label" parent="MajorPowerup" unique_id=487579072]
+offset_left = -137.0
+offset_top = -207.0
+offset_right = 47.0
+offset_bottom = -174.0
+text = "and move it"
+label_settings = SubResource("LabelSettings_io27d")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="button_up" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_button_up"]
+[connection signal="focus_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_focus_entered"]
+[connection signal="mouse_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_mouse_entered"]
+[connection signal="mouse_exited" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_mouse_exited"]
+[connection signal="button_up" from="MajorPowerup/MajorButton" to="." method="_on_major_button_button_up"]
