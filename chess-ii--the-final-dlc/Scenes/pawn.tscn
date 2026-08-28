@@ -108,6 +108,7 @@ position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_culnp")
 
 [node name="SelectPawn" type="Button" parent="." unique_id=148148288]
+z_as_relative = false
 offset_left = -41.0
 offset_top = -39.0
 offset_right = 37.0
