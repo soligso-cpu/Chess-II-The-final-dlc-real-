@@ -216,8 +216,10 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if(self.is_in_group("White") && Globals.turn_tracking == 1 || self.is_in_group("Black") && Globals.turn_tracking == 0):
 		$SelectBishop.mouse_filter = Control.MOUSE_FILTER_STOP
+		$SelectBishop.z_index = 10
 	elif(self.is_in_group("White") && Globals.turn_tracking == 0 || self.is_in_group("Black") && Globals.turn_tracking == 1):
 		$SelectBishop.mouse_filter = Control.MOUSE_FILTER_PASS
+		$SelectBishop.z_index = -10
 	if(readd_markers):
 		var markers = $MovementMarkers
 		var test_gp = $MovementMarkers.global_position

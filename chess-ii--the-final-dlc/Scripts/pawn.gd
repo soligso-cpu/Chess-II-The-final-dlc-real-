@@ -150,6 +150,19 @@ func _on_tile_collision_area_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		tile = area.name
 		tile_group = str(area.name)[0]
+	if(area.is_in_group("PromotionTiles")):
+		if(promoting):
+			Globals.promotion_instance_position = self.global_position
+			var promotion_ui = PROMOTION_UI.instantiate()
+			$"../".add_child(promotion_ui)
+			if(self.is_in_group("Black")):
+				promotion_ui.global_position = self.global_position + Vector2(0, 100)
+			else:
+				promotion_ui.global_position = self.global_position - Vector2(0, 100)
+			self.queue_free()
+			return
+		else:
+			pass
 
 
 func _on_tile_collision_area_body_entered(body: Node2D) -> void:
@@ -254,16 +267,6 @@ func _on_forward_button_button_up() -> void:
 	if(!promoting):
 		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	if(promoting):
-		Globals.promotion_instance_position = self.global_position
-		var promotion_ui = PROMOTION_UI.instantiate()
-		$"../".add_child(promotion_ui)
-		if(self.is_in_group("Black")):
-			promotion_ui.global_position = self.global_position + Vector2(0, 100)
-		else:
-			promotion_ui.global_position = self.global_position - Vector2(0, 100)
-		self.queue_free()
-		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
@@ -392,16 +395,6 @@ func _on_left_button_button_up() -> void:
 	if(!promoting):
 		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	if(promoting):
-		Globals.promotion_instance_position = self.global_position
-		var promotion_ui = PROMOTION_UI.instantiate()
-		$"../".add_child(promotion_ui)
-		if(self.is_in_group("Black")):
-			promotion_ui.global_position = self.global_position + Vector2(0, 100)
-		else:
-			promotion_ui.global_position = self.global_position - Vector2(0, 100)
-		self.queue_free()
-		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
@@ -466,18 +459,6 @@ func _on_right_button_button_up() -> void:
 	if(!promoting):
 		reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	if(promoting):
-		Globals.promotion_instance_position = self.global_position
-		Globals.promotion_instance_tile = tile
-		Globals.promotion_instance_tile_group = tile_group
-		var promotion_ui = PROMOTION_UI.instantiate()
-		$"../".add_child(promotion_ui)
-		if(self.is_in_group("Black")):
-			promotion_ui.global_position = self.global_position + Vector2(0, 100)
-		else:
-			promotion_ui.global_position = self.global_position - Vector2(0, 100)
-		self.queue_free()
-		return
 	Globals.turn_tracking += 1 # change turn
 
 #endregion
