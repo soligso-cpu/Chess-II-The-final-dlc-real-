@@ -792,11 +792,13 @@ func _on_select_rook_button_up() -> void:
 func _on_right_button_button_up() -> void:
 	focused = false
 	Globals.moved = true
+	castle_prevention()
 	if(tile != null && tile_group != null): # the piece rids itself of its original tiles state
 		Globals.board_tiles[tile_group][tile].state = false
 	Globals.accessing = right1_tile # tells the global script that youre accessing tile X
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+	$MoveSound.play()
 	global_position = Globals.position_target # change the position to the target.
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
@@ -897,10 +899,31 @@ func _on_right_button_7_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	if(r_train):
+		$RTrainSound.play()
+		var e1 = get_tree().get_root().find_child(r_train_enemy1, true, false)
+		var e2 = get_tree().get_root().find_child(r_train_enemy2, true, false)
+		var e3 = get_tree().get_root().find_child(r_train_enemy3, true, false)
+		var e4 = get_tree().get_root().find_child(r_train_enemy4, true, false)
+		var e5 = get_tree().get_root().find_child(r_train_enemy5, true, false)
+		var e6 = get_tree().get_root().find_child(r_train_enemy6, true, false)
+		if(e1 != null):
+			e1.queue_free()
+		if(e2 != null):
+			e2.queue_free()
+		if(e3 != null):
+			e3.queue_free()
+		if(e4 != null):
+			e4.queue_free()
+		if(e5 != null):
+			e5.queue_free()
+		if(e6 != null):
+			e6.queue_free()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	Globals.turn_tracking += 1 # change turn
+	Globals.turn_tracking += 1 # change tur
+	
 
 
 

@@ -776,7 +776,7 @@ shape = SubResource("RectangleShape2D_2cdyc")
 [node name="WhitePromotion" type="Area2D" parent="Promotion" unique_id=832048618 groups=["PromotionTiles"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Promotion/WhitePromotion" unique_id=974402148 groups=["PromotionTiles"]]
-position = Vector2(620, 36.5)
+position = Vector2(620, 26.5)
 shape = SubResource("RectangleShape2D_qjv7d")
 
 [node name="RTrainButtonSprite" type="Sprite2D" parent="." unique_id=1786799883]
