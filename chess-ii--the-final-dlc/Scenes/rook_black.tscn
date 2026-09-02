@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://85bhrl8qxrvf" path="res://Scripts/rook.gd" id="1_mv25j"]
 [ext_resource type="Texture2D" uid="uid://crhba3m3gpxru" path="res://Sprites/Black-Rook.png" id="2_mv25j"]
+[ext_resource type="AudioStream" uid="uid://bpy171vjmhjfx" path="res://Sounds/a-train-zoom.mp3" id="3_0sw8f"]
+[ext_resource type="AudioStream" uid="uid://b1qxfo80x3xne" path="res://Sounds/chess-com-piece-move.mp3" id="4_4ndkl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wwc4d"]
 size = Vector2(72, 72.25)
@@ -681,6 +683,14 @@ scale = Vector2(0.96, 1.02)
 texture = ExtResource("2_mv25j")
 
 [node name="MoveCheck" type="Node2D" parent="." unique_id=1336702933]
+
+[node name="RTrainSound" type="AudioStreamPlayer" parent="." unique_id=1675861019]
+stream = ExtResource("3_0sw8f")
+volume_db = 5.018
+mix_target = 1
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="." unique_id=843083646]
+stream = ExtResource("4_4ndkl")
 
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]
