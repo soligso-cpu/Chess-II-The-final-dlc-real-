@@ -8,6 +8,14 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if(Globals.turn_tracking == 1):
+		#white
+		$".".move_child($White, 7)
+		$".".move_child($Black, 6)
+	elif(Globals.turn_tracking == 0):
+		#black
+		$".".move_child($White, 6)
+		$".".move_child($Black, 7)
 	if Input.is_action_just_pressed("Click") and hover == true and Globals.lore_won == true:
 		
 		if $LoreOrganizer/DirectionalLight2D.visible == true and$LoreOrganizer/CanvasLayer/Label.visible == true:

@@ -75,7 +75,12 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	print("turn amount: "+ str(Globals.turn_count))
+	if(Globals.turn_tracking == 1):
+		# white
+		pass
+	elif(Globals.turn_tracking == 0):
+		# black
+		pass
 	if(passant_timer == (Globals.turn_count - 1)):
 		is_passantable = false
 	if(readd_markers):
