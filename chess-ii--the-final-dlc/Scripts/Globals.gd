@@ -51,6 +51,8 @@ var gamble_loose_white
 var gamble_loose_black
 var white_odds = 50
 var black_odds = 50
+var white_money = 5
+var black_money = 5
 
 var lore_won = false
 

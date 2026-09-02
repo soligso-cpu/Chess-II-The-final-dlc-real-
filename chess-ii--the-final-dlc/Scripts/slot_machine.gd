@@ -85,9 +85,9 @@ func spawn_slot(slot):
 			slot_jackpot.global_position = slot.global_position
 			
 	elif rigged == true:
-		var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
-		$SpawnedSlots4.add_child(slot_jackpot)
-		slot_jackpot.global_position = slot.global_position
+		var slot_7 = SLOT_7_SCENE.instantiate()
+		$SpawnedSlots4.add_child(slot_7)
+		slot_7.global_position = slot.global_position
 	count += 1
 
 
@@ -358,12 +358,27 @@ func _on_top_3_body_entered(body: Node2D) -> void:
 	
 func regular_win():
 	print("reg win")
+	if Globals.turn_tracking == 1:
+		Globals.white_money += 4
+	elif Globals.turn_tracking == 0:
+		Globals.black_money += 4
 func bust_win():
 	print("bust win")
+	if Globals.turn_tracking == 1:
+		Globals.white_money -= 2
+	elif Globals.turn_tracking == 0:
+		Globals.black_money -= 2
 func double_win():
-	print("Double win")
+	if Globals.turn_tracking == 1:
+		Globals.white_money += 8
+	elif Globals.turn_tracking == 0:
+		Globals.black_money += 8
 func jackpot_win():
 	print("Jackpot win")
+	if Globals.turn_tracking == 1:
+		Globals.white_money += 10
+	elif Globals.turn_tracking == 0:
+		Globals.black_money += 10
 
 
 func _on_stage_timer_timeout() -> void:

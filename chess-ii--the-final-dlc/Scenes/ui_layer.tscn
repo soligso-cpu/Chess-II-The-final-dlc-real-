@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://clm4q64ojmmfv"]
+
+[ext_resource type="Script" uid="uid://cw4orcr5or5h4" path="res://Scripts/ui_layer.gd" id="1_6em6a"]
+
+[node name="UiLayer" type="CanvasLayer" unique_id=178812568]
+script = ExtResource("1_6em6a")
+
+[node name="Control" type="Control" parent="." unique_id=745452953]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=693212268]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 7.8750005
+anchor_bottom = 0.8
+offset_right = -3.0517578e-05
+text = "MONEY HERE"

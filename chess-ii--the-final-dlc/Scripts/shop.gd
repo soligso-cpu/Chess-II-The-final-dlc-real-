@@ -19,34 +19,62 @@ func _ready() -> void:
 	new_card()
 func _process(delta: float) -> void:
 	while new_key == false:
+		if Globals.turn_tracking == 1 and Globals.white_money >= 10:
+			Globals.white_money -= 10
+			if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
+				Globals.roulette_unlocked = true
+				new_key = true
+			elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
+				Globals.fish_unlocked = true
+				new_key = true
+			elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
+				Globals.slot_unlocked = true
+				new_key = true
+			elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
+				Globals.cards_unlocked = true
+				new_key = true
+			elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
+				new_key = true
+				Globals.white_money += 10
+		elif  Globals.white_money <= 10 and Globals.turn_tracking == 1:
+			new_key = true
+			print("broke ass")
+				
 		
-
-		if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
-			Globals.roulette_unlocked = true
-			new_key = true
-		elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
-			Globals.fish_unlocked = true
-			new_key = true
-		elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
-			Globals.slot_unlocked = true
-			new_key = true
-		elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
-			Globals.cards_unlocked = true
-			new_key = true
-		elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
-			new_key = true
 			
-		else:
-			print("you got them ALL")
-		new_game_key()
+		elif Globals.turn_tracking == 0 and Globals.black_money >= 10:
+			Globals.black_money -= 10
+			if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
+				Globals.roulette_unlocked = true
+				new_key = true
+			elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
+				Globals.fish_unlocked = true
+				new_key = true
+			elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
+				Globals.slot_unlocked = true
+				new_key = true
+			elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
+				Globals.cards_unlocked = true
+				new_key = true
+			elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
+				new_key = true
+				Globals.black_money += 10
+		elif  Globals.black_money <= 10 and Globals.turn_tracking == 0:
+			new_key = true
+			print("broke ass")
+			
+		
+			
 		print(key)
-
+		
 
 func _on_game_key_button_button_up() -> void:
 	new_key = false
 	
-		
+#Globals.white_money >= 2
+#Globals.black_money >= 2
 func new_game_key():
+	
 		key = randi_range(game_key.ROULETTE_KEY, game_key.CARD_KEY)
 		if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
 			$GameKey/GameKeyLabel.text = str("roulette")
@@ -74,43 +102,45 @@ func new_card():
 		$MajorPowerup/MajorText.text = str("The Sun")
 		$MajorPowerup/MajorPopup.text = str("Boosts your odds
 		in roulette
-		cost: dunno")
+		cost: 2")
 	elif card_shown == card.CARD_MOON:
 		print("also good")
 		$MajorPowerup/MajorText.text = str("The Moon")
 		$MajorPowerup/MajorPopup.text = str("Lowers your opponents 
 		odds in roulette
-		cost: dunno")
+		cost: 2")
 	elif card_shown == card.CARD_STAR:
 		print("WOW, GAMBLE")
 		$MajorPowerup/MajorText.text = str("The Star")
 		$MajorPowerup/MajorPopup.text = str("Guarantees a jackpot 
 		on your next gamble
-		cost: dunno")
+		cost: 20")
 
 func _on_major_button_button_up() -> void:
 	if card_shown == card.CARD_SUN:
 		print("luck be upon you")
-		if Globals.turn_tracking == 1:
+		if Globals.turn_tracking == 1 and Globals.white_money >= 2:
 			Globals.white_odds -= 10
+			Globals.white_money -= 2
 			
-		elif Globals.turn_tracking == 0:
+		elif Globals.turn_tracking == 0 and Globals.black_money >= 2:
 			Globals.black_odds -= 10
+			Globals.black_money -= 2
 	elif  card_shown == card.CARD_MOON:
 		print("no luck for u")
-		if Globals.turn_tracking == 1:
+		if Globals.turn_tracking == 1 and Globals.white_money >= 2:
 			Globals.black_odds += 10
-			
-		elif Globals.turn_tracking == 0:
-			
+			Globals.white_money -= 2
+		elif Globals.turn_tracking == 0 and Globals.black_money >= 2:
+			Globals.black_money -= 2
 			Globals.white_odds += 10
 	elif  card_shown == card.CARD_STAR:
 		print("Bending the rules i see")
-		if Globals.turn_tracking == 1:
+		if Globals.turn_tracking == 1 and Globals.white_money >= 20:
 			Globals.gamble_win_white = true
-			
-		elif Globals.turn_tracking == 0:
-			
+			Globals.white_money -= 20
+		elif Globals.turn_tracking == 0 and Globals.black_money >= 20:
+			Globals.black_money -= 20
 			Globals.gamble_win_black = true
 	new_card()
 

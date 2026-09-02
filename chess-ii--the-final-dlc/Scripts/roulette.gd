@@ -33,7 +33,10 @@ func _process(delta: float) -> void:
 		timer_length = 0.1
 		$SwitchTimer.start(timer_length)
 		spin_speed = 0.7
-		
+		if Globals.turn_tracking == 1:
+			Globals.white_money -= 2
+		if Globals.turn_tracking == 0:
+			Globals.black_money -= 2
 		
 	if currently_gambling == true:
 		$Button.rotation += spin_speed
@@ -87,10 +90,13 @@ func _on_spin_timer_timeout() -> void:
 			Globals.white_turns = 3
 			print(Globals.white_turns, "id")
 			
+			Globals.white_money += 4
+		
+			
 		elif Globals.turn_tracking == 0:
 			Globals.black_turns = 3
 			print(Globals.black_turns, "id")
-			
+			Globals.black_money += 4
 	elif winner != chosen_colour:
 		print("aw dangit")
 		$Control/Label.text = str("Oh well, you lost your turn.")
@@ -144,8 +150,17 @@ func _on_quit_button_button_up() -> void:
 
 
 func _on_return_button_button_up() -> void:
-	pass # Replace with function body.
+	
 	$"../Camera2D".global_position = $"../BoardMarker".global_position
 
 func _on_move_button_button_up() -> void:
 	$"../Camera2D".global_position = $"../RouletteMarker".global_position
+	
+	
+	
+	
+	
+	
+	
+	
+	
