@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bbr6jtr2wfyd5"]
+
+[ext_resource type="PackedScene" uid="uid://csdk8nvvsc7or" path="res://tarot_card.tscn" id="1_g18r3"]
+[ext_resource type="Texture2D" uid="uid://ddhhl8iudn6yd" path="res://Sprites/Tarot Card The Star.png" id="2_tx1pw"]
+[ext_resource type="Texture2D" uid="uid://c4mtvnj5vsfbq" path="res://Sprites/Tarot Card Temprence.png" id="3_6gi27"]
+
+[node name="TarotCardTestScreen" type="Node2D" unique_id=346470339]
+
+[node name="TarotCard" parent="." unique_id=2057933298 instance=ExtResource("1_g18r3")]
+position = Vector2(132, 174)
+value = 17
+tarotcardtexture = ExtResource("2_tx1pw")
+
+[node name="TarotCard2" parent="." unique_id=668161655 instance=ExtResource("1_g18r3")]
+position = Vector2(416, 324)
+
+[node name="TarotCard3" parent="." unique_id=780412839 instance=ExtResource("1_g18r3")]
+position = Vector2(744, 294)
+value = 14
+tarotcardtexture = ExtResource("3_6gi27")

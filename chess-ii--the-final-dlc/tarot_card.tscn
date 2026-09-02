@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://csdk8nvvsc7or"]
+
+[ext_resource type="Texture2D" uid="uid://dxku2mis0up14" path="res://Sprites/Tarot Card The Fool.png" id="1_ay2sw"]
+[ext_resource type="Script" uid="uid://tpy4er7h7g0y" path="res://Scripts/tarot_card.gd" id="2_ndjyk"]
+[ext_resource type="Script" uid="uid://bno0qkvyfaftm" path="res://Scenes/tarot_card_clicker.gd" id="3_yfuvq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clg2h"]
+size = Vector2(101, 193)
+
+[node name="TarotCard" type="Sprite2D" unique_id=2057933298]
+texture = ExtResource("1_ay2sw")
+script = ExtResource("2_ndjyk")
+tarotcardtexture = ExtResource("1_ay2sw")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=74460420]
+script = ExtResource("3_yfuvq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1764081925]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_clg2h")
+
+[connection signal="tarot_card_action" from="Area2D" to="." method="_on_area_2d_tarot_card_action"]
