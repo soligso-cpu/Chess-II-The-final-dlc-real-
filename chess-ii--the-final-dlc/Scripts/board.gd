@@ -54,3 +54,11 @@ func _on_slot_button_button_up() -> void:
 
 func _on_return_button_button_up() -> void:
 	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position
+
+
+func _on_shop_button_button_up() -> void:
+	$RouletteOrganizer/Camera2D.global_position = $Shop/ShopMarker.global_position
+
+
+func _on_shop_return_button_button_up() -> void:
+	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position

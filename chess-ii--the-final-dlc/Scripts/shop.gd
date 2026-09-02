@@ -72,12 +72,21 @@ func new_card():
 	if card_shown == card.CARD_SUN:
 		print("gud")
 		$MajorPowerup/MajorText.text = str("The Sun")
+		$MajorPowerup/MajorPopup.text = str("Boosts your odds
+		in roulette
+		cost: dunno")
 	elif card_shown == card.CARD_MOON:
 		print("also good")
 		$MajorPowerup/MajorText.text = str("The Moon")
+		$MajorPowerup/MajorPopup.text = str("Lowers your opponents 
+		odds in roulette
+		cost: dunno")
 	elif card_shown == card.CARD_STAR:
 		print("WOW, GAMBLE")
 		$MajorPowerup/MajorText.text = str("The Star")
+		$MajorPowerup/MajorPopup.text = str("Guarantees a jackpot 
+		on your next gamble
+		cost: dunno")
 
 func _on_major_button_button_up() -> void:
 	if card_shown == card.CARD_SUN:
@@ -103,7 +112,7 @@ func _on_major_button_button_up() -> void:
 		elif Globals.turn_tracking == 0:
 			
 			Globals.gamble_win_black = true
-
+	new_card()
 
 func _on_game_key_button_focus_entered() -> void:
 	print("print")
@@ -116,3 +125,11 @@ func _on_game_key_button_mouse_entered() -> void:
 
 func _on_game_key_button_mouse_exited() -> void:
 	$GameKey/GameKeyPopUp.visible = false
+
+
+func _on_major_button_mouse_entered() -> void:
+	$MajorPowerup/MajorPopup.visible = true
+
+
+func _on_major_button_mouse_exited() -> void:
+	$MajorPowerup/MajorPopup.visible = false
