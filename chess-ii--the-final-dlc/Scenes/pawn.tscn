@@ -2,8 +2,18 @@
 
 [ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_eu7ni"]
 [ext_resource type="Texture2D" uid="uid://cxiercc7a7lpj" path="res://Sprites/White-Pawn.png" id="2_3865y"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="3_culnp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cr4cw"]
+size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3865y"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b1whw"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xq3kh"]
 size = Vector2(72, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
@@ -38,7 +48,7 @@ position = Vector2(-2, -80)
 [node name="ForwardArea" type="Area2D" parent="MovementMarkers/Forward/ForwardSprite" unique_id=991207380]
 
 [node name="ForwardShape" type="CollisionShape2D" parent="MovementMarkers/Forward/ForwardSprite/ForwardArea" unique_id=152810614]
-shape = SubResource("RectangleShape2D_3865y")
+shape = SubResource("RectangleShape2D_cr4cw")
 
 [node name="ForwardButton" type="Button" parent="MovementMarkers/Forward/ForwardSprite" unique_id=1973333509]
 offset_left = -38.0
@@ -72,7 +82,7 @@ position = Vector2(-82, -80)
 [node name="LeftArea" type="Area2D" parent="MovementMarkers/Left/LeftSprite" unique_id=1840700014]
 
 [node name="LeftShape" type="CollisionShape2D" parent="MovementMarkers/Left/LeftSprite/LeftArea" unique_id=815145986]
-shape = SubResource("RectangleShape2D_3865y")
+shape = SubResource("RectangleShape2D_b1whw")
 
 [node name="LeftButton" type="Button" parent="MovementMarkers/Left/LeftSprite" unique_id=2034260634]
 offset_left = -38.0
@@ -89,7 +99,7 @@ position = Vector2(78, -80)
 [node name="RightArea" type="Area2D" parent="MovementMarkers/Right/RightSprite" unique_id=2120855719]
 
 [node name="RightShape" type="CollisionShape2D" parent="MovementMarkers/Right/RightSprite/RightArea" unique_id=1463709036]
-shape = SubResource("RectangleShape2D_3865y")
+shape = SubResource("RectangleShape2D_xq3kh")
 
 [node name="RightButton" type="Button" parent="MovementMarkers/Right/RightSprite" unique_id=626128648]
 offset_left = -38.0
@@ -139,6 +149,11 @@ position = Vector2(80, 0)
 [node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=2110362818]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_3ab40")
+
+[node name="Sprite2D" type="Sprite2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=1944113105]
+position = Vector2(-2, 0)
+scale = Vector2(0.546875, 0.578125)
+texture = ExtResource("3_culnp")
 
 [connection signal="area_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_exited"]
