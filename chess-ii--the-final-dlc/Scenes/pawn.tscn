@@ -15,6 +15,12 @@ size = Vector2(72, 72)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xq3kh"]
 size = Vector2(72, 72)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_018tw"]
+size = Vector2(72, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ab40"]
+size = Vector2(72, 72)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_culnp"]
 size = Vector2(72, 72)
 
@@ -27,12 +33,6 @@ size = Vector2(72, 72)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ab40"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cr4cw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_018tw"]
-size = Vector2(72, 72)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ab40"]
-size = Vector2(72, 72)
 
 [node name="Pawn" type="CharacterBody2D" unique_id=1056477142 groups=["Pawn", "Pieces", "White"]]
 script = ExtResource("1_eu7ni")
@@ -107,6 +107,22 @@ offset_right = 38.0
 offset_bottom = 38.0
 metadata/_edit_use_anchors_ = true
 
+[node name="EnPassantDetect" type="Node2D" parent="MovementMarkers" unique_id=1899070858]
+
+[node name="LeftEnPassantArea" type="Area2D" parent="MovementMarkers/EnPassantDetect" unique_id=1629313961]
+position = Vector2(-80, 0)
+
+[node name="LeftEnPassantShape" type="CollisionShape2D" parent="MovementMarkers/EnPassantDetect/LeftEnPassantArea" unique_id=1660049324]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_018tw")
+
+[node name="RightEnPassantArea" type="Area2D" parent="MovementMarkers/EnPassantDetect" unique_id=1396533671]
+position = Vector2(80, 0)
+
+[node name="LeftEnPassantShape" type="CollisionShape2D" parent="MovementMarkers/EnPassantDetect/RightEnPassantArea" unique_id=2110362818]
+position = Vector2(-2, 0)
+shape = SubResource("RectangleShape2D_3ab40")
+
 [node name="PawnCollision" type="CollisionPolygon2D" parent="." unique_id=1163941849]
 polygon = PackedVector2Array(7, -29, 4, -32, 0, -33, -5, -32, -8, -28, -9, -23, -5, -20, -5, -15, -10, -13, -7, -10, -4, -4, -3, 6, -3, 10, -6, 12, -13, 20, -18, 26, -19, 33, 15, 31, 15, 25, 12, 20, 7, 15, 1, 6, 3, -6, 7, -12, 2, -16, 6, -23, 8, -30)
 
@@ -133,22 +149,6 @@ position = Vector2(0, 23)
 scale = Vector2(1.35, 1.4299998)
 texture = ExtResource("2_3865y")
 
-[node name="EnPassantDetect" type="Node2D" parent="." unique_id=1899070858]
-
-[node name="LeftEnPassantArea" type="Area2D" parent="EnPassantDetect" unique_id=1629313961]
-position = Vector2(-80, 0)
-
-[node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/LeftEnPassantArea" unique_id=1660049324]
-position = Vector2(-2, 0)
-shape = SubResource("RectangleShape2D_018tw")
-
-[node name="RightEnPassantArea" type="Area2D" parent="EnPassantDetect" unique_id=1396533671]
-position = Vector2(80, 0)
-
-[node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=2110362818]
-position = Vector2(-2, 0)
-shape = SubResource("RectangleShape2D_3ab40")
-
 [connection signal="area_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_exited"]
 [connection signal="body_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_body_entered"]
@@ -169,8 +169,8 @@ shape = SubResource("RectangleShape2D_3ab40")
 [connection signal="body_entered" from="MovementMarkers/Right/RightSprite/RightArea" to="." method="_on_right_area_body_entered"]
 [connection signal="body_exited" from="MovementMarkers/Right/RightSprite/RightArea" to="." method="_on_right_area_body_exited"]
 [connection signal="button_up" from="MovementMarkers/Right/RightSprite/RightButton" to="." method="_on_right_button_button_up"]
+[connection signal="body_entered" from="MovementMarkers/EnPassantDetect/LeftEnPassantArea" to="." method="_on_left_en_passant_area_body_entered"]
+[connection signal="body_entered" from="MovementMarkers/EnPassantDetect/RightEnPassantArea" to="." method="_on_right_en_passant_area_body_entered"]
 [connection signal="area_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_area_entered"]
 [connection signal="body_entered" from="TileCollisionArea" to="." method="_on_tile_collision_area_body_entered"]
 [connection signal="button_up" from="SelectPawn" to="." method="_on_select_pawn_button_up"]
-[connection signal="body_entered" from="EnPassantDetect/LeftEnPassantArea" to="." method="_on_left_en_passant_area_body_entered"]
-[connection signal="body_entered" from="EnPassantDetect/RightEnPassantArea" to="." method="_on_right_en_passant_area_body_entered"]

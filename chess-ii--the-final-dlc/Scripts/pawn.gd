@@ -19,6 +19,9 @@ var right_enemy
 var left_enemy
 var promoting
 
+var left_passant
+var right_passant
+
 var forward1_enemy
 var forward2_enemy
 
@@ -38,6 +41,8 @@ var en_passanting
 var body_being_passanted
 
 var readd_markers
+
+var passant_timer
 
 var moved
 
@@ -70,15 +75,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	if(self.name == "Pawn4Black"):
-		print("Turn tracking: "+ str(Globals.turn_tracking))
-		print("am i in group black?: "+ str(self.get_groups()))
-		print("Focused: "+ str(Globals.piece_focused))
-		print("am i passantable: "+ str(is_passantable))
-	if(Globals.turn_tracking == 1 && self.is_in_group("White") && Globals.piece_focused != null && Globals.piece_focused != self && is_passantable):
-		is_passantable = false
-	if(Globals.turn_tracking == 0 && self.is_in_group("Black") && Globals.piece_focused != null && Globals.piece_focused != self && is_passantable):
-		
+	print("turn amount: "+ str(Globals.turn_count))
+	if(passant_timer == (Globals.turn_count - 1)):
 		is_passantable = false
 	if(readd_markers):
 		var markers = $MovementMarkers
@@ -431,6 +429,7 @@ func _on_forward_2_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	var target_with_offset = Globals.position_target + Vector2(2, 0)
 	global_position = target_with_offset # change the position to the target.
+	passant_timer = Globals.turn_count
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -653,13 +652,11 @@ func _on_right_button_button_up() -> void:
 
 
 func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
-	print("body left entered: "+ str(body.name))
-	print("body group: " + str(body.get_groups()))
 	if "is_passantable" in body:
 		if body.is_passantable == true:
-			print("left is passantable")
 			if(left_enemy == false):
 				en_passanting = true
+				left_passant = body
 				body_being_passanted = body.name
 				if(body.is_in_group("White")):
 					if(self.is_in_group("Black")):
@@ -678,17 +675,12 @@ func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
 
 
 func _on_right_en_passant_area_body_entered(body: Node2D) -> void:
-	print("body right entered: "+ str(body.name))
-	print("body group: " + str(body.get_groups()))
 	if "is_passantable" in body:
 		if(body.is_passantable == true):
-			print("right is passantable")
 			if(right_enemy == false):
 				en_passanting = true
-				print("passanting: "+ str(en_passanting))
+				right_passant = body
 				body_being_passanted = body.name
-				print("body name : "+ str(body.name) + " " + str(body.get_groups()))
-				print("body being passanted: "+ str(body_being_passanted))
 				if(body.is_in_group("White")):
 					if(self.is_in_group("Black")):
 						right_enemy = true
