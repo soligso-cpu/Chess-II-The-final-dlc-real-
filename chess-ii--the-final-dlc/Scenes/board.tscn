@@ -820,12 +820,18 @@ position = Vector2(-1206, 1251)
 position = Vector2(577, 304)
 
 [node name="ShopButton" type="Button" parent="Shop" unique_id=2016025154]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 1233.0
+offset_top = -1010.0
+offset_right = 1340.0
+offset_bottom = -969.0
+text = "Shopp"
 
 [node name="ShopReturnButton" type="Button" parent="Shop" unique_id=2093975447]
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 85.0
+offset_top = 526.0
+offset_right = 230.0
+offset_bottom = 595.0
+text = "Return"
 
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
@@ -837,3 +843,5 @@ offset_bottom = 8.0
 [connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]
 [connection signal="button_up" from="SlotsOrganiser/SlotButton" to="." method="_on_slot_button_button_up"]
 [connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
+[connection signal="button_up" from="Shop/ShopButton" to="." method="_on_shop_button_button_up"]
+[connection signal="button_up" from="Shop/ShopReturnButton" to="." method="_on_shop_return_button_button_up"]

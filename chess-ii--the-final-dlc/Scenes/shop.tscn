@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b2m6qkf71wjr7" path="res://Scripts/shop.gd" id="1_io27d"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_fdj0q"]
 [ext_resource type="Texture2D" uid="uid://c5da0kyc2rfsi" path="res://Sprites/pixil-frame-0 (8).png" id="3_k6jq0"]
+[ext_resource type="Texture2D" uid="uid://yns48sfgbuye" path="res://Sprites/white-king-chess-piece-clipart-flat-design-icon-isolated-on-transparent-background-3d-render-chess-and-board-game-concept-png.webp" id="4_fdj0q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_io27d"]
 
@@ -71,8 +72,23 @@ text = "and move it"
 label_settings = SubResource("LabelSettings_io27d")
 metadata/_edit_use_anchors_ = true
 
+[node name="MajorPopup" type="Label" parent="MajorPowerup" unique_id=1105815154]
+visible = false
+offset_left = -134.0
+offset_top = -168.0
+offset_right = 22.0
+offset_bottom = -12.0
+
+[node name="StarActive" type="Sprite2D" parent="." unique_id=172895625]
+visible = false
+position = Vector2(1092.0001, 67)
+scale = Vector2(0.053061265, 0.0418368)
+texture = ExtResource("4_fdj0q")
+
 [connection signal="button_up" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_button_up"]
 [connection signal="focus_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_focus_entered"]
 [connection signal="mouse_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_mouse_entered"]
 [connection signal="mouse_exited" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_mouse_exited"]
 [connection signal="button_up" from="MajorPowerup/MajorButton" to="." method="_on_major_button_button_up"]
+[connection signal="mouse_entered" from="MajorPowerup/MajorButton" to="." method="_on_major_button_mouse_entered"]
+[connection signal="mouse_exited" from="MajorPowerup/MajorButton" to="." method="_on_major_button_mouse_exited"]
