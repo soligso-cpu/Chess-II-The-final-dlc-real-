@@ -27,6 +27,7 @@ var purge = false
 var count = 0
 var can_gamble = true
 var top_check = false
+var rigged = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -41,7 +42,7 @@ func _process(delta: float) -> void:
 			count -= 1
 			print("purge")
 	#this makes sure there is 9, and only 9, slots at the end of the sequence	
-	print("count is,", count)
+	#print("count is,", count)
 	if top_check == true and count < 8:
 		var spawn_timer: Timer = $SpawnTimer
 		if spawn_timer.time_left == 0:
@@ -59,31 +60,34 @@ func _process(delta: float) -> void:
 		
 func spawn_slot(slot):
 	
-		
-	var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
-	if slot_randi == 0:
-		var slot_7 = SLOT_7_SCENE.instantiate()
-		$SpawnedSlots.add_child(slot_7)
-		slot_7.global_position = slot.global_position
-		slot_7.add_to_group("Slot7Group")
-		
-	if slot_randi == 1:
-		var slot_bust = SLOT_BUST_SCENE.instantiate()
-		$SpawnedSlots2.add_child(slot_bust)
-		slot_bust.global_position = slot.global_position
-		
-	if slot_randi == 2:
-		var slot_double = SLOT_DOUBLE_SCENE.instantiate()
-		$SpawnedSlots3.add_child(slot_double)
-		slot_double.global_position = slot.global_position
-		
-		
-	if slot_randi == 3:
+	if rigged == false:	
+		var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
+		if slot_randi == 0:
+			var slot_7 = SLOT_7_SCENE.instantiate()
+			$SpawnedSlots.add_child(slot_7)
+			slot_7.global_position = slot.global_position
+			slot_7.add_to_group("Slot7Group")
+			
+		if slot_randi == 1:
+			var slot_bust = SLOT_BUST_SCENE.instantiate()
+			$SpawnedSlots2.add_child(slot_bust)
+			slot_bust.global_position = slot.global_position
+			
+		if slot_randi == 2:
+			var slot_double = SLOT_DOUBLE_SCENE.instantiate()
+			$SpawnedSlots3.add_child(slot_double)
+			slot_double.global_position = slot.global_position
+			
+			
+		if slot_randi == 3:
+			var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
+			$SpawnedSlots4.add_child(slot_jackpot)
+			slot_jackpot.global_position = slot.global_position
+			
+	elif rigged == true:
 		var slot_jackpot = SLOT_JACKPOT_SCENE.instantiate()
 		$SpawnedSlots4.add_child(slot_jackpot)
 		slot_jackpot.global_position = slot.global_position
-		
-	
 	count += 1
 
 
@@ -143,7 +147,15 @@ func _on_button_button_up() -> void:
 	elif spinning == true and can_gamble == true:
 		
 		print("next step, gud")
-		
+		if Globals.turn_tracking == 1:
+			if Globals.gamble_win_white == true:
+				rigged = true
+				Globals.gamble_win_white = false
+			
+		elif Globals.turn_tracking == 0:
+			if Globals.gamble_win_black == true:
+				rigged = true
+				Globals.gamble_win_black = false
 		
 		
 		print($SlotDetection/Line3.get_overlapping_bodies(), "work" )
@@ -268,6 +280,8 @@ func _on_purge_timer_timeout() -> void:
 	elif purge == true:
 		purge = false
 		can_gamble = true
+		
+	rigged = false
 
 
 func _on_line_1_body_entered(body: Node2D) -> void:

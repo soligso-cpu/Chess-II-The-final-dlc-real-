@@ -56,13 +56,20 @@ func _on_spin_timer_timeout() -> void:
 			winner = chosen_colour
 		elif roll < Globals.white_odds:
 			winner = loosing_colour
+		if Globals.gamble_win_white == true:
+			winner = chosen_colour
+			Globals.gamble_win_white = false
+			print("code raqn")
 			
 	elif Globals.turn_tracking == 0:
 		if roll >= Globals.black_odds:
 			winner = chosen_colour
 		elif roll < Globals.black_odds:
 			winner = loosing_colour
-			
+		if Globals.gamble_win_black == true:
+			winner = chosen_colour
+			Globals.gamble_win_black = false
+			print("code ran")
 	if winner == winning_colour.BLACK:
 		$Black.visible = true
 		$Red.visible = false

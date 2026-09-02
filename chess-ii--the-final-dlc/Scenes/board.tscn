@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://slot_machine.tscn" id="20_ardhx"]
 [ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
 [ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://background_animation.tscn" id="22_o57li"]
+[ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_abmxi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -811,6 +812,20 @@ offset_top = 1652.0
 offset_right = 1406.0
 offset_bottom = 1685.0
 text = "Back to chess"
+
+[node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("23_abmxi")]
+position = Vector2(-1206, 1251)
+
+[node name="ShopMarker" type="Marker2D" parent="Shop" unique_id=401339061]
+position = Vector2(577, 304)
+
+[node name="ShopButton" type="Button" parent="Shop" unique_id=2016025154]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="ShopReturnButton" type="Button" parent="Shop" unique_id=2093975447]
+offset_right = 8.0
+offset_bottom = 8.0
 
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]

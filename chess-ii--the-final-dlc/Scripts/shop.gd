@@ -7,7 +7,8 @@ enum game_key {
 }
 enum card {
 	CARD_SUN,
-	CARD_MOON
+	CARD_MOON,
+	CARD_STAR
 }
 var card_shown
 var key
@@ -67,13 +68,16 @@ func new_game_key():
 		print(key)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func new_card():
-	card_shown = randi_range(card.CARD_SUN, card.CARD_MOON)
+	card_shown = randi_range(card.CARD_SUN, card.CARD_STAR)
 	if card_shown == card.CARD_SUN:
 		print("gud")
 		$MajorPowerup/MajorText.text = str("The Sun")
-	else:
+	elif card_shown == card.CARD_MOON:
 		print("also good")
 		$MajorPowerup/MajorText.text = str("The Moon")
+	elif card_shown == card.CARD_STAR:
+		print("WOW, GAMBLE")
+		$MajorPowerup/MajorText.text = str("The Star")
 
 func _on_major_button_button_up() -> void:
 	if card_shown == card.CARD_SUN:
@@ -83,7 +87,7 @@ func _on_major_button_button_up() -> void:
 			
 		elif Globals.turn_tracking == 0:
 			Globals.black_odds -= 10
-	else:
+	elif  card_shown == card.CARD_MOON:
 		print("no luck for u")
 		if Globals.turn_tracking == 1:
 			Globals.black_odds += 10
@@ -91,6 +95,14 @@ func _on_major_button_button_up() -> void:
 		elif Globals.turn_tracking == 0:
 			
 			Globals.white_odds += 10
+	elif  card_shown == card.CARD_STAR:
+		print("Bending the rules i see")
+		if Globals.turn_tracking == 1:
+			Globals.gamble_win_white = true
+			
+		elif Globals.turn_tracking == 0:
+			
+			Globals.gamble_win_black = true
 
 
 func _on_game_key_button_focus_entered() -> void:
