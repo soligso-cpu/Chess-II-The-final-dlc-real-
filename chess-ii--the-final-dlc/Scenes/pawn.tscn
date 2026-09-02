@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://d8sf5vg7db0v" path="res://Scripts/pawn.gd" id="1_eu7ni"]
 [ext_resource type="Texture2D" uid="uid://cxiercc7a7lpj" path="res://Sprites/White-Pawn.png" id="2_3865y"]
-[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="3_culnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cr4cw"]
 size = Vector2(72, 72)
@@ -149,11 +148,6 @@ position = Vector2(80, 0)
 [node name="LeftEnPassantShape" type="CollisionShape2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=2110362818]
 position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_3ab40")
-
-[node name="Sprite2D" type="Sprite2D" parent="EnPassantDetect/RightEnPassantArea" unique_id=1944113105]
-position = Vector2(-2, 0)
-scale = Vector2(0.546875, 0.578125)
-texture = ExtResource("3_culnp")
 
 [connection signal="area_entered" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Forward/ForwardSprite/ForwardArea" to="." method="_on_forward_area_area_exited"]

@@ -70,9 +70,15 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if(self.name == "Pawn4Black"):
+		print("Turn tracking: "+ str(Globals.turn_tracking))
+		print("am i in group black?: "+ str(self.get_groups()))
+		print("Focused: "+ str(Globals.piece_focused))
+		print("am i passantable: "+ str(is_passantable))
 	if(Globals.turn_tracking == 1 && self.is_in_group("White") && Globals.piece_focused != null && Globals.piece_focused != self && is_passantable):
 		is_passantable = false
 	if(Globals.turn_tracking == 0 && self.is_in_group("Black") && Globals.piece_focused != null && Globals.piece_focused != self && is_passantable):
+		
 		is_passantable = false
 	if(readd_markers):
 		var markers = $MovementMarkers
@@ -91,7 +97,6 @@ func _process(delta: float) -> void:
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
 		$SelectPawn.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			
 			z_index = 5
 			move_to_front()
 			taking = true
@@ -649,6 +654,7 @@ func _on_right_button_button_up() -> void:
 
 func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
 	print("body left entered: "+ str(body.name))
+	print("body group: " + str(body.get_groups()))
 	if "is_passantable" in body:
 		if body.is_passantable == true:
 			print("left is passantable")
@@ -673,6 +679,7 @@ func _on_left_en_passant_area_body_entered(body: Node2D) -> void:
 
 func _on_right_en_passant_area_body_entered(body: Node2D) -> void:
 	print("body right entered: "+ str(body.name))
+	print("body group: " + str(body.get_groups()))
 	if "is_passantable" in body:
 		if(body.is_passantable == true):
 			print("right is passantable")
@@ -680,6 +687,7 @@ func _on_right_en_passant_area_body_entered(body: Node2D) -> void:
 				en_passanting = true
 				print("passanting: "+ str(en_passanting))
 				body_being_passanted = body.name
+				print("body name : "+ str(body.name) + " " + str(body.get_groups()))
 				print("body being passanted: "+ str(body_being_passanted))
 				if(body.is_in_group("White")):
 					if(self.is_in_group("Black")):
