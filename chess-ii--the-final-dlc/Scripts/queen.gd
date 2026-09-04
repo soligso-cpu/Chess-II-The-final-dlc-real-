@@ -1601,6 +1601,17 @@ func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
+	if(self.is_in_group("White")):
+		if(Globals.white_in_check):
+			if(Globals.piece_attacking_king.has_child(area)):
+				enemy_right1 = true
+				right1_friendly_border = false
+				right1_touching_border = false
+			else:
+				enemy_right1 = true
+				right1_touching_border = true
+				right1_friendly_border = true
+		
 
 
 func _on_right_area_1_area_exited(area: Area2D) -> void:
