@@ -35,7 +35,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#pruges slots after rewards
+	#pruges slots after rewards are given out
 	for body in $Area2D2.get_overlapping_bodies():
 		if purge == true:
 			body.queue_free()
@@ -59,7 +59,8 @@ func _process(delta: float) -> void:
 		
 		
 func spawn_slot(slot):
-	
+	#spawns the slots in their respective parents. The parents are actually what is used to
+	#track whihc is which, because it was just easier. 
 	if rigged == false:	
 		var slot_randi = randi_range(slot_1.SLOT_1_7, slot_1.SLOT_1_JACKPOT)
 		if slot_randi == 0:
@@ -85,6 +86,7 @@ func spawn_slot(slot):
 			slot_jackpot.global_position = slot.global_position
 			
 	elif rigged == true:
+	#garunteed jackpot if the star is active
 		var slot_7 = SLOT_7_SCENE.instantiate()
 		$SpawnedSlots.add_child(slot_7)
 		slot_7.global_position = slot.global_position
@@ -93,12 +95,12 @@ func spawn_slot(slot):
 
 
 
-
+#gets rid of the old slots as they fall to the bottom
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	body.queue_free()
 	count -= 1
 
-
+#spawns a slot in every line if there isn't enough
 func _on_spawn_timer_timeout() -> void:
 	if count <= 9:
 		print("now")
@@ -131,7 +133,8 @@ func _on_spawn_timer_timeout() -> void:
 	#
 	#print(slot_randi)
 
-
+#Spawns some slots automatically when button pressed to mkae sure there is enouygh
+#then runs through wether thre star is active
 func _on_button_button_up() -> void:
 	if spinning == false and can_gamble == true:
 		purge = false
@@ -170,7 +173,8 @@ func _on_button_button_up() -> void:
 
 	
 
-
+#all of these tell me what slot is where, and the system uses these variables to see
+# if a prize if won and what prize it is
 func _on_slot_3_body_entered(body: Node2D) -> void:
 	if body.get_parent() == $SpawnedSlots:
 		slot1 = 1
@@ -204,7 +208,11 @@ func _on_slot_1_body_entered(body: Node2D) -> void:
 	elif body.get_parent() == $SpawnedSlots4:
 		slot3 = 4
 	print(slot3)
-
+#this short 'proocess timer" is so the player has some time to see if they won. 
+#in that timer is when the win animations would play.
+#this is also where the slots are cheked to see if they won :]
+#the process timer also gives the other parts of the code enough time to spawn more slots if there 
+#isnt enough
 func _on_process_timer_timeout() -> void:
 	if count > 8:
 		top_check = false
@@ -283,7 +291,7 @@ func _on_purge_timer_timeout() -> void:
 		
 	rigged = false
 
-
+#More assigning variables to slots
 func _on_line_1_body_entered(body: Node2D) -> void:
 	if body.get_parent() == $SpawnedSlots:
 		line1 = 1
@@ -355,7 +363,7 @@ func _on_top_3_body_entered(body: Node2D) -> void:
 		top3 = 4
 	print(top3)
 	
-	
+	#gives the player their winnigns or loosings
 func regular_win():
 	print("reg win")
 	if Globals.turn_tracking == 1:
