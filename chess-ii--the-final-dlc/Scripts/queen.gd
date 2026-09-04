@@ -1309,7 +1309,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("Black")):
 				if(body.is_in_group("King")):
-					Globals.white_in_check = true
+					Globals.black_in_check = true
 					Globals.piece_attacking_king = self
 				enemy_right1 = true
 			else:
@@ -1335,6 +1335,10 @@ func _on_right_area_2_body_entered(body: Node2D) -> void:
 				right2_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right2 = true
 			else:
 				enemy_right2 = true
@@ -1348,10 +1352,14 @@ func _on_right_area_2_body_entered(body: Node2D) -> void:
 				right2_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right2 = true
 			else:
 				enemy_right2 = true
-				right1_friendly_border = true
+				right2_friendly_border = true
 
 
 func _on_right_area_2_body_exited(body: Node2D) -> void:
@@ -1372,6 +1380,10 @@ func _on_right_area_3_body_entered(body: Node2D) -> void:
 				right3_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right3 = true
 			else:
 				enemy_right3 = true
@@ -1385,6 +1397,10 @@ func _on_right_area_3_body_entered(body: Node2D) -> void:
 				right3_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right3 = true
 			else:
 				enemy_right3 = true
@@ -1409,6 +1425,10 @@ func _on_right_area_4_body_entered(body: Node2D) -> void:
 				right4_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right4 = true
 			else:
 				enemy_right4 = true
@@ -1422,6 +1442,10 @@ func _on_right_area_4_body_entered(body: Node2D) -> void:
 				right4_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right4 = true
 			else:
 				enemy_right4 = true
@@ -1446,6 +1470,10 @@ func _on_right_area_5_body_entered(body: Node2D) -> void:
 				right5_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right5 = true
 			else:
 				enemy_right5 = true
@@ -1459,6 +1487,10 @@ func _on_right_area_5_body_entered(body: Node2D) -> void:
 				right5_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right5 = true
 			else:
 				enemy_right5 = true
@@ -1483,6 +1515,10 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 				right6_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4 && !enemy_right5):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right6 = true
 			else:
 				enemy_right6 = true
@@ -1496,6 +1532,10 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 				right6_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4 && !enemy_right5):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right6 = true
 			else:
 				enemy_right6 = true
@@ -1520,6 +1560,10 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 				right7_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 & !enemy_right3 && !enemy_right4 && !enemy_right5 && !enemy_right6):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right7 = true
 			else:
 				enemy_right7 = true
@@ -1533,6 +1577,10 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 				right7_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4 && !enemy_right5 && !enemy_right6):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				enemy_right7 = true
 			else:
 				enemy_right7 = true
