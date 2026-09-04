@@ -111,6 +111,26 @@ offset_top = -1.5258789e-05
 offset_bottom = -3.0517578e-05
 text = "I'm lame and don't wanna gamble. "
 
+[node name="OptionButton" type="OptionButton" parent="Control" unique_id=35632084]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 6.024
+anchor_top = 7.6900005
+anchor_right = 10.071
+anchor_bottom = 8.5
+offset_left = -0.008010864
+offset_top = 3.019989
+offset_right = -105.981995
+item_count = 4
+popup/item_0/text = "2$ (minimum bet)"
+popup/item_0/id = 0
+popup/item_1/text = "25% of money"
+popup/item_1/id = 1
+popup/item_2/text = "50% of money"
+popup/item_2/id = 2
+popup/item_3/text = "ALL IN"
+popup/item_3/id = 3
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
@@ -118,3 +138,5 @@ text = "I'm lame and don't wanna gamble. "
 [connection signal="button_up" from="Control/RedButton" to="." method="_on_red_button_button_up"]
 [connection signal="button_up" from="Control/BlackButton" to="." method="_on_black_button_button_up"]
 [connection signal="button_up" from="Control/QuitButton" to="." method="_on_quit_button_button_up"]
+[connection signal="item_focused" from="Control/OptionButton" to="." method="_on_option_button_item_focused"]
+[connection signal="item_selected" from="Control/OptionButton" to="." method="_on_option_button_item_selected"]
