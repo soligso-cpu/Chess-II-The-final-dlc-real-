@@ -86,7 +86,7 @@ func spawn_slot(slot):
 			
 	elif rigged == true:
 		var slot_7 = SLOT_7_SCENE.instantiate()
-		$SpawnedSlots4.add_child(slot_7)
+		$SpawnedSlots.add_child(slot_7)
 		slot_7.global_position = slot.global_position
 	count += 1
 

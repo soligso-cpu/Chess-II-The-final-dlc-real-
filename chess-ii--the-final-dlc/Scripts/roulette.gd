@@ -17,6 +17,7 @@ var chosen_colour
 var spin_speed = 0.7
 var spin_change = 0.989
 var loosing_colour
+var bet = 2
 
 
 # Called when the node enters the scene tree for the first time.
@@ -26,18 +27,33 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("Click") and currently_gambling == false and chosen_colour and hover == true:
+	if Input.is_action_just_pressed("Click") and currently_gambling == false and chosen_colour and hover == true and bet >= 2:
 		print("START GAMBLIN")
 		currently_gambling = true
-		$SpinTimer.start()
-		timer_length = 0.1
-		$SwitchTimer.start(timer_length)
-		spin_speed = 0.7
-		if Globals.turn_tracking == 1:
-			Globals.white_money -= 2
-		if Globals.turn_tracking == 0:
-			Globals.black_money -= 2
 		
+		timer_length = 0.1
+		
+		spin_speed = 0.7
+		if Globals.turn_tracking == 1 and Globals.white_money >= bet :
+			Globals.white_money -= bet
+			$SpinTimer.start()
+			$SwitchTimer.start(timer_length)
+		elif Globals.turn_tracking == 1 and Globals.white_money < bet:
+			print("nope")
+			$SwitchTimer.stop()
+			$SpinTimer.stop()
+			currently_gambling = false
+			
+		if Globals.turn_tracking == 0 and Globals.black_money >= bet:
+			Globals.black_money -= bet
+			$SwitchTimer.start(timer_length)
+			$SpinTimer.start()
+			
+		elif Globals.turn_tracking == 0 and Globals.black_money < bet:
+			print("nope")
+			$SwitchTimer.stop()
+			$SpinTimer.stop()
+			currently_gambling = false
 	if currently_gambling == true:
 		$Button.rotation += spin_speed
 		spin_speed  = spin_speed * spin_change
@@ -90,13 +106,13 @@ func _on_spin_timer_timeout() -> void:
 			Globals.white_turns = 3
 			print(Globals.white_turns, "id")
 			
-			Globals.white_money += 4
+			Globals.white_money += bet * 2
 		
 			
 		elif Globals.turn_tracking == 0:
 			Globals.black_turns = 3
 			print(Globals.black_turns, "id")
-			Globals.black_money += 4
+			Globals.black_money += bet * 2
 	elif winner != chosen_colour:
 		print("aw dangit")
 		$Control/Label.text = str("Oh well, you lost your turn.")
@@ -164,3 +180,35 @@ func _on_move_button_button_up() -> void:
 	
 	
 	
+
+
+func _on_option_button_item_focused(index: int) -> void:
+	pass # Replace with function body.
+
+
+func _on_option_button_item_selected(index: int) -> void:
+	if index == 0:
+		bet = 2
+	elif index == 1:
+		if Globals.turn_tracking == 1:
+			bet = Globals.white_money * 0.25
+
+		if Globals.turn_tracking == 0:
+			bet = Globals.black_money * 0.25
+			
+	elif index == 2:
+		if Globals.turn_tracking == 1:
+			bet = Globals.white_money * 0.5
+
+		if Globals.turn_tracking == 0:
+			bet = Globals.black_money * 0.5
+	elif index == 3:
+		if Globals.turn_tracking == 1:
+			bet = Globals.white_money
+
+		if Globals.turn_tracking == 0:
+			bet = Globals.black_money 
+	
+	
+		
+	print(bet, " is bet")
