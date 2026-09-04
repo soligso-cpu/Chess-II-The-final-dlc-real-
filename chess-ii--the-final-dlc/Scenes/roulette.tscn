@@ -131,6 +131,101 @@ popup/item_2/id = 2
 popup/item_3/text = "ALL IN"
 popup/item_3/id = 3
 
+[node name="NumberButton" type="OptionButton" parent="Control" unique_id=714384898]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 20.0
+item_count = 36
+popup/item_0/text = "1"
+popup/item_0/id = 1
+popup/item_1/text = "2"
+popup/item_1/id = 2
+popup/item_2/text = "3"
+popup/item_2/id = 3
+popup/item_3/text = "4"
+popup/item_3/id = 4
+popup/item_4/text = "5"
+popup/item_4/id = 5
+popup/item_5/text = "6"
+popup/item_5/id = 6
+popup/item_6/text = "7"
+popup/item_6/id = 7
+popup/item_7/text = "8"
+popup/item_7/id = 8
+popup/item_8/text = "9"
+popup/item_8/id = 9
+popup/item_9/text = "10"
+popup/item_9/id = 10
+popup/item_10/text = "11"
+popup/item_10/id = 11
+popup/item_11/text = "12"
+popup/item_11/id = 12
+popup/item_12/text = "13"
+popup/item_12/id = 13
+popup/item_13/text = "14"
+popup/item_13/id = 14
+popup/item_14/text = "15"
+popup/item_14/id = 15
+popup/item_15/text = "16"
+popup/item_15/id = 16
+popup/item_16/text = "17"
+popup/item_16/id = 17
+popup/item_17/text = "18"
+popup/item_17/id = 18
+popup/item_18/text = "19"
+popup/item_18/id = 19
+popup/item_19/text = "20"
+popup/item_19/id = 20
+popup/item_20/text = "21"
+popup/item_20/id = 21
+popup/item_21/text = "22"
+popup/item_21/id = 22
+popup/item_22/text = "23"
+popup/item_22/id = 23
+popup/item_23/text = "24"
+popup/item_23/id = 24
+popup/item_24/text = "25"
+popup/item_24/id = 25
+popup/item_25/text = "26"
+popup/item_25/id = 26
+popup/item_26/text = "27"
+popup/item_26/id = 27
+popup/item_27/text = "28"
+popup/item_27/id = 28
+popup/item_28/text = "29"
+popup/item_28/id = 29
+popup/item_29/text = "30"
+popup/item_29/id = 30
+popup/item_30/text = "31"
+popup/item_30/id = 31
+popup/item_31/text = "32"
+popup/item_31/id = 32
+popup/item_32/text = "33"
+popup/item_32/id = 33
+popup/item_33/text = "34"
+popup/item_33/id = 34
+popup/item_34/text = "35"
+popup/item_34/id = 35
+popup/item_35/text = "36"
+popup/item_35/id = 36
+
+[node name="NumberBetButton" type="Button" parent="Control" unique_id=703599963]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.286
+anchor_top = 1.4050001
+anchor_right = 2.6190002
+anchor_bottom = 2.0240002
+offset_left = -0.012001038
+offset_top = -0.010002136
+offset_right = 68.00199
+offset_bottom = 4.991989
+text = "bet on number"
+
+[node name="SpinTimerNum" type="Timer" parent="." unique_id=483213638]
+wait_time = 9.684
+one_shot = true
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
@@ -140,3 +235,6 @@ popup/item_3/id = 3
 [connection signal="button_up" from="Control/QuitButton" to="." method="_on_quit_button_button_up"]
 [connection signal="item_focused" from="Control/OptionButton" to="." method="_on_option_button_item_focused"]
 [connection signal="item_selected" from="Control/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="Control/NumberButton" to="." method="_on_number_button_item_selected"]
+[connection signal="button_up" from="Control/NumberBetButton" to="." method="_on_number_bet_button_button_up"]
+[connection signal="timeout" from="SpinTimerNum" to="." method="_on_spin_timer_num_timeout"]
