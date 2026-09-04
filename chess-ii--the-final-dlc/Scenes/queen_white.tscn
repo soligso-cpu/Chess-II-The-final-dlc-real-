@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cgok1so5uggxc" path="res://Scripts/queen.gd" id="1_k28i3"]
 [ext_resource type="Texture2D" uid="uid://dxurijl6w4v3n" path="res://Sprites/White-Queen.png" id="2_k28i3"]
+[ext_resource type="AudioStream" uid="uid://b1qxfo80x3xne" path="res://Sounds/chess-com-piece-move.mp3" id="3_ek64s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k28i3"]
 size = Vector2(72, 72.25)
@@ -1233,6 +1234,9 @@ polygon = PackedVector2Array(0, -37, -2, -32, -6, -28, -9, -27, -6, -24, -4, -14
 [node name="QueenSprite" type="Sprite2D" parent="." unique_id=917682721]
 scale = Vector2(0.52000004, 0.54285717)
 texture = ExtResource("2_k28i3")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="." unique_id=946466821]
+stream = ExtResource("3_ek64s")
 
 [connection signal="area_entered" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_entered"]
 [connection signal="area_exited" from="MovementMarkers/Right/Right1/RightSprite/RightArea1" to="." method="_on_right_area_1_area_exited"]
