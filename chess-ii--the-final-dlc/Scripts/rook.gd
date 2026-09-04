@@ -914,7 +914,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -927,7 +927,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 				right1_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -951,7 +951,7 @@ func _on_right_area_2_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right2 = true
 			else:
 				enemy_right2 = true
@@ -964,7 +964,7 @@ func _on_right_area_2_body_entered(body: Node2D) -> void:
 				right2_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right2 = true
 			else:
 				enemy_right2 = true
@@ -988,7 +988,7 @@ func _on_right_area_3_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right3 = true
 			else:
 				enemy_right3 = true
@@ -1001,7 +1001,7 @@ func _on_right_area_3_body_entered(body: Node2D) -> void:
 				right3_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right3 = true
 			else:
 				enemy_right3 = true
@@ -1025,7 +1025,7 @@ func _on_right_area_4_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right4 = true
 			else:
 				enemy_right4 = true
@@ -1038,7 +1038,7 @@ func _on_right_area_4_body_entered(body: Node2D) -> void:
 				right4_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right4 = true
 			else:
 				enemy_right4 = true
@@ -1062,7 +1062,7 @@ func _on_right_area_5_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right5 = true
 			else:
 				enemy_right5 = true
@@ -1075,7 +1075,7 @@ func _on_right_area_5_body_entered(body: Node2D) -> void:
 				right5_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right5 = true
 			else:
 				enemy_right5 = true
@@ -1099,7 +1099,7 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right6 = true
 			else:
 				enemy_right6 = true
@@ -1112,7 +1112,7 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 				right6_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right6 = true
 			else:
 				enemy_right6 = true
@@ -1136,7 +1136,7 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right7 = true
 			else:
 				enemy_right7 = true
@@ -1149,7 +1149,7 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 				right7_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_right7 = true
 			else:
 				enemy_right7 = true
@@ -1509,7 +1509,7 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward1 = true
 			else:
 				enemy_forward1 = true
@@ -1522,7 +1522,7 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 				forward1_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward1 = true
 			else:
 				enemy_forward1 = true
@@ -1545,7 +1545,7 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward2 = true
 			else:
 				enemy_forward2 = true
@@ -1558,7 +1558,7 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 				forward2_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward2 = true
 			else:
 				enemy_forward2 = true
@@ -1581,7 +1581,7 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward3 = true
 			else:
 				enemy_forward3 = true
@@ -1594,7 +1594,7 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 				forward3_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward3 = true
 			else:
 				enemy_forward3 = true
@@ -1617,7 +1617,7 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward4 = true
 			else:
 				enemy_forward4 = true
@@ -1630,7 +1630,7 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 				forward4_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward4 = true
 			else:
 				enemy_forward4 = true
@@ -1653,7 +1653,7 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward5 = true
 			else:
 				enemy_forward5 = true
@@ -1666,7 +1666,7 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 				forward5_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward5 = true
 			else:
 				enemy_forward5 = true
@@ -1689,7 +1689,7 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward6 = true
 			else:
 				enemy_forward6 = true
@@ -1702,7 +1702,7 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 				forward6_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward6 = true
 			else:
 				enemy_forward6 = true
@@ -1725,7 +1725,7 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward7 = true
 			else:
 				enemy_forward7 = true
@@ -1738,7 +1738,7 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 				forward7_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_forward7 = true
 			else:
 				enemy_forward7 = true
@@ -1876,7 +1876,7 @@ func _on_back_1_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back1 = true
 			else:
 				enemy_back1 = true
@@ -1889,7 +1889,7 @@ func _on_back_1_area_body_entered(body: Node2D) -> void:
 				back1_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back1 = true
 			else:
 				enemy_back1 = true
@@ -1912,7 +1912,7 @@ func _on_back_2_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back2 = true
 			else:
 				enemy_back2 = true
@@ -1925,7 +1925,7 @@ func _on_back_2_area_body_entered(body: Node2D) -> void:
 				back2_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back2 = true
 			else:
 				enemy_back2 = true
@@ -1949,7 +1949,7 @@ func _on_back_3_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back3 = true
 			else:
 				enemy_back3 = true
@@ -1962,7 +1962,7 @@ func _on_back_3_area_body_entered(body: Node2D) -> void:
 				back3_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back3 = true
 			else:
 				enemy_back3 = true
@@ -1985,7 +1985,7 @@ func _on_back_4_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back4 = true
 			else:
 				enemy_back4 = true
@@ -1998,7 +1998,7 @@ func _on_back_4_area_body_entered(body: Node2D) -> void:
 				back4_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back4 = true
 			else:
 				enemy_back4 = true
@@ -2022,7 +2022,7 @@ func _on_back_5_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back5 = true
 			else:
 				enemy_back5 = true
@@ -2035,7 +2035,7 @@ func _on_back_5_area_body_entered(body: Node2D) -> void:
 				back5_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back5 = true
 			else:
 				enemy_back5 = true
@@ -2059,7 +2059,7 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back6 = true
 			else:
 				enemy_back6 = true
@@ -2072,7 +2072,7 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 				back6_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back6 = true
 			else:
 				enemy_back6 = true
@@ -2096,7 +2096,7 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back7 = true
 			else:
 				enemy_back7 = true
@@ -2109,7 +2109,7 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 				back7_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_back7 = true
 			else:
 				enemy_back7 = true
@@ -2465,7 +2465,7 @@ func _on_left_1_area_body_entered(body: Node2D) -> void:
 	left1_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left1 = true
 			else:
 				enemy_left1 = true
@@ -2478,7 +2478,7 @@ func _on_left_1_area_body_entered(body: Node2D) -> void:
 				left1_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left1 = true
 			else:
 				enemy_left1 = true
@@ -2499,7 +2499,7 @@ func _on_left_2_area_body_entered(body: Node2D) -> void:
 	left2_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left2 = true
 			else:
 				enemy_left2 = true
@@ -2512,7 +2512,7 @@ func _on_left_2_area_body_entered(body: Node2D) -> void:
 				left2_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left2 = true
 			else:
 				enemy_left2 = true
@@ -2534,7 +2534,7 @@ func _on_left_3_area_body_entered(body: Node2D) -> void:
 	left3_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left3 = true
 			else:
 				enemy_left3 = true
@@ -2547,7 +2547,7 @@ func _on_left_3_area_body_entered(body: Node2D) -> void:
 				left3_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left3 = true
 			else:
 				enemy_left3 = true
@@ -2569,7 +2569,7 @@ func _on_left_4_area_body_entered(body: Node2D) -> void:
 	left4_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left4 = true
 			else:
 				enemy_left4 = true
@@ -2582,7 +2582,7 @@ func _on_left_4_area_body_entered(body: Node2D) -> void:
 				left4_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left4 = true
 			else:
 				enemy_left4 = true
@@ -2604,7 +2604,7 @@ func _on_left_5_area_body_entered(body: Node2D) -> void:
 	left5_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left5 = true
 			else:
 				enemy_left5 = true
@@ -2617,7 +2617,7 @@ func _on_left_5_area_body_entered(body: Node2D) -> void:
 				left5_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left5 = true
 			else:
 				enemy_left5 = true
@@ -2639,7 +2639,7 @@ func _on_left_6_area_body_entered(body: Node2D) -> void:
 	left6_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left6 = true
 			else:
 				enemy_left6 = true
@@ -2652,7 +2652,7 @@ func _on_left_6_area_body_entered(body: Node2D) -> void:
 				left6_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left6 = true
 			else:
 				enemy_left6 = true
@@ -2674,7 +2674,7 @@ func _on_left_7_area_body_entered(body: Node2D) -> void:
 	left7_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left7 = true
 			else:
 				enemy_left7 = true
@@ -2687,7 +2687,7 @@ func _on_left_7_area_body_entered(body: Node2D) -> void:
 				left7_friendly_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
-			if(body == Globals.piece_attacking_king):
+			if(body.name == Globals.piece_attacking_king):
 				enemy_left7 = true
 			else:
 				enemy_left7 = true
