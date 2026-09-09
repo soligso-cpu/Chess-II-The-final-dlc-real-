@@ -769,6 +769,7 @@ shape = SubResource("RectangleShape2D_d7frl")
 [node name="Promotion" type="Node2D" parent="." unique_id=1415129723]
 
 [node name="BlackPromotion" type="Area2D" parent="Promotion" unique_id=1960621730 groups=["PromotionTiles"]]
+visible = false
 position = Vector2(-8, 578)
 
 [node name="BlackPromotionShape" type="CollisionShape2D" parent="Promotion/BlackPromotion" unique_id=433070782 groups=["PromotionTiles"]]
