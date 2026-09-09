@@ -70,3 +70,12 @@ func _on_shop_button_button_up() -> void:
 
 func _on_shop_return_button_button_up() -> void:
 	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position
+
+
+func _on_fish_return_button_up() -> void:
+	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position # Replace with function body.
+
+
+func _on_fish_button_button_up() -> void:
+	
+	$RouletteOrganizer/Camera2D.global_position = $FishingGame/FishMarker.global_position

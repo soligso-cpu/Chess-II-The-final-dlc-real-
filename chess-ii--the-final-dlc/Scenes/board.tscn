@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
 [ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://background_animation.tscn" id="22_o57li"]
 [ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_abmxi"]
+[ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="24_mc7rj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -833,6 +834,26 @@ offset_right = 230.0
 offset_bottom = 595.0
 text = "Return"
 
+[node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("24_mc7rj")]
+position = Vector2(-1553, -953)
+
+[node name="FishMarker" type="Marker2D" parent="FishingGame" unique_id=1971766302]
+position = Vector2(541, 308)
+
+[node name="FishReturn" type="Button" parent="FishingGame" unique_id=1330432351]
+offset_left = -18.0
+offset_top = 340.0
+offset_right = 114.0
+offset_bottom = 368.0
+text = "Back"
+
+[node name="FishButton" type="Button" parent="FishingGame" unique_id=1061870121]
+offset_left = 1592.0
+offset_top = 1142.0
+offset_right = 1683.0
+offset_bottom = 1194.0
+text = "FIH"
+
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
@@ -845,3 +866,5 @@ text = "Return"
 [connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
 [connection signal="button_up" from="Shop/ShopButton" to="." method="_on_shop_button_button_up"]
 [connection signal="button_up" from="Shop/ShopReturnButton" to="." method="_on_shop_return_button_button_up"]
+[connection signal="button_up" from="FishingGame/FishReturn" to="." method="_on_fish_return_button_up"]
+[connection signal="button_up" from="FishingGame/FishButton" to="." method="_on_fish_button_button_up"]

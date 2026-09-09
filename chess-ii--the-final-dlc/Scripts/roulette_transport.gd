@@ -13,7 +13,7 @@ func _process(delta: float) -> void:
 		$"../../LoreOrganizer/AnimationPlayer".play("Jumpscare_real")
 		$"../../LoreOrganizer/JumpscareSprite".visible = true
 
-	if Input.is_action_just_pressed("Click") and hover == true and on_roulette == false:
+	if Input.is_action_just_pressed("Click") and hover == true and on_roulette == false and Globals.roulette_unlocked == true:
 		$"../Roulette".visible = true
 		$"../../TileMapLayer".visible = false
 		$"../../TileAreas".visible = false
