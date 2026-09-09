@@ -1287,6 +1287,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_right1 = true
+				right1_touching_border = false
 			else:
 				enemy_right1 = true
 				right1_touching_border = true
@@ -1295,6 +1296,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 				if(body.is_in_group("King")):
 					Globals.white_in_check = true
 					Globals.piece_attacking_king = self
+					right7_touching_border = false
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -1303,6 +1305,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_right1 = true
+				right1_touching_border = false
 			else:
 				enemy_right1 = true
 				right1_touching_border = true
@@ -1311,6 +1314,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 				if(body.is_in_group("King")):
 					Globals.black_in_check = true
 					Globals.piece_attacking_king = self
+					right7_touching_border = false
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -1536,6 +1540,7 @@ func _on_right_area_6_body_entered(body: Node2D) -> void:
 					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4 && !enemy_right5):
 						Globals.black_in_check = true
 						Globals.piece_attacking_king = self
+						right6_touching_border = false
 				enemy_right6 = true
 			else:
 				enemy_right6 = true

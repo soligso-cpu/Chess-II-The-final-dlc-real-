@@ -283,20 +283,36 @@ func _on_fr_area_area_exited(area: Area2D) -> void:
 func _on_fr_area_body_entered(body: Node2D) -> void:
 	fr_tile = body.tile
 	fr_tile_group = body.tile_group
-	if(body.is_in_group("White")):
-		if(self.is_in_group("White")):
-			fr_enemy = true
-			fr_touching_border = true
+	if(self.is_in_group("Black")):
+		if(Globals.black_in_check):
+			if(body == Globals.piece_attacking_king):
+				fr_enemy = true
+				fr_touching_border = false
+			else:
+				fr_enemy = true
+				fr_touching_border = true
 		else:
-			fr_enemy = true
-			fr_touching_border = false
-	elif(body.is_in_group("Black")):
-		if(self.is_in_group("Black")):
-			fr_enemy = true
-			fr_touching_border = true
+			if(body.is_in_group("White")):
+				fr_enemy = true
+				fr_touching_border = false
+			else:
+				fr_enemy = true
+				fr_touching_border = true
+	elif(self.is_in_group("White")):
+		if(Globals.white_in_check):
+			if(body == Globals.piece_attacking_king):
+				fr_enemy = true
+				fr_touching_border = false
+			else:
+				fr_enemy = true
+				fr_touching_border = true
 		else:
-			fr_enemy = true
-			fr_touching_border = false
+			if(body.is_in_group("Black")):
+				fr_enemy = true
+				fr_touching_border = false
+			else:
+				fr_enemy = true
+				fr_touching_border = true
 
 
 func _on_fr_area_body_exited(body: Node2D) -> void:
