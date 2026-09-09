@@ -1611,7 +1611,11 @@ func _on_right_area_1_area_entered(area: Area2D) -> void:
 				enemy_right1 = true
 				right1_touching_border = true
 				right1_friendly_border = true
-		
+		else:
+			var body = area.get_parent()
+			if(body.is_in_group("King")):
+				if(body.is_in_group("Black")):
+					Globals.piece_attacking_king = self
 
 
 func _on_right_area_1_area_exited(area: Area2D) -> void:
@@ -1755,6 +1759,7 @@ func _on_forward_button_3_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -1770,6 +1775,7 @@ func _on_forward_button_4_button_up() -> void:
 	await get_tree().process_frame
 	await get_tree().process_frame
 	global_position = Globals.position_target
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -1785,6 +1791,7 @@ func _on_forward_button_5_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -1802,6 +1809,7 @@ func _on_forward_button_6_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -1818,6 +1826,7 @@ func _on_forward_button_7_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -1947,6 +1956,8 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward1 = true
+				forward1_friendly_border = false
+				forward1_touching_border = false
 			else:
 				enemy_forward1 = true
 				forward1_touching_border = true
@@ -1960,12 +1971,16 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward1 = true
+				forward1_friendly_border = false
+				forward1_touching_border = false
 			else:
 				enemy_forward1 = true
 				forward1_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward1 = true
+				forward1_friendly_border = false
+				forward1_touching_border = false
 			else:
 				enemy_forward1 = true
 				forward1_friendly_border = true
@@ -1983,12 +1998,16 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward2 = true
+				forward2_friendly_border = false
+				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward2 = true
+				forward2_friendly_border = false
+				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_friendly_border = true
@@ -1996,12 +2015,16 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward2 = true
+				forward2_friendly_border = false
+				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward2 = true
+				forward2_friendly_border = false
+				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_friendly_border = true
@@ -2019,12 +2042,16 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward3 = true
+				forward3_friendly_border = false
+				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward3 = true
+				forward3_friendly_border = false
+				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_friendly_border = true
@@ -2032,12 +2059,16 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward3 = true
+				forward3_friendly_border = false
+				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward3 = true
+				forward3_friendly_border = false
+				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_friendly_border = true
@@ -2055,12 +2086,16 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward4 = true
+				forward4_friendly_border = false
+				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward4 = true
+				forward4_friendly_border = false
+				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_friendly_border = true
@@ -2068,12 +2103,16 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward4 = true
+				forward4_friendly_border = false
+				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward4 = true
+				forward4_friendly_border = false
+				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_friendly_border = true
@@ -2091,12 +2130,16 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward5 = true
+				forward5_friendly_border = false
+				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward5 = true
+				forward5_friendly_border = false
+				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_friendly_border = true
@@ -2104,12 +2147,16 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward5 = true
+				forward5_friendly_border = false
+				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward5 = true
+				forward5_friendly_border = false
+				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_friendly_border = true
@@ -2127,12 +2174,16 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward6 = true
+				forward6_friendly_border = false
+				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward6 = true
+				forward6_friendly_border = false
+				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_friendly_border = true
@@ -2140,12 +2191,16 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward6 = true
+				forward6_friendly_border = false
+				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward6 = true
+				forward6_friendly_border = false
+				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_friendly_border = true
@@ -2163,12 +2218,16 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward7 = true
+				forward7_friendly_border = false
+				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_touching_border = true
 		else:
 			if(body.is_in_group("White")):
 				enemy_forward7 = true
+				forward7_friendly_border = false
+				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_friendly_border = true
@@ -2176,12 +2235,16 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward7 = true
+				forward7_friendly_border = false
+				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
 				enemy_forward7 = true
+				forward7_friendly_border = false
+				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_friendly_border = true
@@ -2207,6 +2270,7 @@ func _on_back_1_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2222,6 +2286,7 @@ func _on_back_2_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2237,6 +2302,7 @@ func _on_back_3_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2252,6 +2318,7 @@ func _on_back_4_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2267,6 +2334,7 @@ func _on_back_5_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2282,6 +2350,7 @@ func _on_back_6_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
@@ -2297,6 +2366,7 @@ func _on_back_7_button_button_up() -> void:
 	await get_tree().process_frame # process frame to let process in globals work
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	global_position = Globals.position_target # change the position to the target.
+	$MoveSound.play()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	reset_markers()
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
