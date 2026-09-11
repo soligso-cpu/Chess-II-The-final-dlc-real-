@@ -3468,13 +3468,11 @@ func _on_fr_7_area_area_exited(area: Area2D) -> void:
 func _on_fr_1_area_body_entered(body: Node2D) -> void:
 	fr1_tile = body.tile
 	fr1_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_1 = true
 				fr1_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3518,7 +3516,6 @@ func _on_fr_1_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_1 = true
 				fr1_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_1 = true
 				fr1_touching_border = true
@@ -3561,13 +3558,11 @@ func _on_fr_1_area_body_exited(body: Node2D) -> void:
 func _on_fr_2_area_body_entered(body: Node2D) -> void:
 	fr2_tile = body.tile
 	fr2_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_2 = true
 				fr2_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3611,7 +3606,6 @@ func _on_fr_2_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_2 = true
 				fr2_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_2 = true
 				fr2_touching_border = true
@@ -3655,13 +3649,11 @@ func _on_fr_2_area_body_exited(body: Node2D) -> void:
 func _on_fr_3_area_body_entered(body: Node2D) -> void:
 	fr3_tile = body.tile
 	fr3_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_3 = true
 				fr3_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3705,7 +3697,6 @@ func _on_fr_3_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_3 = true
 				fr3_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_3 = true
 				fr3_touching_border = true
@@ -3748,13 +3739,11 @@ func _on_fr_3_area_body_exited(body: Node2D) -> void:
 func _on_fr_4_area_body_entered(body: Node2D) -> void:
 	fr4_tile = body.tile
 	fr4_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_4 = true
 				fr4_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3798,7 +3787,6 @@ func _on_fr_4_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_4 = true
 				fr4_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_4 = true
 				fr4_touching_border = true
@@ -3842,13 +3830,11 @@ func _on_fr_4_area_body_exited(body: Node2D) -> void:
 func _on_fr_5_area_body_entered(body: Node2D) -> void:
 	fr5_tile = body.tile
 	fr5_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_5 = true
 				fr5_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3892,7 +3878,6 @@ func _on_fr_5_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_5 = true
 				fr5_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_5 = true
 				fr5_touching_border = true
@@ -3936,13 +3921,11 @@ func _on_fr_5_area_body_exited(body: Node2D) -> void:
 func _on_fr_6_area_body_entered(body: Node2D) -> void:
 	fr6_tile = body.tile
 	fr6_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_6 = true
 				fr6_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -3986,7 +3969,6 @@ func _on_fr_6_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_6 = true
 				fr6_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_6 = true
 				fr6_touching_border = true
@@ -4030,13 +4012,11 @@ func _on_fr_6_area_body_exited(body: Node2D) -> void:
 func _on_fr_7_area_body_entered(body: Node2D) -> void:
 	fr7_tile = body.tile
 	fr7_tile_group = body.tile_group
-<<<<<<< HEAD
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_7 = true
 				fr7_touching_border = false
-=======
 	if(Globals.white_in_check):
 		if(self.is_in_group("White")):
 			# if the white king is in check and im white
@@ -4080,7 +4060,6 @@ func _on_fr_7_area_body_entered(body: Node2D) -> void:
 			if(self.is_in_group("White")):
 				enemyfr_7 = true
 				fr7_touching_border = true
->>>>>>> 963d21521fa7735188b185730beddbc284d7bcd3
 			else:
 				enemyfr_7 = true
 				fr7_touching_border = true
