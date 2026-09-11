@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://chnli21e3na5k"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_6bp34"]
+[ext_resource type="Texture2D" uid="uid://jwedpnmcq5d8" path="res://Scenes/CardData/TarotCards/TarotCardTexture/9Tarot Card The Hermit.png" id="2_uan01"]
+
+[resource]
+script = ExtResource("1_6bp34")
+value = 10
+tarotcardtexture = ExtResource("2_uan01")

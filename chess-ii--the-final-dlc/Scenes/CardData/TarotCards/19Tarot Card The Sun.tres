@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://be0ay10x28h42"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_jmhkw"]
+[ext_resource type="Texture2D" uid="uid://qovpn21snbo" path="res://Scenes/CardData/TarotCards/TarotCardTexture/19Tarot Card The Sun.png" id="2_70tex"]
+
+[resource]
+script = ExtResource("1_jmhkw")
+value = 20
+tarotcardtexture = ExtResource("2_70tex")

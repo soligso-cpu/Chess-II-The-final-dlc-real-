@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://di0i3fnaeo440"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_8mfeq"]
+[ext_resource type="Texture2D" uid="uid://i0vrl8pur5x4" path="res://Scenes/CardData/TarotCards/TarotCardTexture/13Tarot Card Death.png" id="2_nqhre"]
+
+[resource]
+script = ExtResource("1_8mfeq")
+value = 14
+tarotcardtexture = ExtResource("2_nqhre")

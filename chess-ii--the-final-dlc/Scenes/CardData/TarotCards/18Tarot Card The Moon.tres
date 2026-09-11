@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://cwsgstkkmlx1u"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_ghngq"]
+[ext_resource type="Texture2D" uid="uid://dhsq3drxw4xj0" path="res://Scenes/CardData/TarotCards/TarotCardTexture/18Tarot Card The Moon.png" id="2_ja4kp"]
+
+[resource]
+script = ExtResource("1_ghngq")
+value = 19
+tarotcardtexture = ExtResource("2_ja4kp")

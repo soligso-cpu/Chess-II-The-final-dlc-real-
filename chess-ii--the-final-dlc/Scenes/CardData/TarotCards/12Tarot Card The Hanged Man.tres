@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://dx0i0dov3dy28"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_p6240"]
+[ext_resource type="Texture2D" uid="uid://da418xhwaxrc8" path="res://Scenes/CardData/TarotCards/TarotCardTexture/12Tarot Card The Hanged Man.png" id="2_efdel"]
+
+[resource]
+script = ExtResource("1_p6240")
+value = 13
+tarotcardtexture = ExtResource("2_efdel")

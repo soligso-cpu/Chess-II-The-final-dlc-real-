@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://1ifwtr84qfly"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_sou4l"]
+[ext_resource type="Texture2D" uid="uid://ddhhl8iudn6yd" path="res://Scenes/CardData/TarotCards/TarotCardTexture/17Tarot Card The Star.png" id="2_n3l3a"]
+
+[resource]
+script = ExtResource("1_sou4l")
+value = 18
+tarotcardtexture = ExtResource("2_n3l3a")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://dqhap86g6nubt"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_3c51w"]
+[ext_resource type="Texture2D" uid="uid://c4mtvnj5vsfbq" path="res://Scenes/CardData/TarotCards/TarotCardTexture/14Tarot Card Temprence.png" id="2_t4vdk"]
+
+[resource]
+script = ExtResource("1_3c51w")
+value = 15
+tarotcardtexture = ExtResource("2_t4vdk")

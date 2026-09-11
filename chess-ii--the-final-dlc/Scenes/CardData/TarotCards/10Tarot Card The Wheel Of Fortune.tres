@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://dl5ocw4aj4wmn"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_62kbg"]
+[ext_resource type="Texture2D" uid="uid://c27g1lobhmm4s" path="res://Scenes/CardData/TarotCards/TarotCardTexture/10Tarot Card The Wheel Of Fortune.png" id="2_yqos6"]
+
+[resource]
+script = ExtResource("1_62kbg")
+value = 11
+tarotcardtexture = ExtResource("2_yqos6")

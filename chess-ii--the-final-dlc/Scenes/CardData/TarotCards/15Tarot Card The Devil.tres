@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://dh7f2q2nkw1bq"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_fow7c"]
+[ext_resource type="Texture2D" uid="uid://dkhbod34dahlk" path="res://Scenes/CardData/TarotCards/TarotCardTexture/15Tarot Card The Devil.png" id="2_wjgeg"]
+
+[resource]
+script = ExtResource("1_fow7c")
+value = 16
+tarotcardtexture = ExtResource("2_wjgeg")
