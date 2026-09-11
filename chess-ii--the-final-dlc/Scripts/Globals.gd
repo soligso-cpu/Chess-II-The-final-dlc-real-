@@ -178,6 +178,7 @@ var promotion_instance_tile
 var promotion_instance_tile_group
 
 var piece_attacking_king = null
+var piece_attacking_king_group: String
 var piece_attacking_king_direction: String
 var white_in_check
 var black_in_check
