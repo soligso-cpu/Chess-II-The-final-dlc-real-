@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://cy0pnnai2w5m3"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_jj3a4"]
+[ext_resource type="Texture2D" uid="uid://jupix4y5vw1m" path="res://Scenes/CardData/TarotCards/TarotCardTexture/20Tarot Card Judgement.png" id="2_pcjdf"]
+
+[resource]
+script = ExtResource("1_jj3a4")
+value = 21
+tarotcardtexture = ExtResource("2_pcjdf")

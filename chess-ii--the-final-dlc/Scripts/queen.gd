@@ -403,267 +403,132 @@ func _process(delta: float) -> void:
 			z_index = 5
 			move_to_front()
 			taking = true
-			#region making sure flags are a-ok
-			#region right
-			$MovementMarkers.visible = true
-			$MovementMarkers/Right.visible = true
-			$MovementMarkers/Right/Right1.visible = true
-			$MovementMarkers/Right/Right2.visible = true
-			$MovementMarkers/Right/Right3.visible = true
-			$MovementMarkers/Right/Right4.visible = true
-			$MovementMarkers/Right/Right5.visible = true
-			$MovementMarkers/Right/Right6.visible = true
-			$MovementMarkers/Right/Right7.visible = true
-			
-			#endregion
-			#region forward
-			$MovementMarkers/Forward.visible = true
-			$MovementMarkers/Forward/Forward1.visible = true
-			$MovementMarkers/Forward/Forward2.visible = true
-			$MovementMarkers/Forward/Forward3.visible = true
-			$MovementMarkers/Forward/Forward4.visible = true
-			$MovementMarkers/Forward/Forward5.visible = true
-			$MovementMarkers/Forward/Forward6.visible = true
-			$MovementMarkers/Forward/Forward7.visible = true
-			
-			#endregion
-			#region back
-			$MovementMarkers/Back.visible = true
-			$MovementMarkers/Back/Back1.visible = true
-			$MovementMarkers/Back/Back2.visible = true
-			$MovementMarkers/Back/Back3.visible = true
-			$MovementMarkers/Back/Back4.visible = true
-			$MovementMarkers/Back/Back5.visible = true
-			$MovementMarkers/Back/Back6.visible = true
+			#region making everything true outside of checks.
+			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
+				#region right
+				$MovementMarkers.visible = true
+				$MovementMarkers/Right.visible = true
+				$MovementMarkers/Right/Right1.visible = true
+				$MovementMarkers/Right/Right2.visible = true
+				$MovementMarkers/Right/Right3.visible = true
+				$MovementMarkers/Right/Right4.visible = true
+				$MovementMarkers/Right/Right5.visible = true
+				$MovementMarkers/Right/Right6.visible = true
+				$MovementMarkers/Right/Right7.visible = true
+				
+				#endregion
+				#region forward
+				$MovementMarkers/Forward.visible = true
+				$MovementMarkers/Forward/Forward1.visible = true
+				$MovementMarkers/Forward/Forward2.visible = true
+				$MovementMarkers/Forward/Forward3.visible = true
+				$MovementMarkers/Forward/Forward4.visible = true
+				$MovementMarkers/Forward/Forward5.visible = true
+				$MovementMarkers/Forward/Forward6.visible = true
+				$MovementMarkers/Forward/Forward7.visible = true
+				
+				#endregion
+				#region back
+				$MovementMarkers/Back.visible = true
+				$MovementMarkers/Back/Back1.visible = true
+				$MovementMarkers/Back/Back2.visible = true
+				$MovementMarkers/Back/Back3.visible = true
+				$MovementMarkers/Back/Back4.visible = true
+				$MovementMarkers/Back/Back5.visible = true
+				$MovementMarkers/Back/Back6.visible = true
 
-			$MovementMarkers/Back/Back7.visible = true
+				$MovementMarkers/Back/Back7.visible = true
+				#endregion
+				#region left
+				$MovementMarkers/Left.visible = true
+				$MovementMarkers/Left/Left1.visible = true
+				$MovementMarkers/Left/Left2.visible = true
+				$MovementMarkers/Left/Left3.visible = true
+				$MovementMarkers/Left/Left4.visible = true
+				$MovementMarkers/Left/Left5.visible = true
+				$MovementMarkers/Left/Left6.visible = true
+				$MovementMarkers/Left/Left7.visible = true
+				#endregion
+				#region forward right
+				$MovementMarkers/DiagonalRightForward.visible = true
+				$MovementMarkers/DiagonalRightForward/FR1.visible = true
+				$MovementMarkers/DiagonalRightForward/FR2.visible = true
+				$MovementMarkers/DiagonalRightForward/FR3.visible = true
+				$MovementMarkers/DiagonalRightForward/FR4.visible = true
+				$MovementMarkers/DiagonalRightForward/FR5.visible = true
+				$MovementMarkers/DiagonalRightForward/FR6.visible = true
+				$MovementMarkers/DiagonalRightForward/FR7.visible = true
+				#endregion
+				#region forward left
+				$MovementMarkers/DiagonalLeftFoward.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
+				$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
+				#endregion
+				#region right back
+				$MovementMarkers/DiagonalRightBack.visible = true
+				$MovementMarkers/DiagonalRightBack/BR1.visible = true
+				$MovementMarkers/DiagonalRightBack/BR2.visible = true
+				$MovementMarkers/DiagonalRightBack/BR3.visible = true
+				$MovementMarkers/DiagonalRightBack/BR4.visible = true
+				$MovementMarkers/DiagonalRightBack/BR5.visible = true
+				$MovementMarkers/DiagonalRightBack/BR6.visible = true
+				$MovementMarkers/DiagonalRightBack/BR7.visible = true
+				#endregion
+				#region back left
+				$MovementMarkers/DiagonalLeftBack.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL1.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL2.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL3.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL4.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL5.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL6.visible = true
+				$MovementMarkers/DiagonalLeftBack/BL7.visible = true
 			#endregion
-			#region left
-			$MovementMarkers/Left.visible = true
-			$MovementMarkers/Left/Left1.visible = true
-			$MovementMarkers/Left/Left2.visible = true
-			$MovementMarkers/Left/Left3.visible = true
-			$MovementMarkers/Left/Left4.visible = true
-			$MovementMarkers/Left/Left5.visible = true
-			$MovementMarkers/Left/Left6.visible = true
-			$MovementMarkers/Left/Left7.visible = true
 			#endregion
-			#region forward right
-			$MovementMarkers/DiagonalRightForward.visible = true
-			$MovementMarkers/DiagonalRightForward/FR1.visible = true
-			$MovementMarkers/DiagonalRightForward/FR2.visible = true
-			$MovementMarkers/DiagonalRightForward/FR3.visible = true
-			$MovementMarkers/DiagonalRightForward/FR4.visible = true
-			$MovementMarkers/DiagonalRightForward/FR5.visible = true
-			$MovementMarkers/DiagonalRightForward/FR6.visible = true
-			$MovementMarkers/DiagonalRightForward/FR7.visible = true
-			#endregion
-			#region forward left
-			$MovementMarkers/DiagonalLeftFoward.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
-			$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
-			#endregion
-			#region right back
-			$MovementMarkers/DiagonalRightBack.visible = true
-			$MovementMarkers/DiagonalRightBack/BR1.visible = true
-			$MovementMarkers/DiagonalRightBack/BR2.visible = true
-			$MovementMarkers/DiagonalRightBack/BR3.visible = true
-			$MovementMarkers/DiagonalRightBack/BR4.visible = true
-			$MovementMarkers/DiagonalRightBack/BR5.visible = true
-			$MovementMarkers/DiagonalRightBack/BR6.visible = true
-			$MovementMarkers/DiagonalRightBack/BR7.visible = true
-			#endregion
-			#region back left
-			$MovementMarkers/DiagonalLeftBack.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL1.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL2.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL3.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL4.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL5.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL6.visible = true
-			$MovementMarkers/DiagonalLeftBack/BL7.visible = true
-			#endregion
-			#endregion
-			#region Right Movement Marker Visibility Control
-		
-			if(enemy_right7):
-				if(right7_touching_border || right7_friendly_border):
-					$MovementMarkers/Right/Right7.visible = false
-				else:
-					pass
-			if(enemy_right6):
-				if(right6_touching_border || right6_friendly_border):
-					$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right5):
-				if(right5_touching_border || right5_friendly_border):
-					$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right4):
-				if(right4_touching_border || right4_friendly_border):
-					$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right3):
-				if(right3_touching_border || right3_friendly_border):
-					$MovementMarkers/Right/Right3.visible = false
-				$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right2):
-				if(right2_touching_border || right2_friendly_border):
-					$MovementMarkers/Right/Right2.visible = false
-				$MovementMarkers/Right/Right3.visible = false
-				$MovementMarkers/Right/Right4.visible = false
-				$MovementMarkers/Right/Right5.visible = false
-				$MovementMarkers/Right/Right6.visible = false
-				$MovementMarkers/Right/Right7.visible = false
-			if(enemy_right1):
-				if(right1_touching_border || right1_friendly_border):
-					$MovementMarkers/Right/Right1.visible = false
+			#region making everything false during of checks.
+			if(self.is_in_group("White") && Globals.white_in_check || self.is_in_group("Black") && Globals.black_in_check):
+				#region right
+				$MovementMarkers.visible = false
+				$MovementMarkers/Right.visible = false
+				$MovementMarkers/Right/Right1.visible = false
 				$MovementMarkers/Right/Right2.visible = false
 				$MovementMarkers/Right/Right3.visible = false
 				$MovementMarkers/Right/Right4.visible = false
 				$MovementMarkers/Right/Right5.visible = false
 				$MovementMarkers/Right/Right6.visible = false
 				$MovementMarkers/Right/Right7.visible = false
-					#endregion
-			#region Forward Movement Marker Visibility Control
-			
-			if(enemy_forward7):
-				if(forward7_touching_border || forward7_friendly_border):
-					$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward6):
-				if(forward6_touching_border || forward6_friendly_border):
-					$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward5):
-				if(forward5_touching_border || forward5_friendly_border):
-					$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward4):
-				if(forward4_touching_border || forward4_friendly_border):
-					$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward3):
-				if(forward3_touching_border || forward3_friendly_border):
-					$MovementMarkers/Forward/Forward3.visible = false
-				$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward2):
-				if(forward2_touching_border || forward2_friendly_border):
-					$MovementMarkers/Forward/Forward2.visible = false
-				$MovementMarkers/Forward/Forward3.visible = false
-				$MovementMarkers/Forward/Forward4.visible = false
-				$MovementMarkers/Forward/Forward5.visible = false
-				$MovementMarkers/Forward/Forward6.visible = false
-				$MovementMarkers/Forward/Forward7.visible = false
-			if(enemy_forward1):
-				if(forward1_touching_border || forward1_friendly_border):
-					$MovementMarkers/Forward/Forward1.visible = false
+				
+				#endregion
+				#region forward
+				$MovementMarkers/Forward.visible = false
+				$MovementMarkers/Forward/Forward1.visible = false
 				$MovementMarkers/Forward/Forward2.visible = false
 				$MovementMarkers/Forward/Forward3.visible = false
 				$MovementMarkers/Forward/Forward4.visible = false
 				$MovementMarkers/Forward/Forward5.visible = false
 				$MovementMarkers/Forward/Forward6.visible = false
 				$MovementMarkers/Forward/Forward7.visible = false
-					#endregion
-			#region Back Movement Marker Visibility Control
-			
-			if(enemy_back7):
-				if(back7_touching_border || back7_friendly_border):
-					$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back6):
-				if(back6_touching_border || back6_friendly_border):
-					$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back5):
-				if(back5_touching_border || back5_friendly_border):
-					$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back4):
-				if(back4_touching_border || back4_friendly_border):
-					$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back3):
-				if(back3_touching_border || back3_friendly_border):
-					$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back2):
-				if(back2_touching_border || back2_friendly_border):
-					$MovementMarkers/Back/Back2.visible = false
-				$MovementMarkers/Back/Back3.visible = false
-				$MovementMarkers/Back/Back4.visible = false
-				$MovementMarkers/Back/Back5.visible = false
-				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-			if(enemy_back1):
-				if(back1_touching_border || back1_friendly_border):
-					$MovementMarkers/Back/Back1.visible = false
+				
+				#endregion
+				#region back
+				$MovementMarkers/Back.visible = false
+				$MovementMarkers/Back/Back1.visible = false
 				$MovementMarkers/Back/Back2.visible = false
 				$MovementMarkers/Back/Back3.visible = false
 				$MovementMarkers/Back/Back4.visible = false
 				$MovementMarkers/Back/Back5.visible = false
 				$MovementMarkers/Back/Back6.visible = false
-				$MovementMarkers/Back/Back7.visible = false
-					#endregion
-			#region Left Movement Marker Visibility Control
-			
-			if(enemy_left7):
-				if(left7_touching_border || left7_friendly_border):
-					$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left6):
-				if(left6_touching_border || left6_friendly_border):
-					$MovementMarkers/Left/Left6.visible = false
-				$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left5):
-				if(left5_touching_border || left5_friendly_border):
-					$MovementMarkers/Left/Left5.visible = false
-				$MovementMarkers/Left/Left6.visible = false
-				$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left4):
-				if(left4_touching_border || left4_friendly_border):
-					$MovementMarkers/Left/Left4.visible = false
-				$MovementMarkers/Left/Left5.visible = false
-				$MovementMarkers/Left/Left6.visible = false
-				$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left3):
-				if(left3_touching_border || left3_friendly_border):
-					$MovementMarkers/Left/Left3.visible = false
-				$MovementMarkers/Left/Left4.visible = false
-				$MovementMarkers/Left/Left5.visible = false
-				$MovementMarkers/Left/Left6.visible = false
-				$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left2):
-				if(left2_touching_border || left2_friendly_border):
-					$MovementMarkers/Left/Left2.visible = false
-				$MovementMarkers/Left/Left3.visible = false
-				$MovementMarkers/Left/Left4.visible = false
-				$MovementMarkers/Left/Left5.visible = false
-				$MovementMarkers/Left/Left6.visible = false
-				$MovementMarkers/Left/Left7.visible = false
-			if(enemy_left1):
-				if(left1_touching_border || left2_friendly_border):
-					$MovementMarkers/Left/Left1.visible = false
+
+				$MovementMarkers/Back/Back7.visible = true
+				#endregion
+				#region left
+				$MovementMarkers/Left.visible = false
+				$MovementMarkers/Left/Left1.visible = false
 				$MovementMarkers/Left/Left2.visible = false
 				$MovementMarkers/Left/Left3.visible = false
 				$MovementMarkers/Left/Left4.visible = false
@@ -671,140 +536,29 @@ func _process(delta: float) -> void:
 				$MovementMarkers/Left/Left6.visible = false
 				$MovementMarkers/Left/Left7.visible = false
 				#endregion
-			#region Forward-Right Movement Marker Visibility Control
-			
-			if(enemyfr_7):
-				if(fr7_touching_border || fr7_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR7.visible = false
-				else:
-					pass
-			if(enemyfr_6):
-				if(fr6_touching_border || fr6_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR6.visible = false
-				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			if(enemyfr_5):
-				if(fr5_touching_border || fr5_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR5.visible = false
-				$MovementMarkers/DiagonalRightForward/FR6.visible = false
-				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			if(enemyfr_4):
-				if(fr4_touching_border || fr4_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR4.visible = false
-				$MovementMarkers/DiagonalRightForward/FR5.visible = false
-				$MovementMarkers/DiagonalRightForward/FR6.visible = false
-				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			if(enemyfr_3):
-				if(fr3_touching_border || fr3_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR3.visible = false
-				$MovementMarkers/DiagonalRightForward/FR4.visible = false
-				$MovementMarkers/DiagonalRightForward/FR5.visible = false
-				$MovementMarkers/DiagonalRightForward/FR6.visible = false
-				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			if(enemyfr_2):
-				if(fr2_touching_border || fr2_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR2.visible = false
-				$MovementMarkers/DiagonalRightForward/FR3.visible = false
-				$MovementMarkers/DiagonalRightForward/FR4.visible = false
-				$MovementMarkers/DiagonalRightForward/FR5.visible = false
-				$MovementMarkers/DiagonalRightForward/FR6.visible = false
-				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			if(enemyfr_1):
-				if(fr1_touching_border || fr1_friendly_border):
-					$MovementMarkers/DiagonalRightForward/FR1.visible = false
+				#region forward right
+				$MovementMarkers/DiagonalRightForward.visible = false
+				$MovementMarkers/DiagonalRightForward/FR1.visible = false
 				$MovementMarkers/DiagonalRightForward/FR2.visible = false
 				$MovementMarkers/DiagonalRightForward/FR3.visible = false
 				$MovementMarkers/DiagonalRightForward/FR4.visible = false
 				$MovementMarkers/DiagonalRightForward/FR5.visible = false
 				$MovementMarkers/DiagonalRightForward/FR6.visible = false
 				$MovementMarkers/DiagonalRightForward/FR7.visible = false
-			#endregion
-			#region Forward-Left Movement Marker Visibility Control
-			if(enemyfl_7):
-				if(fl7_touching_border || fr7_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-				else:
-					pass
-			if(enemyfl_6):
-				if(fl6_touching_border || fr6_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			if(enemyfl_5):
-				if(fl5_touching_border || fr5_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			if(enemyfl_4):
-				if(fl4_touching_border || fr4_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			if(enemyfl_3):
-				if(fl3_touching_border || fr3_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			if(enemyfl_2):
-				if(fl2_touching_border || fr2_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			if(enemyfl_1):
-				if(fl1_touching_border || fr1_friendly_border):
-					$MovementMarkers/DiagonalLeftFoward/FL1.visible = false
+				#endregion
+				#region forward left
+				$MovementMarkers/DiagonalLeftFoward.visible = false
+				$MovementMarkers/DiagonalLeftFoward/FL1.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
 				$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
-			
-			#endregion
-			#region Back-Right Movement Marker Visibility Control
-			
-			if(enemybr_7):
-				if(br7_touching_border || br7_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR7.visible = false
-				else:
-					pass
-			if(enemybr_6):
-				if(br6_touching_border || br6_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR6.visible = false
-				$MovementMarkers/DiagonalRightBack/BR7.visible = false
-			if(enemybr_5):
-				if(br5_touching_border || br5_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR5.visible = false
-				$MovementMarkers/DiagonalRightBack/BR6.visible = false
-				$MovementMarkers/DiagonalRightBack/BR7.visible = false
-			if(enemybr_4):
-				if(br4_touching_border || br4_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR4.visible = false
-				$MovementMarkers/DiagonalRightBack/BR5.visible = false
-				$MovementMarkers/DiagonalRightBack/BR6.visible = false
-				$MovementMarkers/DiagonalRightBack/BR7.visible = false
-			if(enemybr_3):
-				if(br3_touching_border || br3_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR3.visible = false
-				$MovementMarkers/DiagonalRightBack/BR4.visible = false
-				$MovementMarkers/DiagonalRightBack/BR5.visible = false
-				$MovementMarkers/DiagonalRightBack/BR6.visible = false
-				$MovementMarkers/DiagonalRightBack/BR7.visible = false
-			if(enemybr_2):
-				if(br2_touching_border || br2_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR2.visible = false
-				$MovementMarkers/DiagonalRightBack/BR3.visible = false
-				$MovementMarkers/DiagonalRightBack/BR4.visible = false
-				$MovementMarkers/DiagonalRightBack/BR5.visible = false
-				$MovementMarkers/DiagonalRightBack/BR6.visible = false
-				$MovementMarkers/DiagonalRightBack/BR7.visible = false
-			if(enemybr_1):
-				if(br1_touching_border || br1_friendly_border):
-					$MovementMarkers/DiagonalRightBack/BR1.visible = false
+				#endregion
+				#region right back
+				$MovementMarkers/DiagonalRightBack.visible = false
+				$MovementMarkers/DiagonalRightBack/BR1.visible = false
 				$MovementMarkers/DiagonalRightBack/BR2.visible = false
 				$MovementMarkers/DiagonalRightBack/BR3.visible = false
 				$MovementMarkers/DiagonalRightBack/BR4.visible = false
@@ -812,45 +566,9 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalRightBack/BR6.visible = false
 				$MovementMarkers/DiagonalRightBack/BR7.visible = false
 				#endregion
-			#region Back-Left Movement Markers Visibility Control
-			if(enemybl_7):
-				if(bl7_touching_border || bl7_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-				else:
-					pass
-			if(enemybl_6):
-				if(bl6_touching_border  || bl6_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-			if(enemybl_5):
-				if(bl5_touching_border || bl5_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL6.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-			if(enemybl_4):
-				if(bl4_touching_border || bl4_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL5.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL6.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-			if(enemybl_3):
-				if(bl3_touching_border || bl3_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL3.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL4.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL5.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL6.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-			if(enemybl_2):
-				if(bl2_touching_border || bl2_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL2.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL3.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL4.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL5.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL6.visible = false
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
-			if(enemybl_1):
-				if(bl1_touching_border || bl1_friendly_border):
-					$MovementMarkers/DiagonalLeftBack/BL1.visible = false
+				#region back left
+				$MovementMarkers/DiagonalLeftBack.visible = false
+				$MovementMarkers/DiagonalLeftBack/BL1.visible = false
 				$MovementMarkers/DiagonalLeftBack/BL2.visible = false
 				$MovementMarkers/DiagonalLeftBack/BL3.visible = false
 				$MovementMarkers/DiagonalLeftBack/BL4.visible = false
@@ -858,6 +576,750 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalLeftBack/BL6.visible = false
 				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 			#endregion
+			#endregion
+			
+			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
+				#region Right Movement Marker Visibility Control
+			
+				if(enemy_right7):
+					if(right7_touching_border || right7_friendly_border):
+						$MovementMarkers/Right/Right7.visible = false
+					else:
+						pass
+				if(enemy_right6):
+					if(right6_touching_border || right6_friendly_border):
+						$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right5):
+					if(right5_touching_border || right5_friendly_border):
+						$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right4):
+					if(right4_touching_border || right4_friendly_border):
+						$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right3):
+					if(right3_touching_border || right3_friendly_border):
+						$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right2):
+					if(right2_touching_border || right2_friendly_border):
+						$MovementMarkers/Right/Right2.visible = false
+					$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right1):
+					if(right1_touching_border || right1_friendly_border):
+						$MovementMarkers/Right/Right1.visible = false
+					$MovementMarkers/Right/Right2.visible = false
+					$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+						#endregion
+				#region Forward Movement Marker Visibility Control
+				
+				if(enemy_forward7):
+					if(forward7_touching_border || forward7_friendly_border):
+						$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward6):
+					if(forward6_touching_border || forward6_friendly_border):
+						$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward5):
+					if(forward5_touching_border || forward5_friendly_border):
+						$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward4):
+					if(forward4_touching_border || forward4_friendly_border):
+						$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward3):
+					if(forward3_touching_border || forward3_friendly_border):
+						$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward2):
+					if(forward2_touching_border || forward2_friendly_border):
+						$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward1):
+					if(forward1_touching_border || forward1_friendly_border):
+						$MovementMarkers/Forward/Forward1.visible = false
+					$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+						#endregion
+				#region Back Movement Marker Visibility Control
+				
+				if(enemy_back7):
+					if(back7_touching_border || back7_friendly_border):
+						$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back6):
+					if(back6_touching_border || back6_friendly_border):
+						$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back5):
+					if(back5_touching_border || back5_friendly_border):
+						$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back4):
+					if(back4_touching_border || back4_friendly_border):
+						$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back3):
+					if(back3_touching_border || back3_friendly_border):
+						$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back2):
+					if(back2_touching_border || back2_friendly_border):
+						$MovementMarkers/Back/Back2.visible = false
+					$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back1):
+					if(back1_touching_border || back1_friendly_border):
+						$MovementMarkers/Back/Back1.visible = false
+					$MovementMarkers/Back/Back2.visible = false
+					$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+						#endregion
+				#region Left Movement Marker Visibility Control
+				
+				if(enemy_left7):
+					if(left7_touching_border || left7_friendly_border):
+						$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left6):
+					if(left6_touching_border || left6_friendly_border):
+						$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left5):
+					if(left5_touching_border || left5_friendly_border):
+						$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left4):
+					if(left4_touching_border || left4_friendly_border):
+						$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left3):
+					if(left3_touching_border || left3_friendly_border):
+						$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left2):
+					if(left2_touching_border || left2_friendly_border):
+						$MovementMarkers/Left/Left2.visible = false
+					$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left1):
+					if(left1_touching_border || left2_friendly_border):
+						$MovementMarkers/Left/Left1.visible = false
+					$MovementMarkers/Left/Left2.visible = false
+					$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+					#endregion
+				#region Forward-Right Movement Marker Visibility Control
+				
+				if(enemyfr_7):
+					if(fr7_touching_border || fr7_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR7.visible = false
+					else:
+						pass
+				if(enemyfr_6):
+					if(fr6_touching_border || fr6_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_5):
+					if(fr5_touching_border || fr5_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_4):
+					if(fr4_touching_border || fr4_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_3):
+					if(fr3_touching_border || fr3_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_2):
+					if(fr2_touching_border || fr2_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR2.visible = false
+					$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_1):
+					if(fr1_touching_border || fr1_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR1.visible = false
+					$MovementMarkers/DiagonalRightForward/FR2.visible = false
+					$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				#endregion
+				#region Forward-Left Movement Marker Visibility Control
+				if(enemyfl_7):
+					if(fl7_touching_border || fr7_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+					else:
+						pass
+				if(enemyfl_6):
+					if(fl6_touching_border || fr6_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_5):
+					if(fl5_touching_border || fr5_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_4):
+					if(fl4_touching_border || fr4_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_3):
+					if(fl3_touching_border || fr3_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_2):
+					if(fl2_touching_border || fr2_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_1):
+					if(fl1_touching_border || fr1_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL1.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				
+				#endregion
+				#region Back-Right Movement Marker Visibility Control
+				
+				if(enemybr_7):
+					if(br7_touching_border || br7_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR7.visible = false
+					else:
+						pass
+				if(enemybr_6):
+					if(br6_touching_border || br6_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_5):
+					if(br5_touching_border || br5_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_4):
+					if(br4_touching_border || br4_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_3):
+					if(br3_touching_border || br3_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_2):
+					if(br2_touching_border || br2_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR2.visible = false
+					$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_1):
+					if(br1_touching_border || br1_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR1.visible = false
+					$MovementMarkers/DiagonalRightBack/BR2.visible = false
+					$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+					#endregion
+				#region Back-Left Movement Markers Visibility Control
+				if(enemybl_7):
+					if(bl7_touching_border || bl7_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+					else:
+						pass
+				if(enemybl_6):
+					if(bl6_touching_border  || bl6_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_5):
+					if(bl5_touching_border || bl5_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_4):
+					if(bl4_touching_border || bl4_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_3):
+					if(bl3_touching_border || bl3_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_2):
+					if(bl2_touching_border || bl2_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL2.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_1):
+					if(bl1_touching_border || bl1_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL1.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL2.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				#endregion
+
+			if(self.is_in_group("White") && Globals.white_in_check || self.is_in_group("Black") && Globals.black_in_check):
+				#region Right Movement Marker Visibility Control
+			
+				if(enemy_right7):
+					if(right7_touching_border || right7_friendly_border):
+						$MovementMarkers/Right/Right7.visible = false
+					else:
+						pass
+				if(enemy_right6):
+					if(right6_touching_border || right6_friendly_border):
+						$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right5):
+					if(right5_touching_border || right5_friendly_border):
+						$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right4):
+					if(right4_touching_border || right4_friendly_border):
+						$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right3):
+					if(right3_touching_border || right3_friendly_border):
+						$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right2):
+					if(right2_touching_border || right2_friendly_border):
+						$MovementMarkers/Right/Right2.visible = false
+					$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+				if(enemy_right1):
+					if(right1_touching_border || right1_friendly_border):
+						$MovementMarkers/Right/Right1.visible = false
+					$MovementMarkers/Right/Right2.visible = false
+					$MovementMarkers/Right/Right3.visible = false
+					$MovementMarkers/Right/Right4.visible = false
+					$MovementMarkers/Right/Right5.visible = false
+					$MovementMarkers/Right/Right6.visible = false
+					$MovementMarkers/Right/Right7.visible = false
+						#endregion
+				#region Forward Movement Marker Visibility Control
+				
+				if(enemy_forward7):
+					if(forward7_touching_border || forward7_friendly_border):
+						$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward6):
+					if(forward6_touching_border || forward6_friendly_border):
+						$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward5):
+					if(forward5_touching_border || forward5_friendly_border):
+						$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward4):
+					if(forward4_touching_border || forward4_friendly_border):
+						$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward3):
+					if(forward3_touching_border || forward3_friendly_border):
+						$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward2):
+					if(forward2_touching_border || forward2_friendly_border):
+						$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+				if(enemy_forward1):
+					if(forward1_touching_border || forward1_friendly_border):
+						$MovementMarkers/Forward/Forward1.visible = false
+					$MovementMarkers/Forward/Forward2.visible = false
+					$MovementMarkers/Forward/Forward3.visible = false
+					$MovementMarkers/Forward/Forward4.visible = false
+					$MovementMarkers/Forward/Forward5.visible = false
+					$MovementMarkers/Forward/Forward6.visible = false
+					$MovementMarkers/Forward/Forward7.visible = false
+						#endregion
+				#region Back Movement Marker Visibility Control
+				
+				if(enemy_back7):
+					if(back7_touching_border || back7_friendly_border):
+						$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back6):
+					if(back6_touching_border || back6_friendly_border):
+						$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back5):
+					if(back5_touching_border || back5_friendly_border):
+						$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back4):
+					if(back4_touching_border || back4_friendly_border):
+						$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back3):
+					if(back3_touching_border || back3_friendly_border):
+						$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back2):
+					if(back2_touching_border || back2_friendly_border):
+						$MovementMarkers/Back/Back2.visible = false
+					$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+				if(enemy_back1):
+					if(back1_touching_border || back1_friendly_border):
+						$MovementMarkers/Back/Back1.visible = false
+					$MovementMarkers/Back/Back2.visible = false
+					$MovementMarkers/Back/Back3.visible = false
+					$MovementMarkers/Back/Back4.visible = false
+					$MovementMarkers/Back/Back5.visible = false
+					$MovementMarkers/Back/Back6.visible = false
+					$MovementMarkers/Back/Back7.visible = false
+						#endregion
+				#region Left Movement Marker Visibility Control
+				
+				if(enemy_left7):
+					if(left7_touching_border || left7_friendly_border):
+						$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left6):
+					if(left6_touching_border || left6_friendly_border):
+						$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left5):
+					if(left5_touching_border || left5_friendly_border):
+						$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left4):
+					if(left4_touching_border || left4_friendly_border):
+						$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left3):
+					if(left3_touching_border || left3_friendly_border):
+						$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left2):
+					if(left2_touching_border || left2_friendly_border):
+						$MovementMarkers/Left/Left2.visible = false
+					$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+				if(enemy_left1):
+					if(left1_touching_border || left2_friendly_border):
+						$MovementMarkers/Left/Left1.visible = false
+					$MovementMarkers/Left/Left2.visible = false
+					$MovementMarkers/Left/Left3.visible = false
+					$MovementMarkers/Left/Left4.visible = false
+					$MovementMarkers/Left/Left5.visible = false
+					$MovementMarkers/Left/Left6.visible = false
+					$MovementMarkers/Left/Left7.visible = false
+					#endregion
+				#region Forward-Right Movement Marker Visibility Control
+				
+				if(enemyfr_7):
+					if(fr7_touching_border || fr7_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR7.visible = false
+					else:
+						pass
+				if(enemyfr_6):
+					if(fr6_touching_border || fr6_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_5):
+					if(fr5_touching_border || fr5_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_4):
+					if(fr4_touching_border || fr4_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_3):
+					if(fr3_touching_border || fr3_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_2):
+					if(fr2_touching_border || fr2_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR2.visible = false
+					$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				if(enemyfr_1):
+					if(fr1_touching_border || fr1_friendly_border):
+						$MovementMarkers/DiagonalRightForward/FR1.visible = false
+					$MovementMarkers/DiagonalRightForward/FR2.visible = false
+					$MovementMarkers/DiagonalRightForward/FR3.visible = false
+					$MovementMarkers/DiagonalRightForward/FR4.visible = false
+					$MovementMarkers/DiagonalRightForward/FR5.visible = false
+					$MovementMarkers/DiagonalRightForward/FR6.visible = false
+					$MovementMarkers/DiagonalRightForward/FR7.visible = false
+				#endregion
+				#region Forward-Left Movement Marker Visibility Control
+				if(enemyfl_7):
+					if(fl7_touching_border || fr7_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+					else:
+						pass
+				if(enemyfl_6):
+					if(fl6_touching_border || fr6_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_5):
+					if(fl5_touching_border || fr5_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_4):
+					if(fl4_touching_border || fr4_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_3):
+					if(fl3_touching_border || fr3_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_2):
+					if(fl2_touching_border || fr2_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				if(enemyfl_1):
+					if(fl1_touching_border || fr1_friendly_border):
+						$MovementMarkers/DiagonalLeftFoward/FL1.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL2.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL3.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = false
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = false
+				
+				#endregion
+				#region Back-Right Movement Marker Visibility Control
+				
+				if(enemybr_7):
+					if(br7_touching_border || br7_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR7.visible = false
+					else:
+						pass
+				if(enemybr_6):
+					if(br6_touching_border || br6_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_5):
+					if(br5_touching_border || br5_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_4):
+					if(br4_touching_border || br4_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_3):
+					if(br3_touching_border || br3_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_2):
+					if(br2_touching_border || br2_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR2.visible = false
+					$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+				if(enemybr_1):
+					if(br1_touching_border || br1_friendly_border):
+						$MovementMarkers/DiagonalRightBack/BR1.visible = false
+					$MovementMarkers/DiagonalRightBack/BR2.visible = false
+					$MovementMarkers/DiagonalRightBack/BR3.visible = false
+					$MovementMarkers/DiagonalRightBack/BR4.visible = false
+					$MovementMarkers/DiagonalRightBack/BR5.visible = false
+					$MovementMarkers/DiagonalRightBack/BR6.visible = false
+					$MovementMarkers/DiagonalRightBack/BR7.visible = false
+					#endregion
+				#region Back-Left Movement Markers Visibility Control
+				if(enemybl_7):
+					if(bl7_touching_border || bl7_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+					else:
+						pass
+				if(enemybl_6):
+					if(bl6_touching_border  || bl6_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_5):
+					if(bl5_touching_border || bl5_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_4):
+					if(bl4_touching_border || bl4_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_3):
+					if(bl3_touching_border || bl3_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_2):
+					if(bl2_touching_border || bl2_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL2.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				if(enemybl_1):
+					if(bl1_touching_border || bl1_friendly_border):
+						$MovementMarkers/DiagonalLeftBack/BL1.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL2.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL3.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
+				#endregion
+
 		elif(!focused):
 			z_index = 1
 			$MovementMarkers.visible = false
@@ -1148,6 +1610,7 @@ func reset_markers():
 	focused = false
 	Globals.piece_focused = null
 
+	
 #region Up, Down, Left, and Right
 
 #region All the inputs for the Right markers.
@@ -1296,7 +1759,7 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 				if(body.is_in_group("King")):
 					Globals.white_in_check = true
 					Globals.piece_attacking_king = self
-					right1_touching_border = false
+				right1_touching_border = false
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -1311,13 +1774,10 @@ func _on_right_area_1_body_entered(body: Node2D) -> void:
 				right1_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				print("black")
 				if(body.is_in_group("King")):
-					print("big k")
 					Globals.black_in_check = true
-					print("the big check: "+ str(Globals.black_in_check))
 					Globals.piece_attacking_king = self
-					right1_touching_border = false
+				right1_touching_border = false
 				enemy_right1 = true
 			else:
 				enemy_right1 = true
@@ -1629,21 +2089,6 @@ func _on_right_area_1_area_entered(area: Area2D) -> void:
 	if(area.is_in_group("Tiles")):
 		right1_tile = area.name
 		right1_tile_group = str(area.name)[0]
-	if(self.is_in_group("White")):
-		if(Globals.white_in_check):
-			if(Globals.piece_attacking_king.has_child(area)):
-				enemy_right1 = true
-				right1_friendly_border = false
-				right1_touching_border = false
-			else:
-				enemy_right1 = true
-				right1_touching_border = true
-				right1_friendly_border = true
-		else:
-			var body = area.get_parent()
-			if(body.is_in_group("King")):
-				if(body.is_in_group("Black")):
-					Globals.piece_attacking_king = self
 
 
 func _on_right_area_1_area_exited(area: Area2D) -> void:
@@ -1984,13 +2429,16 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward1 = true
-				forward1_friendly_border = false
 				forward1_touching_border = false
 			else:
 				enemy_forward1 = true
 				forward1_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				forward1_touching_border = false
 				enemy_forward1 = true
 			else:
 				enemy_forward1 = true
@@ -1999,16 +2447,17 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward1 = true
-				forward1_friendly_border = false
 				forward1_touching_border = false
 			else:
 				enemy_forward1 = true
 				forward1_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward1 = true
-				forward1_friendly_border = false
+				if(body.is_in_group("King")):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward1_touching_border = false
+				enemy_forward1 = true
 			else:
 				enemy_forward1 = true
 				forward1_friendly_border = true
@@ -2026,16 +2475,18 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward2 = true
-				forward2_friendly_border = false
 				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward2 = true
-				forward2_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward2_touching_border = false
+				enemy_forward2 = true
 			else:
 				enemy_forward2 = true
 				forward2_friendly_border = true
@@ -2043,16 +2494,18 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward2 = true
-				forward2_friendly_border = false
 				forward2_touching_border = false
 			else:
 				enemy_forward2 = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward2 = true
-				forward2_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward2_touching_border = false
+				enemy_forward2 = true
 			else:
 				enemy_forward2 = true
 				forward2_friendly_border = true
@@ -2070,16 +2523,18 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward3 = true
-				forward3_friendly_border = false
 				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward3 = true
-				forward3_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward3_touching_border = false
+				enemy_forward3 = true
 			else:
 				enemy_forward3 = true
 				forward3_friendly_border = true
@@ -2087,16 +2542,18 @@ func _on_forward_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward3 = true
-				forward3_friendly_border = false
 				forward3_touching_border = false
 			else:
 				enemy_forward3 = true
 				forward3_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward3 = true
-				forward3_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward3_touching_border = false
+				enemy_forward3 = true
 			else:
 				enemy_forward3 = true
 				forward3_friendly_border = true
@@ -2114,16 +2571,18 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward4 = true
-				forward4_friendly_border = false
 				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward4 = true
-				forward4_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward4_touching_border = false
+				enemy_forward4 = true
 			else:
 				enemy_forward4 = true
 				forward4_friendly_border = true
@@ -2131,16 +2590,18 @@ func _on_forward_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward4 = true
-				forward4_friendly_border = false
 				forward4_touching_border = false
 			else:
 				enemy_forward4 = true
 				forward4_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward4 = true
-				forward4_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward4_touching_border = false
+				enemy_forward4 = true
 			else:
 				enemy_forward4 = true
 				forward4_friendly_border = true
@@ -2158,16 +2619,18 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward5 = true
-				forward5_friendly_border = false
 				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward5 = true
-				forward5_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward5_touching_border = false
+				enemy_forward5 = true
 			else:
 				enemy_forward5 = true
 				forward5_friendly_border = true
@@ -2175,16 +2638,18 @@ func _on_forward_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward5 = true
-				forward5_friendly_border = false
 				forward5_touching_border = false
 			else:
 				enemy_forward5 = true
 				forward5_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward5 = true
-				forward5_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward5_touching_border = false
+				enemy_forward5 = true
 			else:
 				enemy_forward5 = true
 				forward5_friendly_border = true
@@ -2202,16 +2667,18 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward6 = true
-				forward6_friendly_border = false
 				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward6 = true
-				forward6_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4 && !enemy_forward5):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward6_touching_border = false
+				enemy_forward6 = true
 			else:
 				enemy_forward6 = true
 				forward6_friendly_border = true
@@ -2219,19 +2686,22 @@ func _on_forward_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward6 = true
-				forward6_friendly_border = false
 				forward6_touching_border = false
 			else:
 				enemy_forward6 = true
 				forward6_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward6 = true
-				forward6_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4 && !enemy_forward5):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward6_touching_border = false
+				enemy_forward6 = true
 			else:
 				enemy_forward6 = true
 				forward6_friendly_border = true
+
 	
 
 func _on_forward_6_area_body_exited(body: Node2D) -> void:
@@ -2246,16 +2716,18 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward7 = true
-				forward7_friendly_border = false
 				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				enemy_forward7 = true
-				forward7_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4 && !enemy_forward5 && !enemy_forward6):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
 				forward7_touching_border = false
+				enemy_forward7 = true
 			else:
 				enemy_forward7 = true
 				forward7_friendly_border = true
@@ -2263,16 +2735,18 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_forward7 = true
-				forward7_friendly_border = false
 				forward7_touching_border = false
 			else:
 				enemy_forward7 = true
 				forward7_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				enemy_forward7 = true
-				forward7_friendly_border = false
+				if(body.is_in_group("King")):
+					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4 && !enemy_forward5 && !enemy_forward6):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
 				forward7_touching_border = false
+				enemy_forward7 = true
 			else:
 				enemy_forward7 = true
 				forward7_friendly_border = true
@@ -2412,11 +2886,16 @@ func _on_back_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back1 = true
+				back1_touching_border = false
 			else:
 				enemy_back1 = true
 				back1_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back1_touching_border = false
 				enemy_back1 = true
 			else:
 				enemy_back1 = true
@@ -2425,20 +2904,23 @@ func _on_back_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back1 = true
+				back1_touching_border = false
 			else:
 				enemy_back1 = true
 				back1_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back1_touching_border = false
 				enemy_back1 = true
 			else:
 				enemy_back1 = true
 				back1_friendly_border = true
 
-
 func _on_back_1_area_body_exited(body: Node2D) -> void:
 	enemy_back1 = false
-
 
 func _on_back_2_area_body_entered(body: Node2D) -> void:
 	back2_tile = body.tile
@@ -2448,11 +2930,17 @@ func _on_back_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back2 = true
+				back2_touching_border = false
 			else:
 				enemy_back2 = true
 				back2_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back2_touching_border = false
 				enemy_back2 = true
 			else:
 				enemy_back2 = true
@@ -2461,11 +2949,17 @@ func _on_back_2_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back2 = true
+				back2_touching_border = false
 			else:
 				enemy_back2 = true
 				back2_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back2_touching_border = false
 				enemy_back2 = true
 			else:
 				enemy_back2 = true
@@ -2485,11 +2979,17 @@ func _on_back_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back3 = true
+				back3_touching_border = false
 			else:
 				enemy_back3 = true
 				back3_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back3_touching_border = false
 				enemy_back3 = true
 			else:
 				enemy_back3 = true
@@ -2498,11 +2998,17 @@ func _on_back_3_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back3 = true
+				back3_touching_border = false
 			else:
 				enemy_back3 = true
 				back3_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back3_touching_border = false
 				enemy_back3 = true
 			else:
 				enemy_back3 = true
@@ -2521,11 +3027,17 @@ func _on_back_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back4 = true
+				back4_touching_border = false
 			else:
 				enemy_back4 = true
 				back4_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back4_touching_border = false
 				enemy_back4 = true
 			else:
 				enemy_back4 = true
@@ -2534,11 +3046,17 @@ func _on_back_4_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back4 = true
+				back4_touching_border = false
 			else:
 				enemy_back4 = true
 				back4_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back4_touching_border = false
 				enemy_back4 = true
 			else:
 				enemy_back4 = true
@@ -2558,11 +3076,17 @@ func _on_back_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back5 = true
+				back5_touching_border = false
 			else:
 				enemy_back5 = true
 				back5_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back5_touching_border = false
 				enemy_back5 = true
 			else:
 				enemy_back5 = true
@@ -2571,15 +3095,22 @@ func _on_back_5_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back5 = true
+				back5_touching_border = false
 			else:
 				enemy_back5 = true
 				back5_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back5_touching_border = false
 				enemy_back5 = true
 			else:
 				enemy_back5 = true
 				back5_friendly_border = true
+
 
 
 
@@ -2595,11 +3126,17 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back6 = true
+				back6_touching_border = false
 			else:
 				enemy_back6 = true
 				back6_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back6_touching_border = false
 				enemy_back6 = true
 			else:
 				enemy_back6 = true
@@ -2608,15 +3145,22 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back6 = true
+				back6_touching_border = false
 			else:
 				enemy_back6 = true
 				back6_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back6_touching_border = false
 				enemy_back6 = true
 			else:
 				enemy_back6 = true
 				back6_friendly_border = true
+
 
 
 
@@ -2632,11 +3176,17 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back7 = true
+				back7_touching_border = false
 			else:
 				enemy_back7 = true
 				back7_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5 && !enemy_back6):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				back7_touching_border = false
 				enemy_back7 = true
 			else:
 				enemy_back7 = true
@@ -2645,11 +3195,17 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_back7 = true
+				back7_touching_border = false
 			else:
 				enemy_back7 = true
 				back7_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5 && !enemy_back6):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				back7_touching_border = false
 				enemy_back7 = true
 			else:
 				enemy_back7 = true
@@ -3001,11 +3557,17 @@ func _on_left_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_left1 = true
+				left1_touching_border = false
 			else:
 				enemy_left1 = true
 				left1_touching_border = true
 		else:
 			if(body.is_in_group("White")):
+				if(body.is_in_group("King")):
+					if(!enemy_left1):
+						Globals.white_in_check = true
+						Globals.piece_attacking_king = self
+				left1_touching_border = false
 				enemy_left1 = true
 			else:
 				enemy_left1 = true
@@ -3014,15 +3576,22 @@ func _on_left_1_area_body_entered(body: Node2D) -> void:
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemy_left1 = true
+				left1_touching_border = false
 			else:
 				enemy_left1 = true
 				left1_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
+				if(body.is_in_group("King")):
+					if(!enemy_left1):
+						Globals.black_in_check = true
+						Globals.piece_attacking_king = self
+				left1_touching_border = false
 				enemy_left1 = true
 			else:
 				enemy_left1 = true
 				left1_friendly_border = true
+
 
 func _on_left_1_area_body_exited(body: Node2D) -> void:
 	enemy_left1 = false

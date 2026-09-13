@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://2hubs4p4u5hi"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_7vbmt"]
+[ext_resource type="Texture2D" uid="uid://dmkfamk702dv7" path="res://Scenes/CardData/TarotCards/TarotCardTexture/11Tarot Card Justice.png" id="2_dr6wi"]
+
+[resource]
+script = ExtResource("1_7vbmt")
+value = 12
+tarotcardtexture = ExtResource("2_dr6wi")

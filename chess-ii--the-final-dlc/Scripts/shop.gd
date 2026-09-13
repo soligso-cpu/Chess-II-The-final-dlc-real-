@@ -15,6 +15,7 @@ var key
 var new_key = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#Globals.white_money = 100000
 	new_game_key()
 	new_card()
 func _process(delta: float) -> void:
@@ -137,8 +138,11 @@ func _on_major_button_button_up() -> void:
 	elif  card_shown == card.CARD_STAR:
 		print("Bending the rules i see")
 		if Globals.turn_tracking == 1 and Globals.white_money >= 20:
+			print("bought the star and globals is 1 and white money is 20")
 			Globals.gamble_win_white = true
+			print("Globals win gamble: "+ str(Globals.gamble_win_white))
 			Globals.white_money -= 20
+			print("removed money")
 		elif Globals.turn_tracking == 0 and Globals.black_money >= 20:
 			Globals.black_money -= 20
 			Globals.gamble_win_black = true

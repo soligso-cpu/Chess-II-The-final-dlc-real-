@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bh5ga6llw8x58"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_c5tmw"]
+[ext_resource type="Texture2D" uid="uid://s17r27m5vc65" path="res://Scenes/CardData/TarotCards/TarotCardTexture/16 Card The Tower.png" id="2_uqwce"]
+
+[resource]
+script = ExtResource("1_c5tmw")
+value = 17
+tarotcardtexture = ExtResource("2_uqwce")

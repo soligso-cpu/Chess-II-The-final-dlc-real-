@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://c66sb0d2ib8l7"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_u7sea"]
+[ext_resource type="Texture2D" uid="uid://c24m7cy2o0giq" path="res://Scenes/CardData/TarotCards/TarotCardTexture/3Tarot Card The Empress.png" id="2_uw7ss"]
+
+[resource]
+script = ExtResource("1_u7sea")
+value = 4
+tarotcardtexture = ExtResource("2_uw7ss")

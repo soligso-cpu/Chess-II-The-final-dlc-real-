@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://u81i1ulg2ktw"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_r2o4i"]
+[ext_resource type="Texture2D" uid="uid://dd33xc1wajf2x" path="res://Scenes/CardData/TarotCards/TarotCardTexture/6Tarot Card The Lovers.png" id="2_5kfri"]
+
+[resource]
+script = ExtResource("1_r2o4i")
+value = 7
+tarotcardtexture = ExtResource("2_5kfri")

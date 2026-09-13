@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://bf0j2xcuijgwb"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_jnoat"]
+[ext_resource type="Texture2D" uid="uid://dxku2mis0up14" path="res://Scenes/CardData/TarotCards/TarotCardTexture/0Tarot Card The Fool.png" id="2_ghdh5"]
+
+[resource]
+script = ExtResource("1_jnoat")
+tarotcardtexture = ExtResource("2_ghdh5")

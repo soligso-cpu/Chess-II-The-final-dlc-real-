@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
 [ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://Scenes/Slots/slot_machine.tscn" id="20_ardhx"]
 [ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
-[ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://background_animation.tscn" id="22_o57li"]
+[ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/Slots/background_animation.tscn" id="22_o57li"]
 [ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_abmxi"]
 [ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="24_mc7rj"]
 

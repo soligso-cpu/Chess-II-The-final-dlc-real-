@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://ddh1bofgkgki4"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_o56i5"]
+[ext_resource type="Texture2D" uid="uid://cw1th1c6e0puj" path="res://Scenes/CardData/TarotCards/TarotCardTexture/7Tarot Card The Chariot.png" id="2_islrg"]
+
+[resource]
+script = ExtResource("1_o56i5")
+value = 8
+tarotcardtexture = ExtResource("2_islrg")

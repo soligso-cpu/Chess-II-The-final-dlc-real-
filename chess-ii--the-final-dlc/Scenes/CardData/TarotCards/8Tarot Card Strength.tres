@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://c1w2qb0erqilw"]
+
+[ext_resource type="Script" uid="uid://bpulxu8pdrwc7" path="res://Scenes/CardData/tarot_card_data.gd" id="1_td5cf"]
+[ext_resource type="Texture2D" uid="uid://c8x00w7rg3b5e" path="res://Scenes/CardData/TarotCards/TarotCardTexture/8Tarot Card Strength.png" id="2_icxew"]
+
+[resource]
+script = ExtResource("1_td5cf")
+value = 9
+tarotcardtexture = ExtResource("2_icxew")
