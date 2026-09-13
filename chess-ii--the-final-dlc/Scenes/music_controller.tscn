@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://13uncheku4mn"]
+
+[ext_resource type="Script" uid="uid://c0m1wslcjfk4r" path="res://Scripts/music_controller.gd" id="1_g5yuc"]
+[ext_resource type="AudioStream" uid="uid://6i1drjnq4u5e" path="res://Sounds/Chess2TFDLCcalm2.mp3" id="1_vg377"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=114748672]
+stream = ExtResource("1_vg377")
+script = ExtResource("1_g5yuc")

@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*uid://bmuqpr1i3qpu8"
+MusicController="*uid://13uncheku4mn"
 
 [dotnet]
 
