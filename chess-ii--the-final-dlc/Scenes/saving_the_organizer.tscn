@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://liajjbqtbdv5"]
+
+[ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="1_hjtgv"]
+[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="2_fm5up"]
+[ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="3_bcyy1"]
+[ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="4_bcyy1"]
+[ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://Scenes/Slots/slot_machine.tscn" id="5_o3ytg"]
+[ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="6_eacje"]
+[ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="7_sqcg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3ytg"]
+size = Vector2(118, 122)
+
+[node name="SavingTheOrganizer" type="Node2D" unique_id=1547485924]
+
+[node name="RouletteOrganizer" type="Node2D" parent="." unique_id=2076490602]
+visible = false
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=1709627071]
+position = Vector2(589, 303)
+offset = Vector2(0, 18.77)
+zoom = Vector2(0.81, 0.81)
+
+[node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("1_hjtgv")]
+
+[node name="BoardMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=299574377]
+position = Vector2(620, 314)
+
+[node name="RouletteMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=2103331165]
+position = Vector2(1711, 418)
+
+[node name="Sprite2D" type="Sprite2D" parent="RouletteOrganizer" unique_id=511977040]
+position = Vector2(81, 359)
+texture = ExtResource("2_fm5up")
+
+[node name="RouletteTransport" type="Area2D" parent="RouletteOrganizer" unique_id=816947843]
+script = ExtResource("3_bcyy1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=2066322597]
+position = Vector2(81, 357)
+shape = SubResource("RectangleShape2D_o3ytg")
+
+[node name="SlotsOrganiser" type="Node2D" parent="." unique_id=1215575577]
+script = ExtResource("4_bcyy1")
+
+[node name="SlotMachine" parent="SlotsOrganiser" unique_id=446480958 instance=ExtResource("5_o3ytg")]
+position = Vector2(1335, 1283)
+
+[node name="SlotButton" type="Button" parent="SlotsOrganiser" unique_id=1881780890]
+offset_left = 17.0
+offset_top = 442.0
+offset_right = 138.0
+offset_bottom = 503.0
+text = "SLOTS ****"
+
+[node name="CameraPositioning" type="Marker2D" parent="SlotsOrganiser" unique_id=912219202]
+position = Vector2(1752, 1558)
+
+[node name="ReturnButton" type="Button" parent="SlotsOrganiser" unique_id=1561375969]
+offset_left = 1325.0
+offset_top = 1652.0
+offset_right = 1406.0
+offset_bottom = 1685.0
+text = "Back to chess"
+
+[node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("6_eacje")]
+position = Vector2(-1206, 1251)
+
+[node name="ShopMarker" type="Marker2D" parent="Shop" unique_id=1215276195]
+position = Vector2(577, 304)
+
+[node name="ShopButton" type="Button" parent="Shop" unique_id=1909358434]
+offset_left = 1233.0
+offset_top = -1010.0
+offset_right = 1340.0
+offset_bottom = -969.0
+text = "Shopp"
+
+[node name="ShopReturnButton" type="Button" parent="Shop" unique_id=259090067]
+offset_left = 85.0
+offset_top = 526.0
+offset_right = 230.0
+offset_bottom = 595.0
+text = "Return"
+
+[node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("7_sqcg4")]
+position = Vector2(-1553, -953)
+
+[node name="FishMarker" type="Marker2D" parent="FishingGame" unique_id=701352652]
+position = Vector2(541, 308)
+
+[node name="FishReturn" type="Button" parent="FishingGame" unique_id=995117433]
+offset_left = -18.0
+offset_top = 340.0
+offset_right = 114.0
+offset_bottom = 368.0
+text = "Back"
+
+[node name="FishButton" type="Button" parent="FishingGame" unique_id=266112177]
+offset_left = 1592.0
+offset_top = 1142.0
+offset_right = 1683.0
+offset_bottom = 1194.0
+text = "FIH"
+
+[connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
