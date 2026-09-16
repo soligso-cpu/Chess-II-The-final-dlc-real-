@@ -9,17 +9,19 @@ var hold = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#sets the texture to tarot card texture
+# Sets the texture to tarot card texture
 	texture = tarotcardtexture
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+# Allows you to hold cards
 	if hold:
 		global_position = get_global_mouse_position()
 
 
 func _on_area_2d_tarot_card_action(left: bool) -> void:
+# Sets hold to true if left
 	if left:
 		print(value)
 		hold = true
@@ -29,6 +31,7 @@ func _on_area_2d_tarot_card_action(left: bool) -> void:
 
 
 func _on_area_2d_tarot_card_release(left: bool) -> void:
+# Sets hold to false if left is released
 	if left:
 		hold = false
 	pass # Replace with function body.

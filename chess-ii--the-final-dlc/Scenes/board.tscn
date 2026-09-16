@@ -11,19 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://bdmuaqrv3pnlx" path="res://Scenes/king_white.tscn" id="8_7iy1p"]
 [ext_resource type="PackedScene" uid="uid://bxdtdq5htx14k" path="res://Scenes/knight_black.tscn" id="8_d8vyx"]
 [ext_resource type="PackedScene" uid="uid://b4q7sa1qr2yin" path="res://Scenes/rook_black.tscn" id="9_vjyv8"]
-[ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="10_vjsom"]
 [ext_resource type="PackedScene" uid="uid://b6kajqyiy26p0" path="res://Scenes/bishop_black.tscn" id="11_iehwj"]
 [ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="11_upw65"]
-[ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="12_d7frl"]
 [ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
-[ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://Scenes/Slots/slot_machine.tscn" id="20_ardhx"]
-[ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="20_bb5wj"]
 [ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/Slots/background_animation.tscn" id="22_o57li"]
-[ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_abmxi"]
-[ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="24_mc7rj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -125,9 +119,6 @@ _data = {
 &"RESET": SubResource("Animation_qjv7d"),
 &"new_animation": SubResource("Animation_ardhx")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d7frl"]
-size = Vector2(118, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2cdyc"]
 size = Vector2(484, 95)
@@ -638,53 +629,67 @@ position = Vector2(898, 123)
 [node name="White" type="Node2D" parent="." unique_id=1780591263]
 
 [node name="KnightH2" parent="White" unique_id=1141139028 instance=ExtResource("7_twe5h")]
+visible = false
 position = Vector2(415, 602)
 
 [node name="KnightH7" parent="White" unique_id=760195180 instance=ExtResource("7_twe5h")]
+visible = false
 position = Vector2(815, 602)
 
 [node name="QueenWhite" parent="White" unique_id=1356915549 instance=ExtResource("3_shhme")]
+visible = false
 position = Vector2(576, 604)
 
 [node name="RookH1" parent="White" unique_id=1039881567 instance=ExtResource("6_vw4oq")]
+visible = false
 position = Vector2(335, 602)
 
 [node name="RookH8" parent="White" unique_id=773808664 instance=ExtResource("6_vw4oq")]
+visible = false
 position = Vector2(895, 602)
 
 [node name="BishopH3" parent="White" unique_id=195200490 instance=ExtResource("7_hm3vq")]
+visible = false
 position = Vector2(496, 604)
 
 [node name="BishopH6" parent="White" unique_id=505501379 instance=ExtResource("7_hm3vq")]
+visible = false
 position = Vector2(736, 604)
 
 [node name="WhiteKing" parent="White" unique_id=421995261 instance=ExtResource("8_7iy1p")]
-position = Vector2(657, 603)
+position = Vector2(657, 602)
 
 [node name="WhitePawns" type="Node2D" parent="White" unique_id=199717627]
 
 [node name="Pawn1White" parent="White/WhitePawns" unique_id=1056477142 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(338, 523)
 
 [node name="Pawn2White" parent="White/WhitePawns" unique_id=1083019392 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(418, 523)
 
 [node name="Pawn3White" parent="White/WhitePawns" unique_id=1522973449 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(498, 523)
 
 [node name="Pawn4White" parent="White/WhitePawns" unique_id=1944777352 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(578, 523)
 
 [node name="Pawn5White" parent="White/WhitePawns" unique_id=1499554615 instance=ExtResource("5_s4i1f")]
 position = Vector2(658, 523)
 
 [node name="Pawn6White" parent="White/WhitePawns" unique_id=691046711 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(738, 523)
 
 [node name="Pawn7White" parent="White/WhitePawns" unique_id=1364732129 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(818, 523)
 
 [node name="Pawn8White" parent="White/WhitePawns" unique_id=394551820 instance=ExtResource("5_s4i1f")]
+visible = false
 position = Vector2(898, 523)
 
 [node name="LoreOrganizer" type="Node2D" parent="." unique_id=486928420]
@@ -739,33 +744,6 @@ one_shot = true
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_bb5wj")
 
-[node name="RouletteOrganizer" type="Node2D" parent="." unique_id=596971121]
-
-[node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=246092672]
-position = Vector2(589, 303)
-offset = Vector2(0, 18.77)
-zoom = Vector2(0.81, 0.81)
-
-[node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("10_vjsom")]
-visible = false
-
-[node name="BoardMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=962987238]
-position = Vector2(620, 314)
-
-[node name="RouletteMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=1197052851]
-position = Vector2(1711, 418)
-
-[node name="Sprite2D" type="Sprite2D" parent="RouletteOrganizer" unique_id=1446117609]
-position = Vector2(81, 359)
-texture = ExtResource("11_upw65")
-
-[node name="RouletteTransport" type="Area2D" parent="RouletteOrganizer" unique_id=950492778]
-script = ExtResource("12_d7frl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1842208485]
-position = Vector2(81, 357)
-shape = SubResource("RectangleShape2D_d7frl")
-
 [node name="Promotion" type="Node2D" parent="." unique_id=1415129723]
 
 [node name="BlackPromotion" type="Area2D" parent="Promotion" unique_id=1960621730 groups=["PromotionTiles"]]
@@ -792,80 +770,7 @@ offset_top = -163.0
 offset_right = 110.0
 offset_bottom = 157.0
 
-[node name="SlotsOrganiser" type="Node2D" parent="." unique_id=112713170]
-script = ExtResource("20_bb5wj")
-
-[node name="SlotMachine" parent="SlotsOrganiser" unique_id=446480958 instance=ExtResource("20_ardhx")]
-position = Vector2(1335, 1283)
-
-[node name="SlotButton" type="Button" parent="SlotsOrganiser" unique_id=1279185386]
-offset_left = 17.0
-offset_top = 442.0
-offset_right = 138.0
-offset_bottom = 503.0
-text = "SLOTS ****"
-
-[node name="CameraPositioning" type="Marker2D" parent="SlotsOrganiser" unique_id=571470279]
-position = Vector2(1752, 1558)
-
-[node name="ReturnButton" type="Button" parent="SlotsOrganiser" unique_id=554052801]
-offset_left = 1325.0
-offset_top = 1652.0
-offset_right = 1406.0
-offset_bottom = 1685.0
-text = "Back to chess"
-
-[node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("23_abmxi")]
-position = Vector2(-1206, 1251)
-
-[node name="ShopMarker" type="Marker2D" parent="Shop" unique_id=401339061]
-position = Vector2(577, 304)
-
-[node name="ShopButton" type="Button" parent="Shop" unique_id=2016025154]
-offset_left = 1233.0
-offset_top = -1010.0
-offset_right = 1340.0
-offset_bottom = -969.0
-text = "Shopp"
-
-[node name="ShopReturnButton" type="Button" parent="Shop" unique_id=2093975447]
-offset_left = 85.0
-offset_top = 526.0
-offset_right = 230.0
-offset_bottom = 595.0
-text = "Return"
-
-[node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("24_mc7rj")]
-position = Vector2(-1553, -953)
-
-[node name="FishMarker" type="Marker2D" parent="FishingGame" unique_id=1971766302]
-position = Vector2(541, 308)
-
-[node name="FishReturn" type="Button" parent="FishingGame" unique_id=1330432351]
-offset_left = -18.0
-offset_top = 340.0
-offset_right = 114.0
-offset_bottom = 368.0
-text = "Back"
-
-[node name="FishButton" type="Button" parent="FishingGame" unique_id=1061870121]
-offset_left = 1592.0
-offset_top = 1142.0
-offset_right = 1683.0
-offset_bottom = 1194.0
-text = "FIH"
-
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
-[connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="RouletteOrganizer/RouletteTransport" method="_on_jumpscare_timer_timeout"]
-[connection signal="animation_finished" from="LoreOrganizer/AnimationPlayer" to="RouletteOrganizer/RouletteTransport" method="_on_animation_player_animation_finished"]
-[connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
 [connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]
-[connection signal="button_up" from="SlotsOrganiser/SlotButton" to="." method="_on_slot_button_button_up"]
-[connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
-[connection signal="button_up" from="Shop/ShopButton" to="." method="_on_shop_button_button_up"]
-[connection signal="button_up" from="Shop/ShopReturnButton" to="." method="_on_shop_return_button_button_up"]
-[connection signal="button_up" from="FishingGame/FishReturn" to="." method="_on_fish_return_button_up"]
-[connection signal="button_up" from="FishingGame/FishButton" to="." method="_on_fish_button_button_up"]

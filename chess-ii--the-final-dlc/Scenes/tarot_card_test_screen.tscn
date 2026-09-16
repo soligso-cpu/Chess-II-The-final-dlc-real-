@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bbr6jtr2wfyd5"]
 
-[ext_resource type="PackedScene" uid="uid://csdk8nvvsc7or" path="res://Scenes/Slots/tarot_card.tscn" id="1_g18r3"]
+[ext_resource type="PackedScene" uid="uid://csdk8nvvsc7or" path="res://Scenes/tarot_card.tscn" id="1_g18r3"]
 [ext_resource type="Texture2D" uid="uid://ddhhl8iudn6yd" path="res://Scenes/CardData/TarotCards/TarotCardTexture/17Tarot Card The Star.png" id="2_tx1pw"]
 [ext_resource type="Texture2D" uid="uid://c4mtvnj5vsfbq" path="res://Scenes/CardData/TarotCards/TarotCardTexture/14Tarot Card Temprence.png" id="3_6gi27"]
 

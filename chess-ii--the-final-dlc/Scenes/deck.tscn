@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://erbmyqmty8ip"]
+
+[ext_resource type="Texture2D" uid="uid://cpnmcmyql3h5k" path="res://Sprites/Deck.png" id="1_7t2rj"]
+[ext_resource type="Script" uid="uid://ck03oos525was" path="res://Scripts/deck.gd" id="2_56jfk"]
+[ext_resource type="Resource" uid="uid://bf0j2xcuijgwb" path="res://Scenes/CardData/TarotCards/0Tarot Card The Fool.tres" id="3_yqw3q"]
+[ext_resource type="Resource" uid="uid://g3xhr8facptk" path="res://Scenes/CardData/TarotCards/1Tarot Card The Magician.tres" id="4_np1no"]
+[ext_resource type="Resource" uid="uid://pbli170epvdc" path="res://Scenes/CardData/TarotCards/2Tarot Card The High Priestess.tres" id="5_wq5of"]
+[ext_resource type="Resource" uid="uid://c66sb0d2ib8l7" path="res://Scenes/CardData/TarotCards/3Tarot Card The Empress.tres" id="6_cawt3"]
+[ext_resource type="Resource" uid="uid://b1c5lq0sscroe" path="res://Scenes/CardData/TarotCards/4Tarot Card The Emperor.tres" id="7_c3im2"]
+[ext_resource type="Resource" uid="uid://dr5ar1vmaatw0" path="res://Scenes/CardData/TarotCards/5Tarot Card The Hierophant.tres" id="8_lhmyl"]
+[ext_resource type="Resource" uid="uid://u81i1ulg2ktw" path="res://Scenes/CardData/TarotCards/6Tarot Card The Lovers.tres" id="9_loe6o"]
+[ext_resource type="Resource" uid="uid://ddh1bofgkgki4" path="res://Scenes/CardData/TarotCards/7Tarot Card The Chariot.tres" id="10_j64o2"]
+[ext_resource type="Resource" uid="uid://c1w2qb0erqilw" path="res://Scenes/CardData/TarotCards/8Tarot Card Strength.tres" id="11_jdnm7"]
+[ext_resource type="Resource" uid="uid://chnli21e3na5k" path="res://Scenes/CardData/TarotCards/9Tarot Card The Hermit.tres" id="12_m15di"]
+[ext_resource type="Resource" uid="uid://dl5ocw4aj4wmn" path="res://Scenes/CardData/TarotCards/10Tarot Card The Wheel Of Fortune.tres" id="13_6n0fs"]
+[ext_resource type="Resource" uid="uid://2hubs4p4u5hi" path="res://Scenes/CardData/TarotCards/11Tarot Card Justice.tres" id="14_akbed"]
+[ext_resource type="Resource" uid="uid://dx0i0dov3dy28" path="res://Scenes/CardData/TarotCards/12Tarot Card The Hanged Man.tres" id="15_qgh7h"]
+[ext_resource type="Resource" uid="uid://di0i3fnaeo440" path="res://Scenes/CardData/TarotCards/13Tarot Card Death.tres" id="16_1dyh8"]
+[ext_resource type="Resource" uid="uid://dqhap86g6nubt" path="res://Scenes/CardData/TarotCards/14Tarot Card Temprence.tres" id="17_7qqb5"]
+[ext_resource type="Resource" uid="uid://dh7f2q2nkw1bq" path="res://Scenes/CardData/TarotCards/15Tarot Card The Devil.tres" id="18_25ny6"]
+[ext_resource type="Resource" uid="uid://bh5ga6llw8x58" path="res://Scenes/CardData/TarotCards/16 Card The Tower.tres" id="19_myoyy"]
+[ext_resource type="Resource" uid="uid://1ifwtr84qfly" path="res://Scenes/CardData/TarotCards/17Tarot Card The Star.tres" id="20_d106x"]
+[ext_resource type="Resource" uid="uid://cwsgstkkmlx1u" path="res://Scenes/CardData/TarotCards/18Tarot Card The Moon.tres" id="21_ibb0w"]
+[ext_resource type="Resource" uid="uid://be0ay10x28h42" path="res://Scenes/CardData/TarotCards/19Tarot Card The Sun.tres" id="22_jut54"]
+[ext_resource type="Resource" uid="uid://cy0pnnai2w5m3" path="res://Scenes/CardData/TarotCards/20Tarot Card Judgement.tres" id="23_xmd34"]
+[ext_resource type="Resource" uid="uid://c4ih35kogjbpg" path="res://Scenes/CardData/TarotCards/21Tarot Card The World.tres" id="24_1581o"]
+[ext_resource type="PackedScene" uid="uid://csdk8nvvsc7or" path="res://Scenes/tarot_card.tscn" id="25_56jfk"]
+[ext_resource type="Texture2D" uid="uid://dpjbr7mo388fm" path="res://Sprites/The.png" id="25_j8v03"]
+
+[node name="Deck" type="Sprite2D" unique_id=1409560288]
+position = Vector2(120, 216)
+texture = ExtResource("1_7t2rj")
+script = ExtResource("2_56jfk")
+tarotCards = Array[Resource]([ExtResource("3_yqw3q"), ExtResource("4_np1no"), ExtResource("5_wq5of"), ExtResource("6_cawt3"), ExtResource("7_c3im2"), ExtResource("8_lhmyl"), ExtResource("9_loe6o"), ExtResource("10_j64o2"), ExtResource("11_jdnm7"), ExtResource("12_m15di"), ExtResource("13_6n0fs"), ExtResource("14_akbed"), ExtResource("15_qgh7h"), ExtResource("16_1dyh8"), ExtResource("17_7qqb5"), ExtResource("18_25ny6"), ExtResource("19_myoyy"), ExtResource("20_d106x"), ExtResource("21_ibb0w"), ExtResource("22_jut54"), ExtResource("23_xmd34"), ExtResource("24_1581o")])
+tarotCardScene = ExtResource("25_56jfk")
+
+[node name="The" type="Sprite2D" parent="." unique_id=412096352]
+position = Vector2(0, -144)
+texture = ExtResource("25_j8v03")
