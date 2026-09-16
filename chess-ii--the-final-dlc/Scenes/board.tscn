@@ -577,38 +577,30 @@ shape = SubResource("RectangleShape2D_5fj8h")
 [node name="Black" type="Node2D" parent="." unique_id=361448236]
 
 [node name="KnightBlackA7" parent="Black" unique_id=878598053 instance=ExtResource("8_d8vyx")]
-visible = false
 position = Vector2(815, 43)
 
 [node name="KnightBlackA2" parent="Black" unique_id=56098321 instance=ExtResource("8_d8vyx")]
-visible = false
 position = Vector2(415, 43)
 
 [node name="QueenBlack" parent="Black" unique_id=581118255 instance=ExtResource("4_shhme")]
 position = Vector2(656, 44)
 
 [node name="RookBlackA8" parent="Black" unique_id=1545077595 instance=ExtResource("9_vjyv8")]
-visible = false
 position = Vector2(895, 42)
 
 [node name="RookBlackA1" parent="Black" unique_id=1062452820 instance=ExtResource("9_vjyv8")]
-visible = false
 position = Vector2(335, 42)
 
 [node name="BishopBlackA6" parent="Black" unique_id=448375492 instance=ExtResource("11_iehwj")]
-visible = false
 position = Vector2(736, 44)
 
 [node name="BishopBlackA3" parent="Black" unique_id=728376784 instance=ExtResource("11_iehwj")]
-visible = false
 position = Vector2(496, 45)
 
 [node name="BlackKing" parent="Black" unique_id=2054794464 instance=ExtResource("13_2cdyc")]
-visible = false
 position = Vector2(577, 42)
 
 [node name="BlackPawns" type="Node2D" parent="Black" unique_id=572562130]
-visible = false
 
 [node name="Pawn1Black" parent="Black/BlackPawns" unique_id=273139928 instance=ExtResource("14_2cdyc")]
 position = Vector2(338, 123)

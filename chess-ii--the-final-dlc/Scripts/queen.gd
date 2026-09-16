@@ -381,26 +381,101 @@ func _ready() -> void:
 	focused = false
 	readd_markers = true
 
+func readd_marker_function():
+	var forward1marker = $MovementMarkers/Forward/Forward1
+	var forward2marker = $MovementMarkers/Forward/Forward2
+	var forward3marker = $MovementMarkers/Forward/Forward3
+	var forward4marker = $MovementMarkers/Forward/Forward4
+	var forward5marker = $MovementMarkers/Forward/Forward5
+	var forward6marker = $MovementMarkers/Forward/Forward6
+	var forward7marker = $MovementMarkers/Forward/Forward7
+	var forward1pos = $MovementMarkers/Forward/Forward1.global_position
+	var forward2pos = $MovementMarkers/Forward/Forward2.global_position
+	var forward3pos = $MovementMarkers/Forward/Forward3.global_position
+	var forward4pos = $MovementMarkers/Forward/Forward4.global_position
+	var forward5pos = $MovementMarkers/Forward/Forward5.global_position
+	var forward6pos = $MovementMarkers/Forward/Forward6.global_position
+	var forward7pos = $MovementMarkers/Forward/Forward7.global_position
+	# forward 1
+	forward1marker.get_parent().remove_child(forward1marker)
+	$MovementMarkers/Forward.add_child(forward1marker)
+	forward1marker.global_position = forward1pos
+	# forward 2
+	forward2marker.get_parent().remove_child(forward2marker)
+	$MovementMarkers/Forward.add_child(forward2marker)
+	forward2marker.global_position = forward2pos
+	# forward 3
+	forward3marker.get_parent().remove_child(forward3marker)
+	$MovementMarkers/Forward.add_child(forward3marker)
+	forward3marker.global_position = forward3pos
+	# forward 4
+	forward4marker.get_parent().remove_child(forward4marker)
+	$MovementMarkers/Forward.add_child(forward4marker)
+	forward4marker.global_position = forward4pos
+	# forward 5
+	forward5marker.get_parent().remove_child(forward5marker)
+	$MovementMarkers/Forward.add_child(forward5marker)
+	forward5marker.global_position = forward5pos
+	# forward 6
+	forward6marker.get_parent().remove_child(forward6marker)
+	$MovementMarkers/Forward.add_child(forward6marker)
+	forward6marker.global_position = forward6pos
+	# forward 7
+	forward7marker.get_parent().remove_child(forward7marker)
+	$MovementMarkers/Forward.add_child(forward7marker)
+	forward7marker.global_position = forward7pos
+	#endregion
+	#region back
+	var back1pos = $MovementMarkers/Back/Back1.global_position
+	var back2pos = $MovementMarkers/Back/Back2.global_position
+	var back3pos = $MovementMarkers/Back/Back3.global_position
+	var back4pos = $MovementMarkers/Back/Back4.global_position
+	var back5pos = $MovementMarkers/Back/Back5.global_position
+	var back6pos = $MovementMarkers/Back/Back6.global_position
+	var back7pos = $MovementMarkers/Back/Back7.global_position
+	var back1marker = $MovementMarkers/Back/Back1
+	var back2marker = $MovementMarkers/Back/Back2
+	var back3marker = $MovementMarkers/Back/Back3
+	var back4marker = $MovementMarkers/Back/Back4
+	var back5marker = $MovementMarkers/Back/Back5
+	var back6marker = $MovementMarkers/Back/Back6
+	var back7marker = $MovementMarkers/Back/Back7
+	
+	# back 1
+	back1marker.get_parent().remove_child(back1marker)
+	$MovementMarkers/Back.add_child(back1marker)
+	back1marker.global_position = back1pos
+	# back 2
+	back2marker.get_parent().remove_child(back2marker)
+	$MovementMarkers/Back.add_child(back2marker)
+	back2marker.global_position = back2pos
+	# back 3
+	back3marker.get_parent().remove_child(back3marker)
+	$MovementMarkers/Back.add_child(back3marker)
+	back3marker.global_position = back3pos
+	# baclk 4
+	back4marker.get_parent().remove_child(back4marker)
+	$MovementMarkers/Back.add_child(back4marker)
+	back4marker.global_position = back4pos
+	# back 5
+	back5marker.get_parent().remove_child(back5marker)
+	$MovementMarkers/Back.add_child(back5marker)
+	back5marker.global_position = back5pos
+	# back 6
+	back6marker.get_parent().remove_child(back6marker)
+	$MovementMarkers/Back.add_child(back6marker)
+	back6marker.global_position = back6pos
+	# back 7
+	back7marker.get_parent().remove_child(back7marker)
+	$MovementMarkers/Back.add_child(back7marker)
+	back7marker.global_position = back7pos
+	#endregion
+	readd_markers = false
+	return
 
 func _process(delta: float) -> void:
-	print("white king check: "+str(Globals.white_in_check))
-	print("black king check: "+str(Globals.black_in_check))
-	print("white king check piece: "+str(Globals.piece_attacking_king))
-	if(Globals.piece_attacking_king == self):
-		print("im the piece attacking king: "+ str(self))
-		print("my global position: "+ str(self.global_position))
-	var all_kings = get_tree().get_nodes_in_group("King")
-	for CharacterBody2D in all_kings:
-		print(CharacterBody2D.name)
 	if(readd_markers):
-		var markers = $MovementMarkers
-		var test_gp = $MovementMarkers.global_position
-		$".".remove_child(markers)
-		await get_tree().process_frame
-		$".".add_child(markers)
-		$MovementMarkers.global_position = test_gp
-		readd_markers = false
-		return
+		readd_marker_function()
 	if(Globals.piece_focused == self):
 		focused = true
 	else:
@@ -2455,8 +2530,8 @@ func _on_forward_1_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("White")):
 				if(body.is_in_group("King")):
-						Globals.white_in_check = true
-						Globals.piece_attacking_king = self
+					Globals.white_in_check = true
+					Globals.piece_attacking_king = self
 				forward1_touching_border = false
 				enemy_forward1 = true
 			else:
@@ -2733,9 +2808,7 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 	forward7_tile_group = body.tile_group
 	# This monster of code is checking if the king is in check, and if they can attack the piece in back1.
 	if(self.is_in_group("Black")):
-		print("im in black")
 		if(Globals.black_in_check):
-			print("blacks in check")
 			if(body == Globals.piece_attacking_king):
 				enemy_forward7 = true
 				forward7_touching_border = false
@@ -2743,12 +2816,9 @@ func _on_forward_7_area_body_entered(body: Node2D) -> void:
 				enemy_forward7 = true
 				forward7_touching_border = true
 		else:
-			print("raaah")
 			if(body.is_in_group("White")):
 				if(body.is_in_group("King")):
-					print("its the king")
 					if(!enemy_forward1 && !enemy_forward2 && !enemy_forward3 && !enemy_forward4 && !enemy_forward5 && !enemy_forward6):
-						print("everything is fale")
 						Globals.white_in_check = true
 						Globals.piece_attacking_king = self
 				forward7_touching_border = false
