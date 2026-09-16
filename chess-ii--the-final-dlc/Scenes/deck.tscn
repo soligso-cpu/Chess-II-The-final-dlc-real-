@@ -31,7 +31,7 @@
 position = Vector2(120, 216)
 texture = ExtResource("1_7t2rj")
 script = ExtResource("2_56jfk")
-TarotCards = Array[Resource]([ExtResource("3_yqw3q"), ExtResource("4_np1no"), ExtResource("5_wq5of"), ExtResource("6_cawt3"), ExtResource("7_c3im2"), ExtResource("8_lhmyl"), ExtResource("9_loe6o"), ExtResource("10_j64o2"), ExtResource("11_jdnm7"), ExtResource("12_m15di"), ExtResource("13_6n0fs"), ExtResource("14_akbed"), ExtResource("15_qgh7h"), ExtResource("16_1dyh8"), ExtResource("17_7qqb5"), ExtResource("18_25ny6"), ExtResource("19_myoyy"), ExtResource("20_d106x"), ExtResource("21_ibb0w"), ExtResource("22_jut54"), ExtResource("23_xmd34"), ExtResource("24_1581o")])
+tarotCards = Array[Resource]([ExtResource("3_yqw3q"), ExtResource("4_np1no"), ExtResource("5_wq5of"), ExtResource("6_cawt3"), ExtResource("7_c3im2"), ExtResource("8_lhmyl"), ExtResource("9_loe6o"), ExtResource("10_j64o2"), ExtResource("11_jdnm7"), ExtResource("12_m15di"), ExtResource("13_6n0fs"), ExtResource("14_akbed"), ExtResource("15_qgh7h"), ExtResource("16_1dyh8"), ExtResource("17_7qqb5"), ExtResource("18_25ny6"), ExtResource("19_myoyy"), ExtResource("20_d106x"), ExtResource("21_ibb0w"), ExtResource("22_jut54"), ExtResource("23_xmd34"), ExtResource("24_1581o")])
 tarotCardScene = ExtResource("25_56jfk")
 
 [node name="The" type="Sprite2D" parent="." unique_id=412096352]
