@@ -168,8 +168,8 @@ var h8_state = ""
 var turn_tracking
 var turn_amount = 2
 var moved
-var white_turns = 0
-var black_turns = 0
+var white_turns = 1
+var black_turns = 1
 var white_score = 0
 var black_score = 0
 
@@ -190,6 +190,7 @@ func _ready() -> void:
 	piece_attacking_king = null
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
+	print("turn tracking 1: "+ str(turn_tracking))
 	rook_a_train = false
 	turn_count = 1
 	piece_focused = null
@@ -199,6 +200,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print("turn tracking = "+ str(turn_tracking))
+	print("white_turns: "+ str(white_turns))
+	print("black_turns: "+ str(black_turns))
 	#region accessing stuff
 	# when a piece goes to move, it needs to see what its moving to and where, so it sets the "accessing" variable to the name of the tile it wants to move to. When this happens, this script finds the accessing name is a certain tile and turns the position_target to the x and y of the target tile. The piece, after processing a frame, gets this position_target and moves there.
 	# TLDR: This returns a position for the tile the piece wants to access.
@@ -413,20 +417,24 @@ func _process(delta: float) -> void:
 	#endregion
 	if(white_turns >= 1):
 		turn_tracking = 1
+		print("le epic white tunr")
 		if(moved):
 			turn_count += 1
 			white_turns -= 1
 			moved = false
 			return
 	elif(black_turns >= 1):
+		print("le epic blah turn")
 		turn_tracking = 0
 		if(moved):
 			turn_count += 1
 			black_turns -= 1
 			moved = false
 			return
-	elif(white_turns == 0 && turn_tracking > 1):
+	elif(white_turns < 1 && turn_tracking == 1):
 		turn_tracking = 0
+		white_turns += 1
+		black_turns += 1
 		turn_count += 1
 		print("white score: "+ str(white_score))
 		print("black score: "+ str(black_score))
