@@ -4,6 +4,7 @@ var on_roulette = false
 var timer_on
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$"../Roulette".visible = false
 	pass # Replace with function body.
 
 

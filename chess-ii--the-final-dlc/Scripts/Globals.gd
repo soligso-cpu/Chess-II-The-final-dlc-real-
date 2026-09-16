@@ -180,13 +180,14 @@ var promotion_instance_tile_group
 var piece_attacking_king = null
 var piece_attacking_king_group: String
 var piece_attacking_king_direction: String
-var white_in_check
-var black_in_check
+var white_in_check = false
+var black_in_check = false
 
 var piece_focused: Node = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	piece_attacking_king = null
 	await get_tree().process_frame
 	turn_tracking = 1 # 1 = white, 0 = black
 	rook_a_train = false
