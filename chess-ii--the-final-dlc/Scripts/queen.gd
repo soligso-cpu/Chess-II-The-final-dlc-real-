@@ -4322,34 +4322,27 @@ func _on_fr_1_area_body_entered(body: Node2D) -> void:
 	fr1_tile = body.tile
 	fr1_tile_group = body.tile_group
 	if(self.is_in_group("Black")):
-		#if this piece is in black
 		if(Globals.black_in_check):
-			# if black is in check then:
 			if(body == Globals.piece_attacking_king):
-				#we check to see if the detected body is the piece attacking the king
 				enemyfr_1 = true
 				fr1_touching_border = false
-				#if it is then we are allowed to attack them
 			else:
 				enemyfr_1 = true
 				fr1_touching_border = true
-				#you cant take them, if it stops check then thats not on this code, thats on the area code.
 		else:
-			# if black is not in check
 			if(body.is_in_group("White")):
-				#is the body in check is white then you can attack them
 				if(body.is_in_group("King")):
-					# if the body is king then you are checking the king.
-					Globals.white_in_check = true
-					Globals.piece_attacking_king = self
+					if(enemyfr_1 || enemyfr_2 || enemyfr_3 || enemyfr_4 || enemyfr_5 || enemyfr_6):
+						Globals.white_in_check = false
+					else:
+						Globals.white_in_check = false
+						Globals.piece_attacking_king = self
 				fr1_touching_border = false
 				enemyfr_1 = true
 			else:
-				# if its not white then its your own piece so no takey takey
 				enemyfr_1 = true
-				fr1_touching_border = true
+				fr1_friendly_border = true
 	elif(self.is_in_group("White")):
-		# the exact same as the previous code yet changed for white.
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
 				enemyfr_1 = true
@@ -4360,13 +4353,16 @@ func _on_fr_1_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("Black")):
 				if(body.is_in_group("King")):
-					Globals.black_in_check = true
-					Globals.piece_attacking_king = self
+					if(enemyfr_1 || enemyfr_2 || enemyfr_3 || enemyfr_4 || enemyfr_5 || enemyfr_6):
+						Globals.black_in_check = false
+					else:
+						Globals.black_in_check = false
+						Globals.piece_attacking_king = self
 				fr1_touching_border = false
 				enemyfr_1 = true
 			else:
 				enemyfr_1 = true
-				fr1_touching_border = true
+				fr1_friendly_border = true
 
 
 
