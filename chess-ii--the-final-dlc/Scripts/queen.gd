@@ -512,37 +512,37 @@ func _process(delta: float) -> void:
 		var left7pos = $MovementMarkers/Left/Left7.global_position
 		# left 1
 		left1marker.get_parent().remove_child(left1marker)
-		$MovementMarkers/Back.add_child(left1marker)
+		$MovementMarkers/Left.add_child(left1marker)
 		await get_tree().process_frame
 		left1marker.global_position = left1pos
 		# left 2
 		left2marker.get_parent().remove_child(left2marker)
-		$MovementMarkers/Back.add_child(left2marker)
+		$MovementMarkers/Left.add_child(left2marker)
 		await get_tree().process_frame
 		left2marker.global_position = left2pos
 		# left 3
 		left3marker.get_parent().remove_child(left3marker)
-		$MovementMarkers/Back.add_child(left3marker)
+		$MovementMarkers/Left.add_child(left3marker)
 		await get_tree().process_frame
 		left3marker.global_position = left3pos
 		# left 4
 		left4marker.get_parent().remove_child(left4marker)
-		$MovementMarkers/Back.add_child(left4marker)
+		$MovementMarkers/Left.add_child(left4marker)
 		await get_tree().process_frame
 		left4marker.global_position = left4pos
 		# left 5
 		left5marker.get_parent().remove_child(left5marker)
-		$MovementMarkers/Back.add_child(left5marker)
+		$MovementMarkers/Left.add_child(left5marker)
 		await get_tree().process_frame
 		left5marker.global_position = left5pos
 		# left 6
 		left6marker.get_parent().remove_child(left6marker)
-		$MovementMarkers/Back.add_child(left6marker)
+		$MovementMarkers/Left.add_child(left6marker)
 		await get_tree().process_frame
 		left6marker.global_position = left6pos
 		# left 7
 		left7marker.get_parent().remove_child(left7marker)
-		$MovementMarkers/Back.add_child(left7marker)
+		$MovementMarkers/Left.add_child(left7marker)
 		await get_tree().process_frame
 		left7marker.global_position = left7pos
 		#endregion
@@ -563,37 +563,37 @@ func _process(delta: float) -> void:
 		var right7pos = $MovementMarkers/Right/Right7.global_position
 		# right 1
 		right1marker.get_parent().remove_child(right1marker)
-		$MovementMarkers/Back.add_child(right1marker)
+		$MovementMarkers/Right.add_child(right1marker)
 		await get_tree().process_frame
 		right1marker.global_position = right1pos
 		# left 2
 		right2marker.get_parent().remove_child(right2marker)
-		$MovementMarkers/Back.add_child(right2marker)
+		$MovementMarkers/Right.add_child(right2marker)
 		await get_tree().process_frame
 		right2marker.global_position = right2pos
 		# left 3
 		right3marker.get_parent().remove_child(right3marker)
-		$MovementMarkers/Back.add_child(right3marker)
+		$MovementMarkers/Right.add_child(right3marker)
 		await get_tree().process_frame
 		right3marker.global_position = right3pos
 		# left 4
 		right4marker.get_parent().remove_child(right4marker)
-		$MovementMarkers/Back.add_child(right4marker)
+		$MovementMarkers/Right.add_child(right4marker)
 		await get_tree().process_frame
 		right4marker.global_position = right4pos
 		# left 5
 		right5marker.get_parent().remove_child(right5marker)
-		$MovementMarkers/Back.add_child(right5marker)
+		$MovementMarkers/Right.add_child(right5marker)
 		await get_tree().process_frame
 		right5marker.global_position = right5pos
 		# left 6
 		right6marker.get_parent().remove_child(right6marker)
-		$MovementMarkers/Back.add_child(right6marker)
+		$MovementMarkers/Right.add_child(right6marker)
 		await get_tree().process_frame
 		right6marker.global_position = right6pos
 		# left 7
 		right7marker.get_parent().remove_child(right7marker)
-		$MovementMarkers/Back.add_child(right7marker)
+		$MovementMarkers/Right.add_child(right7marker)
 		await get_tree().process_frame
 		right7marker.global_position = right7pos
 		#endregion
