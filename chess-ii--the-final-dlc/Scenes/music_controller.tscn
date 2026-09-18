@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://13uncheku4mn"]
 
 [ext_resource type="Script" uid="uid://c0m1wslcjfk4r" path="res://Scripts/music_controller.gd" id="1_g5yuc"]
-[ext_resource type="AudioStream" uid="uid://6i1drjnq4u5e" path="res://Sounds/Chess2TFDLCcalm2.mp3" id="1_vg377"]
+[ext_resource type="AudioStream" uid="uid://t4smo5jsp14f" path="res://Sounds/chess2tfdlcintro.mp3" id="1_vg377"]
+[ext_resource type="AudioStream" uid="uid://spnk55x747gn" path="res://Sounds/chess2tfdlcloop.mp3" id="2_w4kk5"]
 
-[node name="MusicPlayer" type="AudioStreamPlayer" unique_id=114748672]
-stream = ExtResource("1_vg377")
+[node name="Music" type="AudioStreamPlayer" unique_id=114748672]
 script = ExtResource("1_g5yuc")
+
+[node name="Start" type="AudioStreamPlayer" parent="." unique_id=1061428282]
+stream = ExtResource("1_vg377")
+
+[node name="Loop" type="AudioStreamPlayer" parent="." unique_id=821753293]
+stream = ExtResource("2_w4kk5")
+parameters/looping = true
