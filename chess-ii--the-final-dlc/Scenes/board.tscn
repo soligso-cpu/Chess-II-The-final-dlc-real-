@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
-[ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/Slots/background_animation.tscn" id="22_o57li"]
+[ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/background_animation.tscn" id="22_o57li"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -139,6 +139,14 @@ offset_right = 936.0
 offset_bottom = 646.0
 mouse_filter = 2
 color = Color(0, 0, 0, 0.75686276)
+
+[node name="TileDullBox2" type="ColorRect" parent="." unique_id=1741535993]
+offset_left = -123.0
+offset_top = -428.0
+offset_right = 1324.0
+offset_bottom = 1023.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.4745098)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1820083446]
 position = Vector2(0, -5)
