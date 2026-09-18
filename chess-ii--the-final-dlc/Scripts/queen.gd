@@ -474,8 +474,117 @@ func readd_marker_function():
 	return
 
 func _process(delta: float) -> void:
+	print("white_in_check: "+str(Globals.white_in_check))
+	print("black_in_check: "+str(Globals.black_in_check))
+	if(self.is_in_group("Black")):
+		print("i am black: back1: "+ str(enemy_back1)+ " back2: "+str(enemy_back2)+" back3: "+str(enemy_back3)+" back4: "+str(enemy_back4)+" back5: "+str(enemy_back5)+ " back6: "+str(enemy_back6))
+	else:
+		print("i am white: back1: "+ str(enemy_back1)+ " back2: "+str(enemy_back2)+" back3: "+str(enemy_back3)+" back4: "+str(enemy_back4)+" back5: "+str(enemy_back5)+ " back6: "+str(enemy_back6))
 	if(readd_markers):
-		readd_marker_function()
+		var forward1marker = $MovementMarkers/Forward/Forward1
+		var forward2marker = $MovementMarkers/Forward/Forward2
+		var forward3marker = $MovementMarkers/Forward/Forward3
+		var forward4marker = $MovementMarkers/Forward/Forward4
+		var forward5marker = $MovementMarkers/Forward/Forward5
+		var forward6marker = $MovementMarkers/Forward/Forward6
+		var forward7marker = $MovementMarkers/Forward/Forward7
+		var forward1pos = $MovementMarkers/Forward/Forward1.global_position
+		var forward2pos = $MovementMarkers/Forward/Forward2.global_position
+		var forward3pos = $MovementMarkers/Forward/Forward3.global_position
+		var forward4pos = $MovementMarkers/Forward/Forward4.global_position
+		var forward5pos = $MovementMarkers/Forward/Forward5.global_position
+		var forward6pos = $MovementMarkers/Forward/Forward6.global_position
+		var forward7pos = $MovementMarkers/Forward/Forward7.global_position
+		# forward 1
+		forward1marker.get_parent().remove_child(forward1marker)
+		$MovementMarkers/Forward.add_child(forward1marker)
+		forward1marker.global_position = forward1pos
+		print("1")
+		await get_tree().create_timer(0.016).timeout
+		# forward 2
+		forward2marker.get_parent().remove_child(forward2marker)
+		$MovementMarkers/Forward.add_child(forward2marker)
+		forward2marker.global_position = forward2pos
+		print("2")
+		await get_tree().create_timer(0.016).timeout
+		# forward 3
+		forward3marker.get_parent().remove_child(forward3marker)
+		$MovementMarkers/Forward.add_child(forward3marker)
+		forward3marker.global_position = forward3pos
+		print("3")
+		await get_tree().create_timer(0.016).timeout
+		# forward 4
+		forward4marker.get_parent().remove_child(forward4marker)
+		$MovementMarkers/Forward.add_child(forward4marker)
+		forward4marker.global_position = forward4pos
+		print("4")
+		await get_tree().create_timer(0.016).timeout
+		# forward 5
+		forward5marker.get_parent().remove_child(forward5marker)
+		$MovementMarkers/Forward.add_child(forward5marker)
+		forward5marker.global_position = forward5pos
+		print("5")
+		await get_tree().create_timer(0.016).timeout
+		# forward 6
+		forward6marker.get_parent().remove_child(forward6marker)
+		$MovementMarkers/Forward.add_child(forward6marker)
+		forward6marker.global_position = forward6pos
+		print("6")
+		await get_tree().create_timer(0.016).timeout
+		# forward 7
+		forward7marker.get_parent().remove_child(forward7marker)
+		$MovementMarkers/Forward.add_child(forward7marker)
+		forward7marker.global_position = forward7pos
+		print("7")
+		await get_tree().create_timer(0.016).timeout
+		#endregion
+		#region back
+		var back1pos = $MovementMarkers/Back/Back1.global_position
+		var back2pos = $MovementMarkers/Back/Back2.global_position
+		var back3pos = $MovementMarkers/Back/Back3.global_position
+		var back4pos = $MovementMarkers/Back/Back4.global_position
+		var back5pos = $MovementMarkers/Back/Back5.global_position
+		var back6pos = $MovementMarkers/Back/Back6.global_position
+		var back7pos = $MovementMarkers/Back/Back7.global_position
+		var back1marker = $MovementMarkers/Back/Back1
+		var back2marker = $MovementMarkers/Back/Back2
+		var back3marker = $MovementMarkers/Back/Back3
+		var back4marker = $MovementMarkers/Back/Back4
+		var back5marker = $MovementMarkers/Back/Back5
+		var back6marker = $MovementMarkers/Back/Back6
+		var back7marker = $MovementMarkers/Back/Back7
+		
+		# back 1
+		back1marker.get_parent().remove_child(back1marker)
+		$MovementMarkers/Back.add_child(back1marker)
+		back1marker.global_position = back1pos
+		# back 2
+		back2marker.get_parent().remove_child(back2marker)
+		$MovementMarkers/Back.add_child(back2marker)
+		back2marker.global_position = back2pos
+		# back 3
+		back3marker.get_parent().remove_child(back3marker)
+		$MovementMarkers/Back.add_child(back3marker)
+		back3marker.global_position = back3pos
+		# baclk 4
+		back4marker.get_parent().remove_child(back4marker)
+		$MovementMarkers/Back.add_child(back4marker)
+		back4marker.global_position = back4pos
+		# back 5
+		back5marker.get_parent().remove_child(back5marker)
+		$MovementMarkers/Back.add_child(back5marker)
+		back5marker.global_position = back5pos
+		# back 6
+		back6marker.get_parent().remove_child(back6marker)
+		$MovementMarkers/Back.add_child(back6marker)
+		back6marker.global_position = back6pos
+		# back 7
+		back7marker.get_parent().remove_child(back7marker)
+		$MovementMarkers/Back.add_child(back7marker)
+		back7marker.global_position = back7pos
+		#endregion
+		readd_markers = false
+		return
 	if(Globals.piece_focused == self):
 		focused = true
 	else:
@@ -2140,7 +2249,7 @@ func _on_right_area_7_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("White")):
 				if(body.is_in_group("King")):
-					if(!enemy_right1 && !enemy_right2 & !enemy_right3 && !enemy_right4 && !enemy_right5 && !enemy_right6):
+					if(!enemy_right1 && !enemy_right2 && !enemy_right3 && !enemy_right4 && !enemy_right5 && !enemy_right6):
 						Globals.white_in_check = true
 						Globals.piece_attacking_king = self
 				right7_touching_border = false
@@ -3228,8 +3337,10 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("White")):
 				if(body.is_in_group("King")):
-					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5):
-						Globals.white_in_check = true
+					if(enemy_back1 || enemy_back2 || enemy_back3 || enemy_back4 || enemy_back5):
+						Globals.white_in_check = false
+					else:
+						Globals.white_in_check = false
 						Globals.piece_attacking_king = self
 				back6_touching_border = false
 				enemy_back6 = true
@@ -3247,8 +3358,10 @@ func _on_back_6_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("Black")):
 				if(body.is_in_group("King")):
-					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5):
-						Globals.black_in_check = true
+					if(enemy_back1 || enemy_back2 || enemy_back3 || enemy_back4 || enemy_back5):
+						Globals.black_in_check = false
+					else:
+						Globals.black_in_check = false
 						Globals.piece_attacking_king = self
 				back6_touching_border = false
 				enemy_back6 = true
@@ -3278,8 +3391,10 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("White")):
 				if(body.is_in_group("King")):
-					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5 && !enemy_back6):
-						Globals.white_in_check = true
+					if(enemy_back1 || enemy_back2 || enemy_back3 || enemy_back4 || enemy_back5 || enemy_back6):
+						Globals.white_in_check = false
+					else:
+						Globals.white_in_check = false
 						Globals.piece_attacking_king = self
 				back7_touching_border = false
 				enemy_back7 = true
@@ -3297,8 +3412,10 @@ func _on_back_7_area_body_entered(body: Node2D) -> void:
 		else:
 			if(body.is_in_group("Black")):
 				if(body.is_in_group("King")):
-					if(!enemy_back1 && !enemy_back2 && !enemy_back3 && !enemy_back4 && !enemy_back5 && !enemy_back6):
-						Globals.black_in_check = true
+					if(enemy_back1 || enemy_back2 || enemy_back3 || enemy_back4 || enemy_back5 || enemy_back6):
+						Globals.black_in_check = false
+					else:
+						Globals.black_in_check = false
 						Globals.piece_attacking_king = self
 				back7_touching_border = false
 				enemy_back7 = true
