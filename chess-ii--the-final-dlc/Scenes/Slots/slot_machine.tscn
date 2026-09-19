@@ -142,7 +142,7 @@ one_shot = true
 [node name="Area2D2" type="Area2D" parent="." unique_id=831113117]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=970348947]
-position = Vector2(433, 301)
+position = Vector2(530, 325)
 shape = SubResource("RectangleShape2D_nvm1u")
 
 [node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
@@ -162,6 +162,47 @@ position = Vector2(416, 112)
 scale = Vector2(3.515625, 0.5)
 texture = ExtResource("5_nvm1u")
 
+[node name="Tutorial" type="Node2D" parent="." unique_id=1539871233]
+
+[node name="ColorRect" type="ColorRect" parent="Tutorial" unique_id=859179583]
+visible = false
+offset_right = 93.0
+offset_bottom = 40.0
+color = Color(0.07449722, 0.07449722, 0.022059632, 1)
+
+[node name="TutorialButton" type="Button" parent="Tutorial" unique_id=99290549]
+offset_left = 756.0
+offset_top = 557.0
+offset_right = 891.0
+offset_bottom = 626.0
+text = "Slots tutorial"
+
+[node name="Label" type="Label" parent="Tutorial" unique_id=36239409]
+visible = false
+offset_left = 208.0
+offset_top = 45.0
+offset_right = 285.0
+offset_bottom = 68.0
+text = "Welcome to slots, a place where some come to chase 
+		limitless wealth and others come to drown their sorrows."
+
+[node name="ContinueButton" type="Button" parent="Tutorial" unique_id=1742330891]
+visible = false
+offset_left = 933.0
+offset_top = 538.0
+offset_right = 1106.0
+offset_bottom = 634.0
+text = "Continue"
+
+[node name="ButtonMarker" type="Marker2D" parent="Tutorial" unique_id=1978731730]
+position = Vector2(713, 171)
+
+[node name="BottomMarker" type="Marker2D" parent="Tutorial" unique_id=1854892554]
+position = Vector2(191, 585)
+
+[node name="TopMarker" type="Marker2D" parent="Tutorial" unique_id=1573387878]
+position = Vector2(216, 19)
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
@@ -178,3 +219,5 @@ texture = ExtResource("5_nvm1u")
 [connection signal="timeout" from="ProcessTimer" to="." method="_on_process_timer_timeout"]
 [connection signal="timeout" from="PurgeTimer" to="." method="_on_purge_timer_timeout"]
 [connection signal="timeout" from="StageTimer" to="." method="_on_stage_timer_timeout"]
+[connection signal="button_up" from="Tutorial/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_up" from="Tutorial/ContinueButton" to="." method="_on_continue_button_button_up"]

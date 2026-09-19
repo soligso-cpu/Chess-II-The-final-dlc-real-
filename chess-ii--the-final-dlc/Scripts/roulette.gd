@@ -22,6 +22,7 @@ var option = 0
 var number_bet = 0
 var num_betting = false
 var bet_tracking = 0
+var stage = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -108,14 +109,14 @@ func _on_spin_timer_timeout() -> void:
 		turn!")
 		Globals._game_won()
 		if Globals.turn_tracking == 1:
-			Globals.white_turns = 3
+			Globals.white_turns += 3
 			print(Globals.white_turns, "id")
 			
 			Globals.white_money += bet * 2
 		
 			
 		elif Globals.turn_tracking == 0:
-			Globals.black_turns = 3
+			Globals.black_turns += 3
 			print(Globals.black_turns, "id")
 			Globals.black_money += bet * 2
 	elif winner != chosen_colour:
@@ -317,13 +318,13 @@ func _on_spin_timer_num_timeout() -> void:
 		turn!")
 		Globals._game_won()
 		if Globals.turn_tracking == 1:
-			Globals.white_turns = 3
+			Globals.white_turns += 3
 			print(Globals.white_turns, "id")
 			Globals.white_money += bet * 36
 			
 			
 		elif Globals.turn_tracking == 0:
-			Globals.black_turns = 3
+			Globals.black_turns += 3
 			print(Globals.black_turns, "id")
 			Globals.black_money += bet * 36
 		bet_tracking = 0
@@ -356,3 +357,59 @@ func _on_spin_timer_num_timeout() -> void:
 		
 		
 		
+
+
+func _on_tutorial_button_button_up() -> void:
+	$Tutorial/TutorialButton.visible = false
+	$Tutorial/ContButton.visible = true
+	$Tutorial/TutorialLabel.visible = true
+
+
+func _on_cont_button_button_up() -> void:
+	if stage == 0:
+		$Tutorial/TutorialLabel.text = str("IN roulette, you hvae two main ways to play. 
+		Betting on a colour, and betting on a
+		 number. Lets start with betting on colours.")
+	elif stage == 1:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/RedMarker.global_position
+		$Tutorial/TutorialLabel.text = str("<- This button to bet red ")
+	elif stage == 2:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/BlackMarker.global_position
+		$Tutorial/TutorialLabel.text = str(" And this button to bet black ->")
+	elif stage == 4:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/OtherMarker.global_position
+		$Tutorial/TutorialLabel.text = str("When you bet on a colour and push the wheel to spin,
+		if that colour wins, you win! But where do you bet?")
+	elif stage == 5:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/BetMarker.global_position
+		$Tutorial/TutorialLabel.text = str("^ Here! a bet MUST be selected before you can spin
+		the wheel, so if it isn't working, thats probably why! ")
+	elif stage == 6:
+		$Tutorial/TutorialLabel.text = str("The bets are based on percentage values,
+		so don't worry, you can't go in debt. Not here anyways. if you don't have enough, then
+		sorry, but no roulette for you.")
+	elif stage == 7:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/OtherMarker.global_position
+		$Tutorial/TutorialLabel.text = str("Winning a bet on colours
+		 will double whatever money you
+		chose to put on your bet. More importantly 
+		though, winning a bet will get you
+		 two extra turns in chess!")
+	elif stage == 8:
+		$Tutorial/TutorialLabel.text = str("on it's own that's good, but not great, but paired with
+		powerups purchasable form the shop, you can change the
+		 odds in your favour to ensure you always win")
+	elif stage == 9:
+		$Tutorial/TutorialLabel.text = str("garunteed win = infinite turns = win match instantly.")
+	elif stage == 10:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/NumMarker.global_position
+		$Tutorial/TutorialLabel.text = str("You can also bet on a single number!
+		 betting on a number means
+		you get a 36X payout,
+		 but a 1 in 3 chance of getting it.
+		 Everything i said earlier applies here.")
+	elif stage == 11:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/OtherMarker.global_position
+		$Tutorial/TutorialLabel.text = str("That should be everything. Happy gambling!")
+		
+	stage += 1

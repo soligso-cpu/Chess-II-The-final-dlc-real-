@@ -28,6 +28,8 @@ var count = 0
 var can_gamble = true
 var top_check = false
 var rigged = false
+var stage = 0
+var tut = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -136,7 +138,7 @@ func _on_spawn_timer_timeout() -> void:
 #Spawns some slots automatically when button pressed to mkae sure there is enouygh
 #then runs through wether thre star is active
 func _on_button_button_up() -> void:
-	if spinning == false and can_gamble == true:
+	if spinning == false and can_gamble == true and tut == false:
 		purge = false
 		
 		spawn_slot($LineMarkers/Line1)
@@ -396,3 +398,51 @@ func _on_stage_timer_timeout() -> void:
 	
 	top_check = true
 	$StaticBody2D/CollisionShape2D.disabled = false
+
+
+func _on_continue_button_button_up() -> void:
+	
+	if stage == 0:
+		$Tutorial/Label.text = str("Whatever your reasons might be, we know one thing. You clicked the
+		slot machine button because you want to gamble. So, lets gamble!")
+	elif stage == 1:
+		$Tutorial/Label.text = str("This is the slot machine, where a random
+		set of slots will fall each time you decide to gamble.")
+	elif stage == 2:
+		$Tutorial/Label.global_position = $Tutorial/ButtonMarker.global_position
+		$Tutorial/Label.text = str("If and when you want a go, press this button
+		to start the machine! You need to finish the tutorial 
+		first though, company policy.")
+	elif stage == 3:
+		$Tutorial/Label.global_position = $Tutorial/BottomMarker.global_position
+		$Tutorial/Label.text = str("The slot machine will dispense a Queen, Rook, Pawn, or Bishop
+		in each line. Match up 3 of the same piece in any row or diagonal to win!")
+	elif stage == 4:
+		$Tutorial/Label.global_position = $Tutorial/BottomMarker.global_position
+		$Tutorial/Label.text = str("Not columns though. My boss is a cheapskate.")
+	elif stage == 5: 
+		$Tutorial/Label.global_position = $Tutorial/TopMarker.global_position
+		$Tutorial/Label.text = str("The slot machine costs 2 coins to use, but your winnings
+		depend on which symbol you win with! A rook will double your money, a bishop will quadurple it,
+		and a Queen will give you a whole 6x return rate!")
+	elif stage == 6:
+		$Tutorial/Label.text = str("Don't worry about what the pawn does. It's not that bad.
+		What's life without a little risk anyhow? Now go forth and conquer the slot machine!
+		just push continue to remove this pop-up.")
+	elif stage == 7:
+		$Tutorial/ContinueButton.visible = false
+		$Tutorial/TutorialButton.visible = true
+		$Tutorial/Label.visible = false
+		tut = false
+		stage = 0
+		$Tutorial/Label.text = str("Whatever your reasons might be, we know one thing. You clicked the
+		slot machine button because you want to gamble. So, lets gamble!")
+	if stage < 7:	
+		stage += 1
+
+
+func _on_tutorial_button_button_up() -> void:
+	$Tutorial/TutorialButton.visible = false
+	$Tutorial/ContinueButton.visible = true
+	$Tutorial/Label.visible = true
+	tut = true

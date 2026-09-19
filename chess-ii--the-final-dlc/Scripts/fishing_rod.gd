@@ -5,6 +5,7 @@ var direction = Vector2()
 var flip = false
 var victory_window = false
 var won_games = 0
+var tutorial_stage = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

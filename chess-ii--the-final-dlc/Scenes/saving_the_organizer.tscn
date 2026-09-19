@@ -14,7 +14,6 @@ size = Vector2(118, 122)
 [node name="SavingTheOrganizer" type="Node2D" unique_id=1547485924]
 
 [node name="RouletteOrganizer" type="Node2D" parent="." unique_id=2076490602]
-visible = false
 z_as_relative = false
 
 [node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=1709627071]
@@ -42,7 +41,6 @@ position = Vector2(81, 357)
 shape = SubResource("RectangleShape2D_o3ytg")
 
 [node name="SlotsOrganiser" type="Node2D" parent="." unique_id=1215575577]
-visible = false
 script = ExtResource("4_bcyy1")
 
 [node name="SlotMachine" parent="SlotsOrganiser" unique_id=446480958 instance=ExtResource("5_o3ytg")]
@@ -66,7 +64,6 @@ offset_bottom = 1685.0
 text = "Back to chess"
 
 [node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("6_eacje")]
-visible = false
 position = Vector2(-1206, 1251)
 
 [node name="ShopMarker" type="Marker2D" parent="Shop" unique_id=1215276195]
@@ -87,7 +84,6 @@ offset_bottom = 595.0
 text = "Return"
 
 [node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("7_sqcg4")]
-visible = false
 position = Vector2(-1553, -953)
 
 [node name="FishMarker" type="Marker2D" parent="FishingGame" unique_id=701352652]

@@ -226,6 +226,47 @@ text = "bet on number"
 wait_time = 9.684
 one_shot = true
 
+[node name="Tutorial" type="Node2D" parent="." unique_id=923748561]
+
+[node name="TutorialButton" type="Button" parent="Tutorial" unique_id=958610848]
+offset_left = 692.0
+offset_top = 17.0
+offset_right = 790.0
+offset_bottom = 62.0
+text = "Tutorial"
+
+[node name="ContButton" type="Button" parent="Tutorial" unique_id=1246756191]
+visible = false
+offset_left = 971.0
+offset_top = 491.0
+offset_right = 1099.0
+offset_bottom = 592.0
+text = "Continue"
+
+[node name="OtherMarker" type="Marker2D" parent="Tutorial" unique_id=880267859]
+position = Vector2(712, 95)
+
+[node name="BetMarker" type="Marker2D" parent="Tutorial" unique_id=1811990889]
+position = Vector2(463, 428)
+
+[node name="NumMarker" type="Marker2D" parent="Tutorial" unique_id=976819121]
+position = Vector2(80, 97)
+
+[node name="RedMarker" type="Marker2D" parent="Tutorial" unique_id=1744826729]
+position = Vector2(856, 218)
+
+[node name="BlackMarker" type="Marker2D" parent="Tutorial" unique_id=437561429]
+position = Vector2(20, 226)
+
+[node name="TutorialLabel" type="Label" parent="Tutorial" unique_id=1857665986]
+visible = false
+offset_left = 121.0
+offset_top = 138.0
+offset_right = 455.0
+offset_bottom = 203.0
+text = "This is the roulette wheel, which can 
+make or break your game! "
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="SpinTimer" to="." method="_on_spin_timer_timeout"]
@@ -238,3 +279,5 @@ one_shot = true
 [connection signal="item_selected" from="Control/NumberButton" to="." method="_on_number_button_item_selected"]
 [connection signal="button_up" from="Control/NumberBetButton" to="." method="_on_number_bet_button_button_up"]
 [connection signal="timeout" from="SpinTimerNum" to="." method="_on_spin_timer_num_timeout"]
+[connection signal="button_up" from="Tutorial/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_up" from="Tutorial/ContButton" to="." method="_on_cont_button_button_up"]
