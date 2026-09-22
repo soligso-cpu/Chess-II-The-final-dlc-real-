@@ -37,6 +37,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	$WinLabel.position.y -= 0.5
 	#pruges slots after rewards are given out
 	for body in $Area2D2.get_overlapping_bodies():
 		if purge == true:
@@ -179,13 +180,13 @@ func _on_button_button_up() -> void:
 # if a prize if won and what prize it is
 func _on_slot_3_body_entered(body: Node2D) -> void:
 	if body.get_parent() == $SpawnedSlots:
-		slot1 = 1
+		slot3 = 1
 	elif body.get_parent() == $SpawnedSlots2:
-		slot1 = 2
+		slot3 = 2
 	elif body.get_parent() == $SpawnedSlots3:
-		slot1 = 3
+		slot3 = 3
 	elif body.get_parent() == $SpawnedSlots4:
-		slot1 = 4
+		slot3 = 4
 	print(slot1)
 
 func _on_slot_2_body_entered(body: Node2D) -> void:
@@ -202,13 +203,13 @@ func _on_slot_2_body_entered(body: Node2D) -> void:
 
 func _on_slot_1_body_entered(body: Node2D) -> void:
 	if body.get_parent() == $SpawnedSlots:
-		slot3 = 1
+		slot1 = 1
 	elif body.get_parent() == $SpawnedSlots2:
-		slot3 = 2
+		slot1 = 2
 	elif body.get_parent() == $SpawnedSlots3:
-		slot3 = 3
+		slot1 = 3
 	elif body.get_parent() == $SpawnedSlots4:
-		slot3 = 4
+		slot1 = 4
 	print(slot3)
 #this short 'proocess timer" is so the player has some time to see if they won. 
 #in that timer is when the win animations would play.
@@ -292,6 +293,7 @@ func _on_purge_timer_timeout() -> void:
 		can_gamble = true
 		
 	rigged = false
+	$WinLabel.text = str(" ")
 
 #More assigning variables to slots
 func _on_line_1_body_entered(body: Node2D) -> void:
@@ -368,27 +370,35 @@ func _on_top_3_body_entered(body: Node2D) -> void:
 	#gives the player their winnigns or loosings
 func regular_win():
 	print("reg win")
+	$WinLabel.global_position = $WinLabelMarker.global_position
+	$WinLabel.text = str("You got a regular win and doubled your bet!")
 	if Globals.turn_tracking == 1:
 		Globals.white_money += 4
 	elif Globals.turn_tracking == 0:
 		Globals.black_money += 4
 func bust_win():
+	$WinLabel.text = str("You lost absolutley everything! ")
+	$WinLabel.global_position = $WinLabelMarker.global_position
 	print("bust win")
 	if Globals.turn_tracking == 1:
-		Globals.white_money -= 2
+		Globals.white_money = 0
 	elif Globals.turn_tracking == 0:
-		Globals.black_money -= 2
+		Globals.black_money = 0
 func double_win():
+	$WinLabel.text = str("You got a big win and quadrupled your bet!")
+	$WinLabel.global_position = $WinLabelMarker.global_position
 	if Globals.turn_tracking == 1:
 		Globals.white_money += 8
 	elif Globals.turn_tracking == 0:
 		Globals.black_money += 8
 func jackpot_win():
+	$WinLabel.text = str("YOU HIT THE JACKPOT AND GOT 10X YOUR BET")
+	$WinLabel.global_position = $WinLabelMarker.global_position
 	print("Jackpot win")
 	if Globals.turn_tracking == 1:
-		Globals.white_money += 10
+		Globals.white_money += 20
 	elif Globals.turn_tracking == 0:
-		Globals.black_money += 10
+		Globals.black_money += 20
 
 
 func _on_stage_timer_timeout() -> void:
@@ -424,7 +434,7 @@ func _on_continue_button_button_up() -> void:
 		$Tutorial/Label.global_position = $Tutorial/TopMarker.global_position
 		$Tutorial/Label.text = str("The slot machine costs 2 coins to use, but your winnings
 		depend on which symbol you win with! A rook will double your money, a bishop will quadurple it,
-		and a Queen will give you a whole 6x return rate!")
+		and a Queen will give you a whole 10x return rate!")
 	elif stage == 6:
 		$Tutorial/Label.text = str("Don't worry about what the pawn does. It's not that bad.
 		What's life without a little risk anyhow? Now go forth and conquer the slot machine!

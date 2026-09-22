@@ -142,7 +142,7 @@ one_shot = true
 [node name="Area2D2" type="Area2D" parent="." unique_id=831113117]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=970348947]
-position = Vector2(530, 325)
+position = Vector2(530, 323)
 shape = SubResource("RectangleShape2D_nvm1u")
 
 [node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
@@ -204,8 +204,13 @@ position = Vector2(191, 585)
 position = Vector2(216, 19)
 
 [node name="WinLabel" type="Label" parent="." unique_id=436444973]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 29.0
+offset_top = 427.0
+offset_right = 232.0
+offset_bottom = 480.0
+
+[node name="WinLabelMarker" type="Marker2D" parent="." unique_id=1827231411]
+position = Vector2(29, 432)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
