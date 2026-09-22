@@ -13,6 +13,7 @@ enum card {
 var card_shown
 var key
 var new_key = false
+var stage = 0 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#Globals.white_money = 100000
@@ -75,26 +76,26 @@ func _on_game_key_button_button_up() -> void:
 #Globals.white_money >= 2
 #Globals.black_money >= 2
 func new_game_key():
-	
-		key = randi_range(game_key.ROULETTE_KEY, game_key.CARD_KEY)
-		if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
-			$GameKey/GameKeyLabel.text = str("roulette")
-			new_key = true
-		elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
-			$GameKey/GameKeyLabel.text = str("fishing minigame")
-			new_key = true
-		elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
-			$GameKey/GameKeyLabel.text = str("slots")
-			new_key = true
-		elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
-			$GameKey/GameKeyLabel.text = str("cards")
-			new_key = true
-		elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
-			print("agy")
-			$GameKey/GameKeyLabel.text = str("Sold out")
-		else:
-			new_game_key()
-		print(key)
+	print(" new game key ran")
+	key = randi_range(game_key.ROULETTE_KEY, game_key.CARD_KEY)
+	if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
+		$GameKey/GameKeyLabel.text = str("roulette")
+		new_key = true
+	elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
+		$GameKey/GameKeyLabel.text = str("fishing minigame")
+		new_key = true
+	elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
+		$GameKey/GameKeyLabel.text = str("slots")
+		new_key = true
+	elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
+		$GameKey/GameKeyLabel.text = str("cards")
+		new_key = true
+	elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
+		print("agy")
+		$GameKey/GameKeyLabel.text = str("Sold out")
+	else:
+		new_game_key()
+	print(key)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func new_card():
 	card_shown = randi_range(card.CARD_SUN, card.CARD_STAR)
@@ -166,4 +167,63 @@ func _on_major_button_mouse_entered() -> void:
 
 
 func _on_major_button_mouse_exited() -> void:
+	
 	$MajorPowerup/MajorPopup.visible = false
+
+
+func _on_tutorial_button_button_up() -> void:
+	$Tutorial/TutorialLabel.visible = true
+	$Tutorial/TutorialButton.visible = false
+	$Tutorial/ContinueButton.visible = true
+	
+
+
+
+func _on_continue_button_button_up() -> void:
+	if stage == 1:
+		$Tutorial/TutorialLabel.text = str("Here, you can buy upgrades and
+		new minigames!
+		(all related to gambling, of course)")
+	elif stage == 2:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/KeyMarker.global_position
+		$Tutorial/TutorialLabel.text = str("This is where you can buy 
+		new games through things called
+		'game-keys'
+		")
+	elif stage == 3:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/KeyMarker.global_position
+		$Tutorial/TutorialLabel.text = str("this will give you a limited licence
+		 to play games that will give 
+		you more money. 
+		look at the text above the game
+		to see which one!
+		")
+	elif stage == 4:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/ExplainMarker.global_position
+		$Tutorial/TutorialLabel.text = str("Money gained from minigames
+		can be used to infuence the game
+		 through roulette, and offers an 
+		alternate route to achieving victory
+		")
+	elif stage == 5:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/CardMarker.global_position
+		$Tutorial/TutorialLabel.text = str("the cards purchasable here 
+		offer ways to garuntee victory in roulette
+		and therefore, the game.
+		")
+	elif stage == 6:
+		$Tutorial/TutorialLabel.global_position = $Tutorial/CardMarker.global_position
+		$Tutorial/TutorialLabel.text = str("It's up too you to choose if
+		your victory will be brought by the skill of chess, or the luck of roulette.
+		Now go forth and gamble!
+		")
+	elif stage == 7:
+		$Tutorial/TutorialButton.visible = true
+		$Tutorial/ContinueButton.visible = false
+		$Tutorial/TutorialLabel.visible = false
+		stage = 0
+		$Tutorial/Label.text = str("This is the shop, where you can
+ exchange your money
+for new ways to blow your money!")
+	if stage < 7:	
+		stage += 1

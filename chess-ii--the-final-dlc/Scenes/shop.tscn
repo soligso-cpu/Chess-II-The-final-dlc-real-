@@ -85,6 +85,42 @@ position = Vector2(1092.0001, 67)
 scale = Vector2(0.053061265, 0.0418368)
 texture = ExtResource("4_fdj0q")
 
+[node name="Tutorial" type="Node2D" parent="." unique_id=977033467]
+
+[node name="TutorialButton" type="Button" parent="Tutorial" unique_id=2082914538]
+offset_left = 375.0
+offset_top = 14.0
+offset_right = 503.0
+offset_bottom = 67.0
+text = "Tutorial"
+
+[node name="ContinueButton" type="Button" parent="Tutorial" unique_id=941617595]
+visible = false
+offset_left = 944.0
+offset_top = 415.0
+offset_right = 1132.0
+offset_bottom = 501.0
+text = "Continue"
+
+[node name="CardMarker" type="Marker2D" parent="Tutorial" unique_id=1331652604]
+position = Vector2(574, 16)
+
+[node name="ExplainMarker" type="Marker2D" parent="Tutorial" unique_id=2027128689]
+position = Vector2(357, 354)
+
+[node name="KeyMarker" type="Marker2D" parent="Tutorial" unique_id=283996123]
+position = Vector2(61, 350)
+
+[node name="TutorialLabel" type="Label" parent="Tutorial" unique_id=605882199]
+visible = false
+offset_left = 628.0
+offset_top = 351.0
+offset_right = 1044.0
+offset_bottom = 426.0
+text = "This is the shop, where you can
+ exchange your money
+for new ways to blow your money!"
+
 [connection signal="button_up" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_button_up"]
 [connection signal="focus_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_focus_entered"]
 [connection signal="mouse_entered" from="GameKey/GameKeyButton" to="." method="_on_game_key_button_mouse_entered"]
@@ -92,3 +128,5 @@ texture = ExtResource("4_fdj0q")
 [connection signal="button_up" from="MajorPowerup/MajorButton" to="." method="_on_major_button_button_up"]
 [connection signal="mouse_entered" from="MajorPowerup/MajorButton" to="." method="_on_major_button_mouse_entered"]
 [connection signal="mouse_exited" from="MajorPowerup/MajorButton" to="." method="_on_major_button_mouse_exited"]
+[connection signal="button_up" from="Tutorial/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_up" from="Tutorial/ContinueButton" to="." method="_on_continue_button_button_up"]

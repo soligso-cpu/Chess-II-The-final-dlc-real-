@@ -16,8 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://l0g2chhunsiv" path="res://Scenes/king_black.tscn" id="13_2cdyc"]
 [ext_resource type="PackedScene" uid="uid://cftk3c535i0r0" path="res://Scenes/pawn_black.tscn" id="14_2cdyc"]
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
+[ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="19_mc7rj"]
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
+[ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="20_d5nw7"]
+[ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="21_6xlsx"]
+[ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://Scenes/Slots/slot_machine.tscn" id="22_cvsqo"]
 [ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/background_animation.tscn" id="22_o57li"]
+[ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_gxals"]
+[ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="24_y63pb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -125,6 +131,9 @@ size = Vector2(484, 95)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qjv7d"]
 size = Vector2(656, 93)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4rnl"]
+size = Vector2(118, 122)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
@@ -778,7 +787,112 @@ offset_top = -163.0
 offset_right = 110.0
 offset_bottom = 157.0
 
+[node name="RouletteOrganizer" type="Node2D" parent="." unique_id=1473471539]
+z_as_relative = false
+
+[node name="Camera2D" type="Camera2D" parent="RouletteOrganizer" unique_id=1601468106]
+position = Vector2(589, 303)
+offset = Vector2(0, 18.77)
+zoom = Vector2(0.81, 0.81)
+
+[node name="Roulette" parent="RouletteOrganizer" unique_id=967836847 instance=ExtResource("19_mc7rj")]
+
+[node name="BoardMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=638115735]
+position = Vector2(620, 314)
+
+[node name="RouletteMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=2147145183]
+position = Vector2(1711, 418)
+
+[node name="Sprite2D" type="Sprite2D" parent="RouletteOrganizer" unique_id=1331122492]
+position = Vector2(81, 359)
+texture = ExtResource("11_upw65")
+
+[node name="RouletteTransport" type="Area2D" parent="RouletteOrganizer" unique_id=1816936671]
+script = ExtResource("20_d5nw7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1371806702]
+position = Vector2(81, 357)
+shape = SubResource("RectangleShape2D_m4rnl")
+
+[node name="SlotsOrganiser" type="Node2D" parent="." unique_id=898387040]
+script = ExtResource("21_6xlsx")
+
+[node name="SlotMachine" parent="SlotsOrganiser" unique_id=446480958 instance=ExtResource("22_cvsqo")]
+position = Vector2(1335, 1283)
+
+[node name="SlotButton" type="Button" parent="SlotsOrganiser" unique_id=594122097]
+offset_left = 17.0
+offset_top = 442.0
+offset_right = 138.0
+offset_bottom = 503.0
+text = "SLOTS ****"
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraPositioning" type="Marker2D" parent="SlotsOrganiser" unique_id=116696923]
+position = Vector2(1752, 1558)
+
+[node name="ReturnButton" type="Button" parent="SlotsOrganiser" unique_id=441116909]
+offset_left = 1325.0
+offset_top = 1652.0
+offset_right = 1406.0
+offset_bottom = 1685.0
+text = "Back to chess"
+metadata/_edit_use_anchors_ = true
+
+[node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("23_gxals")]
+position = Vector2(-1206, 1251)
+
+[node name="ShopMarker" type="Marker2D" parent="Shop" unique_id=296514328]
+position = Vector2(577, 304)
+
+[node name="ShopButton" type="Button" parent="Shop" unique_id=284455043]
+offset_left = 1233.0
+offset_top = -1010.0
+offset_right = 1340.0
+offset_bottom = -969.0
+text = "Shopp"
+metadata/_edit_use_anchors_ = true
+
+[node name="ShopReturnButton" type="Button" parent="Shop" unique_id=1009828]
+offset_left = 85.0
+offset_top = 526.0
+offset_right = 230.0
+offset_bottom = 595.0
+text = "Return"
+metadata/_edit_use_anchors_ = true
+
+[node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("24_y63pb")]
+position = Vector2(-1553, -953)
+
+[node name="FishMarker" type="Marker2D" parent="FishingGame" unique_id=624686521]
+position = Vector2(541, 308)
+
+[node name="FishReturn" type="Button" parent="FishingGame" unique_id=1723660998]
+offset_left = -18.0
+offset_top = 340.0
+offset_right = 114.0
+offset_bottom = 368.0
+text = "Back"
+metadata/_edit_use_anchors_ = true
+
+[node name="FishButton" type="Button" parent="FishingGame" unique_id=1959528895]
+offset_left = 1592.0
+offset_top = 1142.0
+offset_right = 1683.0
+offset_bottom = 1194.0
+text = "FIH"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
 [connection signal="timeout" from="LoreOrganizer/JumpscareTimer" to="." method="_on_jumpscare_timer_timeout"]
+[connection signal="animation_finished" from="LoreOrganizer/AnimationPlayer" to="RouletteOrganizer/RouletteTransport" method="_on_animation_player_animation_finished"]
 [connection signal="button_up" from="RTrainButtonSprite/RTrainButton" to="." method="_on_r_train_button_button_up"]
+[connection signal="mouse_entered" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RouletteOrganizer/RouletteTransport" to="RouletteOrganizer/RouletteTransport" method="_on_mouse_exited"]
+[connection signal="button_up" from="SlotsOrganiser/SlotButton" to="." method="_on_slot_button_button_up"]
+[connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
+[connection signal="button_up" from="Shop/ShopButton" to="." method="_on_shop_button_button_up"]
+[connection signal="button_up" from="Shop/ShopReturnButton" to="." method="_on_shop_return_button_button_up"]
+[connection signal="button_up" from="FishingGame/FishReturn" to="." method="_on_fish_return_button_up"]
+[connection signal="button_up" from="FishingGame/FishButton" to="." method="_on_fish_button_button_up"]

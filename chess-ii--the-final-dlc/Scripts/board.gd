@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 		$".".move_child($Black, 7)
 	if Input.is_action_just_pressed("Click") and hover == true and Globals.lore_won == true:
 		
-		if $LoreOrganizer/DirectionalLight2D.visible == true and$LoreOrganizer/CanvasLayer/Label.visible == true:
+		if $LoreOrganizer/DirectionalLight2D.visible == true and $LoreOrganizer/CanvasLayer/Label.visible == true:
 			$LoreOrganizer/CanvasLayer/Label.visible = false
 			$LoreOrganizer/DirectionalLight2D.visible = false
 		else:
@@ -56,7 +56,8 @@ func _on_r_train_button_button_up() -> void:
 
 
 func _on_slot_button_button_up() -> void:
-	$RouletteOrganizer/Camera2D.global_position = $SlotsOrganiser/CameraPositioning.global_position
+	if Globals.slot_unlocked == true:
+		$RouletteOrganizer/Camera2D.global_position = $SlotsOrganiser/CameraPositioning.global_position
 	
 
 
@@ -74,9 +75,11 @@ func _on_shop_return_button_button_up() -> void:
 
 
 func _on_fish_return_button_up() -> void:
-	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position # Replace with function body.
 
+	$RouletteOrganizer/Camera2D.global_position = $RouletteOrganizer/BoardMarker.global_position # Replace with function body.
+	Globals.fishing_active = false
 
 func _on_fish_button_button_up() -> void:
-	
-	$RouletteOrganizer/Camera2D.global_position = $FishingGame/FishMarker.global_position
+	if Globals.fish_unlocked == true:
+		Globals.fishing_active = true
+		$RouletteOrganizer/Camera2D.global_position = $FishingGame/FishMarker.global_position

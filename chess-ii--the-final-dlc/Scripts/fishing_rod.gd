@@ -58,12 +58,12 @@ func _process(delta: float) -> void:
 		direction = global_position.direction_to($"../Marker2D2".global_position)
 
 	
-	if Input.is_action_just_pressed("Click") and victory_window == true:
+	if Input.is_action_just_pressed("Click") and victory_window == true and Globals.fishing_active == true:
 		print("fih")
 		move_speed = 0
 		$"../RoundTimer".start()
 		won_games += 1
-	elif Input.is_action_just_pressed("Click") and victory_window == false:
+	elif Input.is_action_just_pressed("Click") and victory_window == false and Globals.fishing_active == true:
 		print("aw dangit")
 		move_speed = 0
 		$"../RoundTimer".start()

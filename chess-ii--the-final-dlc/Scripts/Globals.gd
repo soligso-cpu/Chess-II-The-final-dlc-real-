@@ -40,6 +40,8 @@ var white_won
 var black_lost
 var black_won
 
+var fishing_active = false
+
 var roulette_unlocked = false
 var cards_unlocked = false
 var fish_unlocked = false
