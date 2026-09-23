@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://df7n4x8qj3exu"]
 
-[ext_resource type="Texture2D" uid="uid://bce33it5dev3y" path="res://Sprites/rook-3d-render-icon-illustration-with-transparent-background-chess-game-png.webp" id="1_1wcu6"]
 [ext_resource type="Script" uid="uid://c6s4qdtwvvyou" path="res://Scripts/slot_bust.gd" id="1_hfcvy"]
+[ext_resource type="Texture2D" uid="uid://cmig5x0e8naih" path="res://Sprites/SlotsGDD112.png" id="2_hfcvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb70j"]
+atlas = ExtResource("2_hfcvy")
+region = Rect2(585.6478, 54.624115, 592.0205, 556.64185)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hfcvy"]
 size = Vector2(4612.0693, 4787.9473)
@@ -12,9 +16,9 @@ scale = Vector2(0.023200002, 0.0224)
 script = ExtResource("1_hfcvy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=339350919]
-position = Vector2(160.3719, 143.58246)
-scale = Vector2(15.448431, 10.514349)
-texture = ExtResource("1_1wcu6")
+position = Vector2(1.5258789e-05, 6.1035156e-05)
+scale = Vector2(9.392473, 8.763284)
+texture = SubResource("AtlasTexture_rb70j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=111491238]
 position = Vector2(-43.103455, 6.1035156e-05)

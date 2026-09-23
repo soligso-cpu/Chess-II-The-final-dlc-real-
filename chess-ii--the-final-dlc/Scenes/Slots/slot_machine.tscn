@@ -26,16 +26,16 @@ size = Vector2(1058, 649)
 script = ExtResource("1_7abct")
 
 [node name="Slot7" parent="." unique_id=1698224738 instance=ExtResource("2_kpwbf")]
-position = Vector2(1010, 286)
+position = Vector2(1337, 710)
 
 [node name="SlotBust" parent="." unique_id=520040797 instance=ExtResource("3_jfulg")]
-position = Vector2(962, 430.99997)
+position = Vector2(1356, 438.00003)
 
 [node name="SlotDouble" parent="." unique_id=1691589849 instance=ExtResource("4_nvm1u")]
-position = Vector2(942, 96)
+position = Vector2(1354, 217)
 
 [node name="SlotJackpot" parent="." unique_id=1399318989 instance=ExtResource("5_dwfc2")]
-position = Vector2(1021, -68)
+position = Vector2(1467, 11)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=161872660]
 
@@ -142,10 +142,11 @@ one_shot = true
 [node name="Area2D2" type="Area2D" parent="." unique_id=831113117]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2" unique_id=970348947]
-position = Vector2(530, 323)
+position = Vector2(539, 308)
 shape = SubResource("RectangleShape2D_nvm1u")
 
 [node name="PurgeTimer" type="Timer" parent="." unique_id=115009674]
+wait_time = 2.7689999999999997
 one_shot = true
 
 [node name="StageTimer" type="Timer" parent="." unique_id=1447818968]
@@ -210,7 +211,7 @@ offset_right = 232.0
 offset_bottom = 480.0
 
 [node name="WinLabelMarker" type="Marker2D" parent="." unique_id=1827231411]
-position = Vector2(29, 432)
+position = Vector2(674, 445)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

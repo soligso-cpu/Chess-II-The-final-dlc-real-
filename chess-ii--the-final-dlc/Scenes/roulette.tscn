@@ -18,6 +18,14 @@ region = Rect2(33.200027, 69.91383, 25.599976, 26.80275)
 atlas = ExtResource("2_u7vc4")
 region = Rect2(29.650757, 121.2728, 25.349396, 26.492035)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7vc4"]
+atlas = ExtResource("2_u7vc4")
+region = Rect2(60.000122, 182.4001, 83.71094, 37.931717)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxnde"]
+atlas = ExtResource("2_u7vc4")
+region = Rect2(60.670578, 153.43542, 82.33028, 30.062881)
+
 [node name="Roulette" type="CanvasLayer" unique_id=967836847]
 script = ExtResource("1_u7vc4")
 
@@ -266,6 +274,16 @@ offset_right = 455.0
 offset_bottom = 203.0
 text = "This is the roulette wheel, which can 
 make or break your game! "
+
+[node name="BlackBet" type="Sprite2D" parent="." unique_id=985765994]
+position = Vector2(306.125, 240.625)
+scale = Vector2(1.4427713, 1.4256759)
+texture = SubResource("AtlasTexture_u7vc4")
+
+[node name="RedBet" type="Sprite2D" parent="." unique_id=1421746378]
+position = Vector2(780, 233.00002)
+scale = Vector2(1.4146341, 1.5333333)
+texture = SubResource("AtlasTexture_sxnde")
 
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
