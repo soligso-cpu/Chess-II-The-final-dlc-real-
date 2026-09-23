@@ -613,89 +613,90 @@ func _process(delta: float) -> void:
 			taking = true
 			#region making everything true outside of checks.
 			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
-				#region right
-				$MovementMarkers.visible = true
-				$MovementMarkers/Right.visible = true
-				$MovementMarkers/Right/Right1.visible = true
-				$MovementMarkers/Right/Right2.visible = true
-				$MovementMarkers/Right/Right3.visible = true
-				$MovementMarkers/Right/Right4.visible = true
-				$MovementMarkers/Right/Right5.visible = true
-				$MovementMarkers/Right/Right6.visible = true
-				$MovementMarkers/Right/Right7.visible = true
-				
-				#endregion
-				#region forward
-				$MovementMarkers/Forward.visible = true
-				$MovementMarkers/Forward/Forward1.visible = true
-				$MovementMarkers/Forward/Forward2.visible = true
-				$MovementMarkers/Forward/Forward3.visible = true
-				$MovementMarkers/Forward/Forward4.visible = true
-				$MovementMarkers/Forward/Forward5.visible = true
-				$MovementMarkers/Forward/Forward6.visible = true
-				$MovementMarkers/Forward/Forward7.visible = true
-				
-				#endregion
-				#region back
-				$MovementMarkers/Back.visible = true
-				$MovementMarkers/Back/Back1.visible = true
-				$MovementMarkers/Back/Back2.visible = true
-				$MovementMarkers/Back/Back3.visible = true
-				$MovementMarkers/Back/Back4.visible = true
-				$MovementMarkers/Back/Back5.visible = true
-				$MovementMarkers/Back/Back6.visible = true
+				if(!readd_markers):
+					#region right
+					$MovementMarkers.visible = true
+					$MovementMarkers/Right.visible = true
+					$MovementMarkers/Right/Right1.visible = true
+					$MovementMarkers/Right/Right2.visible = true
+					$MovementMarkers/Right/Right3.visible = true
+					$MovementMarkers/Right/Right4.visible = true
+					$MovementMarkers/Right/Right5.visible = true
+					$MovementMarkers/Right/Right6.visible = true
+					$MovementMarkers/Right/Right7.visible = true
+					
+					#endregion
+					#region forward
+					$MovementMarkers/Forward.visible = true
+					$MovementMarkers/Forward/Forward1.visible = true
+					$MovementMarkers/Forward/Forward2.visible = true
+					$MovementMarkers/Forward/Forward3.visible = true
+					$MovementMarkers/Forward/Forward4.visible = true
+					$MovementMarkers/Forward/Forward5.visible = true
+					$MovementMarkers/Forward/Forward6.visible = true
+					$MovementMarkers/Forward/Forward7.visible = true
+					
+					#endregion
+					#region back
+					$MovementMarkers/Back.visible = true
+					$MovementMarkers/Back/Back1.visible = true
+					$MovementMarkers/Back/Back2.visible = true
+					$MovementMarkers/Back/Back3.visible = true
+					$MovementMarkers/Back/Back4.visible = true
+					$MovementMarkers/Back/Back5.visible = true
+					$MovementMarkers/Back/Back6.visible = true
 
-				$MovementMarkers/Back/Back7.visible = true
-				#endregion
-				#region left
-				$MovementMarkers/Left.visible = true
-				$MovementMarkers/Left/Left1.visible = true
-				$MovementMarkers/Left/Left2.visible = true
-				$MovementMarkers/Left/Left3.visible = true
-				$MovementMarkers/Left/Left4.visible = true
-				$MovementMarkers/Left/Left5.visible = true
-				$MovementMarkers/Left/Left6.visible = true
-				$MovementMarkers/Left/Left7.visible = true
-				#endregion
-				#region forward right
-				$MovementMarkers/DiagonalRightForward.visible = true
-				$MovementMarkers/DiagonalRightForward/FR1.visible = true
-				$MovementMarkers/DiagonalRightForward/FR2.visible = true
-				$MovementMarkers/DiagonalRightForward/FR3.visible = true
-				$MovementMarkers/DiagonalRightForward/FR4.visible = true
-				$MovementMarkers/DiagonalRightForward/FR5.visible = true
-				$MovementMarkers/DiagonalRightForward/FR6.visible = true
-				$MovementMarkers/DiagonalRightForward/FR7.visible = true
-				#endregion
-				#region forward left
-				$MovementMarkers/DiagonalLeftFoward.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
-				$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
-				#endregion
-				#region right back
-				$MovementMarkers/DiagonalRightBack.visible = true
-				$MovementMarkers/DiagonalRightBack/BR1.visible = true
-				$MovementMarkers/DiagonalRightBack/BR2.visible = true
-				$MovementMarkers/DiagonalRightBack/BR3.visible = true
-				$MovementMarkers/DiagonalRightBack/BR4.visible = true
-				$MovementMarkers/DiagonalRightBack/BR5.visible = true
-				$MovementMarkers/DiagonalRightBack/BR6.visible = true
-				$MovementMarkers/DiagonalRightBack/BR7.visible = true
-				#endregion
-				#region back left
-				$MovementMarkers/DiagonalLeftBack.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL1.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL2.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL3.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL4.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL5.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL6.visible = true
-				$MovementMarkers/DiagonalLeftBack/BL7.visible = true
+					$MovementMarkers/Back/Back7.visible = true
+					#endregion
+					#region left
+					$MovementMarkers/Left.visible = true
+					$MovementMarkers/Left/Left1.visible = true
+					$MovementMarkers/Left/Left2.visible = true
+					$MovementMarkers/Left/Left3.visible = true
+					$MovementMarkers/Left/Left4.visible = true
+					$MovementMarkers/Left/Left5.visible = true
+					$MovementMarkers/Left/Left6.visible = true
+					$MovementMarkers/Left/Left7.visible = true
+					#endregion
+					#region forward right
+					$MovementMarkers/DiagonalRightForward.visible = true
+					$MovementMarkers/DiagonalRightForward/FR1.visible = true
+					$MovementMarkers/DiagonalRightForward/FR2.visible = true
+					$MovementMarkers/DiagonalRightForward/FR3.visible = true
+					$MovementMarkers/DiagonalRightForward/FR4.visible = true
+					$MovementMarkers/DiagonalRightForward/FR5.visible = true
+					$MovementMarkers/DiagonalRightForward/FR6.visible = true
+					$MovementMarkers/DiagonalRightForward/FR7.visible = true
+					#endregion
+					#region forward left
+					$MovementMarkers/DiagonalLeftFoward.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL1.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL2.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL3.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL4.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL5.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL6.visible = true
+					$MovementMarkers/DiagonalLeftFoward/FL7.visible = true
+					#endregion
+					#region right back
+					$MovementMarkers/DiagonalRightBack.visible = true
+					$MovementMarkers/DiagonalRightBack/BR1.visible = true
+					$MovementMarkers/DiagonalRightBack/BR2.visible = true
+					$MovementMarkers/DiagonalRightBack/BR3.visible = true
+					$MovementMarkers/DiagonalRightBack/BR4.visible = true
+					$MovementMarkers/DiagonalRightBack/BR5.visible = true
+					$MovementMarkers/DiagonalRightBack/BR6.visible = true
+					$MovementMarkers/DiagonalRightBack/BR7.visible = true
+					#endregion
+					#region back left
+					$MovementMarkers/DiagonalLeftBack.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL1.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL2.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL3.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL4.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL5.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL6.visible = true
+					$MovementMarkers/DiagonalLeftBack/BL7.visible = true
 			#endregion
 			#endregion
 			#region making everything false during of checks.
@@ -785,7 +786,6 @@ func _process(delta: float) -> void:
 				$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 			#endregion
 			#endregion
-			
 			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
 				#region Right Movement Marker Visibility Control
 			
@@ -1156,7 +1156,6 @@ func _process(delta: float) -> void:
 					$MovementMarkers/DiagonalLeftBack/BL6.visible = false
 					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 				#endregion
-
 			if(self.is_in_group("White") && Globals.white_in_check || self.is_in_group("Black") && Globals.black_in_check):
 				#region Right Movement Marker Visibility Control
 			
