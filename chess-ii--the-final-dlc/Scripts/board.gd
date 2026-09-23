@@ -40,12 +40,12 @@ func _on_button_button_up() -> void:
 
 func _on_area_2d_mouse_entered() -> void:
 	hover = true
-	print(hover) # Replace with function body.
+	#print(hover) # Replace with function body.
 
 
 func _on_area_2d_mouse_exited() -> void:
 	hover = false
-	print(hover)
+	#print(hover)
 
 
 func _on_r_train_button_button_up() -> void:

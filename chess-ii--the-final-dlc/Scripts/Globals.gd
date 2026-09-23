@@ -171,7 +171,7 @@ var turn_tracking
 var turn_amount = 2
 var moved
 var white_turns = 1
-var black_turns = 100
+var black_turns = 1
 var white_score = 0
 var black_score = 0
 
@@ -187,11 +187,15 @@ var black_in_check = false
 
 var piece_focused: Node = null
 
+enum TurnTracker {
+	WHITE, BLACK
+}
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	piece_attacking_king = null
 	await get_tree().process_frame
-	turn_tracking = 1 # 1 = white, 0 = black
+	turn_tracking = TurnTracker.WHITE # 1 = white, 0 = black
 	rook_a_train = false
 	turn_count = 1
 	piece_focused = null
@@ -414,21 +418,23 @@ func _process(delta: float) -> void:
 	#endregion
 	#endregion
 	if(white_turns >= 1):
-		turn_tracking = 1
+		turn_tracking = TurnTracker.WHITE
 		if(moved):
 			turn_count += 1
 			white_turns -= 1
 			moved = false
+			print("white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
 			return
 	elif(black_turns >= 1):
-		turn_tracking = 0
+		turn_tracking = TurnTracker.BLACK
 		if(moved):
 			turn_count += 1
 			black_turns -= 1
 			moved = false
+			print("white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
 			return
-	elif(white_turns < 1 && turn_tracking == 1):
-		turn_tracking = 0
+	elif(white_turns < 1 && turn_tracking == TurnTracker.BLACK):
+		turn_tracking = TurnTracker.WHITE
 		white_turns += 1
 		black_turns += 1
 		turn_count += 1

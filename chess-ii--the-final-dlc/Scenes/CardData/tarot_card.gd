@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 func _on_area_2d_tarot_card_action(left: bool) -> void:
 # Sets hold to true if left
 	if left:
-		print(value)
+		#print(value)
 		hold = true
 	if not left:
 		print("right")

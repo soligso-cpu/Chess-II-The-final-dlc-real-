@@ -10,7 +10,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	print(hover)
+	#print(hover)
 	if Globals.jumpscared == false and Globals.lore_won == true:
 		$"../../LoreOrganizer/AnimationPlayer".play("Jumpscare_real")
 		$"../../LoreOrganizer/JumpscareSprite".visible = true
