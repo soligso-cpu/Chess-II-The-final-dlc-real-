@@ -170,7 +170,7 @@ var h8_state = ""
 var turn_tracking
 var turn_amount = 2
 var moved
-var white_turns = 1
+var white_turns = 0
 var black_turns = 1
 var white_score = 0
 var black_score = 0
@@ -423,7 +423,7 @@ func _process(delta: float) -> void:
 			turn_count += 1
 			white_turns -= 1
 			moved = false
-			print("white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
+			print("WHITE JS MOVED: white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
 			return
 	elif(black_turns >= 1):
 		turn_tracking = TurnTracker.BLACK
@@ -431,7 +431,7 @@ func _process(delta: float) -> void:
 			turn_count += 1
 			black_turns -= 1
 			moved = false
-			print("white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
+			print("BLACK JS MOVED: white ", white_turns, " black ", black_turns, " ", turn_count, " ", turn_tracking)
 			return
 	elif(white_turns < 1 && turn_tracking == TurnTracker.BLACK):
 		turn_tracking = TurnTracker.WHITE

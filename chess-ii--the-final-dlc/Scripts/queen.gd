@@ -382,6 +382,7 @@ func _ready() -> void:
 	readd_markers = true
 
 func _process(delta: float) -> void:
+	# re add markers so they come back in the scene 1 by 1 and they detect the things so we can get king checking and etc
 	if(readd_markers):
 		$MovementMarkers.visible = false
 		#region forward
@@ -403,42 +404,49 @@ func _process(delta: float) -> void:
 		# forward 1
 		forward1marker.get_parent().remove_child(forward1marker)
 		$MovementMarkers/Forward.add_child(forward1marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward1marker.global_position = forward1pos
 		
 		# forward 2
 		forward2marker.get_parent().remove_child(forward2marker)
 		$MovementMarkers/Forward.add_child(forward2marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward2marker.global_position = forward2pos
 		
 		# forward 3
 		forward3marker.get_parent().remove_child(forward3marker)
 		$MovementMarkers/Forward.add_child(forward3marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward3marker.global_position = forward3pos
 		
 		# forward 4
 		forward4marker.get_parent().remove_child(forward4marker)
 		$MovementMarkers/Forward.add_child(forward4marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward4marker.global_position = forward4pos
 		
 		# forward 5
 		forward5marker.get_parent().remove_child(forward5marker)
 		$MovementMarkers/Forward.add_child(forward5marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward5marker.global_position = forward5pos
 		
 		# forward 6
 		forward6marker.get_parent().remove_child(forward6marker)
 		$MovementMarkers/Forward.add_child(forward6marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward6marker.global_position = forward6pos
 		
 		# forward 7
 		forward7marker.get_parent().remove_child(forward7marker)
 		$MovementMarkers/Forward.add_child(forward7marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		forward7marker.global_position = forward7pos
 		
@@ -462,36 +470,43 @@ func _process(delta: float) -> void:
 		# back 1
 		back1marker.get_parent().remove_child(back1marker)
 		$MovementMarkers/Back.add_child(back1marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back1marker.global_position = back1pos
 		# back 2
 		back2marker.get_parent().remove_child(back2marker)
 		$MovementMarkers/Back.add_child(back2marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back2marker.global_position = back2pos
 		# back 3
 		back3marker.get_parent().remove_child(back3marker)
 		$MovementMarkers/Back.add_child(back3marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back3marker.global_position = back3pos
 		# baclk 4
 		back4marker.get_parent().remove_child(back4marker)
 		$MovementMarkers/Back.add_child(back4marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back4marker.global_position = back4pos
 		# back 5
 		back5marker.get_parent().remove_child(back5marker)
 		$MovementMarkers/Back.add_child(back5marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back5marker.global_position = back5pos
 		# back 6
 		back6marker.get_parent().remove_child(back6marker)
 		$MovementMarkers/Back.add_child(back6marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back6marker.global_position = back6pos
 		# back 7
 		back7marker.get_parent().remove_child(back7marker)
 		$MovementMarkers/Back.add_child(back7marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		back7marker.global_position = back7pos
 		#endregion
@@ -513,36 +528,43 @@ func _process(delta: float) -> void:
 		# left 1
 		left1marker.get_parent().remove_child(left1marker)
 		$MovementMarkers/Left.add_child(left1marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left1marker.global_position = left1pos
 		# left 2
 		left2marker.get_parent().remove_child(left2marker)
 		$MovementMarkers/Left.add_child(left2marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left2marker.global_position = left2pos
 		# left 3
 		left3marker.get_parent().remove_child(left3marker)
 		$MovementMarkers/Left.add_child(left3marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left3marker.global_position = left3pos
 		# left 4
 		left4marker.get_parent().remove_child(left4marker)
 		$MovementMarkers/Left.add_child(left4marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left4marker.global_position = left4pos
 		# left 5
 		left5marker.get_parent().remove_child(left5marker)
 		$MovementMarkers/Left.add_child(left5marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left5marker.global_position = left5pos
 		# left 6
 		left6marker.get_parent().remove_child(left6marker)
 		$MovementMarkers/Left.add_child(left6marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left6marker.global_position = left6pos
 		# left 7
 		left7marker.get_parent().remove_child(left7marker)
 		$MovementMarkers/Left.add_child(left7marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		left7marker.global_position = left7pos
 		#endregion
@@ -564,53 +586,64 @@ func _process(delta: float) -> void:
 		# right 1
 		right1marker.get_parent().remove_child(right1marker)
 		$MovementMarkers/Right.add_child(right1marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right1marker.global_position = right1pos
 		# left 2
 		right2marker.get_parent().remove_child(right2marker)
 		$MovementMarkers/Right.add_child(right2marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right2marker.global_position = right2pos
 		# left 3
 		right3marker.get_parent().remove_child(right3marker)
 		$MovementMarkers/Right.add_child(right3marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right3marker.global_position = right3pos
 		# left 4
 		right4marker.get_parent().remove_child(right4marker)
 		$MovementMarkers/Right.add_child(right4marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right4marker.global_position = right4pos
 		# left 5
 		right5marker.get_parent().remove_child(right5marker)
 		$MovementMarkers/Right.add_child(right5marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right5marker.global_position = right5pos
 		# left 6
 		right6marker.get_parent().remove_child(right6marker)
 		$MovementMarkers/Right.add_child(right6marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right6marker.global_position = right6pos
 		# left 7
 		right7marker.get_parent().remove_child(right7marker)
 		$MovementMarkers/Right.add_child(right7marker)
+		$MovementMarkers.visible = false
 		await get_tree().process_frame
 		right7marker.global_position = right7pos
 		#endregion
 	
 		readd_markers = false
 		return
+	# if the focused piece is this piece then the focused variable becomes true so this piece can do its magic
 	if(Globals.piece_focused == self):
 		focused = true
 	else:
 		focused = false
+	# center the movement markers
 	$MovementMarkers.global_position = global_position
+	# if this piece is black and the turn is blacks turn or if its white and the turn is whites turn:
 	if(self.is_in_group("Black") && Globals.turn_tracking == 0 || self.is_in_group("White") && Globals.turn_tracking == 1):
+		# make it so you can click on le button
 		$SelectQueen.mouse_filter = Control.MOUSE_FILTER_STOP
 		if(focused):
-			z_index = 5
-			move_to_front()
+			# taking means that this piece, when interacting with another piece, will take it instead of dying
 			taking = true
+			# one makes everything true and one makes everything false so if the king is in check then instead of setting everything to true and then eliminates them, we set it all to false and readd them.
 			#region making everything true outside of checks.
 			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
 				if(!readd_markers):
@@ -787,6 +820,7 @@ func _process(delta: float) -> void:
 			#endregion
 			#endregion
 			if(self.is_in_group("White") && !Globals.white_in_check || self.is_in_group("Black") && !Globals.black_in_check):
+			# when the king is not in check eliminate the places you can move to
 				#region Right Movement Marker Visibility Control
 			
 				if(enemy_right7):
@@ -1157,6 +1191,7 @@ func _process(delta: float) -> void:
 					$MovementMarkers/DiagonalLeftBack/BL7.visible = false
 				#endregion
 			if(self.is_in_group("White") && Globals.white_in_check || self.is_in_group("Black") && Globals.black_in_check):
+				#when the king is in check add the places you can move to
 				#region Right Movement Marker Visibility Control
 			
 				if(enemy_right7):
