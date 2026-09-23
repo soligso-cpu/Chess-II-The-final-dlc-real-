@@ -37,3 +37,15 @@ tarotCardScene = ExtResource("25_56jfk")
 [node name="The" type="Sprite2D" parent="." unique_id=412096352]
 position = Vector2(0, -144)
 texture = ExtResource("25_j8v03")
+
+[node name="Button" type="Button" parent="." unique_id=1855000930]
+anchors_preset = -1
+anchor_left = 0.19500001
+anchor_top = 1.01
+anchor_right = 0.83500004
+anchor_bottom = 1.1850001
+offset_left = -100.0
+offset_top = -100.0
+offset_right = -100.0
+offset_bottom = -100.000015
+text = "draw"
