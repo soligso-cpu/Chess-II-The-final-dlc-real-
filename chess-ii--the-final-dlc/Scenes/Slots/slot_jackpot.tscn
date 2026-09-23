@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://crn83ymyeb22p"]
 
 [ext_resource type="Script" uid="uid://baytx473s5k3v" path="res://Scripts/slot_jackpot.gd" id="1_8cpis"]
-[ext_resource type="Texture2D" uid="uid://f81dgpjmlr2j" path="res://Sprites/white_queen_placeholder.webp" id="2_4jowp"]
+[ext_resource type="Texture2D" uid="uid://cmig5x0e8naih" path="res://Sprites/SlotsGDD112.png" id="2_8cpis"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lf0rs"]
 size = Vector2(103.185486, 92.704575)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jowp"]
+atlas = ExtResource("2_8cpis")
+region = Rect2(44.77014, 55.576218, 553.6536, 540.17316)
 
 [node name="SlotJackpot" type="CharacterBody2D" unique_id=1508876994]
 script = ExtResource("1_8cpis")
@@ -15,6 +19,6 @@ scale = Vector2(1, 0.9999996)
 shape = SubResource("RectangleShape2D_lf0rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=72111660]
-position = Vector2(-7.6293945e-06, -8)
-scale = Vector2(0.23715894, 0.21519342)
-texture = ExtResource("2_4jowp")
+position = Vector2(4.7683716e-07, 0.9999993)
+scale = Vector2(0.21984528, 0.20574485)
+texture = SubResource("AtlasTexture_4jowp")

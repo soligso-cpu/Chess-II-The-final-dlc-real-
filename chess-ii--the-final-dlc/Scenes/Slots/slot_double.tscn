@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://boqmcwbli3p7j"]
 
 [ext_resource type="Script" uid="uid://cq20qsr7rmiyk" path="res://Scripts/slot_double.gd" id="1_0uy5w"]
-[ext_resource type="Texture2D" uid="uid://e33lej5yidwe" path="res://icon.svg" id="1_w5cht"]
+[ext_resource type="Texture2D" uid="uid://cmig5x0e8naih" path="res://Sprites/SlotsGDD112.png" id="2_0uy5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0uy5w"]
 size = Vector2(111.00003, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gr04e"]
+atlas = ExtResource("2_0uy5w")
+region = Rect2(-2.784546, 592.82446, 592.0204, 584.8445)
 
 [node name="SlotDouble" type="CharacterBody2D" unique_id=31808016]
 script = ExtResource("1_0uy5w")
@@ -14,6 +18,6 @@ position = Vector2(-1, 2)
 shape = SubResource("RectangleShape2D_0uy5w")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2126810247]
-position = Vector2(1.0000038, 1.0000076)
-scale = Vector2(0.9241668, 0.90628403)
-texture = ExtResource("1_w5cht")
+position = Vector2(-0.8847885, 1.7163982)
+scale = Vector2(0.21514058, 0.19305652)
+texture = SubResource("AtlasTexture_gr04e")
