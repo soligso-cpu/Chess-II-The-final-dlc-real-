@@ -340,28 +340,28 @@ func _on_forward_2_area_body_entered(body: Node2D) -> void:
 	if(self.is_in_group("Black")):
 		if(Globals.black_in_check):
 			if(body == Globals.piece_attacking_king):
-				forward1_enemy = true
+				forward2_enemy = true
 			else:
-				forward1_enemy = true
+				forward2_enemy = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("White")):
-				forward1_enemy = true
+				forward2_enemy = true
 			else:
-				forward1_enemy = true
+				forward2_enemy = true
 				forward2_touching_border = true
 	elif(self.is_in_group("White")):
 		if(Globals.white_in_check):
 			if(body == Globals.piece_attacking_king):
-				forward1_enemy = true
+				forward2_enemy = true
 			else:
-				forward1_enemy = true
+				forward2_enemy = true
 				forward2_touching_border = true
 		else:
 			if(body.is_in_group("Black")):
-				forward1_enemy = true
+				forward2_enemy = true
 			else:
-				forward1_enemy = true
+				forward2_enemy = true
 				forward_touching_border = true
 
 
