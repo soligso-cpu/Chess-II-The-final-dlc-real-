@@ -468,8 +468,8 @@ func _on_left_button_button_up() -> void:
 	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
 	if(!promoting):
 		reset_markers()
-	await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
-	Globals.turn_tracking += 1 # change turn
+		await get_tree().process_frame # do so again, MAKE SURE THIS IS HERE.
+		Globals.turn_tracking += 1 # change turn
 
 #endregion
 
