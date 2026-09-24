@@ -451,6 +451,9 @@ func _on_continue_button_button_up() -> void:
 		stage += 1
 
 
+
+
+
 func _on_tutorial_button_button_up() -> void:
 	$Tutorial/TutorialButton.visible = false
 	$Tutorial/ContinueButton.visible = true

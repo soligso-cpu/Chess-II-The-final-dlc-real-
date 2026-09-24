@@ -18,12 +18,16 @@
 [ext_resource type="Texture2D" uid="uid://dos51bvteqds" path="res://Sprites/Tilemaps/Gamble.jpg" id="14_7iy1p"]
 [ext_resource type="PackedScene" uid="uid://6kkmjkwll57f" path="res://Scenes/roulette.tscn" id="19_mc7rj"]
 [ext_resource type="Texture2D" uid="uid://b7bphjx513brp" path="res://Sprites/pngtree-a-classic-white-castle-strategic-piece-from-the-board-game-of-png-image_18021993.webp" id="19_qjv7d"]
+[ext_resource type="Texture2D" uid="uid://b5g054a8p3guy" path="res://RouletteButton.png" id="20_6xlsx"]
 [ext_resource type="Script" uid="uid://c2keaju0uuy74" path="res://Scripts/roulette_transport.gd" id="20_d5nw7"]
 [ext_resource type="Script" uid="uid://bxvwol6nfrt1d" path="res://Scripts/slots_organiser.gd" id="21_6xlsx"]
 [ext_resource type="PackedScene" uid="uid://cx8ffmhw47e0r" path="res://Scenes/Slots/slot_machine.tscn" id="22_cvsqo"]
 [ext_resource type="PackedScene" uid="uid://df37elk5xjpaq" path="res://Scenes/background_animation.tscn" id="22_o57li"]
 [ext_resource type="PackedScene" uid="uid://dcy23yasqtrks" path="res://Scenes/shop.tscn" id="23_gxals"]
+[ext_resource type="Texture2D" uid="uid://by8rsxkk5gd7w" path="res://Sprites/SlotBUtton.png" id="24_6xlsx"]
 [ext_resource type="PackedScene" uid="uid://y7fe4q7t1wet" path="res://Scenes/fishing_game.tscn" id="24_y63pb"]
+[ext_resource type="Texture2D" uid="uid://dp2mqmfag0rjo" path="res://Sprites/ShopBUtton.png" id="26_gxals"]
+[ext_resource type="Texture2D" uid="uid://dky4ryvumxgdu" path="res://Sprites/FiishButton.png" id="28_y63pb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shhme"]
 size = Vector2(1240, 1128)
@@ -133,7 +137,11 @@ size = Vector2(484, 95)
 size = Vector2(656, 93)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m4rnl"]
-size = Vector2(118, 122)
+size = Vector2(164, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvsqo"]
+atlas = ExtResource("24_6xlsx")
+region = Rect2(0, 593.3943, 1200, 606.6057)
 
 [node name="BoardTest" type="Node2D" unique_id=1103957163]
 script = ExtResource("1_shhme")
@@ -789,15 +797,16 @@ position = Vector2(620, 314)
 [node name="RouletteMarker" type="Marker2D" parent="RouletteOrganizer" unique_id=2147145183]
 position = Vector2(1711, 418)
 
-[node name="Sprite2D" type="Sprite2D" parent="RouletteOrganizer" unique_id=1331122492]
-position = Vector2(81, 359)
-texture = ExtResource("11_upw65")
+[node name="RouletteSprite" type="Sprite2D" parent="RouletteOrganizer" unique_id=1331122492]
+position = Vector2(104.625, 366.875)
+scale = Vector2(0.14395835, 0.109791696)
+texture = ExtResource("20_6xlsx")
 
 [node name="RouletteTransport" type="Area2D" parent="RouletteOrganizer" unique_id=1816936671]
 script = ExtResource("20_d5nw7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RouletteOrganizer/RouletteTransport" unique_id=1371806702]
-position = Vector2(81, 357)
+position = Vector2(106, 374)
 shape = SubResource("RectangleShape2D_m4rnl")
 
 [node name="SlotsOrganiser" type="Node2D" parent="." unique_id=898387040]
@@ -807,10 +816,10 @@ script = ExtResource("21_6xlsx")
 position = Vector2(1335, 1283)
 
 [node name="SlotButton" type="Button" parent="SlotsOrganiser" unique_id=594122097]
-offset_left = 17.0
-offset_top = 442.0
-offset_right = 138.0
-offset_bottom = 503.0
+offset_left = 44.0
+offset_top = 427.0
+offset_right = 165.0
+offset_bottom = 488.0
 text = "SLOTS ****"
 metadata/_edit_use_anchors_ = true
 
@@ -825,6 +834,11 @@ offset_bottom = 1685.0
 text = "Back to chess"
 metadata/_edit_use_anchors_ = true
 
+[node name="SlotButtonSprite" type="Sprite2D" parent="SlotsOrganiser" unique_id=1517515096]
+position = Vector2(105.00001, 462)
+scale = Vector2(0.14541666, 0.12376233)
+texture = SubResource("AtlasTexture_cvsqo")
+
 [node name="Shop" parent="." unique_id=1260812166 instance=ExtResource("23_gxals")]
 position = Vector2(-1206, 1251)
 
@@ -833,9 +847,9 @@ position = Vector2(577, 304)
 
 [node name="ShopButton" type="Button" parent="Shop" unique_id=284455043]
 offset_left = 1233.0
-offset_top = -1010.0
-offset_right = 1340.0
-offset_bottom = -969.0
+offset_top = -734.0
+offset_right = 1393.0
+offset_bottom = -674.0
 text = "Shopp"
 metadata/_edit_use_anchors_ = true
 
@@ -846,6 +860,22 @@ offset_right = 230.0
 offset_bottom = 595.0
 text = "Return"
 metadata/_edit_use_anchors_ = true
+
+[node name="ShopButtonSprite" type="Sprite2D" parent="Shop" unique_id=595178051]
+position = Vector2(1309.25, -708)
+scale = Vector2(0.28583354, 0.22166665)
+texture = ExtResource("26_gxals")
+
+[node name="FailedOpenLabel" type="Label" parent="Shop" unique_id=1781280178]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="FailedOpenTimer" type="Timer" parent="Shop" unique_id=498906529]
+
+[node name="LabelMarker" type="Marker2D" parent="Shop" unique_id=748142139]
+position = Vector2(1259, -1076)
+
+[node name="ShopLabelMarker" type="Marker2D" parent="Shop" unique_id=1343229239]
 
 [node name="FishingGame" parent="." unique_id=1605624662 instance=ExtResource("24_y63pb")]
 position = Vector2(-1553, -953)
@@ -862,12 +892,51 @@ text = "Back"
 metadata/_edit_use_anchors_ = true
 
 [node name="FishButton" type="Button" parent="FishingGame" unique_id=1959528895]
-offset_left = 1592.0
-offset_top = 1142.0
-offset_right = 1683.0
-offset_bottom = 1194.0
+offset_left = 1576.0
+offset_top = 1208.0
+offset_right = 1736.0
+offset_bottom = 1278.0
 text = "FIH"
 metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="FishingGame" unique_id=467724085]
+position = Vector2(1648.0001, 1265.0001)
+scale = Vector2(1.27, 1.0666667)
+texture = ExtResource("28_y63pb")
+
+[node name="Tutorial" type="Node2D" parent="." unique_id=281953511]
+
+[node name="TutorialButton" type="Button" parent="Tutorial" unique_id=734850284]
+offset_left = 971.0
+offset_top = 18.0
+offset_right = 1106.0
+offset_bottom = 72.0
+text = "Tutorial"
+
+[node name="ContinueButton" type="Button" parent="Tutorial" unique_id=1727920623]
+visible = false
+offset_left = 963.0
+offset_top = 418.0
+offset_right = 1094.0
+offset_bottom = 508.0
+text = "continue"
+
+[node name="PawnMarker" type="Marker2D" parent="Tutorial" unique_id=2037888661]
+position = Vector2(975, 43)
+
+[node name="ExplainMarker" type="Marker2D" parent="Tutorial" unique_id=115735044]
+position = Vector2(954, 251)
+
+[node name="KingMarker" type="Marker2D" parent="Tutorial" unique_id=589156072]
+position = Vector2(40, 66)
+
+[node name="Label" type="Label" parent="Tutorial" unique_id=2061903881]
+visible = false
+offset_left = 16.0
+offset_top = 641.0
+offset_right = 281.0
+offset_bottom = 685.0
+text = "This is chess, your main objective. "
 
 [connection signal="mouse_entered" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="LoreOrganizer/Area2D" to="." method="_on_area_2d_mouse_exited"]
@@ -880,5 +949,8 @@ metadata/_edit_use_anchors_ = true
 [connection signal="button_up" from="SlotsOrganiser/ReturnButton" to="." method="_on_return_button_button_up"]
 [connection signal="button_up" from="Shop/ShopButton" to="." method="_on_shop_button_button_up"]
 [connection signal="button_up" from="Shop/ShopReturnButton" to="." method="_on_shop_return_button_button_up"]
+[connection signal="timeout" from="Shop/FailedOpenTimer" to="." method="_on_failed_open_timer_timeout"]
 [connection signal="button_up" from="FishingGame/FishReturn" to="." method="_on_fish_return_button_up"]
 [connection signal="button_up" from="FishingGame/FishButton" to="." method="_on_fish_button_button_up"]
+[connection signal="button_up" from="Tutorial/TutorialButton" to="." method="_on_tutorial_button_button_up"]
+[connection signal="button_up" from="Tutorial/ContinueButton" to="." method="_on_continue_button_button_up"]

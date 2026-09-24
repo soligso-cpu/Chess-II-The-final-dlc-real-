@@ -39,6 +39,7 @@ var white_lost
 var white_won
 var black_lost
 var black_won
+var R_failed 
 
 var fishing_active = false
 

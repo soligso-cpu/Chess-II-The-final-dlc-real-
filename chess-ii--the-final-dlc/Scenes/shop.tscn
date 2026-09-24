@@ -45,7 +45,7 @@ offset_top = -172.0
 offset_right = 49.0
 offset_bottom = -123.0
 text = "Unlock a new minigame!
-cost: dunno"
+cost: 10"
 metadata/_edit_use_anchors_ = true
 
 [node name="MajorPowerup" type="Node2D" parent="." unique_id=1528439271]

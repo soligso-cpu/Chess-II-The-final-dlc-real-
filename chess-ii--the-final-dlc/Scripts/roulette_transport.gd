@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 		$"../../White".visible = false
 		$"../../Black".visible = false
 		on_roulette = true
+		
 	elif Input.is_action_just_pressed("Click") and hover == true and on_roulette == true:
 		$"../Roulette".visible = false
 		$"../../TileMapLayer".visible = true
@@ -30,6 +31,8 @@ func _process(delta: float) -> void:
 		$"../../White".visible = true
 		$"../../Black".visible = true
 		on_roulette = false
+	elif Input.is_action_just_pressed("Click") and Globals.roulette_unlocked == false and hover == true:
+		Globals.R_failed = true
 func _on_mouse_entered() -> void:
 	hover = true
 	
