@@ -10,7 +10,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
+		
+		
 	$Shop/FailedOpenLabel.position.y -= 0.5
 	
 	#This checks if rouleete failed to open. Why didn't i just put the fuction in that scripts? 

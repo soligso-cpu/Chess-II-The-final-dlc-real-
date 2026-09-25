@@ -48,6 +48,8 @@ var cards_unlocked = false
 var fish_unlocked = false
 var slot_unlocked = false
 
+var new_turn_happened
+
 var gamble_win_white = false
 var gamble_win_black = false
 var gamble_loose_white

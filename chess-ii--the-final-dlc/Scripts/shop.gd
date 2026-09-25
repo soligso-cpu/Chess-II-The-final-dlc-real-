@@ -81,15 +81,23 @@ func new_game_key():
 	if key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == false:
 		$GameKey/GameKeyLabel.text = str("roulette")
 		new_key = true
+	elif key == game_key.ROULETTE_KEY and Globals.roulette_unlocked == true:
+		$GameKey/GameKeyLabel.text = str("Sold out!")
 	elif key == game_key.FISH_KEY and Globals.fish_unlocked == false:
 		$GameKey/GameKeyLabel.text = str("fishing minigame")
 		new_key = true
+	elif key == game_key.FISH_KEY and Globals.fish_unlocked == true:
+		$GameKey/GameKeyLabel.text = str("Sold out!")
 	elif key == game_key.SLOT_KEY and Globals.slot_unlocked == false:
 		$GameKey/GameKeyLabel.text = str("slots")
 		new_key = true
+	elif key == game_key.SLOT_KEY and Globals.slot_unlocked == true:
+		$GameKey/GameKeyLabel.text = str("Sold out!")
 	elif key == game_key.CARD_KEY and Globals.cards_unlocked == false:
 		$GameKey/GameKeyLabel.text = str("cards")
 		new_key = true
+	elif key == game_key.CARD_KEY and Globals.cards_unlocked == true:
+		$GameKey/GameKeyLabel.text = str("Sold out!")
 	elif Globals.cards_unlocked == true and Globals.slot_unlocked == true and Globals.fish_unlocked == true and Globals.roulette_unlocked == true:
 		print("agy")
 		$GameKey/GameKeyLabel.text = str("Sold out")
